@@ -16,23 +16,17 @@ namespace NewShop.Controllers
 {
     public class CustomerMapController : Controller
     {
-        //
         // GET: /CustomerMap/
-
-
         public ActionResult Index()
         {
-            //this.Session["UserType"] = "";
             if (this.Session["UserType"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
-
             }
             return View();
         }
         public JsonResult Getlocationbysales(string SLM)
         {
-
             string Message = string.Empty;
             List<Listloc> Listloc = new List<Listloc>();
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
@@ -41,7 +35,6 @@ namespace NewShop.Controllers
             try
             {
                 SqlCommand cmd = new SqlCommand("P_Get_CusProvMapSales", Connection);
-                //SqlCommand cmd = new SqlCommand("P_Get_CusProvMapSales_test", Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@inSLM", SLM);
                 SqlDataReader dr = cmd.ExecuteReader();
@@ -56,7 +49,6 @@ namespace NewShop.Controllers
                         ShipCode = dr["ShipCode"].ToString(),
                         ShipStatus = dr["ShipStatus"].ToString(),
                         CUSNAM = dr["Cusnam"].ToString(),
-
                     });
                 }
             }
@@ -64,10 +56,7 @@ namespace NewShop.Controllers
             {
                 Message = ex.Message;
             }
-
-
             Connection.Close();
-            // return Json(CUSList, JsonRequestBehavior.AllowGet);
             return Json(new { Listloc, Message }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Getlocation(string CUSID, string SHIPCODE)
@@ -82,19 +71,10 @@ namespace NewShop.Controllers
             List<Listloc> Listloc = new List<Listloc>();
             try
             {
-
                  SqlCommand cmd = new SqlCommand("P_Get_CusProvMap", Connection);
-                //SqlCommand cmd = new SqlCommand("P_Get_CusProvMap_test", Connection);
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.AddWithValue("@inCUSCOD", CUSID);
                 cmd.Parameters.AddWithValue("@inSHIPCODE", SHIPCODE);
-                //SqlDataReader dr = cmd.ExecuteReader();
-                //while (dr.Read())
-                //{
-                //    lat = dr["Latitude"].ToString();
-                //    log = dr["Longitude"].ToString();
-                //    re = dr["Remark"].ToString();
-                //}
                 SqlDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
@@ -107,7 +87,6 @@ namespace NewShop.Controllers
                         ShipCode = dr["ShipCode"].ToString(),
                         ShipStatus = dr["ShipStatus"].ToString(),
                         CUSNAM = dr["Cusnam"].ToString(),
-
                     });
                 }
             }
@@ -115,14 +94,9 @@ namespace NewShop.Controllers
             {
                 Message = ex.Message;
             }
-
-
             Connection.Close();
-            // return Json(CUSList, JsonRequestBehavior.AllowGet);
-            //return Json(new { lat, log, Message, re }, JsonRequestBehavior.AllowGet);
             return Json(new { Listloc, Message }, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult Insertdatacuspromap(string usrRemark, string CUSID, string SLMID, string Latitude, string Longitude, string Usrlogin, string SHIPCODE)
         {
             string Message = string.Empty;
@@ -131,8 +105,6 @@ namespace NewShop.Controllers
             Connection.Open();
             try
             {
-
-
                 SqlCommand cmd = new SqlCommand("P_Save_CusProvMap", Connection);
                 cmd.Connection = Connection;
                 cmd.CommandType = CommandType.StoredProcedure;
@@ -153,11 +125,9 @@ namespace NewShop.Controllers
             {
                 Message = ex.Message;
             }
-
             Connection.Close();
             Connection.Dispose();
             SqlConnection.ClearPool(Connection);
-
             return Json(Message, JsonRequestBehavior.AllowGet);
         }
     }

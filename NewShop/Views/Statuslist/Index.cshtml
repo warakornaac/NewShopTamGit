@@ -21,7 +21,6 @@
     <style>
         .bannercol {
         }
-
         /*Responsive table*/
         #dataTablex {
             width: 100%;
@@ -33,14 +32,12 @@
             #dataTablex tr:nth-of-type(odd) {
                 background: rgb(246 249 250);
             }
-
             #dataTablex th {
                 background: #454fae;
                 font-weight: bold;
                 color: bisque;
                 font-size: smaller;
             }
-
             #dataTablex tbody tr td {
                 background-color: #eef2f9;
                 background-image: -moz-linear-gradient( top, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 51%, rgba(255,255,255,0.0) 100%);
@@ -48,7 +45,6 @@
                 color: #262c31;
                 font-size: 11px;
             }
-
         .track {
             position: relative;
             background-color: #ddd;
@@ -59,7 +55,6 @@
             margin-bottom: 60px;
             margin-top: 50px;
         }
-
             .track .step {
                 -webkit-box-flex: 1;
                 -ms-flex-positive: 1;
@@ -69,11 +64,9 @@
                 text-align: center;
                 position: relative;
             }
-
                 .track .step.active:before {
                     background: #FF5722;
                 }
-
                 .track .step::before {
                     height: 7px;
                     position: absolute;
@@ -82,12 +75,10 @@
                     left: 0;
                     top: 18px;
                 }
-
                 .track .step.active .icon {
                     background: #ee5435;
                     color: #fff;
                 }
-
             .track .icon {
                 display: inline-block;
                 width: 40px;
@@ -97,12 +88,10 @@
                 border-radius: 100%;
                 background: #ddd;
             }
-
             .track .step.active .text {
                 font-weight: 400;
                 color: #000;
             }
-
             .track .text {
                 display: block;
                 margin-top: 7px;
@@ -113,54 +102,43 @@
         #exampletbByItem {
             background-color: #333;
         }
-
             #exampletbByItem tbody {
                 background-color: cornsilk;
                 color: black;
             }
-
         .exampletbByItem {
             border-collapse: collapse;
             width: 100%;
             background-color: #FCFCFC;
         }
-
         .header {
             background-color: #C1D4E6;
             font-weight: bold;
             color: #FFF;
         }
-
         .exampletbByItem th {
             text-align: center;
         }
-
         .exampletbByItem th, .exampletbByItem td {
             border: 1px solid #C0C0C0;
             padding: 3px;
         }
-
         .exampletbByItem td {
             border: 1px solid #D4B5B5;
         }
-
             .exampletbByItem td td:first-child {
                 width: 55%;
             }
-
         .alt {
             background-color: #E4E9F5;
             color: #000;
         }
-
         .gridHead a:hover {
             text-decoration: underline;
         }
-
         .description {
             width: auto;
         }
-
         #changepass {
             color: #0275d8;
             text-decoration: none;
@@ -698,7 +676,6 @@
         }
         getdata(userid)
     } else {
-        //alert(usertype)
         $("#sforsales").css('display', 'block');
         $("#typeemp").css('display', 'none');
         $("#typecuslog").css('display', 'block');
@@ -765,7 +742,6 @@
                 }
             });
         }
-
     function getdata(userid) {
         $.ajax({
             url: '@Url.Action("UserInsert", "Statuslist")',
@@ -1024,7 +1000,6 @@
         var _str = "";
         $('#ordercur').css("dispaly", "block");
         var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true, });
-
         $.ajax({
             url: '@Url.Action("GetOrder", "Statuslist")',
             data: {
@@ -1072,14 +1047,11 @@
                         } else {
                             SubmithtmlPage += '<td></td>';
                         }
-                        //SubmithtmlPage += '<td>' + data.Getdata[i].val.DeliveryDate.substring(0, 10) + '</td>';
                         SubmithtmlPage += '<td>' + data.Getdata[i].val.DeliveryDate + '</td>';
                         SubmithtmlPage += '<td>' + data.Getdata[i].val.QTY + '</td>';
                         SubmithtmlPage += '<td>' + commaSeparateNumber(data.Getdata[i].val.ORD_TotalAmt) + '</td>';
                         SubmithtmlPage += '<td>' + data.Getdata[i].val.SlmCod + '</td>';
                         SubmithtmlPage += '</tr>';
-
-
                     }
                     $('#fixed-table-container-1  tbody:last-child').append(SubmithtmlPage);
                 } else {
@@ -1092,8 +1064,6 @@
             }
         });
     }
-
-
         function subdate(_datesup) {
             var from = _datesup;
             var numbers = from.match(/\d+/g);
@@ -1101,7 +1071,6 @@
         }
     function checkststusorder(status, callback) {
         var valchk;
-
         if (status = "") {
             valchk == "0";
         }
@@ -1175,7 +1144,6 @@
         if (_STKCOD == "Search Products") {
             _STKCOD = "";
         }
-
         $.ajax({
             url: '@Url.Action("GetOrderDetail", "Statuslist")',
             data: {
@@ -1356,7 +1324,6 @@
                 window.location.replace("../SelectPrintStatement/Index?numcuber=" + btoa(cusel));
             }
         });
-
         $(document).on("click", "#btnexpdf", function () {
             var res = [];
             var Usertype = usertype;
@@ -1368,7 +1335,6 @@
             } else if (Usertype == "6") {
                 res[0] = $('#selcus').val();
             }
-
             var StockCode = $('#txtSTKCOD').val();
             var split_StockCode = StockCode.split('|');
             var cus = res[0];

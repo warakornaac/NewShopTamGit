@@ -1040,7 +1040,7 @@ namespace NewShop.Models
             Connection.Open();
             List<ItemListshipto> cusshipping = new List<ItemListshipto>();
             shipto model = null;
-            SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr  where [customer No_] ='" + XXcus + "' order by [Code] ", Connection);
+            SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr_TAM  where [customer No_] ='" + XXcus + "' order by [Code] ", Connection);
             SqlDataReader rev_Mod = cmd.ExecuteReader();
             while (rev_Mod.Read())
             {

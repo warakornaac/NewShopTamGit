@@ -918,7 +918,7 @@ namespace NewShop.Controllers
             List<ItemListshipto> cusshipping = new List<ItemListshipto>();
             shipto model = null;
             // SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr  where [customer No_] ='"+XXcus+"' and code not like 'N9%' ", Connection);
-            SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr  where [customer No_] ='" + XXcus + "' order by [Code] ", Connection);
+            SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr_TAM  where [customer No_] ='" + XXcus + "' order by [Code] ", Connection);
             SqlDataReader rev_Mod = cmd.ExecuteReader();
             //var cusshipping = db.v_NVcust_ShiptoAddr.Where(c => c.Customer_No_ == XXcus && c.Code != "N9" || c.Code != "N99").ToArray();
             // var cusshipping = rev_Mod;

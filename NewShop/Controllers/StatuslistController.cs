@@ -15,22 +15,17 @@ namespace NewShop.Controllers
 {
     public class StatuslistController : Controller
     {
-        //
         // GET: /Statuslist/
-
         public ActionResult Index()
         {
-            //this.Session["UserType"] = "";
             if (this.Session["UserType"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
-
             }
             else
             {
                 List<SaleOrder_History> GetaleOrder_History = new List<SaleOrder_History>();
                 SaleOrder_History _model = new SaleOrder_History();
-
                 GetaleOrder_History.Add(new SaleOrder_History()
                 {
                     CUSCOD = "",
@@ -46,7 +41,6 @@ namespace NewShop.Controllers
                     PINUM = "",
                     INVNUM = ""
                 });
-
                 _model.SaleOrder_History_Grid = GetaleOrder_History;
                 return View("Index", _model);
             }
@@ -54,7 +48,6 @@ namespace NewShop.Controllers
         }
         public ActionResult Order_History(string cus, string STKCOD, string StartDate, string EndDate, string Slm, string UserCreate, string typeUser)
         {
-
             List<SaleOrder_History> GetaleOrder_History = new List<SaleOrder_History>();
             SaleOrder_History model = new SaleOrder_History();
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
@@ -62,7 +55,6 @@ namespace NewShop.Controllers
             Connection.Open();
             var command = new SqlCommand("P_Search_SaleOrder_History_x", Connection);
             command.CommandType = CommandType.StoredProcedure;
-
             command.Parameters.AddWithValue("@inUserCreate", UserCreate);
             command.Parameters.AddWithValue("@inSTKCOD", STKCOD);
             command.Parameters.AddWithValue("@inCUSCOD", cus);
@@ -70,8 +62,6 @@ namespace NewShop.Controllers
             command.Parameters.AddWithValue("@in_EDate", EndDate);
             command.Parameters.AddWithValue("@inSLMCODE", Slm);
             command.Parameters.AddWithValue("@Usertype", typeUser);
-
-            // command.ExecuteNonQuery();
             SqlDataReader drb = command.ExecuteReader();
             while (drb.Read())
             {
@@ -82,15 +72,9 @@ namespace NewShop.Controllers
                     STKCOD = drb["STKCOD"].ToString(),
                     FullDES = drb["FullDes"].ToString(),
                     QTY = String.Format("{0:0}", Convert.ToDecimal(drb["Qty"].ToString())),
-                    // QTY = drb["Qty"].ToString(),
                     SALPRICE = String.Format("{0:0.00}", Convert.ToDecimal(drb["SALPRICE"].ToString())),
-
-                    //SALPRICE =drb["SALPRICE"].ToString(),
                     AMT = String.Format("{0:0.00}", Convert.ToDecimal(drb["AMT"].ToString())),
-                    //AMT =  drb["AMT"].ToString(),
                     DISCOUNT = String.Format("{0:0.00}", Convert.ToDecimal(drb["Discount"].ToString())),
-                    //DISCOUNT =drb["Discount"].ToString(),
-                    // ORDDAT = String.Format("{0:d/MM/yy}", Convert.ToDateTime(drb["ORDDAT"].ToString())),
                     ORDDAT = drb["ORDDAT"].ToString(),
                     SONUM = drb["SONUM"].ToString(),
                     PINUM = drb["PINUM"].ToString(),
@@ -98,11 +82,9 @@ namespace NewShop.Controllers
                     SLMCOD = drb["SLMCOD"].ToString(),
                 });
             }
-            //S20161016
             drb.Close();
             drb.Dispose();
             command.Dispose();
-            //E20161016
             Connection.Close();
             return PartialView("_PartialSaleOrder_History", GetaleOrder_History);
         }
@@ -118,7 +100,6 @@ namespace NewShop.Controllers
             {
                 GroupUserInsert.Add(new SelectListItem()
                 {
-
                     Value = rev_UserInsert.GetValue(0).ToString(),
                 });
             }
@@ -131,15 +112,11 @@ namespace NewShop.Controllers
             List<OrderListGetdata> Getdata = new List<OrderListGetdata>();
             List<OrderListGetdata> Getdatatop = new List<OrderListGetdata>();
             SaleOrderList model = null;
-            //SaleOrderList modeltop = null;
             using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString))
             {
                 connection.Open();
-
-
                 var command = new SqlCommand("P_Search_SaleOrder", connection);
                 command.CommandType = CommandType.StoredProcedure;
-
                 command.Parameters.AddWithValue("@inUserCreate", UserCreate);
                 command.Parameters.AddWithValue("@inSLMCODE", SLMCODE);
                 command.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
@@ -150,14 +127,10 @@ namespace NewShop.Controllers
                 command.Parameters.AddWithValue("@inSOW", SOW);
                 command.Parameters.AddWithValue("@Usertype", Usertype);
                 command.CommandTimeout = 120; //60 sec = 1 min
-                //command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
-
                 while (dr.Read())
                 {
                     model = new SaleOrderList();
-                    // DateTime date = Convert.ToDateTime(dr.GetValue(""));
-                    // string formatted = date.ToString("dd/M/yyyy");
                     model.DType = dr["DType"].ToString();
                     model.RowNo = dr["RowNo"].ToString();
                     model.ORD_ID = dr["ORD_ID"].ToString();
@@ -180,19 +153,14 @@ namespace NewShop.Controllers
                     model.Longitude = dr["Longitude"].ToString();
                     model.DeliveryDate = dr["DeliveryDate"].ToString();
                     Getdata.Add(new OrderListGetdata { val = model });
-
                 }
-
                 dr.Close();
                 dr.Dispose();
                 command.Dispose();
-                //E20161016
                 connection.Close();
             }
             return Json(new { Getdata, Getdatatop }, JsonRequestBehavior.AllowGet);
-
         }
-
         public JsonResult GetOrderDetail(string ORD_ID, string ORD_DocNo, string STKCOD, string DType)
         {
             List<OrderListDetailGetdata> Getdata = new List<OrderListDetailGetdata>();
@@ -202,12 +170,10 @@ namespace NewShop.Controllers
                 connection.Open();
                 var command = new SqlCommand("P_Search_SaleOrderDetail", connection);
                 command.CommandType = CommandType.StoredProcedure;
-
                 command.Parameters.AddWithValue("@inORD_ID", ORD_ID);
                 command.Parameters.AddWithValue("@inORD_DocNo", ORD_DocNo);
                 command.Parameters.AddWithValue("@inSTKCOD", STKCOD);
                 command.Parameters.AddWithValue("@inDType", DType);
-                //command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
@@ -223,23 +189,14 @@ namespace NewShop.Controllers
                     model.VDiscount = dr["ORD_Discount"].ToString();
                     model.AmtQty = dr["ORD_Qty"].ToString();
                     model.TotalAmt = dr["ORD_Amt"].ToString();
-
-
-
                     Getdata.Add(new OrderListDetailGetdata { val = model });
-
                 }
-                //S20161016
                 dr.Close();
                 dr.Dispose();
                 command.Dispose();
                 connection.Close();
-                //E20161016
-
             }
             return Json(new { Getdata }, JsonRequestBehavior.AllowGet);
-
         }
     }
-
 }
