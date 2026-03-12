@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace NewShop.Models
+namespace NewShop_TAM.Models
 {
     using System;
     using System.Data.Entity;

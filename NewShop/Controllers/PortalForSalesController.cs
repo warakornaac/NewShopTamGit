@@ -77,10 +77,10 @@ namespace NewShop.Controllers
                         PRO = rev_CUSPROV["PRO"].ToString(),
                         ADDR_01 = rev_CUSPROV["ADDR_01"].ToString(),
                         CUSTYP = rev_CUSPROV["CUSTYP"].ToString(),
-                        AACCrlimit = rev_CUSPROV["AACCRLINE"].ToString(),
-                        AACBalance = rev_CUSPROV["AACBAL"].ToString(),
-                        TACCrlimit = rev_CUSPROV["TACCRLINE"].ToString(),
-                        TACBalance = rev_CUSPROV["TACBAL"].ToString()
+                        TAMCRLINE = rev_CUSPROV["TAMCRLINE"].ToString(),
+                        TAMBAL = rev_CUSPROV["TAMBAL"].ToString(),
+                        VELOXCRLINE = rev_CUSPROV["VELOXCRLINE"].ToString(),
+                        VELOXBAL = rev_CUSPROV["VELOXBAL"].ToString(),
                     });
                 }
                 rev_CUSPROV.Close();

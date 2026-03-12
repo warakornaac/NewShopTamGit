@@ -297,22 +297,20 @@ namespace NewShop.Models
         public string ADDR_01 { get; set; }
         public string ADDR_02 { get; set; }
         public string CUSTYP { get; set; }
-        public string AACCrlimit { get; set; }
-        public string AACBalance { get; set; }
-        public string TACCrlimit { get; set; }
-        public string TACBalance { get; set; }
+        public string TAMCRLINE { get; set; }      // เปลี่ยนจาก AACCrlimit
+        public string TAMBAL { get; set; }          // เปลี่ยนจาก AACBalance
+        public string VELOXCRLINE { get; set; }    // เปลี่ยนจาก TACCrlimit
+        public string VELOXBAL { get; set; }        // เปลี่ยนจาก TACBalance
         public string SLMCOD { get; set; }
         public string INACTIVE { get; set; }
         public string BLOCKED { get; set; }
-        public string AACPAYTRM { get; set; }
-        public string TACPAYTRM { get; set; }
+        public string TAMPAYTRM { get; set; }      // เปลี่ยนจาก AACPAYTRM
+        public string VELOXPAYTRM { get; set; }    // เปลี่ยนจาก TACPAYTRM
         public string TELNUM { get; set; }
         public string RATING { get; set; }
-
         public string Hierarchy1_Market_Segment { get; set; }
         public string Hierarchy2_Channel { get; set; }
         public string Hierarchy3_Bussiness_Type { get; set; }
-
     }
     public class shipto
     {

@@ -13,6 +13,7 @@ using NewShop.Models;
 using System.Text.RegularExpressions;
 using System.Globalization;
 using NewShop.Models;
+using NewShop_TAM.Models;
 
 namespace NewShop.Controllers
 {

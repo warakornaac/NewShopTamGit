@@ -17,9 +17,7 @@ namespace NewShop.Models
 {
     public class DataCenterController : Controller
     {
-        //
         // GET: /DataCenter/
-
         public ActionResult Index()
         {
             return View();
@@ -49,7 +47,6 @@ namespace NewShop.Models
         public JsonResult Getdate(string Name)
         {
             List<LookupVehicle> List = new List<LookupVehicle>();
-            //DefineCode model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             var command = new SqlCommand("P_Search_LookupVehicle", Connection);
@@ -59,19 +56,9 @@ namespace NewShop.Models
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
                 List.Add(new LookupVehicle()
                 {
-                    //Type = dr["Type"].ToString(),
                     Code = dr["Maker"].ToString(),
-                    //Description = dr["Description"].ToString(),
-                    //SearchDescription = dr["Search Description"].ToString(),
-                    //CodeRelation = dr["Code Relation"].ToString(),
-                    //YrStart = dr["Yr Start"].ToString(),
-                    //YrEnd = dr["Yr End"].ToString(),
-                    //EngineType = dr["Engine Type"].ToString(),
-                    //CC = dr["CC"].ToString(),
-
                 });
             }
             dr.Close();
@@ -101,7 +88,6 @@ namespace NewShop.Models
                     CUSNAM = dr["CUSNAM"].ToString(),
                     PRO = dr["PRO"].ToString(),
                     ADDR_01 = dr["ADDR_01"].ToString(),
-
                 });
             }
             dr.Close();
@@ -113,7 +99,6 @@ namespace NewShop.Models
         public JsonResult GetCatProductGroup(string com, string cuscod)
         {
             List<CatProductGroup> List = new List<CatProductGroup>();
-            //DefineCode model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             var command = new SqlCommand("P_Search_CatProductGroup", Connection);
@@ -124,13 +109,10 @@ namespace NewShop.Models
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
                 List.Add(new CatProductGroup()
                 {
                     Company = dr["Company"].ToString(),
                     ProductGroup = dr["Product Group"].ToString(),
-
-
                 });
             }
             dr.Close();
@@ -142,7 +124,6 @@ namespace NewShop.Models
         public JsonResult GetCatProductGroupline(string com, string progroup, string brand, string cuscod)
         {
             List<CatProductGroup> List = new List<CatProductGroup>();
-            //DefineCode model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             var command = new SqlCommand("P_Search_CatProductLine", Connection);
@@ -155,13 +136,11 @@ namespace NewShop.Models
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
                 List.Add(new CatProductGroup()
                 {
                     Company = dr["Company"].ToString(),
                     ProductGroup = dr["Product Group"].ToString(),
                     ProductLine = dr["Product Line"].ToString()
-
                 });
             }
             dr.Close();
@@ -173,13 +152,8 @@ namespace NewShop.Models
         public JsonResult GetdateRelation(string Name, string sty)
         {
             List<LookupVehicle> List = new List<LookupVehicle>();
-            //DefineCode model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
-            //var command = new SqlCommand("P_Search_LookupVehicleRelation", Connection);
-            //command.CommandType = CommandType.StoredProcedure;
-            //command.Parameters.AddWithValue("@Sty", sty);
-            //command.Parameters.AddWithValue("@Type", Name);
             var command = new SqlCommand("P_Search_LookupVehicle", Connection);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@Type", Name);
@@ -187,19 +161,9 @@ namespace NewShop.Models
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
                 List.Add(new LookupVehicle()
                 {
-                    // Type = dr["Type"].ToString(),
                     Code = dr["Model"].ToString(),
-                    //Description = dr["Search Description"].ToString(),
-                    // SearchDescription = dr["Search Description"].ToString(),
-                    // CodeRelation = dr["Code Relation"].ToString(),
-                    //YrStart = dr["Yr Start"].ToString(),
-                    //YrEnd = dr["Yr End"].ToString(),
-                    //EngineType = dr["Engine Type"].ToString(),
-                    //CC = dr["CC"].ToString(),
-
                 });
             }
             dr.Close();
@@ -213,7 +177,6 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             List<Brabdgrop> List = new List<Brabdgrop>();
             SqlCommand cmd = new SqlCommand("P_Search_Brand", Connection);
             cmd.CommandType = CommandType.StoredProcedure;
@@ -225,9 +188,7 @@ namespace NewShop.Models
                 List.Add(new Brabdgrop()
                 {
                     CODE = dr["Brand"].ToString(),
-
                 });
-
             }
             dr.Close();
             dr.Dispose();
@@ -240,12 +201,9 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             List<Segmentgrop> List = new List<Segmentgrop>();
             SqlCommand cmd = new SqlCommand("P_Search_Segment", Connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            // cmd.Parameters.AddWithValue("@Company", Name);
-
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -254,9 +212,7 @@ namespace NewShop.Models
                     CODE = dr["code"].ToString(),
                     segment = dr["segment"].ToString(),
                     sort = dr["sort"].ToString(),
-
                 });
-
             }
             dr.Close();
             dr.Dispose();
@@ -267,7 +223,6 @@ namespace NewShop.Models
         public JsonResult GetdateStkgrp(string Name)
         {
             List<Stkgrop> List = new List<Stkgrop>();
-            //DefineCode model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             var command = new SqlCommand("P_Search_Mst_StkGrp", Connection);
@@ -277,7 +232,6 @@ namespace NewShop.Models
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
                 List.Add(new Stkgrop()
                 {
                     STKGRP = dr["STKGRP"].ToString(),
@@ -299,7 +253,6 @@ namespace NewShop.Models
 
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
-
             // var root = @"\Warranty\ImgUpload\";
             var root = @"..\IMAGE_A\";
             var command = new SqlCommand("P_GetPathImage", Connection);
@@ -328,26 +281,20 @@ namespace NewShop.Models
             //Connection.Close();
             //return Json(new { Getdata }, JsonRequestBehavior.AllowGet);
             return null;
-
         }
         public JsonResult Getdateslm()
         {
             string usre = Session["UserID"].ToString();
             List<SLM> SlmList = new List<SLM>();
-
             SLM SlmListcount = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             var command = new SqlCommand("P_Chk_user", Connection);
-
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@UsrID", usre);
             command.Parameters.AddWithValue("@Password", "");
-
             SqlDataReader dr = command.ExecuteReader();
-
             while (dr.Read())
             {
                 SlmList.Add(new SLM()
@@ -358,34 +305,21 @@ namespace NewShop.Models
             }
             dr.Close();
             dr.Dispose();
-
             Connection.Dispose();
             command.Dispose();
             Connection.Close();
-
-            //transaction.Commit();
             return Json(SlmList, JsonRequestBehavior.AllowGet);
-
-
         }
         public JsonResult Getdateslmbycustomer(string cuscod)
         {
-
-
             List<SLM> SlmList = new List<SLM>();
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             var command = new SqlCommand("P_Search_SLM_byCustomer", Connection);
-
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@incode", cuscod);
-
-
             SqlDataReader dr = command.ExecuteReader();
-
             while (dr.Read())
             {
                 SlmList.Add(new SLM()
@@ -396,21 +330,15 @@ namespace NewShop.Models
             }
             dr.Close();
             dr.Dispose();
-
             Connection.Dispose();
             command.Dispose();
             Connection.Close();
-
-            //transaction.Commit();
             return Json(SlmList, JsonRequestBehavior.AllowGet);
-
-
         }
         //ดึงรายชื่อ Sale
         public async Task<JsonResult> GetdateslmbysalmcodDapper(string codeslm)
         {
             string cacheKey = $"SLM_{codeslm}";
-
             // 1) Check cache ก่อน
             var cache = MemoryCache.Default;
             if (cache.Contains(cacheKey))
@@ -418,26 +346,20 @@ namespace NewShop.Models
                 var cached = cache.Get(cacheKey) as List<SLM>;
                 return Json(cached, JsonRequestBehavior.AllowGet);
             }
-
             List<SLM> SlmList = new List<SLM>();
-
             try
             {
                 string connectionString =
                     ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
-
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    // เปิด connection แบบ async → non-blocking
                     await connection.OpenAsync();
-
                     // 2) Call Stored Procedure แบบ Dapper Async
                     var rows = await connection.QueryAsync<dynamic>(
                         "P_Search_SLM",
                         new { incode = codeslm },
                         commandType: System.Data.CommandType.StoredProcedure
                     );
-
                     // 3) Map data
                     foreach (var r in rows)
                     {
@@ -448,7 +370,6 @@ namespace NewShop.Models
                         });
                     }
                 }
-
                 //4) Cache 10 นาที
                 cache.Add(
                     cacheKey,
@@ -463,26 +384,19 @@ namespace NewShop.Models
             {
                 return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
             }
-
             return Json(SlmList, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Getdateslmbysalmcod(string codeslm)
         {
-
             List<SLM> SlmList = new List<SLM>();
             SLM SlmListcount = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             var command = new SqlCommand("P_Search_SLM", Connection);
-
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@incode", codeslm);
-
-
             SqlDataReader dr = command.ExecuteReader();
-
             while (dr.Read())
             {
                 SlmList.Add(new SLM()
@@ -493,15 +407,11 @@ namespace NewShop.Models
             }
             dr.Close();
             dr.Dispose();
-
             Connection.Dispose();
             command.Dispose();
             Connection.Close();
-
             //transaction.Commit();
             return Json(SlmList, JsonRequestBehavior.AllowGet);
-
-
         }
         public JsonResult Getdatabyslm(string SLXX, string SLMNAM)
         {
@@ -509,9 +419,22 @@ namespace NewShop.Models
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             List<CUS> CUSList = new List<CUS>();
-            SqlCommand cmd = new SqlCommand("select * from v_CUSPROV where SLMCOD =N'" + SLXX + "' order by SLMCOD", Connection);
+
+            SqlCommand cmd = new SqlCommand(@"
+            SELECT CUSCOD, CUSNAM, PRO, ADDR_01, CUSTYP,
+                   ISNULL(TAMCRLINE,'')   AS TAMCRLINE,
+                   ISNULL(TAMBAL,'')      AS TAMBAL,
+                   ISNULL(VELOXCRLINE,'') AS VELOXCRLINE,
+                   ISNULL(VELOXBAL,'')    AS VELOXBAL
+            FROM v_CUSPROV 
+            WHERE SLMCOD = @SLMCOD 
+            ORDER BY SLMCOD", Connection);
+
+            cmd.Parameters.AddWithValue("@SLMCOD", SLXX);
+
             this.Session["SLM"] = SLXX;
             this.Session["SLMCOD"] = SLMNAM;
+
             SqlDataReader rev_CUSPROV = cmd.ExecuteReader();
             while (rev_CUSPROV.Read())
             {
@@ -522,34 +445,29 @@ namespace NewShop.Models
                     PRO = rev_CUSPROV["PRO"].ToString(),
                     ADDR_01 = rev_CUSPROV["ADDR_01"].ToString(),
                     CUSTYP = rev_CUSPROV["CUSTYP"].ToString(),
-                    AACCrlimit = rev_CUSPROV["AACCRLINE"].ToString(),
-                    AACBalance = rev_CUSPROV["AACBAL"].ToString(),
-                    TACCrlimit = rev_CUSPROV["TACCRLINE"].ToString(),
-                    TACBalance = rev_CUSPROV["TACBAL"].ToString()
+                    TAMCRLINE = rev_CUSPROV["TAMCRLINE"].ToString(),
+                    TAMBAL = rev_CUSPROV["TAMBAL"].ToString(),
+                    VELOXCRLINE = rev_CUSPROV["VELOXCRLINE"].ToString(),
+                    VELOXBAL = rev_CUSPROV["VELOXBAL"].ToString(),
                 });
             }
-            //rev_CUSPROV.Dispose();
-            //S20161016
+
             rev_CUSPROV.Close();
             rev_CUSPROV.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
             return Json(CUSList, JsonRequestBehavior.AllowGet);
-
         }
+        //แก้ที่ SP
         public JsonResult GetdCustomerCredit(string cusel)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             List<CUS> CUSList = new List<CUS>();
-
             var cmd = new SqlCommand("P_Customer_credit", Connection);
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.Parameters.AddWithValue("@CUSCOD", cusel);
-
-
             string cusstr = string.Empty;
             SqlDataReader rev_CUSPROV = cmd.ExecuteReader();
             while (rev_CUSPROV.Read())
@@ -562,28 +480,23 @@ namespace NewShop.Models
                     ADDR_01 = rev_CUSPROV["ADDR_01"].ToString(),
                     ADDR_02 = rev_CUSPROV["ADDR_02"].ToString(),
                     CUSTYP = rev_CUSPROV["CUSTYP"].ToString(),
-                    AACCrlimit = rev_CUSPROV["AACCRLINE"].ToString(),
-                    AACBalance = rev_CUSPROV["AACBAL"].ToString(),
-                    TACCrlimit = rev_CUSPROV["TACCRLINE"].ToString(),
-                    TACBalance = rev_CUSPROV["TACBAL"].ToString(),
+                    TAMCRLINE = rev_CUSPROV["TAMCRLINE"].ToString(),
+                    TAMBAL = rev_CUSPROV["TAMBAL"].ToString(),
+                    VELOXCRLINE = rev_CUSPROV["VELOXCRLINE"].ToString(),
+                    VELOXBAL = rev_CUSPROV["VELOXBAL"].ToString(),
                     SLMCOD = rev_CUSPROV["SLMCOD"].ToString(),
                     INACTIVE = rev_CUSPROV["INACTIVE"].ToString(),
-                    BLOCKED = rev_CUSPROV["BLOCKED"].ToString(),
-                    AACPAYTRM = rev_CUSPROV["AACPAYTRM"].ToString(),
-                    TACPAYTRM = rev_CUSPROV["TACPAYTRM"].ToString(),
+                    BLOCKED = rev_CUSPROV["Blocked"].ToString(),
+                    TAMPAYTRM = rev_CUSPROV["TAMPAYTRM"].ToString(),
+                    VELOXPAYTRM = rev_CUSPROV["VELOXPAYTRM"].ToString(),
                     TELNUM = rev_CUSPROV["TELNUM"].ToString(),
                 });
             }
-            //this.Session["CUSCOD"] = CUSList[0].CUSCOD;
-            //rev_CUSPROV.Dispose();
-            //S20161016
             rev_CUSPROV.Close();
             rev_CUSPROV.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
             return Json(CUSList, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdateCus(string Cus, string Slm)
         {
@@ -595,7 +508,6 @@ namespace NewShop.Models
             string query = string.Empty;
             if (Slm == "0" || Slm == null || Slm == "(ALL)")
             {
-
                 SLMCOD = "";
                 query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM from v_CUSPROV pc    where  pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%'", Cus);
             }
@@ -603,31 +515,21 @@ namespace NewShop.Models
             {
                 SLMCOD = Slm;
                 query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM from v_CUSPROV pc    where  pc.SLMCOD ='" + SLMCOD + "' and (pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%')", Cus);
-
             }
-
             List<string> Code = new List<string>();
             using (SqlCommand cmd = new SqlCommand(query, Connection))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-
                     Code.Add(reader.GetString(1));
                 }
-                // reader.Dispose();
-                //S20161016
                 reader.Close();
                 reader.Dispose();
                 cmd.Dispose();
-                //E20161016
             }
-
-
             Connection.Close();
-
             return Json(Code, JsonRequestBehavior.AllowGet);
-
         }
         //ดึงข้อมูลร้านค้า
         public async Task<JsonResult> GetdatabyCusDapper(string cusel)
@@ -671,15 +573,15 @@ namespace NewShop.Models
                             ADDR_01 = r.ADDR_01?.ToString(),
                             ADDR_02 = r.ADDR_02?.ToString(),
                             CUSTYP = r.CUSTYP?.ToString(),
-                            AACCrlimit = r.AACCRLINE?.ToString(),
-                            AACBalance = r.AACBAL?.ToString(),
-                            TACCrlimit = r.TACCRLINE?.ToString(),
-                            TACBalance = r.TACBAL?.ToString(),
+                            TAMCRLINE = r.TAMCRLINE?.ToString(),
+                            TAMBAL = r.TAMBAL?.ToString(),
+                            VELOXCRLINE = r.VELOXCRLINE?.ToString(),
+                            VELOXBAL = r.VELOXBAL?.ToString(),
+                            BLOCKED = r.Blocked?.ToString(),
+                            TAMPAYTRM = r.TAMPAYTRM?.ToString(),
+                            VELOXPAYTRM = r.VELOXPAYTRM?.ToString(),
                             SLMCOD = r.SLMCOD?.ToString(),
                             INACTIVE = r.INACTIVE?.ToString(),
-                            BLOCKED = r.BLOCKED?.ToString(),
-                            AACPAYTRM = r.AACPAYTRM?.ToString(),
-                            TACPAYTRM = r.TACPAYTRM?.ToString(),
                             TELNUM = r.TELNUM?.ToString(),
                             RATING = r.Rating?.ToString(),
                             Hierarchy1_Market_Segment = r.H1?.ToString(),
@@ -702,20 +604,29 @@ namespace NewShop.Models
             {
                 return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
             }
-
             return Json(CUSList, JsonRequestBehavior.AllowGet);
         }
+
         public JsonResult GetdatabyCus(string cusel)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             List<CUS> CUSList = new List<CUS>();
-            SqlCommand cmd = new SqlCommand("select CUSCOD, CUSNAM, PRO, ADDR_01, ADDR_02, CUSTYP, AACCRLINE, AACBAL, TACCRLINE, TACBAL, SLMCOD, INACTIVE, BLOCKED, AACPAYTRM, TACPAYTRM, TELNUM, TELNUM, Rating, [Hierarchy1 (Market Segment)], [Hierarchy2 (Channel)], [Hierarchy3 (Bussiness Type)]  " +
-                                            "from v_CUSPROV where CUSCOD =N'" + cusel + "' order by SLMCOD"
-                                            , Connection);
+            SqlCommand cmd = new SqlCommand(@"
+        SELECT CUSCOD, CUSNAM, PRO, ADDR_01, ADDR_02, CUSTYP, 
+               TAMCRLINE, TAMBAL, VELOXCRLINE, VELOXBAL, 
+               SLMCOD, INACTIVE, Blocked,
+               TAMPAYTRM, VELOXPAYTRM, TELNUM, Rating,
+               [Hierarchy1 (Market Segment)], 
+               [Hierarchy2 (Channel)], 
+               [Hierarchy3 (Bussiness Type)]
+        FROM v_CUSPROV 
+        WHERE CUSCOD = @CUSCOD 
+        ORDER BY SLMCOD", Connection);
 
-            string cusstr = string.Empty;
+            cmd.Parameters.AddWithValue("@CUSCOD", cusel);
+
             SqlDataReader rev_CUSPROV = cmd.ExecuteReader();
             while (rev_CUSPROV.Read())
             {
@@ -727,15 +638,15 @@ namespace NewShop.Models
                     ADDR_01 = rev_CUSPROV["ADDR_01"].ToString(),
                     ADDR_02 = rev_CUSPROV["ADDR_02"].ToString(),
                     CUSTYP = rev_CUSPROV["CUSTYP"].ToString(),
-                    AACCrlimit = rev_CUSPROV["AACCRLINE"].ToString(),
-                    AACBalance = rev_CUSPROV["AACBAL"].ToString(),
-                    TACCrlimit = rev_CUSPROV["TACCRLINE"].ToString(),
-                    TACBalance = rev_CUSPROV["TACBAL"].ToString(),
+                    TAMCRLINE = rev_CUSPROV["TAMCRLINE"].ToString(),
+                    TAMBAL = rev_CUSPROV["TAMBAL"].ToString(),
+                    VELOXCRLINE = rev_CUSPROV["VELOXCRLINE"].ToString(),
+                    VELOXBAL = rev_CUSPROV["VELOXBAL"].ToString(),
+                    BLOCKED = rev_CUSPROV["Blocked"].ToString(),
+                    TAMPAYTRM = rev_CUSPROV["TAMPAYTRM"].ToString(),
+                    VELOXPAYTRM = rev_CUSPROV["VELOXPAYTRM"].ToString(),
                     SLMCOD = rev_CUSPROV["SLMCOD"].ToString(),
                     INACTIVE = rev_CUSPROV["INACTIVE"].ToString(),
-                    BLOCKED = rev_CUSPROV["BLOCKED"].ToString(),
-                    AACPAYTRM = rev_CUSPROV["AACPAYTRM"].ToString(),
-                    TACPAYTRM = rev_CUSPROV["TACPAYTRM"].ToString(),
                     TELNUM = rev_CUSPROV["TELNUM"].ToString(),
                     RATING = rev_CUSPROV["Rating"].ToString(),
                     Hierarchy1_Market_Segment = rev_CUSPROV["Hierarchy1 (Market Segment)"].ToString(),
@@ -743,17 +654,13 @@ namespace NewShop.Models
                     Hierarchy3_Bussiness_Type = rev_CUSPROV["Hierarchy3 (Bussiness Type)"].ToString(),
                 });
             }
-            //this.Session["CUSCOD"] = CUSList[0].CUSCOD;
-            //rev_CUSPROV.Dispose();
-            //S20161016
             rev_CUSPROV.Close();
             rev_CUSPROV.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
             return Json(CUSList, JsonRequestBehavior.AllowGet);
-
         }
+
         public JsonResult GetdateCusCode(string Name, string Slm)
         {
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
@@ -764,45 +671,32 @@ namespace NewShop.Models
             string query = string.Empty;
             if (Slm == "ALL")
             {
-
                 SLMCOD = "";
-                //query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM  from v_CUSPROV pc    where  pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%'", Name);
-                query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM + '----ที่อยู่ ' +  pc.ADDR_01+ ' | ' + pc.PRO from v_CUSPROV pc    where  pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%'", Name);
+                query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM + '----Address ' +  pc.ADDR_01+ ' | ' + pc.PRO from v_CUSPROV pc    where  pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%'", Name);
             }
             else
             {
                 SLMCOD = Slm;
-                // query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM  from v_CUSPROV pc    where  pc.SLMCOD ='" + SLMCOD + "' and (pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%')", Name);
-                query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM+ ' ----ที่อยู่' +  pc.ADDR_01+ ' | ' + pc.PRO from v_CUSPROV pc    where  pc.SLMCOD ='" + SLMCOD + "' and (pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%')", Name);
+                query = string.Format("select distinct pc.CUSCOD,pc.CUSCOD + ' | ' + pc.CUSNAM+ ' ----Address' +  pc.ADDR_01+ ' | ' + pc.PRO from v_CUSPROV pc    where  pc.SLMCOD ='" + SLMCOD + "' and (pc.CUSCOD LIKE '%{0}%'or pc.CUSNAM  LIKE '%{0}%')", Name);
             }
-
             List<string> Code = new List<string>();
             using (SqlCommand cmd = new SqlCommand(query, Connection))
             {
                 SqlDataReader reader = cmd.ExecuteReader();
                 while (reader.Read())
                 {
-
                     Code.Add(reader.GetString(1));
                 }
-                // reader.Dispose();
-                //S20161016
                 reader.Close();
                 reader.Dispose();
                 cmd.Dispose();
-                //E20161016
                 Connection.Close();
             }
-
-
-            // Connection.Close();
-
             return Json(Code, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetdataCuslogincus(string cusel)
         {
             List<logincutomer> List = new List<logincutomer>();
-            //DefineCode model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             var command = new SqlCommand("P_Search_CusByCustomer", Connection);
@@ -831,7 +725,6 @@ namespace NewShop.Models
                     SLMPhone = dr["SLMPhone"].ToString(),
                     SalesCo = dr["SalesCo"].ToString(),
                     SalesCoPhone = dr["SalesCoPhone"].ToString(),
-
                 });
             }
             dr.Close();
@@ -846,10 +739,8 @@ namespace NewShop.Models
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             var Getdata = new List<object>();
-
             SqlCommand cmd = new SqlCommand("select *    from dbo.v_SLMTAB  where [SLMCOD] ='" + Slm + "' order by [SLMCOD] ", Connection);
             SqlDataReader rev_Mod = cmd.ExecuteReader();
-
             while (rev_Mod.Read())
             {
                 Getdata.Add(new
@@ -859,18 +750,13 @@ namespace NewShop.Models
                     Phone = rev_Mod["Phone"].ToString(),
                     SalesCo = rev_Mod["SalesCo"].ToString(),
                     SalesCoPhone = rev_Mod["SalesCoPhone"].ToString(),
-
-
                 });
             }
-            //S20161016
             rev_Mod.Close();
             rev_Mod.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataCompanyInfo()
         {
@@ -878,10 +764,8 @@ namespace NewShop.Models
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             var Getdata = new List<object>();
-
             SqlCommand cmd = new SqlCommand("select *    from dbo.Company ", Connection);
             SqlDataReader rev_Mod = cmd.ExecuteReader();
-
             while (rev_Mod.Read())
             {
                 Getdata.Add(new
@@ -898,18 +782,14 @@ namespace NewShop.Models
 
                 });
             }
-            //S20161016
             rev_Mod.Close();
             rev_Mod.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdateContorder(string Slm, string cus, string Usertype, string UserIn)
         {
-            //Add Function Count  Wait Confirm  order 04/04/2017//
             List<Listslmcount> Getdata = new List<Listslmcount>();
             SLMc SlmListcount = null;
             string SLMc = string.Empty;
@@ -917,42 +797,27 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
-
             var commandCount_Orde = new SqlCommand("P_Count_Order_By_Sales_catalog", Connection);
-
             commandCount_Orde.CommandType = CommandType.StoredProcedure;
-            commandCount_Orde.Parameters.AddWithValue("@Salecode", Slm);
-            commandCount_Orde.Parameters.AddWithValue("@Cuscode", cus);
-            commandCount_Orde.Parameters.AddWithValue("@Usertype", Usertype);
-            commandCount_Orde.Parameters.AddWithValue("@UserIn", UserIn);
-            //commandCount_Orde.ExecuteNonQuery();
+            commandCount_Orde.Parameters.AddWithValue("@Salecode", (object)Slm ?? DBNull.Value);
+            commandCount_Orde.Parameters.AddWithValue("@Cuscode", (object)cus ?? DBNull.Value);
+            commandCount_Orde.Parameters.AddWithValue("@Usertype", (object)Usertype ?? DBNull.Value);
+            commandCount_Orde.Parameters.AddWithValue("@UserIn", (object)UserIn ?? DBNull.Value);
             SqlDataReader drCount_Orde = commandCount_Orde.ExecuteReader();
-
             while (drCount_Orde.Read())
             {
-
                 SlmListcount = new SLMc();
-
                 SlmListcount.SumQty = drCount_Orde["SumQty"].ToString();
                 SlmListcount.Countrow = drCount_Orde["Countrow"].ToString();
                 SlmListcount.CountPN = drCount_Orde["CountPN"].ToString();
                 SlmListcount.Status = drCount_Orde["Status"].ToString();
                 Getdata.Add(new Listslmcount { val = SlmListcount });
-
             }
-
             drCount_Orde.Dispose();
             commandCount_Orde.Dispose();
-
-
             Connection.Dispose();
-
             Connection.Close();
-
-            //transaction.Commit();
             return Json(new { Getdata }, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataPlusItem(string Nodisplay, string strcustome)
         {
@@ -962,13 +827,9 @@ namespace NewShop.Models
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             string message = "false";
-            // List<SearchitemDetailGetdata> Getdata = new List<SearchitemDetailGetdata>();
-            //Searchitem model = null;
             var Getdata = new List<object>();
-            //var Getdata = new List<object>();
             try
             {
-
                 var root = @"..\IMAGE_A\";
                 var command = new SqlCommand("p_Search_Item_Byvehicle_PlusItem", Connection);
                 command.CommandType = CommandType.StoredProcedure;
@@ -977,17 +838,14 @@ namespace NewShop.Models
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
                         Company = dr["Company"].ToString(),
                         STKCOD = dr["STKCOD"].ToString(),
                         Description = dr["Description"].ToString(),
-                        //Stock = dr["Stock"].ToString(),
                         EndPrice = dr["End Price"].ToString(),
                         PATH = Path.Combine(root, dr["IMAGE_NAME"].ToString())
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -998,9 +856,7 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataContinue_Newitem(string strcustome)
         {
@@ -1010,32 +866,24 @@ namespace NewShop.Models
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             string message = "false";
-            // List<SearchitemDetailGetdata> Getdata = new List<SearchitemDetailGetdata>();
-            //Searchitem model = null;
             var Getdata = new List<object>();
-            //var Getdata = new List<object>();
             try
             {
-
                 var root = @"..\IMAGE_A\";
                 var command = new SqlCommand("p_Search_NewItem", Connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@pCusCod", strcustome);
-                //command.Parameters.AddWithValue("@pStkcod", Nodisplay);
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
                         Company = dr["Company"].ToString(),
                         STKCOD = dr["STKCOD"].ToString(),
                         Description = dr["STKDES"].ToString(),
-                        //Stock = dr["Stock"].ToString(),
                         EndPrice = dr["End Price"].ToString(),
                         PATH = Path.Combine(root, dr["IMAGE_NAME"].ToString())
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -1046,9 +894,7 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataContinue_Stkgrp(string Nodisplay, string strcustome)
         {
@@ -1058,13 +904,9 @@ namespace NewShop.Models
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             string message = "false";
-            // List<SearchitemDetailGetdata> Getdata = new List<SearchitemDetailGetdata>();
-            //Searchitem model = null;
             var Getdata = new List<object>();
-            //var Getdata = new List<object>();
             try
             {
-
                 var root = @"..\IMAGE_A\";
                 var command = new SqlCommand("p_Search_Item_Continue_Stkgrp", Connection);
                 command.CommandType = CommandType.StoredProcedure;
@@ -1073,7 +915,6 @@ namespace NewShop.Models
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
                         Company = dr["Company"].ToString(),
@@ -1083,7 +924,6 @@ namespace NewShop.Models
                         EndPrice = dr["End Price"].ToString(),
                         PATH = Path.Combine(root, dr["IMAGE_NAME"].ToString())
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -1094,9 +934,7 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult Getdatailorder(string codval)
         {
@@ -1105,20 +943,13 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             var command = new SqlCommand("P_detail_Order_By_Sales_catalog", Connection);
-
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@Salecode", codval);
-
-
             SqlDataReader dr_Orde = command.ExecuteReader();
-
             while (dr_Orde.Read())
             {
-
                 DetailLists = new DetailSLM();
-
                 DetailLists.salmman = dr_Orde["SLMCODE"].ToString();
                 DetailLists.salmmanname = dr_Orde["SLMNAM"].ToString();
                 DetailLists.customer = dr_Orde["CUSCOD"].ToString();
@@ -1126,15 +957,10 @@ namespace NewShop.Models
                 DetailLists.Countrow = dr_Orde["Countrow"].ToString();
                 DetailLists.sumqty = dr_Orde["SumQty"].ToString();
                 Getdata.Add(new ListsDetailSLM { val = DetailLists });
-
             }
-
             dr_Orde.Dispose();
             command.Dispose();
-
-
             Connection.Dispose();
-
             Connection.Close();
             return Json(new { Getdata }, JsonRequestBehavior.AllowGet);
         }
@@ -1149,14 +975,10 @@ namespace NewShop.Models
             try
             {
                 var command = new SqlCommand("P_detail_Order_waitApprov_By_Sales_catalog", Connection);
-
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@Salecode", slmcod);
                 command.Parameters.AddWithValue("@Cuscod", cuscod);
-
-
                 SqlDataReader dr_Orde = command.ExecuteReader();
-
                 while (dr_Orde.Read())
                 {
                     Getdata.Add(new DetailApprvSLM
@@ -1171,7 +993,6 @@ namespace NewShop.Models
                         Item_typ = dr_Orde["Item_Type"] != DBNull.Value ? dr_Orde["Item_Type"].ToString() : string.Empty
                     });
                 }
-
                 dr_Orde.Dispose();
                 command.Dispose();
                 Connection.Dispose();
@@ -1184,7 +1005,6 @@ namespace NewShop.Models
             Connection.Close();
             return Json(new { message = message, Getdata }, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult Getdatailorderbycustomer(string codval)
         {
             List<ListsDetailSLM> Getdata = new List<ListsDetailSLM>();
@@ -1192,20 +1012,13 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             var command = new SqlCommand("P_detail_Order_By_Cus_catalog", Connection);
-
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@Cuscod", codval);
-
-
             SqlDataReader dr_Orde = command.ExecuteReader();
-
             while (dr_Orde.Read())
             {
-
                 DetailLists = new DetailSLM();
-
                 DetailLists.salmman = dr_Orde["SLMCODE"].ToString();
                 DetailLists.salmmanname = dr_Orde["SLMNAM"].ToString();
                 DetailLists.customer = dr_Orde["CUSCOD"].ToString();
@@ -1213,15 +1026,10 @@ namespace NewShop.Models
                 DetailLists.Countrow = dr_Orde["Countrow"].ToString();
                 DetailLists.sumqty = dr_Orde["SumQty"].ToString();
                 Getdata.Add(new ListsDetailSLM { val = DetailLists });
-
             }
-
             dr_Orde.Dispose();
             command.Dispose();
-
-
             Connection.Dispose();
-
             Connection.Close();
             return Json(new { Getdata }, JsonRequestBehavior.AllowGet);
         }
@@ -1232,12 +1040,8 @@ namespace NewShop.Models
             Connection.Open();
             List<ItemListshipto> cusshipping = new List<ItemListshipto>();
             shipto model = null;
-            // SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr  where [customer No_] ='"+XXcus+"' and code not like 'N9%' ", Connection);
             SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr  where [customer No_] ='" + XXcus + "' order by [Code] ", Connection);
             SqlDataReader rev_Mod = cmd.ExecuteReader();
-            //var cusshipping = db.v_NVcust_ShiptoAddr.Where(c => c.Customer_No_ == XXcus && c.Code != "N9" || c.Code != "N99").ToArray();
-            // var cusshipping = rev_Mod;
-            // ID = rev_CUSTYP.GetValue(0).ToString(),
             while (rev_Mod.Read())
             {
                 model = new shipto();
@@ -1251,14 +1055,11 @@ namespace NewShop.Models
                 model.postcode = rev_Mod["Post code"].ToString();
                 cusshipping.Add(new ItemListshipto { val = model });
             }
-            //S20161016
             rev_Mod.Close();
             rev_Mod.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
             return Json(cusshipping, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdateStockCodedropdownlist(string Prod, string STKGR, string Xcus, string XvalCompany, string Xval, string names)
         {
@@ -1275,29 +1076,18 @@ namespace NewShop.Models
             command.Parameters.AddWithValue("@Company", XvalCompany);
             command.Parameters.AddWithValue("@inName", names);
             Connection.Open();
-            //command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
-
                 DetailLists = new ItemListdrop();
-
                 DetailLists.No = dr["STKCOD"].ToString();
                 DetailLists.STKDES = dr["STKDES"].ToString();
-
                 StockCode.Add(new ItemListdropList { val = DetailLists });
-
             }
-            //dr.Close();
-            //S20161016
             dr.Close();
             dr.Dispose();
             command.Dispose();
-            //E20161016
-
             Connection.Close();
-
             return Json(StockCode, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetProd()
@@ -1305,12 +1095,9 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             List<Prod> List = new List<Prod>();
             SqlCommand cmd = new SqlCommand("P_Search_PROD", Connection);
             cmd.CommandType = CommandType.StoredProcedure;
-            // cmd.Parameters.AddWithValue("@Company", Name);
-
             SqlDataReader dr = cmd.ExecuteReader();
             while (dr.Read())
             {
@@ -1318,10 +1105,7 @@ namespace NewShop.Models
                 {
                     CODE = dr["PROD"].ToString(),
                     NAME = dr["PRODNAME"].ToString()
-
-
                 });
-
             }
             dr.Close();
             dr.Dispose();
@@ -1329,11 +1113,9 @@ namespace NewShop.Models
             Connection.Close();
             return Json(List, JsonRequestBehavior.AllowGet);
         }
-
         public JsonResult GetdateStkgrpByProd(string Name)
         {
             List<Stkgrop> List = new List<Stkgrop>();
-            //DefineCode model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             var command = new SqlCommand("P_Search_Mst_StkGrp_ByPROD", Connection);
@@ -1343,7 +1125,6 @@ namespace NewShop.Models
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
                 List.Add(new Stkgrop()
                 {
                     STKGRP = dr["STKGRP"].ToString(),
@@ -1360,29 +1141,21 @@ namespace NewShop.Models
             Connection.Close();
             return Json(List, JsonRequestBehavior.AllowGet);
         }
-
-
         public JsonResult GetdataCusAmt(string strcustome)
         {
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             string message = "false";
             var Getdata = new List<object>();
-
             try
             {
-
-
                 var command = new SqlCommand("p_Search_CusAmt", Connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inCUSCOD", strcustome);
-
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
                         Cuscod = dr["Cuscod"].ToString(),
@@ -1401,10 +1174,7 @@ namespace NewShop.Models
                         Oct = dr["Oct"].ToString(),
                         Nov = dr["Nov"].ToString(),
                         Dec = dr["Dec"].ToString(),
-
-
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -1415,31 +1185,23 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataCusAmtchild(string strcustome)
         {
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             string message = "false";
             var Getdata = new List<object>();
-
             try
             {
-
-
                 var command = new SqlCommand("p_Search_CusAmt_child", Connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inCUSCOD", strcustome);
-
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
                         Cuscod = dr["Cuscod"].ToString(),
@@ -1458,10 +1220,7 @@ namespace NewShop.Models
                         Oct = dr["Oct"].ToString(),
                         Nov = dr["Nov"].ToString(),
                         Dec = dr["Dec"].ToString(),
-
-
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -1472,9 +1231,7 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataCusAmtTop20(string cuscod)
         {
@@ -1515,17 +1272,13 @@ namespace NewShop.Models
         }
         public JsonResult GetdataPromotion_Cus(string strcustome, string period)
         {
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             string message = "false";
             var Getdata = new List<object>();
-
             try
             {
-
-
                 var command = new SqlCommand("P_Search_Promotion_Cus", Connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inCUSCOD", strcustome);
@@ -1533,7 +1286,6 @@ namespace NewShop.Models
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
                         CUSCOD = dr["CUSCOD"].ToString(),
@@ -1541,18 +1293,12 @@ namespace NewShop.Models
                         Promotion_Name = dr["Promotion_Name"].ToString(),
                         StartDate = dr["StartDate"].ToString(),
                         EndDate = dr["EndDate"].ToString(),
-                        //Con_Description = dr["Condition"].ToString(),
                         Condition = dr["Condition"].ToString(),
-                        // UOM = dr["UOM"].ToString(),
                         INVAMT = dr["Invoice Amount"].ToString(),
                         PaidAmt = dr["Invoice Paid"].ToString(),
                         Reward = dr["Reward"].ToString(),
                         RemainAmt = dr["Remaining Amount"].ToString(),
-
-
-
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -1563,40 +1309,30 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataWarrantyClaim_Cus_count(string strcustome)
         {
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             string message = "false";
             var Getdata = new List<object>();
-
             try
             {
-
-
                 var command = new SqlCommand("P_Search_WarrantyClaim_Cus_count", Connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inCUSCOD", strcustome);
-
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
-                        A = dr["รอดำเนินงาน"].ToString(),
-                        B = dr["กำลังตรวจสอบ"].ToString(),
-                        C = dr["รอส่งสินค้าทดแทน"].ToString(),
-                        D = dr["ส่งสินค้าทดแทนแล้ว"].ToString(),
-
+                        A = dr["Pending"].ToString(),
+                        B = dr["Under Review"].ToString(),
+                        C = dr["Awaiting Replacement"].ToString(),
+                        D = dr["Replacement Sent"].ToString(),
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -1607,9 +1343,7 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataWarrantyClaim_Cus(string strcustome, string tap)
         {
@@ -1618,11 +1352,8 @@ namespace NewShop.Models
             Connection.Open();
             string message = "false";
             var Getdata = new List<object>();
-
             try
             {
-
-
                 var command = new SqlCommand("P_Search_WarrantyClaim_Cus", Connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inCUSCOD", strcustome);
@@ -1630,7 +1361,6 @@ namespace NewShop.Models
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
-
                     Getdata.Add(new
                     {
                         REQ_NO = dr["REQ_NO"].ToString(),
@@ -1651,7 +1381,6 @@ namespace NewShop.Models
                         ApproveDate = dr["Approve Date"].ToString(),
                         Status = dr["Status"].ToString(),
                     });
-
                 }
                 dr.Close();
                 dr.Dispose();
@@ -1662,11 +1391,8 @@ namespace NewShop.Models
             {
                 message = ex.Message;
             }
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
-
         public JsonResult GetdataSessionlogin(string UsrID, string SessionId)
         {
             string StrStstuslogin = string.Empty;
@@ -1674,7 +1400,6 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-
             try
             {
                 SqlCommand cmd = new SqlCommand("P_Update_SessionId_Customer", conn);
@@ -1683,26 +1408,18 @@ namespace NewShop.Models
                 cmd.Parameters.AddWithValue("@UsrID", UsrID);
                 cmd.Parameters.AddWithValue("@SessionId", SessionId);
                 SqlParameter returnValue = new SqlParameter("@outResult", SqlDbType.NVarChar, 100);
-
                 returnValue.Direction = System.Data.ParameterDirection.Output;
                 cmd.Parameters.Add(returnValue);
                 cmd.ExecuteReader();
                 StrStstuslogin = returnValue.Value.ToString();
-
                 cmd.Dispose();
-
                 conn.Close();
-                //}
             }
             catch (Exception ex)
             {
                 message = ex.Message + '/' + ex.Source + '/' + ex.HelpLink + '/' + ex.HResult;
-                //return -1;
             }
-
-
             return Json(new { message, StrStstuslogin }, JsonRequestBehavior.AllowGet);
-
         }
 
         public JsonResult GetdataPrivilege(string UsrID, string cuscod)
@@ -1712,7 +1429,6 @@ namespace NewShop.Models
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-
             try
             {
                 SqlCommand cmd = new SqlCommand("P_privilege_Customer", conn);
@@ -1721,29 +1437,18 @@ namespace NewShop.Models
                 cmd.Parameters.AddWithValue("@UsrID", UsrID);
                 cmd.Parameters.AddWithValue("@cuscod", cuscod);
                 SqlParameter returnValue = new SqlParameter("@outResult", SqlDbType.NVarChar, 100);
-
                 returnValue.Direction = System.Data.ParameterDirection.Output;
                 cmd.Parameters.Add(returnValue);
                 cmd.ExecuteReader();
                 StrStstuslogin = returnValue.Value.ToString();
-
                 cmd.Dispose();
-
                 conn.Close();
-                //}
             }
             catch (Exception ex)
             {
                 message = ex.Message + '/' + ex.Source + '/' + ex.HelpLink + '/' + ex.HResult;
-                //return -1;
             }
-
-
             return Json(new { message, StrStstuslogin }, JsonRequestBehavior.AllowGet);
-
         }
     }
 }
-
-
-

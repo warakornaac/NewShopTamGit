@@ -30,7 +30,6 @@
     <!-- Modernizr JS -->
     <script src="~/tmartcss/js/vendor/modernizr-2.8.3.min.js"></script>
 
-
     <style>
         .header {
             /*background-color: #3c8dbc;*/
@@ -44,14 +43,6 @@
             top: 0;
             width: 100%;
         }
-        /* Dropdown Button */
-        /*.dropbtn {
-            background-color: #04AA6D;
-            color: white;
-            padding: 16px;
-            font-size: 16px;
-            border: none;
-        }*/
 
         /* The container <div> - needed to position the dropdown content */
         .dropdownb {
@@ -69,7 +60,6 @@
             z-index: 999;
             position: relative;
         }
-
             /* Links inside the dropdown */
             .dropdownb-content a {
                 color: black;
@@ -77,7 +67,6 @@
                 text-decoration: none;
                 display: block;
             }
-
                 /* Change color of dropdown links on hover */
                 .dropdownb-content a:hover {
                     background-color: #ddd;
@@ -96,7 +85,6 @@
             font-size: 14px !important;
             white-space: nowrap;
         }
-
             .header .navbar-light .navbar-nav .nav-link .fa {
                 font-size: 1.50em;
             }
@@ -113,12 +101,6 @@
             border-color: red;
         }
         /* The container <div> - needed to position the dropdown content */
-
-
-
-
-
-
 
         /* Show the dropdown menu on hover */
         .dropdownb:hover .dropdownb-content {
@@ -142,18 +124,11 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <a class="navbar-brand p-0 mr-5" href="#"><img src="~/images/logo/AACTAC185x70.jpg" /></a>
-
             <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-
                     @if (Session["UserType"].ToString() != "6")
                     {
-
-
-
                         <div class="dropdownb">
-                            @*<button class="dropbtn">Dashboard Sales Man</button>*@
-                            @*<span class="dropbtn">Dashboard Sales Man</span>*@
                         <li class="nav-item dropdown messages-menu">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa fa-address-book-o" style="font-size: 1.7em;"></i>
@@ -163,7 +138,6 @@
                         <div class="dropdownb-content">
                             <a class="nav-link" href="https://app.powerbi.com/view?r=eyJrIjoiZGZhMzcyZDQtNjE2ZC00NWIxLTk0NGMtMzM1NDJlYmIxZTY2IiwidCI6IjBjYzc5Nzg2LTAxMWItNDkwOS1hYjNjLTFlMDJjOTRmYTRmZSIsImMiOjEwfQ%3D%3D" target="_blank">Event</a>
                             <a class="nav-link" href="https://app.powerbi.com/view?r=eyJrIjoiNjYzMjk2MjctY2VlNi00ODQ3LTk4NTQtZDRiNzhiZjUzYTI5IiwidCI6IjBjYzc5Nzg2LTAxMWItNDkwOS1hYjNjLTFlMDJjOTRmYTRmZSIsImMiOjEwfQ%3D%3D" target="_blank">Order Type S</a>
-                            @*<a class="nav-link" href="https://app.powerbi.com/view?r=eyJrIjoiZjc5YmU5ODctNDdlMy00NGI0LTk2MzItYjM5MmRmMzUxZTNiIiwidCI6IjBjYzc5Nzg2LTAxMWItNDkwOS1hYjNjLTFlMDJjOTRmYTRmZSIsImMiOjEwfQ%3D%3D" target="_blank">KPI Sales</a>*@
                             <a class="nav-link" href="https://app.powerbi.com/view?r=eyJrIjoiODk2ODQ0OGQtMTBhYy00Nzc2LTliM2EtN2VlYjkzYTMxOWMxIiwidCI6IjBjYzc5Nzg2LTAxMWItNDkwOS1hYjNjLTFlMDJjOTRmYTRmZSIsImMiOjEwfQ%3D%3D" target="_blank">KPI Sales</a>
                             <a class="nav-link" href="~/OrderingReport/Index">
                                 <span>Did You Knows</span>
@@ -178,19 +152,17 @@
                                 <span>ChangeCuscodeUserPortal</span>
                             </a>
                             <a class="nav-link" href="~/Promotion/RegisterCustomer">
-                                <span>ลงทะเบียนโปรโมรชั่น</span>
+                                <span>Register Promotion</span>
                             </a>
                             <a class="nav-link" href="~/PortalForSales/index?page=menu" target="_blank">
                                 <span>Customer Portal</span>
                             </a>
                         </div>
-
                 </div>
             }
                     <li class="nav-item dropdown messages-menu">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa fa-exchange"></i>
-
                             <span>Upload order</span>
                         </a>
                     </li>
@@ -199,120 +171,36 @@
                         <a class="nav-link dropdown-toggle" href="#" id="navbarshowdetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa-shopping-cart"></i>
                             <span class="label label-success bg-success" id="countsku"></span>
-                            <span>ตะกร้าสินค้า</span>
+                            <span>Shopping Cart</span>
                         </a>
-                        @*<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <ul class="dropdown-menu-over list-unstyled">
-                        <li class="header-ul text-center">You have 4 messages</li>
-                        <li>
-                            <!-- inner menu: contains the actual data -->
-                            <ul class="menu list-unstyled">
-                                <li>
-                                    <!-- start message -->
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="http://via.placeholder.com/160x160" class="rounded-circle  " alt="User Image">
-                                        </div>
-                                        <h4>
-                                            Support Team
-                                            <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <!-- end message -->
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                        </div>
-                                        <h4>
-                                            AdminLTE Design Team
-                                            <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                        </div>
-                                        <h4>
-                                            Developers
-                                            <small><i class="fa fa-clock-o"></i> Today</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                        </div>
-                                        <h4>
-                                            Sales Department
-                                            <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <div class="pull-left">
-                                            <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                        </div>
-                                        <h4>
-                                            Reviewers
-                                            <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                        </h4>
-                                        <p>Why not buy a new awesome theme?</p>
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                        <li class="footer-ul text-center"><a href="#">See All Messages</a></li>
-                    </ul>
-                    </div>*@
                     </li>
                     <li class="nav-item dropdown messages-menu">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarwait" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa fa-clock-o"></i>
                             <span class="label label-success bg-success" id="rd"></span>
-                            <span>สินค้ารออนุมัติ</span>
+                            <span>Pending</span>
                         </a>
                     </li>
                     <li class="nav-item dropdown messages-menu">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarstatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fa fa fa-truck"></i>
 
-                            <span>การสั่งซื้อของฉัน</span>
+                            <span>My Orders</span>
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" @*id="btndetail"*@ href="/SeleScrCustomer/dashboard">บัญชีลูกค้า</a>
+                        <a class="nav-link" href="/SeleScrCustomer/dashboard">Account</a>
                     </li>
-
-
-                    @*<i class="fa fa fa-user-circle-o" ></i>*@
                     @if (Session["UserType"].ToString() != "6")
                     {
-                        <span style=" padding: 12px 0px 0px;color: white; font-size: 14px;">บัญชีของคุณ @Session["UserID"]</span>}
+                        <span style=" padding: 12px 0px 0px;color: white; font-size: 14px;">Profile @Session["UserID"]</span>}
                     else if (Session["UserType"].ToString() == "6")
                     {
-                        <span style=" padding: 12px 0px 0px; color: white; font-size: 14px;">บัญชีของคุณ @Session["UserID"]  </span>
+        <span style=" padding: 12px 0px 0px; color: white; font-size: 14px;">Profile @Session["UserID"]  </span>
                     }
                     <li class="nav-item dropdown  user-menu ">
 
-
-                        @*<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">*@
-
-
-
-                        @*</a>*@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @*<a class="dropdown-item" href="#">Action</a>*@
-                            @*<a class="dropdown-item" href="~/Home2/Index">Home2</a>*@
                             @if (Session["UserType"].ToString() == "5")
                             {
                                 <a class="dropdown-item" href="~/Orderlist/Index">Home</a>
@@ -337,19 +225,17 @@
                     <li class="nav-item dropdown messages-menu">
                         <a class="nav-link dropdown-toggle" href="~/Account/LogOut">
                             <i class="fa fa fa-outdent"></i>
-                            <span>ออกจากระบบ</span>
+                            <span>Logout</span>
                         </a>
                     </li>
                     </ul>
                     </div>
                 </nav>
             </header>@RenderBody()
-            @*<div class="body__overlay"></div>*@
             <div class="container">
                 <div class="row">
                 </div>
             </div>
-            @*modal change password*@
             <div class="modal fade" role="dialog" id="modalChangePassword" data-backdrop="static" data-keyboard="false" data-focus-on="input:first" style="padding-top: 15%;">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -390,26 +276,21 @@
                                     </div>
                                 </div>
                             </form>
-                            @*warning*@
                             <div class="row" id="warningSave" style="display: none;">
                                 <div class="col-sm-12 text-left" style="margin-top: 0px;">
                                     <div class="alert alert-danger alert-dismissible" role="alert">
-                                        @*<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>*@
                                         <strong>Warning</strong>
                                         <hr>
                                         <span id="textWarningSave"></span>
                                     </div>
                                 </div>
                             </div>
-                            @*success*@
                             <div class="row" id="successSave" style="display: none;">
                                 <div class="col-sm-12 text-left" style="margin-top: 0px;">
                                     <div class="alert alert-success alert-dismissible" role="alert">
                                         <strong>Success</strong>
                                         <hr>
                                         <span id="textSuccessSave"></span>
-                                        @*<br>
-                                            Automatic Logout Mobile order. <i class="fa fa-spinner fa-spin"></i>*@
                                     </div>
                                 </div>
                             </div>
@@ -427,7 +308,6 @@
                     </div>
                 </div>
             </div>
-            @*modal success*@
             <div class="modal fade" role="dialog" id="modalSuccess" data-backdrop="static" data-keyboard="false" data-focus-on="input:first" style="padding-top: 15%;">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
@@ -459,21 +339,17 @@
             <!-- Main js file that contents all jQuery plugins activation. -->
             <script src="~/tmartcss/js/main.js"></script>
             <script defer>
-                //onkeypress="return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122) || (event.charCode >= 48 && event.charCode <= 57)"
-                //ถ้ายังไม่กรอกรหัส border input red
                 function checkEmptyField(arg) {
                     var id = arg.getAttribute('id');
                     var value = arg.value;
                     if (value.length == 0) {
                         $("#" + id).css({ "border": "1px solid #ff4d4d" });
                         $("#" + id + "Label").css({ "color": "1px solid #ff4d4d" });
-
                     } else {
                         $("#" + id).css({ "border": "1px solid #5cb85c" });
                         $("#" + id + "Label").css({ "color": "1px solid #5cb85c" });
                     }
                 }
-
                 function showOldPassword() {
                     var x = document.getElementById("oldPassword");
                     if (x.type === "password") {
@@ -482,7 +358,6 @@
                         x.type = "password";
                     }
                 }
-
                 function showNewPassword() {
                     var x = document.getElementById("newPassword");
                     if (x.type === "password") {
@@ -491,7 +366,6 @@
                         x.type = "password";
                     }
                 }
-
                 function showNewConfirmPassword() {
                     var x = document.getElementById("newConfirmPassword");
                     if (x.type === "password") {
@@ -500,15 +374,11 @@
                         x.type = "password";
                     }
                 }
-
                 $("#formChangePassword").click(function () {
                     $('#modalChangePassword').modal({ backdrop: 'static', keyboard: false });
                     $('#modalChangePassword').on('shown.bs.modal', function () {
-
                         $("#oldPassword, #newPassword, #newConfirmPassword").css({ "border": "1px solid #ff4d4d" });
                         $("#oldPasswordLabel, #newPasswordLabel, #newConfirmPasswordLabel").css({ "color": "#ff4d4d" });
-
-
                         $("#oldPassword").val('');
                         $("#newPassword").val('');
                         $("#newConfirmPassword").val('');
@@ -516,9 +386,7 @@
 
                     })
                 })
-                //close modal from
                 $('#modalChangePassword').on('hidden.bs.modal', function (e) {
-                    //clear warning, success
                     $("#successSave").css('display', 'none');
                     $("#textSuccessSave").html('');
                     $("#warningSave").css('display', 'none');
@@ -527,7 +395,6 @@
                     $("#newPassword").val('');
                     $("#newConfirmPassword").val('');
                 });
-                //close modal success
                 $('#modalSuccess').on('hidden.bs.modal', function (e) {
                      window.location.href = '@Url.Action("Login", "Account")';
                 });
@@ -537,7 +404,6 @@
                     const msg = [];
                     var msgEx = "";
                     var alphanumeric = /^[a-zA-Z0-9]+$/;
-
                     var username = $("#username").val();
                     var oldPassword = $("#oldPassword").val();
                     var newPassword = $("#newPassword").val();
@@ -554,7 +420,6 @@
                         $("#newPassword").css({ "border": "1px solid #ff4d4d" });
 
                     } else {
-                        //check new pass
                         if (newPassword.length < 8) {
                             ++error;
                             msg.push(error + ".Your password must be at least 8 characters");
@@ -575,10 +440,6 @@
                             ++error;
                             msg.push(error + ".Your password must contain at least one digit.");
                         }
-                        //if (newPassword.match(alphanumeric) === null) {
-                        //    ++error;
-                        //    msg.push(error + ".Your password must contain at least special char.");
-                        //}
                     }
 
                     if (newConfirmPassword == "") {
@@ -618,12 +479,6 @@
                                     setTimeout(function () {
                                         $('#modalChangePassword').modal('toggle');
                                     }, 500);
-                                    @*$("#successSave").css('display', 'block');
-                                    $("#textSuccessSave").html(result.message + '<br>'  + ' Automatic Logout Mobile order.' + '<br>' +'<b><u>Please logoff windows.</u></b>');
-                                    $("#warningSave").css('display', 'none');
-                                    setTimeout(function () {
-                                        window.location.href = '@Url.Action("Login", "Account")';
-                                    }, 5000);*@
                                 } else {
                                     $("#successSave").css('display', 'none');
 
@@ -642,7 +497,6 @@
                                 $("#btnChangePassword").prop('disabled', false);
                                 $("#iconLoading").html('');
                                 $("#successSave").css('display', 'none');
-
                                 $("#warningSave").css('display', 'block');
                                 $("#textWarningSave").html(ex);
                             }
@@ -654,9 +508,6 @@
                         });
                     }
                 }
-
             </script>
-
         </body>
-
     </html>
