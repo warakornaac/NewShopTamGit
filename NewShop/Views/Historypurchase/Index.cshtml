@@ -1,7 +1,5 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutStatus.cshtml";
-
-
 }
 <html lang="en">
 <head>
@@ -14,33 +12,17 @@
     <title>ประวัติสั่งซื้อสินค้า</title>
     <style>
         #dataTablex td:nth-child(8) {
-            /*background-image: linear-gradient(180deg, #b6a09b42, #224abea3 50%);
-            color: black;*/
         }
-
         #dataTablex td:nth-child(9) {
-            /*background-image: linear-gradient(180deg, #b6a09b42, #224abea3 50%);
-            color: black;*/
         }
-
         #dataTablex td:nth-child(10) {
-            /*background-image: linear-gradient(180deg, #b6a09b42, #41b4847a 50%);*/
-            /*background-image: linear-gradient(180deg, #b6a09b42, #224abea3 50%);
-            color: black;*/
         }
-
         #dataTablex th {
-            /*background: -webkit-linear-gradient(left,#001338c4 0,#00466d 50%,#336ca473 100%);
-            background: -moz-linear-gradient(left,#001338 0,#00466d 50%,#336ca4 100%);
-            background: -ms-linear-gradient(left,#001338 0,#00466d 50%,#336ca4 100%);
-            background: -o-linear-gradient(left,#001338 0,#00466d 50%,#336ca4 100%);
-            color: white;*/
         }
         tr:nth-of-type(odd) {
             background: #97a9a6;
         }
         .fixed-table-container th, .fixed-table-container td {
-         
             color: black;
         }
    
@@ -85,22 +67,18 @@
 <body id="page-top">
     <!-- Page Wrapper -->
     <div id="wrapper">
-
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
             <div id="content">
-
                 <div class="container-fluid">
-
                     <div class="card shadow mb-4 bannercol">
                         <div class="card-body">
-
                             <div class="row">
                                 <div class="col-md-4" style="display:none" id="sforsales">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <label class="col-sm-4 col-form-label">พนักงานขาย</label>
+                                            <label class="col-sm-4 col-form-label">Sales Man</label>
                                             <select id="Slm" class="form-control" style="color:black">
                                                 <option value="0">ALL</option>
                                             </select>
@@ -111,7 +89,7 @@
                                 <div class="col-md-3" id="typeemp">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <label class="col-sm-4 col-form-label">ลูกค้า</label>
+                                            <label class="col-sm-4 col-form-label">Customer</label>
                                             <input type="text" class="form-control ui-autocomplete-input" id="Customer" />
                                             <span class="input-group-addon "><span class="glyphicon glyphicon-user"></span></span>
                                         </div>
@@ -120,84 +98,63 @@
                                 <div class="col-md-4">
                                     <div class="form-group" id="typecuslog">
                                         <div class="input-group">
-                                            <label class="input-group-addon">ลูกค้า</label>
-                                            <select class="selectpicker form-control" data-container="body" data-live-search="true" title="เลือกลูกค้า" data-hide-disabled="true" id="selcus"><option value="0"></option></select>
+                                            <label class="input-group-addon">Customer</label>
+                                            <select class="selectpicker form-control" data-container="body" data-live-search="true" title="Select Customer" data-hide-disabled="true" id="selcus"><option value="0"></option></select>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <label class="col-sm-4 col-form-label">เบอร์สินค้า</label>
-                                            <input type="Text" class="form-control ui-autocomplete-input" placeholder="ค้นหาสินค้า" id="txtSTKCOD" />
+                                            <label class="col-sm-4 col-form-label">Product Code</label>
+                                            <input type="Text" class="form-control ui-autocomplete-input" placeholder="Search Products" id="txtSTKCOD" />
                                             <span class="input-group-addon "><span class="glyphicon glyphicon-user"></span></span>
                                         </div>
                                     </div>
                                 </div>
-
                             </div>
                             <div class="row">
                                 <div class="col-md-4">
                                     <div class="form-group">
-
-                                        <input type="button" id="btnSeach" class="btn btn-info btn-large" value="ค้นหาประวัติ">
-
+                                        <input type="button" id="btnSeach" class="btn btn-info btn-large" value="Serach History">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
-
                                 <div class="col-md-4">
                                     <div class="form-group">
                                     </div>
                                 </div>
-
-
                             </div>
-
-
                             <div class="row">
-
                                 <div class="col-md-3" style="display:none">
                                     <div class="form-group">
                                         <div class="input-group">
-                                            <label class="col-sm-4 col-form-label">สถานะ Order</label>
+                                            <label class="col-sm-4 col-form-label">Order Status</label>
                                             <select id="DType" name="DType" class="form-control">
                                                 <option value="1">Sales Order</option>
                                                 <option value="2">Back Order Confirm</option>
                                                 <option value="">=== ALL ===</option>
-
                                             </select>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
                             <div class="row">
-
                                 <div class="col-md-3" style="display:none;">
                                     <div class="form-group">
-
                                         <input type="button" id="btnexpdf" class="btn btn-warning btn-large" value="SalesOrderHistory">
-
-                                    </div>
+                                </div>
                                 </div>
                             </div>
-
                         </div>
-
                     </div>
                 </div>
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-2 text-gray-500">ประวัติสั่งซื้อ</h1>
-                    <!-- <p class="mb-4">
-                        DataTables is a third party plugin that is used to generate the demo table below.
-                        For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.
-                    </p>-->
-                    <!-- DataTales Example -->
+                    <h1 class="h3 mb-2 text-gray-500">History Purchase</h1>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <h6 class="m-0 font-weight-bold text-primary"></h6>
@@ -206,32 +163,31 @@
                             <div class="col-md-8">
                                 <div class="form-group">
                                     <div class="input-group">
-
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-4">
                                 <div class="cd-select cd-filters">
                                     <select class="form-control" id="sortby">
-                                        <option selected value="0">Sort by </option>
-                                        <option value="1">ชื่อลูกค้า-A-Z</option>
-                                        <option value="2">ชื่อลูกค้า-Z-A</option>
-                                        <option value="3">ชื่อสินค้า-A-Z</option>
-                                        <option value="4">ชื่อสินค้า-Z-A</option>
-                                        <option value="5">จำนวนสั่งซื้อล่าสุด-น้อยไปมาก</option>
-                                        <option value="6">จำนวนสั่งซื้อล่าสุด-มากไปน้อย</option>
-                                        <option value="7">ราคาต่อชิ้นล่าสุด-น้อยไปมาก</option>
-                                        <option value="8">ราคาต่อชิ้นล่าสุด-มากไปน้อย</option>
-                                        <option value="9">ราคารวมล่าสุด-น้อยไปมาก</option>
-                                        <option value="10">ราคารวมล่าสุด-มากไปน้อย</option>
-                                        <option value="11">วันที่สั่งซื้อล่าสุด-เก่าสุดไปใหม่สุด</option>
-                                        <option value="12">วันที่สั่งซื้อล่าสุด-ใหม่สุดไปเก่าสุด</option>
-                                        <option value="13">จำนวนครั้งที่สั้งทั้งปี-น้อยไปมาก</option>
-                                        <option value="14">จำนวนครั้งที่สั้งทั้งปี-มากไปน้อย</option>
-                                        <option value="15">จำนวนที่สั่งทั้งปี-น้อยไปมาก</option>
-                                        <option value="16">จำนวนที่สั่งทั้งปี-มากไปน้อย</option>
-                                        <option value="17">ราคารวมทั้งปี-น้อยไปมาก</option>
-                                        <option value="18">ราคารวมทั้งปี-มากไปน้อย</option>
+                                        <option selected value="0">Sort by</option>
+                                        <option value="1">Customer Name A-Z</option>
+                                        <option value="2">Customer Name Z-A</option>
+                                        <option value="3">Product Name A-Z</option>
+                                        <option value="4">Product Name Z-A</option>
+                                        <option value="5">Latest Order Quantity Low to High</option>
+                                        <option value="6">Latest Order Quantity High to Low</option>
+                                        <option value="7">Latest Unit Price Low to High</option>
+                                        <option value="8">Latest Unit Price High to Low</option>
+                                        <option value="9">Latest Total Price Low to High</option>
+                                        <option value="10">Latest Total Price High to Low</option>
+                                        <option value="11">Latest Order Date Oldest to Newest</option>
+                                        <option value="12">Latest Order Date Newest to Oldest</option>
+                                        <option value="13">Order Frequency This Year Low to High</option>
+                                        <option value="14">Order Frequency This Year High to Low</option>
+                                        <option value="15">Total Quantity This Year Low to High</option>
+                                        <option value="16">Total Quantity This Year High to Low</option>
+                                        <option value="17">Total Amount This Year Low to High</option>
+                                        <option value="18">Total Amount This Year High to Low</option>
                                     </select>
                                 </div>
                             </div>
@@ -242,34 +198,27 @@
                                     <table class="table table-bordered " id="dataTablex" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th>สั่งซื้ออีกครั้ง</th>
-
-                                                <th>ชื่อลูกค้า</th>
-
-                                                <th>ชื่อสินค้า</th>
-                                                <th>จำนวนสั่งซื้อ<br />ล่าสุด</th>
-                                                <th>ราคาต่อชิ้น<br />ล่าสุด</th>
-                                                <th>วันที่สั่งซื้อ<br />ล่าสุด</th>  
-                                                <th>จำนวนครั้ง<br />ที่สั้งทั้งปี</th>
-                                                <th>จำนวน<br />ที่สั่งทั้งปี</th>
-                                                <th>ราคา<br />รวมทั้งปี</th>  
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 1 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 2 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 3 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 4 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 5 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 6 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 7 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 8 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 9 </th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 10</th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 11</th>
-                                                <th>จำนวนสั่งซื้อ<br />เดือน 12</th>
-
-                                                <!--ราคารวม<br />ล่าสุด>-->
-                                                
-                                               
-
+                                                <th>Order Again</th>
+                                                <th>Customer Name</th>
+                                                <th>Product Name</th>
+                                                <th>Latest Order<br />Quantity</th>
+                                                <th>Latest Unit<br />Price</th>
+                                                <th>Latest Order<br />Date</th>
+                                                <th>Order Count<br />This Year</th>
+                                                <th>Total Quantity<br />This Year</th>
+                                                <th>Total Amount<br />This Year</th>
+                                                <th>Order Quantity<br />Month 1</th>
+                                                <th>Order Quantity<br />Month 2</th>
+                                                <th>Order Quantity<br />Month 3</th>
+                                                <th>Order Quantity<br />Month 4</th>
+                                                <th>Order Quantity<br />Month 5</th>
+                                                <th>Order Quantity<br />Month 6</th>
+                                                <th>Order Quantity<br />Month 7</th>
+                                                <th>Order Quantity<br />Month 8</th>
+                                                <th>Order Quantity<br />Month 9</th>
+                                                <th>Order Quantity<br />Month 10</th>
+                                                <th>Order Quantity<br />Month 11</th>
+                                                <th>Order Quantity<br />Month 12</th>
                                             </tr>
                                         </thead>
                                         <tbody></tbody>
@@ -277,60 +226,47 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="card-body" id="detailord" style="display:none">
-
-
                             <div class="container">
                                 <article class="card">
-                                    <header class="card-header"><a href="#" class="btn btn-warning" data-abc="true" id="bckword"> <i class="fa fa-chevron-left"></i> ย้อนกลับ</a><label style="float: right;">หมายเลขคำสั่งซื้อ. <span id="ordeno"></span></label></header>
-
+                                    <header class="card-header"><a href="#" class="btn btn-warning" data-abc="true" id="bckword"> <i class="fa fa-chevron-left"></i> Back</a><label style="float: right;">Order Number. <span id="ordeno"></span></label></header>
                                     <div class="card-body">
-
                                         <article class="card">
                                             <div class="card-body row">
-                                                <!-- <div class="col"> <strong>Estimated Delivery time:</strong> <br>29 nov 2019 </div>-->
-                                                <!--  <div class="col"> <strong>Shipping BY:</strong> <br> BLUEDART, | <i class="fa fa-phone"></i> +1598675986 </div>-->
-                                                <div class="col"><strong>ลูกค้า:</strong> <br><span id="statucuscod"></span></div>
-                                                <div class="col"><strong>สถานะ:</strong> <br><span id="statusord"></span></div>
-                                                <div class="col"> <strong>สั่งซื้อวันที่:</strong> <br><span id="orddate"></span></div>
-                                                <div class="col"> <strong>ยอดคำสั่งซื้อทั้งหมด:</strong> <br><span id="ordtotal"></span></div>
+                                                <div class="col"><strong>Cutomer:</strong> <br><span id="statucuscod"></span></div>
+                                                <div class="col"><strong>Status:</strong> <br><span id="statusord"></span></div>
+                                                <div class="col"> <strong>Order Date:</strong> <br><span id="orddate"></span></div>
+                                                <div class="col"> <strong>Total Order Amount:</strong> <br><span id="ordtotal"></span></div>
                                             </div>
                                         </article>
                                         <div class="track">
-                                            <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">รับ Order เข้าระบบแล้ว</span> </div>
-                                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">เตรียมจัดสินค้า</span> </div>
-                                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">กำลังจัดสินค้า</span> </div>
-                                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">จัดสินค้าเสร็จแล้ว รอบรรจุ</span> </div>
-                                            <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">บรรจุสินค้าเสร็จแล้ว รอจัดส่ง</span> </div>
-                                            <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">กำลังส่งสินค้า</span> </div>
-
+                                            <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order received</span> </div>
+                                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Preparing items</span> </div>
+                                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Picking items</span> </div>
+                                            <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Picking completed, awaiting packing</span> </div>
+                                            <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Packed awaiting shipment</span> </div>
+                                            <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Out for delivery</span> </div>
                                         </div>
                                         <hr>
-
                                         <div class="fixed-table-container" id="fixed-table-container-2" style="z-index: 1;">
-                                            <div class="col"> <strong style="float: right;"><button class="btn btn-default" style="border-color: #ff5722;background: #c7674399;color: saddlebrown;">สั่งซ้าอีกครั้ง</button></strong> <br></div>
+                                            <div class="col"> <strong style="float: right;"><button class="btn btn-default" style="border-color: #ff5722;background: #c7674399;color: saddlebrown;">Order Again</button></strong> <br></div>
                                             <table class="table table-bordered" id="tblOrderDetail" width="100%" cellspacing="0">
                                                 <thead>
                                                     <tr>
-                                                        <th>ลำดับ</th>
-                                                        <th>เบอร์สินค้า</th>
-                                                        <th>ชื่อสินค้า</th>
-                                                        <th>ราคาต่อชิ้น</th>
-                                                        <th>ส่วนลด</th>
-                                                        <th>จำนวนสั่งซื้อ</th>
-                                                        <th>ราคารวม</th>
-                                                        <th>จำนวนสั่งซื้อซ้ำ</th>
+                                                        <th>No.</th>
+                                                        <th>Product Code</th>
+                                                        <th>Product Name</th>
+                                                        <th>Price per Unit</th>
+                                                        <th>Discount</th>
+                                                        <th>Order Quantity</th>
+                                                        <th>Total Price</th>
+                                                        <th>Reorder Quantity</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody></tbody>
-
-
                                             </table>
                                         </div>
-
                                         <hr>
-
                                     </div>
                                 </article>
                             </div>
@@ -340,7 +276,6 @@
                 <!-- /.container-fluid -->
             </div>
             <!-- End of Main Content -->
-
         </div>
         <!-- End of Content Wrapper -->
     </div>
@@ -356,59 +291,36 @@
                 <div class="logo">
                     <a href="">
                         My Account Customer
-
                     </a>
                 </div>
                 <div class="offset__single">
                     <div id="cusname">
-
                     </div>
-
                 </div>
                 <p>DEFAULT BILLING ADDRESS</p>
                 <div class="offset__single">
                     <div id="addcus">
-
                     </div>
-
                 </div>
             </div>
-
             <div class="offset__widget">
                 <div class="offset__single">
                     <h4 class="offset__title">Credit Limit</h4>
                     <div id="crlicusaac">
-
                     </div>
                     <div id="crlicustac">
-
                     </div>
                 </div>
                 <div class="offset__single">
                     <h4 class="offset__title">Credit Balance</h4>
                     <div id="crbarcusaac">
-
                     </div>
                     <div id="crbarcustac">
-
                     </div>
                 </div>
             </div>
             <div class="offset__sosial__share">
                 <div class="offset__title" id="changepass">Change password</div>
-
-                @*<h4 class="offset__title">Follow Us On Social</h4>
-                    <ul class="off__soaial__link">
-                        <li><a class="bg--twitter" href="#" title="Twitter"><i class="zmdi zmdi-twitter"></i></a></li>
-
-                        <li><a class="bg--instagram" href="#" title="Instagram"><i class="zmdi zmdi-instagram"></i></a></li>
-
-                        <li><a class="bg--facebook" href="#" title="Facebook"><i class="zmdi zmdi-facebook"></i></a></li>
-
-                        <li><a class="bg--googleplus" href="#" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a></li>
-
-                        <li><a class="bg--google" href="#" title="Google"><i class="zmdi zmdi-google"></i></a></li>
-                    </ul>*@
             </div>
         </div>
     </div>
@@ -436,7 +348,6 @@
             </div>
         </div>
     </div>
-
     <!-- ModalWarning -->
     <div class="modal" id="myModalWarning" role="dialog">
         <div class="modal-dialog">
@@ -447,60 +358,38 @@
                 <div class="modal-body">
                     <div id="textAlertWarning">Some text in the modal.</div>
                 </div>
-
             </div>
         </div>
     </div>
     <!-- ModalWarning -->
-
     <div class="modal" id="myModal">
-
         <div class="modal-dialog" role="document" style="width: 360px;">
-
             <div class="modal-content">
-
                 <div class="modal-header" style="background-color: #337AB7; padding: 16px 16px; color: #FFF; border-bottom: 2px dashed #337AB7; ">
 
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
 
                     <h4 class="modal-title" id="myModalLabel"></h4>
-
                 </div>
-
                 <div class="modal-body" id="texterror">
                 </div>
-
                 <div class="modal-footer">
-
-                    @*<button type="button" class="btn btn btn-primary" data-dismiss="modal">OK</button>*@
-
-                    <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">เข้าสู่ระบบอีกครั้ง</button>
-
-                    @*<button type="button" class="btn btn-orange" data-dismiss="modal">Cancel</button>*@
-
+                    <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">Login again</button>
                 </div>
-
             </div>
-
         </div>
-
     </div>
     <!-- Bootstrap core JavaScript-->
     <script src="~/contentfilter/js/jquery-2.1.1.js"></script>
     <script src="~/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-    <!-- Core plugin JavaScript-->
     <script src="~/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
-    <!-- Custom scripts for all pages-->
     <script src="~/sb-admin/js/sb-admin-2.min.js"></script>
-    <!-- Page level plugins -->
     <script src="~/sb-admin/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="~/sb-admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
-    <!-- Page level custom scripts -->
     <script src="~/sb-admin/js/demo/datatables-demo.js"></script>
     <script src="~/Scripts/webAddress.js"></script>
     <link href="~/tmartcss/JSautocomplete/jquery-ui.css" rel="stylesheet" />
     <script src="~/tmartcss/JSautocomplete/jquery-ui-1.9.2.js"></script>
-
     <script src="~/Loadingmodal/js/modal-loading.js"></script>
     <link href="~/Loadingmodal/css/modal-loading-animate.css" rel="stylesheet" />
     <link href="~/Loadingmodal/css/modal-loading.css" rel="stylesheet" />
@@ -513,11 +402,8 @@
       var usertype = '@Request.RequestContext.HttpContext.Session["UserType"]';
       var usercode = '@Request.RequestContext.HttpContext.Session["CUSCOD"]';
       var usrexpire = '@Request.RequestContext.HttpContext.Session["expdatecal"]';
-        //usertype = "";
         var cuscod;
         resourceAddress.hash();
-        // console.log(param_values.numcuber)
-        //alert(usercode);
         expire(usrexpire);
         function checklogin(userid, id) {
             $.ajax({
@@ -525,35 +411,28 @@
                 data: {
                     UsrID: userid,
                     SessionId: id
-
                 },
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
                     var splitstring = data.StrStstuslogin;
-                   // console.log(splitstring);
                     let text = splitstring;
                     const myArray = text.split("|");
                     let mysession = myArray[1];
                     let mystatus = myArray[0];
-                   // console.log("mystatus " + mystatus + "//////" + "mysession " + mysession);
                     if (id != mysession) {
                         $("#texterror").empty();
-                        $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวาลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                         $("#myModal").modal();
-                        //window.location.replace("../Account/LogIn");
                     } else {
-
                         if (mystatus == "0") {
                             $("#texterror").empty();
-                            $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวาลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                            $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                             $("#myModal").modal();
-                            //window.location.replace("../Account/LogIn");
                         }
                     }
                 }
             });
-
         }
         function checkPrivilege(userid, cuscod) {
             $.ajax({
@@ -561,27 +440,22 @@
                 data: {
                     UsrID: userid,
                     cuscod: cuscod
-
                 },
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
                     var splitstring = data.StrStstuslogin;
-
                     if (splitstring == "1") {
                         $("#texterror").empty();
-                        $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                         $("#myModal").modal();
                         return false;
-
                     }
                 }
             });
-
         }
         if (usertype == "") {
             window.location.replace("../Account/LogIn");
-
         } else {
             if (usertype == "1" || usertype == "2") {
                 if (param_values.numcuber != undefined) {
@@ -592,48 +466,38 @@
                 }
                 getslmandcus()
             }else if (usertype == "5") {
-               // resourceAddress.hash();
                 var cuscod = "";
                 getslmandcus()
             } else if (usertype == "6") {
                 $(window).on('load', function () {
-                    //alert("load")
                     checklogin(userid, id)
                 });
                 window.onclick = function () {
-                    //alert("onclick")
                     checklogin(userid, id)
                 };
                 $('.navbar-nav').click(function () {
-                    // alert("navbar-nav")
                     checklogin(userid, id)
                 });
                 $(document).bind('mousedown keydown', function (ed, e) {
-
                     checklogin(userid, id)
                 });
                 $(window).scroll(function (e) {
-
                     checklogin(userid, id)
                 });
                 if (param_values.numcuber != undefined) {
                     cuscod = atob(param_values.numcuber)
-
                 } else {
                     cuscod = "";
                 }
                 if (cuscod != "") {
                     checkPrivilege(userid, cuscod)
                 }
-                //getcus(cuscod);
             }
         }
-        
         function getslmandcus() {
             $.ajax({
                 url: '@Url.Action("Getdateslm", "DataCenter")',
                 data: {
-
                 },
                 type: "POST",
                 dataType: "JSON",
@@ -650,11 +514,8 @@
                 }
             });
         }
-
-        // $("#userssmall").text("บัญชีของคุณ "+ userid);
         if(usertype != "6") {
             getslmandcus()
-            //$("#sforsales").css('display', 'block');
             $("#typeemp").css('display', 'block');
             $("#typecuslog").css('display', 'none');
             if (cuscod != "") {
@@ -666,10 +527,8 @@
                     type: "POST",
                     dataType: "JSON",
                     success: function (data) {
-                        //console.log(data);
                         if (data.length == 1) {
                             $("#Customer").val(data[0].CUSCOD + "|" + data[0].CUSNAM)
-                            //alert(data[0].SLMCOD)
                             $("#Slm").val(data[0].SLMCOD);
                         }
                     }
@@ -683,7 +542,6 @@
                     dataType: "JSON",
                     success: function (data) {
                         console.log(data);
-                        //$("#cusname").text("Custome Code:" + data[0].CUSCOD + "/" + data[0].CUSNAM);
                         $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
                         $("#addcus").text(data[0].ADDR_01 + data[0].ADDR_02);
                         $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
@@ -696,7 +554,6 @@
                 });
             }
         } else {
-            
             $("#sforsales").css('display', 'block');
             $("#typeemp").css('display', 'none');
             $("#typecuslog").css('display', 'block');
@@ -712,13 +569,9 @@
                     var select = $("#Slm");
                     select.children().remove();
                     $("#Slm").append($("<option custyp=" + data[0].SLMCOD + ">").val(data[0].SLMCOD).text(data[0].SLMCOD + "|" + data[0].SLMNAM));
-
                     $("#Slm").prop("disabled", true);
-
-                    //datacus();  ///auto get customer to option select customer
                 }
             });
-
             $.ajax({
                 url: '@Url.Action("Getdatalogincustomer", "DataCenter")',
                 data: {},
@@ -726,16 +579,11 @@
                 dataType: "JSON",
                 success: function (data) {
                     console.log(data);
-
                     var select = $("#selcus");
                     select.children().remove();
-
-                    //select.append($("<option>").val("ALL").text("ลูกค้าทั้งหมด"));
                     $.each(data, function (key, value) {
-
                         select.append('<option value=' + value.CUSCOD + '>' + value.CUSCOD + '|' + value.CUSNAM + '</option>');
                     });
-                    // $('.selectpicker').selectpicker('refresh');
                     $("#selcus").val(cuscod).change();
                 }
             });
@@ -748,7 +596,6 @@
                 dataType: "JSON",
                 success: function (data) {
                     console.log(data);
-                    //$("#cusname").text("Custome Code:" + data[0].CUSCOD + "/" + data[0].CUSNAM);
                     $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
                     $("#addcus").text(data[0].ADDR_01 + data[0].ADDR_02);
                     $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
@@ -771,11 +618,8 @@
                 dataType: "JSON",
                 success: function (data) {
                     console.log(data);
-
                     $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
                     $("#crlicustac").text("TAC: " + commaSeparateNumber(data[0].TACCrlimit));
-
-
                 }
             });
         }
@@ -792,22 +636,6 @@
                 }
             });
         }
-     @*function getdata(userid) {
-         $.ajax({
-             url: '@Url.Action("UserInsert", "Statuslist")',
-             data: { usre: userid },
-             type: "POST",
-             dataType: "JSON",
-             success: function (data) {
-                 console.log(data)
-                 // data.GroupUserInsert[0].val.Value
-                 var select = $("#UserCreate");
-                 // select.children().remove();
-                 select.append($("<option>").val(data.GroupUserInsert[0].Value).text(data.GroupUserInsert[0].Value));
-             }
-         });
-     }*@
-
      if (usertype != "6") {
 
          $("#sforsales").css('display', 'block');
@@ -830,7 +658,6 @@
          return html;
      }
      function nl2br(el) {
-         // var html = el.substring(0, 40) + "<br>" + el.substring(40, 80) + "<br>" + el.substring(80, 120);
          var html = el.substring(0, 15) + "<br>" + el.substring(15, 30) + "<br>" + el.substring(30, 50);
          return html;
      }
@@ -848,7 +675,6 @@
          selectFirst: true,
          autoFocus: true,
          source: function (request, response) {
-             // var param = { Name: $('input[type="search"]').val(), Slm: $('#selslm').val() };
              var param = { Name: $("#Customer").val(), Slm: $('#Slm').val() };
              $.ajax({
                  url: '@Url.Action("GetdateCusCode", "DataCenter")',
@@ -864,7 +690,6 @@
                              value: item
                          }
                      }))
-
                  },
                  error: function (XMLhttpsRequest, textStatus, errorThrown) {
                      alert(textStatus);
@@ -872,14 +697,12 @@
              });
          },
          select: function (event, ui) {
-
              var Code = ui.item.value;
              var split_StockCode = Code.split('|');
              var item = "";
              if (split_StockCode[0] != "") {
                  item = split_StockCode[0].trim();
              }
-
              $.ajax({
                  url: '@Url.Action("GetdatabyCus", "DataCenter")',
                  data: {
@@ -890,73 +713,20 @@
                  success: function (data) {
                      var typin = data[0].INACTIVE;
                      if (typin == "Y") {
-
                          $("#textAlertWarning").empty();
-                         $("#textAlertWarning").text("ลูกค้าร้าน " + data[0].CUSNAM + "INACTIVE กรุณาติดต่อแผนก Credit Control หรือ Sales Admin");
+                         $("#textAlertWarning").text("Customer Store " + data[0].CUSNAM + "INACTIVE Please contact the department Credit Control or Sales Admin");
                          $("#myModalWarning").modal();
                          $("#Customer").val("");
                          return false;
                      } else {
                          $("#Customer").val(data[0].CUSCOD + "|" + data[0].CUSNAM)
-                         //  $("#Customer").prop("disabled", true);
                      }
                  }
              });
          },
          minLength: 2//minLength as 2, it means when ever user enter 2 character in TextBox the AutoComplete method will fire and get its source data.
-
      });
-        @*$("#textfree").autocomplete({
-         selectFirst: true,
-         autoFocus: true,
-         timeout: 1000000,
-
-         source: function (request, response) {
-
-             var param = {
-                 maker: $("#maker").val(),
-                 modelno: $("#Model").val(),
-                 submodel: $("#submodel").val(),
-                 XvalCompany: $("#company").val(),
-                 catalogue: $("#catalogue").val(),
-                 brand: $("#brand").val(),
-                 Name: $("#textfree").val(),
-                 cuscod: "",
-                 yrStart: "",
-                 yrEnd: "",
-                 itemno: "",
-                 engine: "",
-                 productgroup: $("#productgroup").val(),
-                 productline: $("#productline").val(),
-                 itemsegment: $("#segment").val()
-             };
-
-             $.ajax({
-                 url: '@Url.Action("GetdateStockCode", "Home")',
-                 data: JSON.stringify(param),
-                 dataType: "json",
-                 type: "POST",
-                 contentType: "application/json; charset=utf-8",
-                 dataFilter: function (data) { return data; },
-                 success: function (data) {
-
-                     response($.map(data.slice(0, 50), function (item) {
-                         return {
-                             value: item
-                         }
-                     }))
-                 },
-                 error: function (XMLhttpsRequest, textStatus, errorThrown) {
-                     //  alert(textStatus + '&&' + errorThrown + '&&' + XMLhttpsRequest);
-                     alert(request.term);
-                 }
-             });
-         },
-
-         minLength: 2//minLength as 2, it means when ever user enter 2 character in TextBox the AutoComplete method will fire and get its source data.
-     });*@
         $(document).on("click", "#myModal", function () {
-            // $('#myModal3').click(function () {
             if (usertype == "6") {
                 $("#myModal").modal({ backdrop: "static" });
             }
@@ -979,105 +749,53 @@
             } else if (Usertype == "6") {
                 chkcu =  $('#selcus').val();
             }
-         //var chkcu = $('#Customer').val();
          if (chkcu == "") {
-             alert("กรุณาใส่ลูกค้าที่ต้องการดูประวัติซื้อ")
+             alert("Please enter the customer to view purchase history.")
          } else {
              fnGetOrder();
          }
-
      });
      $(document).on('change', '#sortby', function () {
-
          fnGetOrder();
-
      });
-
      $('input[id=txtSOStartDate]').datepicker({ dateFormat: 'dd/mm/yy' }).val();
      $('input[id=txtSOEndDate]').datepicker({ dateFormat: 'dd/mm/yy' }).val();
      $("input[type=text]").attr("autocomplete", "off");
      var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
      function fnGetOrder() {
-         // var User = $('#UserCreate').val();
-         // var slm = $('#slm').val();
          var sortby = $('#sortby').val();
          var Usertype = usertype;
          var _CUSCOD = "";
          var res = [];
          if (Usertype != "6") {
              var MyIndexValue = $('#Customer').val();
-             // console.log(MyIndexValue);
              if (MyIndexValue !== "") {
                  res = MyIndexValue.split("|");
              } else { res[0] = "0"; }
-
-             // var CUSCOD = $('#XXcus').val();
              _CUSCOD = res[0];
          } else if (Usertype == "6") {
              _CUSCOD = $('#selcus').val();
-
          }
-         //if (Usertype != "1") {
-         //    slm = $('#slm').val();
-         //    var MyIndexValue = $('#Customer').val();
-         //    // console.log(MyIndexValue);
-         //    if (MyIndexValue !== "") {
-         //        res = MyIndexValue.split("|");
-         //    } else { res[0] = "0"; }
-
-         //    // var CUSCOD = $('#XXcus').val();
-         //    _CUSCOD = res[0];
-         //}
-         //else {
-
-         //    //_CUSCOD = $('#CUSCOD').val();
-         //    var MyIndexValue = $('#Customer').val();
-         //    //console.log(MyIndexValue);
-         //    if (MyIndexValue !== "") {
-         //        res = MyIndexValue.split("|");
-
-         //    } else { res[0] = "0"; }
-         //    _CUSCOD = res[0];
-         //}
-         //var _SOStartDate = $('#txtSOStartDate').val();
-         //var _SOEndDate = $('#txtSOEndDate').val();
          var _STKCOD = $('#txtSTKCOD').val();
-         //var _DType = $('#DType').val();
-         //var _Sow = $('#txtsow').val();
-         //var UserCreate = $('#UserCreate').val();
-         //slm = $('#Slm').val();
-         //if (_STKCOD == "ค้นหาสินค้า") {
-         //    _STKCOD = "";
-         //}
-         //alert(_CUSCOD)
          var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true, });
          $.ajax({
              url: '@Url.Action("GetOrderhistory", "Historypurchase")',
              data: {
                  CUSCOD: _CUSCOD
-                 //, SLMCODE: slm
-                 //, SO_SDate: _SOStartDate
-                 //, SO_EDate: _SOEndDate
                  , STKCOD: _STKCOD
                  , SortBy: sortby
-                 //, DType: _DType
-                 //, SOW: _Sow
-                 //, UserCreate: UserCreate
-                 //, Usertype: Usertype
              },
              type: "POST",
              dataType: "JSON",
              success: function (data) {
                  console.log(data)
-
                  $('#fixed-table-container-1 tbody:last-child').html("");
                  if (data.Getdata.length != 0) {
                      loading.out()
                      var SubmithtmlPage = '';
-
                      for (var i = 0; i < data.Getdata.length; i++) {
                          SubmithtmlPage += '<tr>';
-                         SubmithtmlPage += '<td><button class="btn btn-success btn-sm use-address" id="myHref"  cus="' + data.Getdata[i].val.CUSCOD + '"  stk="' + data.Getdata[i].val.STKCOD + '"  com="' + data.Getdata[i].val.Company + '" ><span class="purchase-card-buttons__button-content"> สั่งซื้ออีกครั้ง</span></button></td>';
+                         SubmithtmlPage += '<td><button class="btn btn-success btn-sm use-address" id="myHref"  cus="' + data.Getdata[i].val.CUSCOD + '"  stk="' + data.Getdata[i].val.STKCOD + '"  com="' + data.Getdata[i].val.Company + '" ><span class="purchase-card-buttons__button-content"> Order Again</span></button></td>';
                          SubmithtmlPage += '<td>' + nl1br(data.Getdata[i].val.CUSCOD + "/" + data.Getdata[i].val.CUSNAM) + '</td>';
                          SubmithtmlPage += '<td>' + nl2br(data.Getdata[i].val.STKCOD + "/" + data.Getdata[i].val.STKDES) + '</td>';
                          SubmithtmlPage += '<td>' + commaSeparateNumber(data.Getdata[i].val.Qty) + '</td>';
@@ -1098,44 +816,30 @@
                          SubmithtmlPage += '<td>' + commaSeparateNumber(data.Getdata[i].val.Qty10) + '</td>';
                          SubmithtmlPage += '<td>' + commaSeparateNumber(data.Getdata[i].val.Qty11) + '</td>';
                          SubmithtmlPage += '<td>' + commaSeparateNumber(data.Getdata[i].val.Qty12) + '</td>';
-                         // SubmithtmlPage += '<td>' + commaSeparateNumber(data.Getdata[i].val.Amt) + '</td>';
-
-                       
                          SubmithtmlPage += '</tr >';
-
-
                      }
                      $('#fixed-table-container-1  tbody:last-child').append(SubmithtmlPage);
                  } else {
                      loading.out()
                      $("#textAlertWarning").empty();
-                     $("#textAlertWarning").text("ไม่มีข้อมูลที่ท่านต้องการค้นหา");
+                     $("#textAlertWarning").text("No data found for your search.");
                      $("#myModalWarning").modal();
                  }
                  var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
              }
          });
      }
-     // Search on name column only
      $('#txt_nameacc').keyup(function () {
-         // Search Text
          var search = $(this).val();
-
-         // Hide all table tbody rows
          $('#fixed-table-container-3 tbody tr').hide();
-
-         // Count total search result
          var len = $('#fixed-table-container-3 tbody tr:not(.notfound) td:nth-child(8):contains("' + search + '")').length;
-
          if (len > 0) {
-             // Searching text in columns and show match row
              $('#fixed-table-container-3 tbody tr:not(.notfound) td:contains("' + search + '")').each(function () {
                  $(this).closest('tr').show();
              });
          } else {
              $('.notfound').show();
          }
-
      });
      $(document).delegate('#myHref', 'click', function () {
          var company = $(this).attr('com');
@@ -1145,38 +849,24 @@
              var wi = window.open("../Productdetails/Index?prodenum=" + btoa(itemno) + "/" + btoa(company) + "/" + btoa(cuscod));
              wi.focus();
          } else {
-             //login//
          }
-
-         // return false;
      });
      $(document).on('click', '#bckword', function () {
          $("#detailord").css("display", "none");
          $("#mainorder").css("display", "block");
-         // alert("xxx");
-
      });
      function fnGetOrderDetail(ORD_ID, ORD_DocNo, DType) {
          var res = [];
          var MyIndexValue = $('#Customer').val();
-         // console.log(MyIndexValue);
          if (MyIndexValue !== "") {
              res = MyIndexValue.split("|");
-
          } else { res[0] = "0"; }
-
-         // var CUSCOD = $('#XXcus').val();
          var CUSCOD = res[0];
          var slm = $('#slm').val();
-
-
          var _STKCOD = $('#txtSTKCOD').val();
-
-         if (_STKCOD == "ค้นหาสินค้า") {
+         if (_STKCOD == "Search Products") {
              _STKCOD = "";
-
          }
-
          $.ajax({
              url: '@Url.Action("GetOrderDetail", "Statuslist")',
              data: {
@@ -1185,33 +875,24 @@
                  , DType: DType
                  , STKCOD: _STKCOD
                  , CUSCOD: CUSCOD
-
              },
              type: "POST",
              dataType: "JSON",
              success: function (data) {
-                 //$("#tblOrderDetail > tbody").html("");
                  $('#fixed-table-container-2 tbody:last-child').html("");
                  if (data != "") {
-
                      if (data.Getdata.length != 0) {
                          var SubmithtmlPage = '';
                          for (var i = 0; i < data.Getdata.length; i++) {
                              SubmithtmlPage += '<tr><td align="center">' + data.Getdata[i].val.RowNo + '</td>';
                              SubmithtmlPage += '<td align="left">' + data.Getdata[i].val.VSTKCOD + '</td>';
                              SubmithtmlPage += '<td align="left">' + nl3br(data.Getdata[i].val.VSTKDES) + '</td>';
-                             //  SubmithtmlPage += '<td align="left">' + data.Getdata[i].val.Item_Type + '</td>';
-                             //  SubmithtmlPage += '<td align="center">' + data.Getdata[i].val.VSTKGRP + '</td>';
-                             //  SubmithtmlPage += '<td align="right">' + commaSeparateNumber(data.Getdata[i].val.VPrice) + '</td>';
                              SubmithtmlPage += '<td align="right">' + commaSeparateNumber(data.Getdata[i].val.VSalePrice) + '</td>';
                              SubmithtmlPage += '<td align="right">' + commaSeparateNumber(data.Getdata[i].val.VDiscount) + '</td>';
                              SubmithtmlPage += '<td align="center">' + data.Getdata[i].val.AmtQty + '</td>';
                              SubmithtmlPage += '<td align="right">' + commaSeparateNumber(data.Getdata[i].val.TotalAmt) + '</td>';
                              SubmithtmlPage += '<td align="right"><input type="number" class="form-control" value="0" min="0" /></td>';
-                             //SubmithtmlPage += '<td align="right">' + data.Getdata[i].val.Prn_ORD + '</td>';
                              SubmithtmlPage += '</tr>';
-                             //$('#tblOrderDetail > tbody:last-child').append(SubmithtmlPage);
-
                          }
                          $('#fixed-table-container-2 tbody:last-child').append(SubmithtmlPage);
                      }
@@ -1220,149 +901,114 @@
          });
      }
         $(document).on("click", "#nextsp", function () {
-            //_CUSCOD = $('#CUSCOD').val();
             var _CUSCOD;
             var MyIndexValue = $('#Customer').val();
-            //console.log(MyIndexValue);
             if (MyIndexValue !== "") {
                 res = MyIndexValue.split("|");
                 _CUSCOD = res[0];
             } else {
-
                 _CUSCOD = "";
             }
-
             var cusel = _CUSCOD;
             if (cusel == "") {
                 window.location.replace("../SeleScrCustomer/dashboard");
             } else {
-
                 window.location.replace("../SeleScrCustomer/dashboard?numcuber=" + btoa(cusel));
             }
         });
         $(document).on("click", "#btnhisto", function () {
-            //_CUSCOD = $('#CUSCOD').val();
             var _CUSCOD;
             var MyIndexValue = $('#Customer').val();
-            //console.log(MyIndexValue);
             if (MyIndexValue !== "") {
                 res = MyIndexValue.split("|");
                 _CUSCOD = res[0];
             } else {
-
                 _CUSCOD = "";
             }
-
             var cusel = _CUSCOD;
             if (cusel == "") {
                 window.location.replace("../Historypurchase/Index");
             } else {
-
                 window.location.replace("../Historypurchase/Index?numcuber=" + btoa(cusel));
             }
         });
         $(document).on("click", "#btnstatus", function () {
-            //_CUSCOD = $('#CUSCOD').val();
             var _CUSCOD;
             var MyIndexValue = $('#Customer').val();
-            //console.log(MyIndexValue);
             if (MyIndexValue !== "") {
                 res = MyIndexValue.split("|");
                 _CUSCOD = res[0];
             } else {
-
                 _CUSCOD = "";
             }
-
             var cusel = _CUSCOD;
             if (cusel == "") {
                 window.location.replace("../Statuslist/Index");
             } else {
-
                 window.location.replace("../Statuslist/Index?numcuber=" + btoa(cusel));
             }
         });
         $(document).on("click", "#navbarhome", function () {
-            //_CUSCOD = $('#CUSCOD').val();
             var _CUSCOD;
             var MyIndexValue = $('#Customer').val();
-            //console.log(MyIndexValue);
             if (MyIndexValue !== "") {
                 res = MyIndexValue.split("|");
                 _CUSCOD = res[0];
             } else {
-
                 _CUSCOD = "";
             }
-
             var cusel = _CUSCOD;
             if (cusel == "") {
                 window.location.replace("../Account/Login");
             } else {
-
                 window.location.replace("../Orderlist/Index?numcuber=" + btoa(cusel));
             }
         });
         $(document).on("click", "#navbarshowdetail", function () {
-            //_CUSCOD = $('#CUSCOD').val();
             var _CUSCOD;
             var MyIndexValue = $('#Customer').val();
-            //console.log(MyIndexValue);
             if (MyIndexValue !== "") {
                 res = MyIndexValue.split("|");
                 _CUSCOD = res[0];
             } else {
-
                 _CUSCOD = "";
             }
-
             var cusel = _CUSCOD;
             if (cusel == "") {
                 window.location.replace("../Account/Login");
             } else {
-
                 window.location.replace("../Cart/Index?numcuber=" + btoa(cusel));
             }
         });
         $(document).on("click", "#navbarsselecus", function () {
-            //_CUSCOD = $('#CUSCOD').val();
             var _CUSCOD;
             var MyIndexValue = $('#Customer').val();
-            //console.log(MyIndexValue);
             if (MyIndexValue !== "") {
                 res = MyIndexValue.split("|");
                 _CUSCOD = res[0];
             } else {
-
                 _CUSCOD = "";
             }
-
             var cusel = _CUSCOD;
             if (cusel == "") {
                 window.location.replace("../Account/Login");
             } else {
-
                 window.location.replace("../SeleScrCustomer/dashboard?numcuber=" + btoa(cusel));
             }
         });
         $(document).on("click", "#btnstatement", function () {
-
             var _CUSCOD;
             var MyIndexValue = $('#Customer').val();
-            //console.log(MyIndexValue);
             if (MyIndexValue !== "") {
                 res = MyIndexValue.split("|");
                 _CUSCOD = res[0];
             } else {
-
                 _CUSCOD = "";
             }
-
             var cusel = _CUSCOD;
             if (cusel == "") {
                 window.location.replace("../SelectPrintStatement/Index");
             } else {
-
                 window.location.replace("../SelectPrintStatement/Index?numcuber=" + btoa(cusel));
             }
         });
