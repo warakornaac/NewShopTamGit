@@ -284,6 +284,9 @@ namespace NewShop.Models
         }
         public JsonResult Getdateslm()
         {
+            if (Session["UserID"] == null)
+            return Json(new List<SLM>(), JsonRequestBehavior.AllowGet);
+
             string usre = Session["UserID"].ToString();
             List<SLM> SlmList = new List<SLM>();
             SLM SlmListcount = null;
@@ -551,18 +554,18 @@ namespace NewShop.Models
                     await connection.OpenAsync();
                     // 2) Query แบบ Dapper Async ปลอดภัยกว่า string concat
                     var rows = await connection.QueryAsync<dynamic>(
-                        @"SELECT 
-                            CUSCOD, CUSNAM, PRO, ADDR_01, ADDR_02, CUSTYP,
-                            AACCRLINE, AACBAL, TACCRLINE, TACBAL, SLMCOD, 
-                            INACTIVE, BLOCKED, AACPAYTRM, TACPAYTRM, TELNUM, Rating,
-                            [Hierarchy1 (Market Segment)] AS H1,
-                            [Hierarchy2 (Channel)] AS H2,
-                            [Hierarchy3 (Bussiness Type)] AS H3
+                    @"SELECT 
+                        CUSCOD, CUSNAM, PRO, ADDR_01, ADDR_02, CUSTYP,
+                        TAMCRLINE, TAMBAL, VELOXCRLINE, VELOXBAL, SLMCOD, 
+                        INACTIVE, Blocked, TAMPAYTRM, VELOXPAYTRM, TELNUM, Rating,
+                        [Hierarchy1 (Market Segment)] AS H1,
+                        [Hierarchy2 (Channel)] AS H2,
+                        [Hierarchy3 (Bussiness Type)] AS H3
                       FROM v_CUSPROV 
                       WHERE CUSCOD = @CUSCOD
                       ORDER BY SLMCOD",
-                        new { CUSCOD = cusel }
-                    );
+                    new { CUSCOD = cusel }
+                );
                     foreach (var r in rows)
                     {
                         CUSList.Add(new CUS
@@ -625,7 +628,7 @@ namespace NewShop.Models
         WHERE CUSCOD = @CUSCOD 
         ORDER BY SLMCOD", Connection);
 
-            cmd.Parameters.AddWithValue("@CUSCOD", cusel);
+            cmd.Parameters.AddWithValue("@CUSCOD", (object)cusel ?? DBNull.Value);
 
             SqlDataReader rev_CUSPROV = cmd.ExecuteReader();
             while (rev_CUSPROV.Read())

@@ -15,22 +15,17 @@ namespace NewShop.Controllers
 {
     public class BackOrderAllController : Controller
     {
-        //
         // GET: /BackOrderAll/
-
         public ActionResult Index()
         {
-            //this.Session["UserType"] = "";
             if (this.Session["UserType"] == null)
             {
                 return RedirectToAction("LogIn", "Account");
-
             }
             return View();
         }
         public ActionResult Filter(string CUSCOD, string SLMID, string Show_Flag, string Stock_Flag, string stkcod, string DocumentNo, string COM, string UserType)
         {
-
             int intFlag = Convert.ToInt32(Show_Flag);
             int intstock = Convert.ToInt32(Stock_Flag);
             string SaleOrder_No = string.Empty;
@@ -43,20 +38,12 @@ namespace NewShop.Controllers
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
-            //BackOrderdataSearchbyDoc ModelbyDoc = null;
-            //List<ListBackOrderListbyDoc> GetdatabyDoc = new List<ListBackOrderListbyDoc>();
-            //BackOrderdataSearchbyItem ModelbyItem = null;
-            //List<ListBackOrderListbyItem> GetdatabyItem = new List<ListBackOrderListbyItem>();
             if (DocumentNo == null) { DocumentNo = ""; }
             List<BackOrderbyItem> GetdatabyItem = new List<BackOrderbyItem>();
             BackOrderbyItem _model = new BackOrderbyItem();
-
             List<BackOrderbyDoc> GetdatabyDoc = new List<BackOrderbyDoc>();
             BackOrderbyDoc _modelDoc = new BackOrderbyDoc();
-
             var command = new SqlCommand("P_Search_BackOrder", Connection);
-            //var command = new SqlCommand("P_Search_BackOrder_20221017", Connection);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@SaleCode", SLMID);
             command.Parameters.AddWithValue("@Show_Flag", intFlag);
@@ -68,10 +55,8 @@ namespace NewShop.Controllers
             command.Parameters.AddWithValue("@UsrTyp", UserType);
             command.ExecuteNonQuery();
             SqlDataReader drb = command.ExecuteReader();
-            //1=by Doc,2=by Item
             while (drb.Read())
             {
-
                 if (Show_Flag == "1")
                 {
                     inconfirm = Convert.ToInt32(drb["Qty"].ToString());
@@ -93,11 +78,9 @@ namespace NewShop.Controllers
                         Inventory = drb["Inventory"].ToString(),
                         Cuscod = drb["CUSCOD"].ToString(),
                         Slm = drb["SLMCOD"].ToString(),
-                        // ModelbyDoc.ConfirmOrderQty = dr["ConfirmOrderQty"].ToString();
                         Qty = drb["Qty"].ToString(),
                         ConfirmOrderQty = Convert.ToString(inconfirm)
                     });
-
                 }
                 else if (Show_Flag == "2")
                 {
@@ -113,12 +96,10 @@ namespace NewShop.Controllers
                     }
                     string Pro = drb["PromotionCode"].ToString();
                     if (Pro != "") { Pro = Pro.Trim(); } else { Pro = ""; }
-
                     string display = string.Empty;
                     if (Pro != "") { display = "display: none;"; } else { display = ""; }
                     GetdatabyItem.Add(new BackOrderbyItem()
                     {
-
                         ckrow = "cKrow" + drb["Row"].ToString(),
                         Qtybackrow = "Qtybackrow" + drb["Row"].ToString(),
                         Qtyclearrow = "Qtyclearrow" + drb["Row"].ToString(),
@@ -159,17 +140,12 @@ namespace NewShop.Controllers
                         KDCQty = drb["KDCQty"].ToString(),
                         PDCQty = drb["PDCQty"].ToString(),
                     });
-
                 }
             }
-            //drb.Close();
-            //S20161016
             drb.Close();
             drb.Dispose();
             command.Dispose();
-            //E20161016
             Connection.Close();
-            //return PartialView("_PartialPage1", GetdatabyItem);
             if (Show_Flag == "2")
             {
                 return PartialView("_PartialPage1", GetdatabyItem);
@@ -182,7 +158,6 @@ namespace NewShop.Controllers
 
         public JsonResult getbackorder(string CUSCOD, string SLMID, string Show_Flag, string Stock_Flag, string stkcod, string DocumentNo, string COM, string UserType)
         {
-
             int intFlag = Convert.ToInt32(Show_Flag);
             int intstock = Convert.ToInt32(Stock_Flag);
             string SaleOrder_No = string.Empty;
@@ -195,20 +170,12 @@ namespace NewShop.Controllers
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
-            //BackOrderdataSearchbyDoc ModelbyDoc = null;
-            //List<ListBackOrderListbyDoc> GetdatabyDoc = new List<ListBackOrderListbyDoc>();
-            //BackOrderdataSearchbyItem ModelbyItem = null;
-            //List<ListBackOrderListbyItem> GetdatabyItem = new List<ListBackOrderListbyItem>();
             if (DocumentNo == null) { DocumentNo = ""; }
             List<BackOrderbyItem> GetdatabyItem = new List<BackOrderbyItem>();
             BackOrderbyItem _model = new BackOrderbyItem();
-
             List<BackOrderbyDoc> GetdatabyDoc = new List<BackOrderbyDoc>();
             BackOrderbyDoc _modelDoc = new BackOrderbyDoc();
-
             var command = new SqlCommand("P_Search_BackOrder", Connection);
-
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@SaleCode", SLMID);
             command.Parameters.AddWithValue("@Show_Flag", intFlag);
@@ -220,10 +187,8 @@ namespace NewShop.Controllers
             command.Parameters.AddWithValue("@UsrTyp", UserType);
             command.ExecuteNonQuery();
             SqlDataReader drb = command.ExecuteReader();
-            //1=by Doc,2=by Item
             while (drb.Read())
             {
-
                 if (Show_Flag == "1")
                 {
                     inconfirm = Convert.ToInt32(drb["Qty"].ToString());
@@ -245,11 +210,9 @@ namespace NewShop.Controllers
                         Inventory = drb["Inventory"].ToString(),
                         Cuscod = drb["CUSCOD"].ToString(),
                         Slm = drb["SLMCOD"].ToString(),
-                        // ModelbyDoc.ConfirmOrderQty = dr["ConfirmOrderQty"].ToString();
                         Qty = drb["Qty"].ToString(),
                         ConfirmOrderQty = Convert.ToString(inconfirm)
                     });
-
                 }
                 else if (Show_Flag == "2")
                 {
@@ -265,12 +228,10 @@ namespace NewShop.Controllers
                     }
                     string Pro = drb["PromotionCode"].ToString();
                     if (Pro != "") { Pro = Pro.Trim(); } else { Pro = ""; }
-
                     string display = string.Empty;
                     if (Pro != "") { display = "display: none;"; } else { display = ""; }
                     GetdatabyItem.Add(new BackOrderbyItem()
                     {
-
                         ckrow = "cKrow" + drb["Row"].ToString(),
                         Qtybackrow = "Qtybackrow" + drb["Row"].ToString(),
                         Qtyclearrow = "Qtyclearrow" + drb["Row"].ToString(),
@@ -315,48 +276,29 @@ namespace NewShop.Controllers
                         PDCQty = drb["PDCQty"].ToString(),
                         Rating = drb["Rating"].ToString(),
                         PrdPstGrp = drb["PrdPstGrp"].ToString(),
-
                     });
-
                 }
             }
-            //drb.Close();
-            //S20161016
             drb.Close();
             drb.Dispose();
             command.Dispose();
-            //E20161016
             Connection.Close();
-            //return PartialView("_PartialPage1", GetdatabyItem);
-            //if (Show_Flag == "2")
-            //{
-            //    return PartialView("_PartialPage1", GetdatabyItem);
-            //}
-            //else
-            //{
-            //    return PartialView("_PartialPagebyDoc", GetdatabyDoc);
-            //}
             return Json(GetdatabyItem, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult InsertdataBackorder(string Cuspo, string User, string CUSCOD, string DocNo, string SeqNo, string VSTKCOD, string MyIndexValueQty, string MyIndexValueQtyclear, string MyIndexValueQtyLeftover, string company, string CComment)
         {
-
             string message = "false";
-
             string docgen = string.Empty;
             int intdoc = 0;
             string ValueBo = string.Empty;
             try
             {
-
                 using (SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString))
                 {
                     connection.Open();
-
                     SqlCommand command = new SqlCommand("P_Save_BackOrder_catalog", connection);
                     command.CommandType = CommandType.StoredProcedure;
-                    //command.Parameters.AddWithValue("@InBckNo", ValueBo);
                     command.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
                     command.Parameters.AddWithValue("@inDocNo", DocNo);
                     command.Parameters.AddWithValue("@inSeqNo", SeqNo);
@@ -371,13 +313,8 @@ namespace NewShop.Controllers
                     SqlParameter returnValue = new SqlParameter("@outResult", SqlDbType.NVarChar, 100);
                     returnValue.Direction = System.Data.ParameterDirection.Output;
                     command.Parameters.Add(returnValue);
-
-
                     command.ExecuteNonQuery();
-                    //S20161016
                     command.Dispose();
-                    //E20161016
-
                     message = returnValue.Value.ToString();
                     connection.Close();
                 }
@@ -389,33 +326,24 @@ namespace NewShop.Controllers
             return Json(new { message, intdoc, ValueBo }, JsonRequestBehavior.AllowGet);
         }
 
-
         public JsonResult genBackorder()
         {
             string message = "false";
-
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
-
             SqlConnection Connection = new SqlConnection(connectionString);
-
             Connection.Open();
             try
             {
                 var command = new SqlCommand("P_BckOrder", Connection);
                 command.CommandType = CommandType.StoredProcedure;
-
-
                 command.ExecuteNonQuery();
                 command.Dispose();
                 message = "true";
             }
             catch (Exception ex)
             {
-
                 message = "false" + ex;
             }
-
             Connection.Close();
             return Json(message, JsonRequestBehavior.AllowGet);
         }
