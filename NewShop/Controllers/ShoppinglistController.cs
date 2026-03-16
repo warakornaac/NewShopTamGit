@@ -16,12 +16,10 @@ namespace NewShop.Controllers
 {
     public class ShoppinglistController : Controller
     {
-        //
         // GET: /Shoppinglist/
 
         public ActionResult Index()
         {
-            //this.Session["UserType"] = "";
             if (this.Session["UserType"] == "")
             {
                 return RedirectToAction("LogIn", "Account");
@@ -36,21 +34,13 @@ namespace NewShop.Controllers
                 {
                     string Docdisplay = string.Empty;
                     string CUSCOD = string.Empty;
-
                     Docdisplay = Request.QueryString["numcuber"];
                     if (Docdisplay != null)
                     {
-
                         byte[] data = System.Convert.FromBase64String(Docdisplay);
                         CUSCOD = System.Text.ASCIIEncoding.ASCII.GetString(data);
-
                     }
-
-
-
                     ViewBag.Nodisplay = CUSCOD;
-
-
                 }
             }
             return View();
@@ -69,20 +59,15 @@ namespace NewShop.Controllers
             command.Parameters.AddWithValue("@inFix ", Xval);
             command.Parameters.AddWithValue("@Company", XvalCompany);
             Connection.Open();
-            //command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-                //StockCode.Add(reader.GetString(0) + "|" + reader.GetString(1));
                 StockCode.Add(dr.GetString(1));
-            }
-            //S20161016                
+            } 
             dr.Dispose();
             command.Dispose();
-            //E20161016
             Connection.Dispose();
             Connection.Close();
-
             return Json(StockCode, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Gettemfoc(string strstockCode, string Company)
@@ -96,7 +81,6 @@ namespace NewShop.Controllers
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@inSTKCOD ", strstockCode);
             command.Parameters.AddWithValue("@Company ", Company);
-            //command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
@@ -110,12 +94,10 @@ namespace NewShop.Controllers
                 Model.SPackUOM = dr["SPackUOM"].ToString();
                 Getdata.Add(new ListPagedList { val = Model });
             }
-
             dr.Dispose();
             dr.Dispose();
             command.Dispose();
             Connection.Close();
-
             return Json(Getdata, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetdataPricelistbytable(string SaleCode, string strcustome, string strstockCode, string User, string Company)
@@ -126,30 +108,22 @@ namespace NewShop.Controllers
             string message = "false";
             PricelistpageingSearch Model = null;
             List<ListPagedList> Getdata = new List<ListPagedList>();
-
             string substkgrp = string.Empty;
-            //PricelistpageingSearch Model = null;
-            //List<ListPagedList> Getdata = new List<ListPagedList>();
             try
             {
                 var command = new SqlCommand("P_Search_Pricelist", Connection);
                 command.CommandType = CommandType.StoredProcedure;
-
                 command.Parameters.AddWithValue("@SaleCode", SaleCode);
                 command.Parameters.AddWithValue("@User", User);
-
                 command.Parameters.AddWithValue("@Customer", strcustome);
                 command.Parameters.AddWithValue("@Prod", "(ALL)");
                 command.Parameters.AddWithValue("@StockGroup", "(ALL)");
                 command.Parameters.AddWithValue("@StockCode", strstockCode);
                 command.Parameters.AddWithValue("@Company", Company);
-
-                //command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
                     Model = new PricelistpageingSearch();
-
                     Model.PRCLST_NO = dr["PRCLST_NO"].ToString();
                     Model.PEOPLE = dr["PEOPLE"].ToString();
                     Model.CUSNAM = dr["CUSNAM"].ToString();
@@ -157,16 +131,13 @@ namespace NewShop.Controllers
                     Model.STKCOD = dr["STKCOD"].ToString();
                     Model.STKDES = dr["STKDES"].ToString();
                     Model.Brand = dr["Brand"].ToString();
-                    //Model.FullDescription = dr.(4).ToString();
                     substkgrp = dr["STKGRP_PRC"].ToString();
                     Model.STKGRP_PRC = substkgrp.Substring(0, 2);
                     Model.minord = dr["minord"].ToString();
                     Model.Promotion = dr["PromoPrice"].ToString();
-
                     Model.LastInvUnitPric = dr["LastInvUnitPrice"].ToString();
                     Model.LastInvDisc = dr["LastInvDisc"].ToString();
                     Model.LastInvPrice = dr["LastInvPrice"].ToString();
-
                     string Ldate = dr["LastInvdate"].ToString();
                     if (Ldate != "")
                     {
@@ -177,23 +148,18 @@ namespace NewShop.Controllers
                     else
                     {
                         Model.LastInvdate = "-";
-
                     }
                     Model.TOTBAL = dr["TOTBAL"].ToString();
                     Model.Rcw = dr["RCW"].ToString();
                     Model.Totbck = dr["TotalBackOrder"].ToString();
                     Model.BackOrder = dr["BackOrder"].ToString();
-
                     Model.UOM = dr["UOM"].ToString();
                     Model.PCDES = dr["PCDES"].ToString();
                     Model.Price = dr["Price"].ToString();
                     Model.Price0 = dr["Price0"].ToString();
                     Model.SalePrice = dr["SalePrice"].ToString();
                     Model.Special_Price = dr["Special_Price"].ToString();
-                    //string spcp = dr["spc_moq"].ToString();
-                    // if (spcp =="0"){ Model.spc_moq = "0.00"}else{ Model.spc_moq =spcp;}
                     Model.spc_moq = dr["spc_moq"].ToString();
-
                     string spc_start_date = dr["spc_start_date"].ToString();
                     if (spc_start_date != "")
                     {
@@ -205,7 +171,6 @@ namespace NewShop.Controllers
                     {
                         Model.spc_start_date = dr["spc_start_date"].ToString();
                     }
-                    //Model.spc_end_date = dr["spc_end_date"].ToString(); 	
                     string Ldate_end_dat = dr["spc_end_date"].ToString();
                     if (Ldate_end_dat != "")
                     {
@@ -216,7 +181,6 @@ namespace NewShop.Controllers
                         if (Convert.ToDateTime(Ldate_end_dat) > DateTime.Now)
                         {
                             Model.CCheck_date = "T";
-
                         }
                         else
                         {
@@ -233,8 +197,7 @@ namespace NewShop.Controllers
                     Model.PRODNAM = dr["PRODNAM"].ToString();
                     Model.company = dr["company"].ToString();
                     Model.Special_Price = dr["Special_Price"].ToString();
-                    Model.spc_moq = dr["spc_moq"].ToString();
-                    // Model.spc_start_date	 = dr["spc_start_date"].ToString(); 	
+                    Model.spc_moq = dr["spc_moq"].ToString();	
                     Model.spc_remark = dr["spc_remark"].ToString();
                     Model.PromotionCode = dr["PromotionCode"].ToString();
                     Model.PromoDesc = dr["PromoDesc"].ToString();
@@ -248,14 +211,11 @@ namespace NewShop.Controllers
                     Model.Intransit = dr["Intransit"].ToString();
                     Model.ReworkCanSales = dr["ReworkCanSales"].ToString();
                     Model.ReworkClearance = dr["ReworkClearance"].ToString();
-                    //Model.expired = dr["expired"].ToString();
-                    //Model.itemblock = dr["itemblock"].ToString();
                     Getdata.Add(new ListPagedList { val = Model });
                 }
                 dr.Close();
                 dr.Dispose();
                 command.Dispose();
-
                 Connection.Close();
             }
             catch (Exception ex)
@@ -263,18 +223,11 @@ namespace NewShop.Controllers
                 message = ex.Message;
             }
             return Json(Getdata, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataShopping(string CUSCOD, string Usrlogin, string Qshow)
         {
             int sumQty = 0;
             int sumrow = 0;
-            // int sumSalePrice = 0;
-            //    int sumDiscount = 0;
-            //    string stkgrp = string.Empty;
-
-            //    List<ItemListGetdata> Getdata = new List<ItemListGetdata>();
-            //    ItemOrdering model = null;
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
@@ -283,7 +236,6 @@ namespace NewShop.Controllers
             command.Parameters.AddWithValue("@Customer", CUSCOD);
             command.Parameters.AddWithValue("@usrlogin", Usrlogin);
             command.Parameters.AddWithValue("@StrQnuum", Qshow);
-            //command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
@@ -294,7 +246,6 @@ namespace NewShop.Controllers
             dr.Dispose();
             command.Dispose();
             Connection.Close();
-
             return Json(new { sumQty, sumrow }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Confirmationdata(string DataSend, string DataSendPro, string Cus, string User)
@@ -341,7 +292,6 @@ namespace NewShop.Controllers
                         cmd.Parameters.Add(returnValue);
                         cmd.ExecuteNonQuery();
                         messagereturn = returnValue.Value.ToString();
-
                     }
                 }
 
@@ -355,36 +305,17 @@ namespace NewShop.Controllers
                         cmd.Parameters.AddWithValue("@Customer", _ItemListFoc[i].VCUSCOD);
                         cmd.Parameters.AddWithValue("@STKCOD", _ItemListFoc[i].VSTKCOD);
                         cmd.Parameters.AddWithValue("@Company", _ItemListFoc[i].VCompany);
-                        //cmd.Parameters.AddWithValue("@Price", "0");
-                        //cmd.Parameters.AddWithValue("@SPrice", "0");
-                        //cmd.Parameters.AddWithValue("@Expect_Price", "0");
-                        //cmd.Parameters.AddWithValue("@Qty", "0");
                         cmd.Parameters.AddWithValue("@Bckorder", _ItemListFoc[i].Backorderfoc);
                         cmd.Parameters.AddWithValue("@InsertedBy", User);
                         cmd.Parameters.AddWithValue("@LineNote", _ItemListFoc[i].VLineNote);
                         cmd.Parameters.AddWithValue("@FOC", _ItemListFoc[i].VQty);
-                        //cmd.Parameters.AddWithValue("@ProCode", "");
-                        //cmd.Parameters.AddWithValue("@minord", "NULL");
-                        //cmd.Parameters.AddWithValue("@prclstno", "NULL");
-                        //cmd.Parameters.AddWithValue("@specprice", "0");
-                        //cmd.Parameters.AddWithValue("@promoprice","0");
-                        //cmd.Parameters.AddWithValue("@promodesc", "");
-                        //cmd.Parameters.AddWithValue("@lastinvprice","0");
-                        //cmd.Parameters.AddWithValue("@lastinvdate", "");
-
-
-
-
                         SqlParameter returnValue = new SqlParameter("@outGenstatus", SqlDbType.NVarChar, 100);
                         returnValue.Direction = System.Data.ParameterDirection.Output;
                         cmd.Parameters.Add(returnValue);
                         cmd.ExecuteNonQuery();
                         messagereturn = returnValue.Value.ToString();
                     }
-
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -392,13 +323,9 @@ namespace NewShop.Controllers
                 {
                     trans.Rollback();
                 }
-                //return -1;
             }
-            //return null;
             return Json(messagereturn, JsonRequestBehavior.AllowGet);
         }
-
-        //dropdown spc remark
         public JsonResult GetSpcRemark()
         {
             string message = string.Empty;
@@ -426,8 +353,6 @@ namespace NewShop.Controllers
                                 list.Add(item);
                             }
                         }
-
-
                     }
                 }
             }
@@ -438,6 +363,5 @@ namespace NewShop.Controllers
             }
             return Json(new { message = message, respone = respone, result = list }, JsonRequestBehavior.AllowGet);
         }
-
     }
 }
