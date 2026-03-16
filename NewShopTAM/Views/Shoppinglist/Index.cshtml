@@ -469,9 +469,17 @@
             }
         }
         function commaSeparateNumber(val) {
-            while (/(\d+)(\d{3})/.test(val.toString())) {
-                val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+
+            if (val === undefined || val === null || val === '') {
+                return '';
             }
+
+            val = val.toString();
+
+            while (/(\d+)(\d{3})/.test(val)) {
+                val = val.replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+            }
+
             return val;
         }
         var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
