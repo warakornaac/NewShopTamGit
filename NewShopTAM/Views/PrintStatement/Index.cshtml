@@ -1,0 +1,3579 @@
+﻿@using NewShopTAM.Models;
+@using NewShopTAM.Controllers;
+@{
+    Layout = "~/Views/Shared/_FromPrint.cshtml";
+    ViewBag.Title = "Printstatement";
+    List<NewShopTAM.Controllers.Listdata> getdataItem = ViewBag.GetLocation;
+    var ProSR = ViewBag.PromoStatementReward;
+    var ProCustomer = ViewBag.Customer;
+    var imageadvertise = ViewBag.imageadvertise;
+    string dateNow = ViewBag.datetime;
+    string yearNow = ViewBag.year;
+    //string absFile = Server.MapPath("D://MyFolder//advertise.png");
+}
+
+
+
+
+
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>statement</title>
+
+
+    
+
+    <link href="~/CSS/Pring.css" rel="stylesheet" />
+
+</head>
+<body>
+
+    @for (int i = 0; i < ProCustomer.Count; i++)
+    {
+
+        var v = ProCustomer[i].val.CUSCOD;
+        v = v.ToUpper();
+
+        <div style="width:794px;page-break-after: always;clear: both;  margin-left: 36px;">
+
+            <div style="/* margin-left: -10px; */font-size: x-small; clear: both;/* padding: 5px 0; */border-bottom: 1px solid #100F0F; /* margin-bottom: 1em; */width: 728px;">
+
+                <div>
+                    <img src="~/images/h-s1.png" style="width: 729px;" />
+                </div>
+                บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  เลขประจำตัวผู้เสียภาษีอาการ 0105540090011<br />
+                บริษัท ที อาร์ ดับบลิว เอเชียติ๊ก จำกัด  เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832 เลขประจำตัวผู้เสียภาษีอาการ 0105550085240<br />
+
+            </div>
+
+            <div style="width: 50%;float: left;   margin-top:20px;   /* margin-left: 24px; */ /* font-family: inherit; */ font-family: boon-500,sans-serif; font-weight: bold;    line-height: 1.3em;">
+                <label>รหัสลูกค้า:@ProCustomer[i].val.CUSCOD</label><br />
+                <label>ร้าน: @ProCustomer[i].val.CUSNAM</label><br />
+                <label>ที่อยู่ร้าน: @ProCustomer[i].val.ADDR_01 </label><br />
+                <label>เบอร์โทร:@ProCustomer[i].val.TELNUM</label><br />
+                <label>พนักงานขาย:@ProCustomer[i].val.SLMNAM (@ProCustomer[i].val.SLMCOD)</label>
+            </div>
+
+            <div style=" width:50%;float: right; margin-top: 20px;">
+                <img src="@Url.Action("SomeImage", "PrintStatement", new { image = "advertise.png" })" alt="" />
+            </div>
+            <div style="width:25%;float: left;  margin: 21px;">
+
+
+                <p>เป้าโปรโมชั่นที่เข้าร่วม :</p>
+            </div>
+            <div style="width: 57%;float: left;margin-top: -13px;margin-left: 209px;">
+                <table class="meta">
+                    <tbody>
+                        <tr>
+                            <th style="width: 88px;"><span contenteditable="">วันที่พิมพ์</span></th>
+
+                            <td style="width: 73px;">@dateNow</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+            <div style="width: 20%;float: left;  /* margin: 21px; */">
+            </div>
+            <div style="width:51%;float: left;/*margin-top: -32px*/margin-left: 256px;">
+                <table class="meta">
+                    <tbody>
+                        <tr>
+                            <th style="width: 90px;"><span contenteditable="">วันที่สรุปยอดบัญชี</span></th>
+                            <td style="width: 70px;">@ProCustomer[i].val.Asof</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            @*<div style="width:722px;height:780px">*@
+                <div style="width:722px;">
+                    <table class="inventory">
+                        <thead>
+                            <tr>
+                                <th style="width:219px;"><span>PromotionName/<br />PromotionCode</span></th>
+                                <th><span>ยอดซื้อทั้งหมด</span></th>
+                                <th><span>ยอดชำระแล้ว</span></th>
+                                <th><span>เป้าโปรโมชั่น</span></th>
+                                <th><span>วันที่เริ่มโปรโมชั่น</span></th>
+                                <th style="width: 83px;"><span>วันสิ้นสุดโปรโมชั่น</span></th>
+                                <th><span>ส่วนต่างที่<br />ต้องทำเพิ่ม</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @for (int x = 0; x < ProSR.Count; x++)
+                        {
+                            var c = ProSR[x].val.CUSCOD.Trim();
+                            c = c.ToUpper();
+                            if (c == v)
+                            //if("111C0008"=="111C0008")
+                            {
+
+                                <tr>
+                                    <td style="text-align:left;">@ProSR[x].val.Promotion_Name<br />@ProSR[x].val.Promotion_Code</td>
+                                    <td style="text-align: right;">@ProSR[x].val.SAMT</td>
+                                    <td style="text-align: right;">@ProSR[x].val.SPaidAMT</td>
+                                    <td style="text-align: right;">@ProSR[x].val.Condition</td>
+                                    <td style="text-align: right;">@ProSR[x].val.Startdate</td>
+                                    <td style="text-align: right;">@ProSR[x].val.Enddate</td>
+                                    <td style="text-align: right;">@ProSR[x].val.Sum</td>
+                                </tr>
+
+                            }
+                        }
+
+
+                        </tbody>
+                    </table>
+                    <div style=" /*height:95px;*/">
+                        <div>รายละเอียดโปรโมชั่น: </div>
+                        @for (int n = 0; n < ProSR.Count; n++)
+                    {
+                        var b = ProSR[n].val.CUSCOD;
+                        b = b.ToUpper();
+                        if (b == v)
+                        {
+
+                            <div>&#9830; @ProSR[n].val.Promotion_Name --->[@ProSR[n].val.Reward] </div>
+
+                        }
+                    }
+                    </div>
+                </div>
+
+            <div style="clear: both;"><p>**ยอดซื้อข้างต้นคำนวณจากยอดซื้อสุทธิหลังจากหักส่วนลดแล้ว(ไม่รวม Vat)</p> </div><br />
+            <div style=" width:100%;clear: both;">
+                <img src="~/images/ststement-foot.jpg" style="width:90%" />
+
+            </div>
+        </div>
+
+        for (int e = 0; e < getdataItem.Count; e++)
+        {
+            var r = getdataItem[e].val.CUSCOD;
+
+            var Com = getdataItem[e].val.COMP;
+            if (getdataItem.Count > 1)
+            {
+
+                var er = getdataItem.Where(c => c.val.CUSCOD == r).ToArray();
+                if (er.Length == 2)
+                {
+                    r = r.ToUpper();
+                    if (r == v && Com == "AAC")
+                    {
+                        var dd = e + 1;
+                        if (getdataItem.Count > dd)
+                        {
+
+                            <div style="width:794px; height: 1100px;page-break-before:avoid;margin-left: 36px;">
+                                <div style="margin-left: -10px;font-size: x-small; clear: both;padding: 5px 0;border-bottom: 1px solid #100F0F; margin-bottom: 1em;width: 728px;">
+                                    <label>
+
+                                      
+                                        <img src="~/images/h-s1.png" style="width: 729px;" />
+                                    </label><br />
+                                    <label>บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  เลขประจำตัวผู้เสียภาษีอาการ 0105540090011</label><br />
+                                    <label>บริษัท ที อาร์ ดับบลิว เอเชียติ๊ก จำกัด  เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832 เลขประจำตัวผู้เสียภาษีอาการ 0105550085240</label><br />
+
+                                </div>
+                                <div style="margin-top:6px;margin-left: 13px;"><p>รายละเอียดยอดซื้อและการชำระเงิน</p> </div><br />
+
+                                <table class="inventory" style="width: 713px;">
+                                    <thead>
+                                        <tr>
+                                            <th><span contenteditable>เดือน</span></th>
+                                            @*				@if (getdataItem[e].val.COMP == "AAC")
+                                                {*@
+                                            <th><span contenteditable>ยอดซื้อ AAC</span></th>
+                                            @* }
+                                                @if (getdataItem[dd].val.COMP == "TAC")
+                                                {*@
+                                            <th><span contenteditable>ยอดซื้อ TAC</span></th>
+                                            @* }*@
+                                            <th><span contenteditable>ยอดซื้อรวม</span></th>
+                                            <th><span contenteditable>ยอดชำระแล้ว</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td style="background: #EEE;">@getdataItem[e].val.LastStYr</td>
+
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.LastTotal != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.LastTotal </td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.LastTotal != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.LastTotal</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+
+
+                                            @if (getdataItem[e].val.SumLastTotal != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.SumLastTotal</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumLastpayTotal != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.SumLastpayTotal</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+
+                                        </tr>
+
+
+                                        <tr>
+                                            <td style="background: #EEE;">Jan-@yearNow</td>
+
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Jan != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Jan</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Jan != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Jan</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumJan != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumJan</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td> }
+                                            @if (getdataItem[e].val.SumpayJan != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayJan</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+
+
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Feb-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Feb != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Feb</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Feb != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Feb</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumFeb != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumFeb</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayFeb != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayFeb</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Mar-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Mar != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Mar</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Mar != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Mar</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumMar != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumMar</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayMar != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayMar</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Apr-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Apr != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Apr</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Apr != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Apr</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumApr != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumApr</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayApr != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayApr</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">May-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.May != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.May</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.May != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.May</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumMay != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumMay</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayMay != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayMay</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Jun-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Jun != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Jun</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Jun != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Jun</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumJun != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumJun</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayJun != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayJun</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Jul-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Jul != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Jul</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Jul != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Jul</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumJul != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumJul</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayJul != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayJul</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Aug-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Aug != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Aug</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Aug != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Aug</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumAug != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumAug</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayAug != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayAug</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Sep-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Sep != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Sep</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Sep != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Sep</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumSep != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumSep</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpaySep != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpaySep</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Oct-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Oct != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Oct</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Oct != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Oct</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumOct != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumOct</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayOct != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayOct</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Nov-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Nov != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Nov</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Nov != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Nov</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumNov != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumNov</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayNov != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayNov</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Dec-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Dec != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Dec</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Dec != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Dec</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumDec != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumDec</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayDec != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayDec</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">@getdataItem[0].val.StYr</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Total != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Total</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            @if (getdataItem[dd].val.COMP == "TAC")
+                                            {
+                                                if (@getdataItem[dd].val.Total != "0.00")
+                                                {
+                                                    <td>@getdataItem[dd].val.Total</td>
+                                                }
+                                                else
+                                                {
+                                                    <td>-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumTotal != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumTotal</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayTotal != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayTotal</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+
+
+                                <div><p>**ยอดซื้อข้างต้นคำนวณจากยอดซื้อสุทธิหลังจากหักส่วนลดแล้ว(ไม่รวม Vat)</p> </div><br />
+                                <div style="width:100%"><img src="~/images/ststement-foot.jpg" style="width:90%" /></div>
+
+                            </div>
+
+                        }
+                        else if (getdataItem.Count == dd)
+                        {
+
+                            <div style="width:794px; height: 1100px;page-break-before:avoid;  margin-left: 36px;">
+                                <div style="margin-left: -10px;font-size: x-small; clear: both;padding: 5px 0;border-bottom: 1px solid #100F0F; margin-bottom: 1em;width: 728px;">
+                                    <label>
+                                        <img src="~/images/h-s1.png" style="width: 729px;" />
+                                    </label><br />
+                                    <label> บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  เลขประจำตัวผู้เสียภาษีอาการ 0105540090011</label><br />
+                                    <label>บริษัท ที อาร์ ดับบลิว เอเชียติ๊ก จำกัด  เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832 เลขประจำตัวผู้เสียภาษีอาการ 0105550085240</label><br />
+
+                                </div>
+                                <div style="margin-top:6px;margin-left: 13px;"><p>รายละเอียดยอดซื้อและการชำระเงิน</p> </div><br />
+
+                                <table class="inventory" style="width: 713px;">
+                                    <thead>
+                                        <tr>
+                                            <th><span contenteditable>เดือน</span></th>
+                                            <th><span contenteditable>ยอดซื้อ AAC</span></th>
+                                            <th><span contenteditable>ยอดซื้อ TAC</span></th>
+                                            <th><span contenteditable>ยอดซื้อรวม</span></th>
+                                            <th><span contenteditable>ยอดชำระแล้ว</span></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        <tr>
+                                            <td style="background: #EEE;">@getdataItem[e].val.LastStYr</td>
+
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.LastTotal != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.LastTotal </td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>
+                                            }
+                                            @if (getdataItem[e].val.SumLastTotal != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.SumLastTotal</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                            @if (getdataItem[e].val.SumLastpayTotal != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.SumLastpayTotal</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Jan-@yearNow</td>
+
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Jan != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Jan</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumJan != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumJan</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td> }
+                                            @if (getdataItem[e].val.SumpayJan != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayJan</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+
+
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Feb-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Feb != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Feb</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumFeb != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumFeb</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayFeb != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayFeb</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Mar-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Mar != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Mar</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumMar != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumMar</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayMar != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayMar</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Apr-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Apr != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Apr</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumApr != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumApr</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayApr != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayApr</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">May-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.May != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.May</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumMay != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumMay</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayMay != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayMay</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Jun-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Jun != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Jun</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumJun != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumJun</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayJun != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayJun</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Jul-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Jul != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Jul</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumJul != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumJul</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayJul != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayJul</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Aug-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Aug != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Aug</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumAug != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumAug</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayAug != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayAug</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Sep-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Sep != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Sep</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumSep != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumSep</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpaySep != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpaySep</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Oct-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Oct != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Oct</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumOct != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumOct</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayOct != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayOct</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Nov-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Nov != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Nov</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumNov != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumNov</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayNov != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayNov</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">Dec-@yearNow</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Dec != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Dec</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumDec != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumDec</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayDec != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayDec</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+                                        <tr>
+                                            <td style="background: #EEE;">@getdataItem[0].val.StYr</td>
+                                            @if (getdataItem[e].val.COMP == "AAC")
+                                            {
+                                                if (@getdataItem[e].val.Total != "0.00")
+                                                {
+                                                    <td style="text-align: right;">@getdataItem[e].val.Total</td>
+                                                }
+                                                else
+                                                {
+                                                    <td style="text-align: right;">-</td>}
+
+                                            }
+                                            <td style="text-align: right;">-</td>
+                                            @if (getdataItem[e].val.SumTotal != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumTotal</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+                                            @if (getdataItem[e].val.SumpayTotal != "0.00")
+                                            {
+
+                                                <td>@getdataItem[e].val.SumpayTotal</td>
+
+                                            }
+                                            else
+                                            {
+                                                <td>-</td> }
+
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                                <div style="display:none;"><p>ช่องทางการติดต่อสื่อสาร:</p> </div><br />
+                                <div><p>**ยอดซื้อข้างต้นคำนวณจากยอดซื้อสุทธิหลังจากหักส่วนลดแล้ว(ไม่รวม Vat)</p> </div><br />
+                                <div style="width:100%"><img src="~/images/ststement-foot.jpg" style="width:90%" /></div>
+                            </div>
+
+                        }
+                    }
+
+                }
+                else
+                {
+                    if (r == v && Com == "AAC")
+                    {
+
+                        <div style="width:794px; height: 1100px;page-break-before:always;  margin-left: 36px;">
+                            <div style="margin-left: -10px;font-size: x-small; clear: both;padding: 5px 0;border-bottom: 1px solid #100F0F; margin-bottom: 1em;width: 728px;">
+                                <label>
+                                    <img src="~/images/h-s1.png" style="width: 729px;" />
+                                </label><br />
+                                <label>บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  เลขประจำตัวผู้เสียภาษีอาการ 0105540090011</label><br />
+                                <label>บริษัท ที อาร์ ดับบลิว เอเชียติ๊ก จำกัด  เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832 เลขประจำตัวผู้เสียภาษีอาการ 0105550085240</label><br />
+
+                            </div>
+                            <div style="margin-top:6px;margin-left: 13px;"><p>รายละเอียดยอดซื้อและการชำระเงิน</p> </div><br />
+
+                            <table class="inventory" style="width: 713px;">
+                                <thead>
+                                    <tr>
+                                        <th><span contenteditable>เดือน</span></th>
+                                        <th><span contenteditable>ยอดซื้อ AAC</span></th>
+                                        <th><span contenteditable>ยอดซื้อ TAC</span></th>
+                                        <th><span contenteditable>ยอดซื้อรวม</span></th>
+                                        <th><span contenteditable>ยอดชำระแล้ว</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+
+
+
+
+
+                                    <tr>
+                                        <td style="background: #EEE;">@getdataItem[e].val.LastStYr</td>
+
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.LastTotal != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.LastTotal </td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                        }
+
+
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.SumLastTotal != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.SumLastTotal</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                        @if (getdataItem[e].val.SumLastpayTotal != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.SumLastpayTotal</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                        @* <td>@getdataItem[e].val.SumLastTotal</td>
+                                            <td class="myNumber">@getdataItem[e].val.SumLastpayTotal</td>*@
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Jan-@yearNow</td>
+
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Jan != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Jan</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                        }
+
+                                        <td>-</td>
+
+
+                                        @if (getdataItem[e].val.SumJan != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumJan</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td> }
+                                        @if (getdataItem[e].val.SumpayJan != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayJan</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+
+
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Feb-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Feb != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Feb</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumFeb != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumFeb</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayFeb != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayFeb</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Mar-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Mar != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Mar</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+
+                                        @if (getdataItem[e].val.SumMar != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumMar</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayMar != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayMar</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Apr-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Apr != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Apr</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+
+                                        @if (getdataItem[e].val.SumApr != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumApr</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayApr != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayApr</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">May-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.May != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.May</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumMay != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumMay</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayMay != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayMay</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Jun-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Jun != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Jun</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumJun != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumJun</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayJun != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayJun</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Jul-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Jul != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Jul</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumJul != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumJul</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayJul != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayJul</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Aug-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Aug != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Aug</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumAug != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumAug</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayAug != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayAug</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Sep-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Sep != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Sep</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumSep != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumSep</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpaySep != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpaySep</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Oct-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Oct != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Oct</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumOct != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumOct</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayOct != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayOct</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Nov-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Nov != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Nov</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumNov != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumNov</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayNov != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayNov</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Dec-@yearNow</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Dec != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Dec</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumDec != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumDec</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayDec != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayDec</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">@getdataItem[0].val.StYr</td>
+                                        @if (getdataItem[e].val.COMP == "AAC")
+                                        {
+                                            if (@getdataItem[e].val.Total != "0.00")
+                                            {
+                                                <td style="text-align: right;">@getdataItem[e].val.Total</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+
+                                        <td>-</td>
+
+                                        @if (getdataItem[e].val.SumTotal != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumTotal</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayTotal != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayTotal</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+
+                            <div style="display:none;"><p>ช่องทางการติดต่อสื่อสาร:</p> </div><br />
+                            <div><p>**ยอดซื้อข้างต้นคำนวณจากยอดซื้อสุทธิหลังจากหักส่วนลดแล้ว(ไม่รวม Vat)</p> </div><br />
+                            <div style=" width:100%"><img src="~/images/ststement-foot.jpg" style="width:90%" /></div>
+                        </div>
+
+                    }
+                    else if (r == v && Com == "TAC")
+                    {
+
+                        <div style="width:794px; height: 1100px;page-break-before:avoid;  margin-left: 36px;">
+                            <div style="margin-left: -10px;font-size: x-small; clear: both;padding: 5px 0;border-bottom: 1px solid #100F0F; margin-bottom: 1em;width: 728px;">
+                                <label>
+                                    <img src="~/images/h-s1.png" style="width: 729px;" />
+                                </label><br />
+                                <label>บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  เลขประจำตัวผู้เสียภาษีอาการ 0105540090011</label><br />
+                                <label>บริษัท ที อาร์ ดับบลิว เอเชียติ๊ก จำกัด  เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832 เลขประจำตัวผู้เสียภาษีอาการ 0105550085240</label><br />
+
+                            </div>
+                            <div style="margin-top:6px;margin-left: 13px;"><p>รายละเอียดยอดซื้อและการชำระเงิน</p> </div><br />
+
+                            <table class="inventory" style="width: 713px;">
+                                <thead>
+                                    <tr>
+                                        <th><span contenteditable>เดือน</span></th>
+                                        <th><span contenteditable>ยอดซื้อ AAC</span></th>
+                                        <th><span contenteditable>ยอดซื้อ TAC</span></th>
+                                        <th><span contenteditable>ยอดซื้อรวม</span></th>
+                                        <th><span contenteditable>ยอดชำระแล้ว</span></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    <tr>
+                                        <td style="background: #EEE;">@getdataItem[e].val.LastStYr</td>
+                                        <td style="text-align: right;">-</td>
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.LastTotal != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.LastTotal</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumLastTotal != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.SumLastTotal</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                        @if (getdataItem[e].val.SumLastpayTotal != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.SumLastpayTotal</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                        @*<td>@getdataItem[e].val.SumLastTotal</td>
+                                            <td class="myNumber">@getdataItem[e].val.SumLastpayTotal</td>*@
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Jan-@yearNow</td>
+
+                                        <td style="text-align: right;">-</td>
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Jan != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Jan</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumJan != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumJan</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td> }
+                                        @if (getdataItem[e].val.SumpayJan != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayJan</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+
+
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Feb-@yearNow</td>
+
+
+
+
+                                        <td style="text-align: right;">-</td>
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Feb != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Feb</td>
+                                            }
+                                            else
+                                            {
+                                                <td style="text-align: right;">-</td>}
+
+                                        }
+                                        @if (getdataItem[e].val.SumFeb != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumFeb</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayFeb != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayFeb</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Mar-@yearNow</td>
+
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Mar != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Mar</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumMar != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumMar</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayMar != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayMar</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Apr-@yearNow</td>
+
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Apr != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Apr</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumApr != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumApr</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayApr != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayApr</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">May-@yearNow</td>
+
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.May != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.May</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumMay != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumMay</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayMay != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayMay</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Jun-@yearNow</td>
+
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Jun != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Jun</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumJun != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumJun</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayJun != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayJun</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Jul-@yearNow</td>
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Jul != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Jul</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumJul != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumJul</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayJul != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayJul</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Aug-@yearNow</td>
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Aug != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Aug</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumAug != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumAug</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayAug != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayAug</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Sep-@yearNow</td>
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Sep != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Sep</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumSep != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumSep</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpaySep != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpaySep</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Oct-@yearNow</td>
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Oct != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Oct</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[0].val.SumOct != "0.00")
+                                        {
+
+                                            <td>@getdataItem[0].val.SumOct</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[0].val.SumpayOct != "0.00")
+                                        {
+
+                                            <td>@getdataItem[0].val.SumpayOct</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Nov-@yearNow</td>
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Nov != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Nov</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumNov != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumNov</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayNov != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayNov</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">Dec-@yearNow</td>
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Dec != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Dec</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumDec != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumDec</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayDec != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayDec</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+                                    <tr>
+                                        <td style="background: #EEE;">@getdataItem[0].val.StYr</td>
+                                        <td style="text-align: right;">-</td>
+
+
+                                        @if (getdataItem[e].val.COMP == "TAC")
+                                        {
+                                            if (@getdataItem[e].val.Total != "0.00")
+                                            {
+                                                <td>@getdataItem[e].val.Total</td>
+                                            }
+                                            else
+                                            {
+                                                <td>-</td>}
+                                        }
+                                        @if (getdataItem[e].val.SumTotal != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumTotal</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+                                        @if (getdataItem[e].val.SumpayTotal != "0.00")
+                                        {
+
+                                            <td>@getdataItem[e].val.SumpayTotal</td>
+
+                                        }
+                                        else
+                                        {
+                                            <td>-</td> }
+
+                                    </tr>
+
+
+                                </tbody>
+                            </table>
+
+
+                            <div style="display:none;"><p>ช่องทางการติดต่อสื่อสาร:</p> </div><br />
+                            <div><p>**ยอดซื้อข้างต้นคำนวณจากยอดซื้อสุทธิหลังจากหักส่วนลดแล้ว(ไม่รวม Vat)</p> </div><br />
+                            <div style=" width:100%"><img src="~/images/ststement-foot.jpg" style="width:90%" /></div>
+
+                        </div>
+
+                    }
+
+                }
+            }
+            else
+            {
+                if (r == v && Com == "AAC")
+                {
+
+                    <div style="width:794px; height: 1100px;page-break-before:avoid;  margin-left: 36px;">
+                        <div style="margin-left: -10px;font-size: x-small; clear: both;padding: 5px 0;border-bottom: 1px solid #100F0F; margin-bottom: 1em;width: 728px;">
+                            <label>
+                                <img src="~/images/h-s1.png" style="width: 729px;" />
+                            </label><br />
+                            <label>บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  เลขประจำตัวผู้เสียภาษีอาการ 0105540090011</label><br />
+                            <label>บริษัท ที อาร์ ดับบลิว เอเชียติ๊ก จำกัด  เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832 เลขประจำตัวผู้เสียภาษีอาการ 0105550085240</label><br />
+
+                        </div>
+                        <div style="margin-top:6px;margin-left: 13px;"><p>รายละเอียดยอดซื้อและการชำระเงิน</p> </div><br />
+
+                        <table class="inventory" style="width: 713px;">
+                            <thead>
+                                <tr>
+                                    <th><span contenteditable>เดือน</span></th>
+                                    <th><span contenteditable>ยอดซื้อ AAC</span></th>
+                                    <th><span contenteditable>ยอดซื้อ TAC</span></th>
+                                    <th><span contenteditable>ยอดซื้อรวม</span></th>
+                                    <th><span contenteditable>ยอดชำระแล้ว</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td style="background: #EEE;">@getdataItem[e].val.LastStYr</td>
+
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.LastTotal != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.LastTotal </td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                    }
+                                    <td>-</td>
+                                    @if (getdataItem[e].val.SumLastTotal != "0.00")
+                                    {
+                                        <td>@getdataItem[e].val.SumLastTotal</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: right;">-</td>}
+                                    @if (getdataItem[e].val.SumLastpayTotal != "0.00")
+                                    {
+                                        <td>@getdataItem[e].val.SumLastpayTotal</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: right;">-</td>}
+                                    @*<td>@getdataItem[e].val.SumLastTotal</td>
+                                        <td class="myNumber">@getdataItem[e].val.SumLastpayTotal</td>*@
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Jan-@yearNow</td>
+
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Jan != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Jan</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                    }
+
+                                    <td>-</td>
+
+
+                                    @if (getdataItem[e].val.SumJan != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumJan</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: right;">-</td> }
+                                    @if (getdataItem[e].val.SumpayJan != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayJan</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Feb-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Feb != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[0].val.Feb</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumFeb != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumFeb</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayFeb != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayFeb</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Mar-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Mar != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[0].val.Mar</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+
+                                    @if (getdataItem[e].val.SumMar != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumMar</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayMar != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayMar</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Apr-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Apr != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[0].val.Apr</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+
+                                    @if (getdataItem[e].val.SumApr != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumApr</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayApr != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayApr</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">May-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.May != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.May</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumMay != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumMay</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayMay != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayMay</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Jun-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Jun != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Jun</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumJun != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumJun</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayJun != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayJun</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Jul-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Jul != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Jul</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumJul != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumJul</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayJul != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayJul</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Aug-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Aug != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Aug</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumAug != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumAug</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayAug != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayAug</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Sep-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Sep != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Sep</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumSep != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumSep</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpaySep != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpaySep</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Oct-@yearNow</td>
+                                    @if (getdataItem[0].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[0].val.Oct != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[0].val.Oct</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[0].val.SumOct != "0.00")
+                                    {
+
+                                        <td>@getdataItem[0].val.SumOct</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[0].val.SumpayOct != "0.00")
+                                    {
+
+                                        <td>@getdataItem[0].val.SumpayOct</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Nov-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Nov != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Nov</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumNov != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumNov</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayNov != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayNov</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Dec-@yearNow</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Dec != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Dec</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumDec != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumDec</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayDec != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayDec</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">@getdataItem[0].val.StYr</td>
+                                    @if (getdataItem[e].val.COMP == "AAC")
+                                    {
+                                        if (@getdataItem[e].val.Total != "0.00")
+                                        {
+                                            <td style="text-align: right;">@getdataItem[e].val.Total</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+
+                                    <td>-</td>
+
+                                    @if (getdataItem[e].val.SumTotal != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumTotal</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayTotal != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayTotal</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+
+                        <div style="display:none;"><p>ช่องทางการติดต่อสื่อสาร:</p> </div><br />
+                        <div><p>**ยอดซื้อข้างต้นคำนวณจากยอดซื้อสุทธิหลังจากหักส่วนลดแล้ว(ไม่รวม Vat)</p> </div><br />
+                        <div style=" width:100%"><img src="~/images/ststement-foot.jpg" style="width:90%" /></div>
+                    </div>
+
+                }
+                else if (r == v && Com == "TAC")
+                {
+
+                    <div style="width:794px; height: 1100px;page-break-before:avoid;margin-left: 36px;">
+                        <div style="margin-left: -10px;font-size: x-small; clear: both;padding: 5px 0;border-bottom: 1px solid #100F0F; margin-bottom: 1em;width: 728px;">
+                            <label><img src="~/images/h-s1.png" style="width: 729px;" /></label><br />
+                            <label>บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  เลขประจำตัวผู้เสียภาษีอาการ 0105540090011</label><br />
+                            <label>บริษัท ที อาร์ ดับบลิว เอเชียติ๊ก จำกัด  เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832 เลขประจำตัวผู้เสียภาษีอาการ 0105550085240</label><br />
+
+                        </div>
+                        <div style="margin-top:6px;margin-left: 13px;"><p>รายละเอียดยอดซื้อและการชำระเงิน</p> </div><br />
+
+                        <table class="inventory" style="width: 713px;">
+                            <thead>
+                                <tr>
+                                    <th><span contenteditable>เดือน</span></th>
+                                    <th><span contenteditable>ยอดซื้อ AAC</span></th>
+                                    <th><span contenteditable>ยอดซื้อ TAC</span></th>
+                                    <th><span contenteditable>ยอดซื้อรวม</span></th>
+                                    <th><span contenteditable>ยอดชำระแล้ว</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td style="background: #EEE;">@getdataItem[e].val.LastStYr</td>
+                                    <td style="text-align: right;">-</td>
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.LastTotal != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.LastTotal</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumLastTotal != "0.00")
+                                    {
+                                        <td>@getdataItem[e].val.SumLastTotal</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: right;">-</td>}
+                                    @if (getdataItem[e].val.SumLastpayTotal != "0.00")
+                                    {
+                                        <td>@getdataItem[e].val.SumLastpayTotal</td>
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: right;">-</td>}
+
+                                    @*<td>@getdataItem[e].val.SumLastTotal</td>
+                                        <td class="myNumber">@getdataItem[e].val.SumLastpayTotal</td>*@
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Jan-@yearNow</td>
+
+                                    <td style="text-align: right;">-</td>
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Jan != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Jan</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumJan != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumJan</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td style="text-align: right;">-</td> }
+                                    @if (getdataItem[e].val.SumpayJan != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayJan</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+
+
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Feb-@yearNow</td>
+
+
+
+
+                                    <td style="text-align: right;">-</td>
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Feb != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Feb</td>
+                                        }
+                                        else
+                                        {
+                                            <td style="text-align: right;">-</td>}
+
+                                    }
+                                    @if (getdataItem[e].val.SumFeb != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumFeb</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayFeb != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayFeb</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Mar-@yearNow</td>
+
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Mar != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Mar</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumMar != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumMar</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayMar != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayMar</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Apr-@yearNow</td>
+
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Apr != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Apr</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumApr != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumApr</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayApr != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayApr</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">May-@yearNow</td>
+
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.May != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.May</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumMay != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumMay</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayMay != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayMay</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Jun-@yearNow</td>
+
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Jun != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Jun</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumJun != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumJun</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayJun != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayJun</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Jul-@yearNow</td>
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Jul != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Jul</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumJul != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumJul</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayJul != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayJul</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Aug-@yearNow</td>
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Aug != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Aug</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumAug != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumAug</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayAug != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayAug</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Sep-@yearNow</td>
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Sep != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Sep</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumSep != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumSep</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpaySep != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpaySep</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Oct-@yearNow</td>
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Oct != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Oct</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[0].val.SumOct != "0.00")
+                                    {
+
+                                        <td>@getdataItem[0].val.SumOct</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[0].val.SumpayOct != "0.00")
+                                    {
+
+                                        <td>@getdataItem[0].val.SumpayOct</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Nov-@yearNow</td>
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Nov != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Nov</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumNov != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumNov</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayNov != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayNov</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">Dec-@yearNow</td>
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Dec != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Dec</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumDec != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumDec</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayDec != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayDec</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+                                <tr>
+                                    <td style="background: #EEE;">@getdataItem[0].val.StYr</td>
+                                    <td style="text-align: right;">-</td>
+
+
+                                    @if (getdataItem[e].val.COMP == "TAC")
+                                    {
+                                        if (@getdataItem[e].val.Total != "0.00")
+                                        {
+                                            <td>@getdataItem[e].val.Total</td>
+                                        }
+                                        else
+                                        {
+                                            <td>-</td>}
+                                    }
+                                    @if (getdataItem[e].val.SumTotal != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumTotal</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+                                    @if (getdataItem[e].val.SumpayTotal != "0.00")
+                                    {
+
+                                        <td>@getdataItem[e].val.SumpayTotal</td>
+
+                                    }
+                                    else
+                                    {
+                                        <td>-</td> }
+
+                                </tr>
+
+
+                            </tbody>
+                        </table>
+
+
+                        <div style="display:none;"><p>ช่องทางการติดต่อสื่อสาร:</p> </div><br />
+                        <div><p>**ยอดซื้อข้างต้นคำนวณจากยอดซื้อสุทธิหลังจากหักส่วนลดแล้ว(ไม่รวม Vat)</p> </div><br />
+                        <div style=" width:100%"><img src="~/images/ststement-foot.jpg" style="width:90%" /> </div>
+                    </div>
+
+
+                }
+
+
+            }
+
+
+        }
+    }
+
+    <script type="text/javascript">
+        window.print();
+        $(document).ready(function () {
+            $("#login").css("display", "none");
+            $("#nav").css("display", "none");
+
+
+
+        });
+    </script>
+</body>
+</html>

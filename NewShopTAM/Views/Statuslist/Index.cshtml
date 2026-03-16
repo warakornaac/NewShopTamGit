@@ -1,0 +1,1388 @@
+﻿@{
+    Layout = "~/Views/Shared/_LayoutStatus.cshtml";
+    @model NewShopTAM.Models.SaleOrder_History
+    NewShopTAM.Models.SaleOrder_History SaleOrder_History = new NewShopTAM.Models.SaleOrder_History();
+}
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=1024, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Status Order</title>
+    <!-- Custom fonts for this template -->
+    <script src="~/contentfilter/js/jquery-2.1.1.js"></script>
+    <link href="~/sb-admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <!-- Custom styles for this template -->
+    <link href="~/sb-admin/css/sb-admin-2.css" rel="stylesheet" />
+    <!-- Custom styles for this page -->
+    <link href="~/sb-admin/vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet" />
+    <style>
+        .bannercol {
+        }
+        /*Responsive table*/
+        #dataTablex {
+            width: 100%;
+            border-collapse: collapse;
+            background: #34495e36;
+            color: #382626fa;
+        }
+            /* Zebra striping */
+            #dataTablex tr:nth-of-type(odd) {
+                background: rgb(246 249 250);
+            }
+            #dataTablex th {
+                background: #454fae;
+                font-weight: bold;
+                color: bisque;
+                font-size: smaller;
+            }
+            #dataTablex tbody tr td {
+                background-color: #eef2f9;
+                background-image: -moz-linear-gradient( top, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.2) 50%, rgba(255,255,255,0.1) 51%, rgba(255,255,255,0.0) 100%);
+                background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0.4)), color-stop(50%,rgba(255,255,255,0.2)), color-stop(51%,rgba(255,255,255,0.1)), color-stop(100%,rgba(255,255,255,0.0)));
+                color: #262c31;
+                font-size: 11px;
+            }
+        .track {
+            position: relative;
+            background-color: #ddd;
+            height: 7px;
+            display: -webkit-box;
+            display: -ms-flexbox;
+            display: flex;
+            margin-bottom: 60px;
+            margin-top: 50px;
+        }
+            .track .step {
+                -webkit-box-flex: 1;
+                -ms-flex-positive: 1;
+                flex-grow: 1;
+                width: 25%;
+                margin-top: -18px;
+                text-align: center;
+                position: relative;
+            }
+                .track .step.active:before {
+                    background: #FF5722;
+                }
+                .track .step::before {
+                    height: 7px;
+                    position: absolute;
+                    content: "";
+                    width: 100%;
+                    left: 0;
+                    top: 18px;
+                }
+                .track .step.active .icon {
+                    background: #ee5435;
+                    color: #fff;
+                }
+            .track .icon {
+                display: inline-block;
+                width: 40px;
+                height: 40px;
+                line-height: 40px;
+                position: relative;
+                border-radius: 100%;
+                background: #ddd;
+            }
+            .track .step.active .text {
+                font-weight: 400;
+                color: #000;
+            }
+            .track .text {
+                display: block;
+                margin-top: 7px;
+            }
+    </style>
+
+    <style>
+        #exampletbByItem {
+            background-color: #333;
+        }
+            #exampletbByItem tbody {
+                background-color: cornsilk;
+                color: black;
+            }
+        .exampletbByItem {
+            border-collapse: collapse;
+            width: 100%;
+            background-color: #FCFCFC;
+        }
+        .header {
+            background-color: #C1D4E6;
+            font-weight: bold;
+            color: #FFF;
+        }
+        .exampletbByItem th {
+            text-align: center;
+        }
+        .exampletbByItem th, .exampletbByItem td {
+            border: 1px solid #C0C0C0;
+            padding: 3px;
+        }
+        .exampletbByItem td {
+            border: 1px solid #D4B5B5;
+        }
+            .exampletbByItem td td:first-child {
+                width: 55%;
+            }
+        .alt {
+            background-color: #E4E9F5;
+            color: #000;
+        }
+        .gridHead a:hover {
+            text-decoration: underline;
+        }
+        .description {
+            width: auto;
+        }
+        #changepass {
+            color: #0275d8;
+            text-decoration: none;
+            margin-bottom: 18px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body id="page-top">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
+        <!-- Content Wrapper -->
+        <div id="content-wrapper" class="d-flex flex-column">
+            <!-- Main Content -->
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="card shadow mb-4 bannercol">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-4" style="display:none">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="col-sm-4 col-form-label">User Create</label>
+                                            <select id="UserCreate" class="form-control" style="color:black"></select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3" style="display:none">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="col-sm-4 col-form-label">Company</label>
+                                            <select id="Company" class="form-control" style="color:black">
+                                                <option value="TAC">TAC</option>
+                                                <option value="AAC">AAC</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4" id="sforsales">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon">Sales Man</label>
+                                            <select id="Slm" class="form-control" style="color:black">
+                                                <option value="0">ALL</option>
+                                            </select>
+                                            <span class="input-group-addon "><span class="glyphicon glyphicon-user"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4" id="typeemp">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon">Customers</label>
+                                            <input type="text" class="form-control ui-autocomplete-input" id="Customer" />
+                                            <span class="input-group-addon "><span class="glyphicon glyphicon-user"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="form-group" id="typecuslog">
+                                        <div class="input-group">
+                                            <label class="input-group-addon">Customers</label>
+                                            <select class="selectpicker form-control" data-container="body" data-live-search="true" title="Select Customers" data-hide-disabled="true" id="selcus"><option value="0"></option></select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon">Purchase Date</label>
+                                            <input type="text" id="txtSOStartDate" style="background-color: white; cursor: pointer;" class="form-control">
+                                            <label class="input-group-addon">to</label>
+                                            <input type="text" id="txtSOEndDate" style="background-color: white; cursor: pointer;" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">Product Code<span class=" glyphicon glyphicon-hand-right"></span></span>
+                                            <input type="Text" name="search_query" class="form-control" placeholder="Search Product" id="txtSTKCOD" />
+                                            <span class="input-group-addon "><span class="glyphicon glyphicon-user"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="input-group-addon">Order Number</label>
+                                            <input type="text" id="txtsow" class="form-control" style="background-color:white;">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div id="forsales" style="display:none">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label class="col-sm-4 col-form-label">Sales Man</label>
+                                                <input id="SalemanName" class="form-control" style="background-color:white;" disabled="disabled">
+                                                <span class="input-group-addon "><span class="glyphicon glyphicon-user"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label class="col-sm-4 col-form-label">Customers</label>
+                                                <input id="UserID" placeholder="CUS Name" class="form-control" style="background-color:white;" disabled="disabled">
+                                                <span class="input-group-addon "><span class="glyphicon glyphicon-user"></span></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <label class="col-sm-2 col-form-label">Purchase Date</label>
+                                                <input type="date" id="txtSOStartDate" style="background-color: white; cursor: pointer;" class="form-control" name="txtSOStartDate">
+                                                <label class="col-sm-4 col-form-label">to</label>
+                                                <input type="date" id="txtSOEndDate" style="background-color: white; cursor: pointer;" class="form-control" name="txtSOEndDate">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-3" style="display:none">
+                                    <div class="form-group">
+                                        <div class="input-group">
+                                            <label class="col-sm-4 col-form-label">Status Order</label>
+                                            <select id="DType" name="DType" class="form-control">
+                                                <option value="1">Sales Order</option>
+                                                <option value="2">Back Order Confirm</option>
+                                                <option value="">=== ALL ===</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4" style="text-align:center">
+                                    <div class="form-group">
+                                        <input type="button" id="btnSeach" class="btn btn-info btn-large" value="Seach" style="width: 209px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-3" style="display:block;">
+                                    <div class="form-group">
+                                        <input type="button" id="btnexpdf" class="btn btn-warning btn-large" value="SalesOrderHistory">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Begin Page Content -->
+                <div class="container-fluid">
+                    <!-- Page Heading -->
+                    <div id="ordercur" style="display:block">
+                        <h1 class="h3 mb-2 text-gray-800">Track Order</h1>
+                        <!-- DataTales Example -->
+                        <div class="card shadow mb-4">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary"></h6>
+                            </div>
+                            <div class="card-body" id="mainorder">
+                                <div class="table-responsive">
+                                    <div class="fixed-table-container" id="fixed-table-container-1" style="z-index: 1;">
+                                        <table class="table table-bordered " id="dataTablex" width="100%" cellspacing="0">
+                                            <thead>
+                                                <tr>
+                                                    <th>Print</th>
+                                                    <th></th>
+                                                    <th>Customer Name</th>
+                                                    <th>Product Status</th>
+                                                    <th>Order Number</th>
+                                                    <th>Picking Status</th>
+                                                    <th>Invoice No.</th>
+                                                    <th>Delivery Date</th>
+                                                    <th>Order Quantity</th>
+                                                    <th>Total Order<br />Amount</th>
+                                                    <th>Salesperson</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="card-body" id="detailord" style="display:none">
+                                <div class="container">
+                                    <article class="card">
+                                        <header class="card-header"><a href="#" class="btn btn-warning" data-abc="true" id="bckword"> <i class="fa fa-chevron-left"></i> Back</a><label style="float: right;">Order Number. <span id="ordeno"></span></label></header>
+                                        <div class="card-body">
+                                            <article class="card">
+                                                <div class="card-body row">
+                                                    <div class="col"><strong>Customer:</strong> <br><span id="statucuscod"></span></div>
+                                                    <div class="col"><strong>Status:</strong> <br><span id="statusord"></span></div>
+                                                    <div class="col"> <strong>Purchase Date:</strong> <br><span id="orddate"></span></div>
+                                                    <div class="col"> <strong>Total Order Amount:</strong> <br><span id="ordtotal"></span></div>
+                                                </div>
+                                            </article>
+                                            <div class="track" style="display:none">
+                                                <div class="step active"> <span class="icon"> <i class="fa fa-check"></i> </span> <span class="text">Order received</span> </div>
+                                                <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Preparing items</span> </div>
+                                                <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Picking items</span> </div>
+                                                <div class="step active"> <span class="icon"> <i class="fa fa-user"></i> </span> <span class="text">Picking completed, awaiting packing</span> </div>
+                                                <div class="step"> <span class="icon"> <i class="fa fa-box"></i> </span> <span class="text">Packed, awaiting shipment</span> </div>
+                                                <div class="step"> <span class="icon"> <i class="fa fa-truck"></i> </span> <span class="text">Out for delivery</span> </div>
+                                            </div>
+                                            <hr>
+                                            <div class="fixed-table-container" id="fixed-table-container-2" style="z-index: 1;">
+                                                <div class="col"> <strong style="float: right;"></strong> <br></div>
+                                                <table class="table table-bordered" id="tblOrderDetail" width="100%" cellspacing="0">
+                                                    <thead>
+                                                        <tr>
+                                                            <th>No.</th>
+                                                            <th>Product Code</th>
+                                                            <th>Product Name</th>
+                                                            <th>Price per Unit</th>
+                                                            <th>Order Quantity</th>
+                                                            <th>Total Price</th>
+                                                        </tr>
+                                                    </thead>
+                                                    <tbody></tbody>
+                                                </table>
+                                            </div>
+                                            <hr>
+                                        </div>
+                                    </article>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="overflow-x:auto;overflow-y:scroll; padding: 0; border: 1px solid rgb(245, 244, 245); height: 1000px;display:none" class="single" id="salehis">
+                        <div class="col-md-12">
+                            <div class="input-group">
+                                <div class="form-group">
+                                    <div class="col-md-12">
+                                        <h1 class="h3 mb-2 text-gray-800">Order History</h1>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="card-header py-3">
+                                <h6 class="m-0 font-weight-bold text-primary"></h6>
+                            </div>
+                            <div>
+                                <div id="EmployeeViewGrid">
+                                    @Html.Partial("_PartialSaleOrder_History", Model.SaleOrder_History_Grid)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- /.container-fluid -->
+            </div>
+            <!-- End of Main Content -->
+        </div>
+        <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+    <div class="body__overlay"></div>
+    <!-- Start Offset MEnu -->
+    <div class="offsetmenu">
+        <div class="offsetmenu__inner">
+            <div class="offsetmenu__close__btn">
+                <a href="#"><i class="zmdi zmdi-close"></i></a>
+            </div>
+            <div class="off__contact">
+                <div class="logo">
+                    <a href="">
+                        My Account Customer
+                    </a>
+                </div>
+                <div class="offset__single">
+                    <div id="cusname">
+                    </div>
+                </div>
+                <p>DEFAULT BILLING ADDRESS</p>
+                <div class="offset__single">
+                    <div id="addcus">
+                    </div>
+                </div>
+            </div>
+            <div class="offset__widget">
+                <div class="offset__single">
+                    <h4 class="offset__title">Credit Limit</h4>
+                    <div id="crlicusaac">
+                    </div>
+                    <div id="crlicustac">
+                    </div>
+                </div>
+                <div class="offset__single">
+                    <h4 class="offset__title">Credit Balance</h4>
+                    <div id="crbarcusaac">
+                    </div>
+                    <div id="crbarcustac">
+                    </div>
+                </div>
+            </div>
+            <div class="offset__sosial__share">
+                <div class="offset__title" id="changepass">Change password</div>
+            </div>
+        </div>
+    </div>
+    <!-- End Offset MEnu -->
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
+    <!-- Logout Modal-->
+    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+         aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+                <div class="modal-footer">
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <a class="btn btn-primary" href="login.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ModalWarning -->
+    <div class="modal" id="myModalWarning" role="dialog">
+        <div class="modal-dialog">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <strong>Warning!</strong>
+                <button type="button" class="close" data-dismiss="modal" aria-label=" close"><span aria-hidden="true">&times;</span></button>
+                <div class="modal-body">
+                    <div id="textAlertWarning">Some text in the modal.</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- ModalWarning -->
+    <div class="modal" id="myModal">
+        <div class="modal-dialog" role="document" style="width: 360px;">
+            <div class="modal-content">
+                <div class="modal-header" style="background-color: #337AB7; padding: 16px 16px; color: #FFF; border-bottom: 2px dashed #337AB7; ">
+                    <h4 class="modal-title" id="myModalLabel"></h4>
+                </div>
+                <div class="modal-body" id="texterror">
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">เข้าสู่ระบบอีกครั้ง</button>
+                 </div>
+            </div>
+        </div>
+    </div>
+    <!-- Bootstrap core JavaScript-->
+    <script src="~/sb-admin/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="~/sb-admin/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <!-- Custom scripts for all pages-->
+    <script src="~/sb-admin/js/sb-admin-2.min.js"></script>
+    <!-- Page level plugins -->
+    <!-- Page level custom scripts -->
+    <script src="~/Scripts/webAddress.js"></script>
+    <link href="~/tmartcss/JSautocomplete/jquery-ui.css" rel="stylesheet" />
+    <script src="~/tmartcss/JSautocomplete/jquery-ui-1.9.2.js"></script>
+    <script src="~/Loadingmodal/js/modal-loading.js"></script>
+    <link href="~/Loadingmodal/css/modal-loading-animate.css" rel="stylesheet" />
+    <link href="~/Loadingmodal/css/modal-loading.css" rel="stylesheet" />
+    <script src="~/fixed-table-master/fixed-table.js"></script>
+    <link href="~/fixed-table-master/fixed-table.css" rel="stylesheet" />
+    <script src="~/Scripts/CheckFuntion/Loginexpire.js"></script>
+    <script type="text/javascript">
+    var id = '@Request.RequestContext.HttpContext.Session["ID"]';
+    var userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
+    var usertype = '@Request.RequestContext.HttpContext.Session["UserType"]';
+    var usercode = '@Request.RequestContext.HttpContext.Session["CUSCOD"]';
+    var usrexpire = '@Request.RequestContext.HttpContext.Session["expdatecal"]';
+    var cuscod;
+    resourceAddress.hash();
+
+    expire(usrexpire)
+    function checklogin(userid, id) {
+        $.ajax({
+            url: '@Url.Action("GetdataSessionlogin", "DataCenter")',
+            data: {
+                UsrID: userid,
+                SessionId: id
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                var splitstring = data.StrStstuslogin;
+                let text = splitstring;
+                const myArray = text.split("|");
+                let mysession = myArray[1];
+                let mystatus = myArray[0];
+                if (id != mysession) {
+                    $("#texterror").empty();
+                    $("#texterror").text("Sorry, your session has timed out. Please log in again.");
+                    $("#myModal").modal();
+                } else {
+                    if (mystatus == "0") {
+                        $("#texterror").empty();
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
+                        $("#myModal").modal();
+                    }
+                }
+            }
+        });
+    }
+        function checkPrivilege(userid, cuscod) {
+            $.ajax({
+                url: '@Url.Action("GetdataPrivilege", "DataCenter")',
+                data: {
+                    UsrID: userid,
+                    cuscod: cuscod
+                },
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    var splitstring = data.StrStstuslogin;
+                    if (splitstring == "1") {
+                        $("#texterror").empty();
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
+                        $("#myModal").modal();
+                        return false;
+                    }
+                }
+            });
+        }
+
+    if (usertype == "") {
+        window.location.replace("../Account/LogIn");
+    } else {
+        if (usertype == "1" || usertype == "2") {
+            if (param_values.numcuber != undefined) {
+                cuscod = atob(param_values.numcuber)
+            } else {
+                cuscod = "";
+            }
+            $("#changepass").css("display", "none");
+        } else if (usertype == "5") {
+            var cuscod = "";
+            $("#changepass").css("display", "none");
+        } else if (usertype == "6") {
+            $(window).on('load', function () {
+                checklogin(userid, id)
+            });
+            window.onclick = function () {
+                checklogin(userid, id)
+            };
+            $('.navbar-nav').click(function () {
+                checklogin(userid, id)
+            });
+            $(document).bind('mousedown keydown', function (ed, e) {
+                checklogin(userid, id)
+            });
+            $(window).scroll(function (e) {
+                checklogin(userid, id)
+            });
+            if (param_values.numcuber != undefined) {
+                cuscod = atob(param_values.numcuber)
+            } else {
+                cuscod = "";
+            }
+            if (cuscod != "") {
+                checkPrivilege(userid, cuscod)
+            }
+            getcus(cuscod);
+            $("#changepass").css("display", "block");
+        }
+    }
+
+        $("#userssmall").text("Profile " + userid);
+    if (usertype != "6") {
+        getslmandcus()
+        $("#sforsales").css('display', 'block');
+        $("#typeemp").css('display', 'block');
+        $("#typecuslog").css('display', 'none');
+        if (cuscod != "") {
+            $.ajax({
+                url: '@Url.Action("GetdatabyCus", "DataCenter")',
+                data: {
+                    cusel: cuscod
+                },
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    if (data.length == 1) {
+                        $("#Customer").val(data[0].CUSCOD + "|" + data[0].CUSNAM)
+                        $("#Slm").val(data[0].SLMCOD);
+                    }
+                }
+            });
+
+            $.ajax({
+                url: '@Url.Action("GetdatabyCus", "DataCenter")',
+                data: {
+                    cusel: cuscod
+                },
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
+                    $("#addcus").text(data[0].ADDR_01 + data[0].ADDR_02);
+                    $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
+                    $("#crlicustac").text("TAC: " + commaSeparateNumber(data[0].TACCrlimit));
+                    $("#crbarcusaac").text("AAC: " + commaSeparateNumber(data[0].AACBalance));
+                    $("#crbarcustac").text("TAC: " + commaSeparateNumber(data[0].TACBalance));
+                    $("#d1").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
+                    getCreditcuskey(cuscod);//ดึงวงเงินจากร้านแม่
+                }
+            });
+        }
+        getdata(userid)
+    } else {
+        $("#sforsales").css('display', 'block');
+        $("#typeemp").css('display', 'none');
+        $("#typecuslog").css('display', 'block');
+        $.ajax({
+            url: '@Url.Action("Getdateslmbycustomer", "DataCenter")',
+            data: {
+                cuscod: cuscod
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                var select = $("#Slm");
+                 select.children().remove();
+                $("#Slm").append($("<option custyp=" + data[0].SLMCOD + ">").val(data[0].SLMCOD).text(data[0].SLMCOD + "|" + data[0].SLMNAM));
+                $("#Slm").prop("disabled", true);
+            }
+        });
+
+        $.ajax({
+            url: '@Url.Action("Getdatalogincustomer", "DataCenter")',
+            data: {},
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                var select = $("#selcus");
+                select.children().remove();
+                $.each(data, function (key, value) {
+                    select.append('<option value=' + value.CUSCOD + '>' + value.CUSCOD + '|' + value.CUSNAM +'</option>');
+                });
+                $("#selcus").val(cuscod).change();
+            }
+        });
+        $.ajax({
+            url: '@Url.Action("GetdatabyCus", "DataCenter")',
+            data: {
+                cusel: cuscod
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
+                $("#addcus").text(data[0].ADDR_01 + data[0].ADDR_02);
+                $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
+                $("#crlicustac").text("TAC: " + commaSeparateNumber(data[0].TACCrlimit));
+                $("#crbarcusaac").text("AAC: " + commaSeparateNumber(data[0].AACBalance));
+                $("#crbarcustac").text("TAC: " + commaSeparateNumber(data[0].TACBalance));
+                $("#d1").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
+                getCreditcuskey(cuscod);//ดึงวงเงินจากร้านแม่
+            }
+        });
+        getcus(cuscod);
+    }
+        function getCreditcuskey(cusel) {
+            $.ajax({
+                url: '@Url.Action("GetdCustomerCredit", "DataCenter")',
+                data: {
+                    cusel: cusel
+                },
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
+                    $("#crlicustac").text("TAC: " + commaSeparateNumber(data[0].TACCrlimit));
+                }
+            });
+        }
+    function getdata(userid) {
+        $.ajax({
+            url: '@Url.Action("UserInsert", "Statuslist")',
+            data: { usre: userid },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                var select = $("#UserCreate");
+                select.append($("<option>").val(data.GroupUserInsert[0].Value).text(data.GroupUserInsert[0].Value));
+            }
+        });
+    }
+    function getcus(cuscod) {
+        $.ajax({
+            url: '@Url.Action("GetdatabyCus", "DataCenter")',
+            data: { cusel: cuscod },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                var typin = data[0].INACTIVE;
+                if (typin == "Y") {
+                    $("#textAlertWarning").empty();
+                    $("#textAlertWarning").text("Store Customer " + data[0].CUSNAM + "INACTIVE Please contact the department Credit Control or Sales Admin");
+                    $("#myModalWarning").modal();
+                    return false;
+                } else {
+                    $("#Customer").val(data[0].CUSCOD + "|" + data[0].CUSNAM)
+                    $("#Customer").prop("disabled", true);
+                }
+            }
+        });
+    }
+    function getslmandcus() {
+        $.ajax({
+            url: '@Url.Action("Getdateslm", "DataCenter")',
+            data: {
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                var select = $("#Slm");
+                select.children().remove();
+                if (usertype == "1") {
+                    select.append($("<option>").val("ALL").text("Sales Man"));
+                }
+                $(data).each(function (index, item) {
+                    select.append($("<option custyp=" + item.SLMCOD + ">").val(item.SLMCOD).text(item.SLMCOD + "|" + item.SLMNAM));
+                });
+            }
+        });
+    }
+    function commaSeparateNumber(val) {
+        while (/(\d+)(\d{3})/.test(val.toString())) {
+            val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
+        }
+        return val;
+    }
+    function nl1br(el) {
+        var str = el;
+        var res = str.split("/");
+        var x = res[1].length / 2;
+        var html = res[0] + "<br>" + res[1].substring(0, 27) + "<br>" + res[1].substring(27, x + x);
+        return html;
+    }
+    function nl2br(el) {
+        var html = el.substring(0, 15) + "<br>" + el.substring(15, 30) + "<br>" + el.substring(30, 50);
+        return html;
+    }
+    function nl3br(el) {
+        var len = el.length;
+        var x = len / 3;
+        if (len > 15) {
+            var html = el.substring(0, x) + "<br>" + el.substring(x, x + x) + "<br>" + el.substring(x + x, x + x + x);
+        } else {
+            var html = el;
+        }
+        return html;
+    }
+    $("#Customer").autocomplete({
+        selectFirst: true,
+        autoFocus: true,
+        source: function (request, response) {
+            var param = { Name: $("#Customer").val(), Slm: $('#Slm').val() };
+            $.ajax({
+                url: '@Url.Action("GetdateCusCode", "DataCenter")',
+                data: JSON.stringify(param),
+                dataType: "json",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                dataFilter: function (data) { return data; },
+                success: function (data) {
+                    response($.map(data.slice(0, 50), function (item) {
+                        return {
+                            value: item
+                        }
+                    }))
+                },
+                error: function (XMLhttpsRequest, textStatus, errorThrown) {
+                    alert(textStatus);
+                }
+            });
+        },
+        select: function (event, ui) {
+            var Code = ui.item.value;
+            var split_StockCode = Code.split('|');
+            var item = "";
+            if (split_StockCode[0] != "") {
+                item = split_StockCode[0].trim();
+            }
+            $.ajax({
+                url: '@Url.Action("GetdatabyCus", "DataCenter")',
+                data: {
+                    cusel: item
+                },
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    var typin = data[0].INACTIVE;
+                    if (typin == "Y") {
+                        $("#textAlertWarning").empty();
+                        $("#textAlertWarning").text("Store Customer " + data[0].CUSNAM + "INACTIVE Please contact the department Credit Control or Sales Admin");
+                        $("#myModalWarning").modal();
+                        $("#Customer").val("");
+                        return false;
+                    } else {
+                        $("#Customer").val(data[0].CUSCOD + "|" + data[0].CUSNAM)
+                    }
+                }
+            });
+        },
+        minLength: 2//minLength as 2, it means when ever user enter 2 character in TextBox the AutoComplete method will fire and get its source data.
+    });
+        $("#txtSTKCOD").autocomplete({
+            selectFirst: true,
+            autoFocus: true,
+            source: function (request, response) {
+                var res = [];
+                var MyIndexValue = $("#Customer").val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+
+                } else { res[0] = "(ALL)"; }
+                var valCompany = $('#Company').val()
+                var param = {
+                    Name: $('#txtSTKCOD').val(),
+                    Xcus: res[0],
+                    XvalCompany: 'ALL',
+                    Xval:"1"
+                };
+                $.ajax({
+                    url: '@Url.Action("GetdateStockCode", "Home")',
+                    data: JSON.stringify(param),
+                    dataType: "json",
+                    type: "POST",
+                    contentType: "application/json; charset=utf-8",
+                    dataFilter: function (data) { return data; },
+                    success: function (data) {
+                        response($.map(data.slice(0, 50), function (item) {
+                            return {
+                                value: item
+                            }
+                        }))
+                    },
+                    error: function (XMLhttpsRequest, textStatus, errorThrown) {
+                        alert(textStatus);
+                    }
+                });
+            }
+        });
+        $(document).on("click", "#myModal", function () {
+            if (usertype == "6") {
+                $("#myModal").modal({ backdrop: "static" });
+            }
+        });
+        $('#btnlogin').click(function () {
+            if (usertype == "6") {
+                window.location.replace("../Account/LogIn");
+            }
+        });
+        $('#changepass').click(function () {
+            if (usertype == "6") {
+                window.location.replace("../ChangePassword/Index");
+            }
+        });
+        $('.button-left').click(function () {
+            $('.sidebar').toggleClass('fliph');
+        });
+        $('li a .toggle__menu').on('click', function () {
+            $('.offsetmenu').addClass('offsetmenu__on');
+            $('.body__overlay').addClass('is-visible');
+        });
+        $('.offsetmenu__close__btn').on('click', function () {
+            $('.offsetmenu').removeClass('offsetmenu__on');
+            $('.body__overlay').removeClass('is-visible');
+        });
+    $(document).on('click', '#btnSeach', function () {
+        fnGetOrder();
+        $("#salehis").css('display', 'none');
+        $("#ordercur").css("display", "block");
+        $("#detailord").css('display', 'none');
+        $("#mainorder").css("display", "block");
+    });
+    var now = new Date();
+    var day = ("0" + now.getDate()).slice(-2);
+    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+    var today = (day) + "/" + (month) + "/" + now.getFullYear();
+    $('input[id=txtSOStartDate]').val(today);
+    $('input[id=txtSOEndDate]').val(today);
+    $('input[id=txtSOStartDate]').datepicker({ dateFormat: 'dd/mm/yy' }).val();
+    $('input[id=txtSOEndDate]').datepicker({ dateFormat: 'dd/mm/yy' }).val();
+    $("input[type=text]").attr("autocomplete", "off");
+    var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
+    var fixedTable2 = fixTable(document.getElementById('fixed-table-container-2'));
+    function fnGetOrder() {
+        var User = $('#UserCreate').val();
+        var slm = $('#slm').val();
+        var Usertype = usertype;
+        var _CUSCOD = "";
+        var res = [];
+        if (Usertype != "1") {
+            slm = $('#slm').val();
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                } else { res[0] = "0"; }
+                _CUSCOD = res[0];
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+        }
+        else {
+            var MyIndexValue = $('#Customer').val();
+            if (MyIndexValue !== "") {
+                res = MyIndexValue.split("|");
+            } else { res[0] = "0"; }
+            _CUSCOD = res[0];
+        }
+        var _SOStartDate = $('#txtSOStartDate').val();
+        var _SOEndDate = $('#txtSOEndDate').val();
+        var _STKCOD = $('#txtSTKCOD').val();
+        var _DType = $('#DType').val();
+        var _Sow = $('#txtsow').val();
+        var UserCreate = $('#UserCreate').val();
+        slm = $('#Slm').val();
+        if (_STKCOD == "ค้นหาสินค้า") {
+            _STKCOD = "";
+        }
+        else {
+            if (_STKCOD.includes('|')) {
+                _STKCOD = _STKCOD.split('|')[0].trim();
+            }
+        }
+        var _latitude = "";
+        var _longitude = "";
+        var _str = "";
+        $('#ordercur').css("dispaly", "block");
+        var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true, });
+        $.ajax({
+            url: '@Url.Action("GetOrder", "Statuslist")',
+            data: {
+                CUSCOD: _CUSCOD
+                , SLMCODE: slm
+                , SO_SDate: _SOStartDate
+                , SO_EDate: _SOEndDate
+                , STKCOD: _STKCOD
+                , DType: _DType
+                , SOW: _Sow
+                , UserCreate: UserCreate
+                , Usertype: Usertype
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                $('#fixed-table-container-1 tbody:last-child').html("");
+                if (data.Getdata.length != 0) {
+                    loading.out()
+                    var SubmithtmlPage = '';
+                    for (var i = 0; i < data.Getdata.length; i++) {
+                        _latitude = data.Getdata[i].val.Latitude;
+                        _longitude = data.Getdata[i].val.Longitude;
+                        _str = data.Getdata[i].val.Order_Status;
+                        SubmithtmlPage += '<tr><td align="center"><a id="myHrefPrint" Cus="' + data.Getdata[i].val.Customer + '"  ORD_ID="' + data.Getdata[i].val.ORD_ID + '" ORD_DocNo="' + data.Getdata[i].val.ORD_DocNo + '" DType="' + data.Getdata[i].val.DType + '" class="fa fa-print fa-3" style="font-size: 28px;cursor: pointer;color: #1BB847;"></a></td>';
+                        SubmithtmlPage += '<td style="width: 45px; position: absolute; left: 0px;"><button id="myHref"  cus="' + data.Getdata[i].val.Customer + '" totalamt="' + data.Getdata[i].val.ORD_TotalAmt + '"  statusdate="' + data.Getdata[i].val.ORD_Date + '"   status="' + data.Getdata[i].val.Order_Status + '"  Cus="' + data.Getdata[i].val.Customer + '"  ORD_ID="' + data.Getdata[i].val.ORD_ID + '" ORD_DocNo="' + data.Getdata[i].val.ORD_DocNo + '" DType="' + data.Getdata[i].val.DType + '"><span class="purchase-card-buttons__button-content"> View Order Details </span></button></td>';
+                        SubmithtmlPage += '<td>' + nl1br(data.Getdata[i].val.Customer) + '</td>';
+                        SubmithtmlPage += '<td>' + data.Getdata[i].val.Order_Status + '<br>';
+                        if (_latitude != "") {
+                            SubmithtmlPage += '<a  id="myHrefmap" latitude ="' + _latitude + '" longitude ="' + _longitude + '" style="color: blue;cursor: pointer;"> >>Track Driver<< </a>';
+                        }
+                        SubmithtmlPage += '</td>';
+                        if (data.Getdata[i].val.ORD_DocN != "") {
+                            SubmithtmlPage += '<td>' + data.Getdata[i].val.ORD_DocNo + '<br>Order Date:' + data.Getdata[i].val.ORD_Date.substring(0,10)+ '</td>';
+                        } else {
+                            SubmithtmlPage += '<td></td>';
+                        }
+                        if (data.Getdata[i].val.Picking != "") {
+                            SubmithtmlPage += '<td>' + data.Getdata[i].val.Picking + '<br>Date:' + data.Getdata[i].val.Picking_Date + '</td>';
+                        } else {
+                            SubmithtmlPage += '<td></td>';
+                        }
+                        if (data.Getdata[i].val.Invoice != "") {
+                            SubmithtmlPage += '<td>' + data.Getdata[i].val.Invoice + '<br>Date:' + data.Getdata[i].val.Invoice_Date + '</td>';
+                        } else {
+                            SubmithtmlPage += '<td></td>';
+                        }
+                        SubmithtmlPage += '<td>' + data.Getdata[i].val.DeliveryDate + '</td>';
+                        SubmithtmlPage += '<td>' + data.Getdata[i].val.QTY + '</td>';
+                        SubmithtmlPage += '<td>' + commaSeparateNumber(data.Getdata[i].val.ORD_TotalAmt) + '</td>';
+                        SubmithtmlPage += '<td>' + data.Getdata[i].val.SlmCod + '</td>';
+                        SubmithtmlPage += '</tr>';
+                    }
+                    $('#fixed-table-container-1  tbody:last-child').append(SubmithtmlPage);
+                } else {
+                    loading.out()
+                    $("#textAlertWarning").empty();
+                    $("#textAlertWarning").text("No data found for your search.");
+                    $("#myModalWarning").modal();
+                }
+                var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
+            }
+        });
+    }
+        function subdate(_datesup) {
+            var from = _datesup;
+            var numbers = from.match(/\d+/g);
+            var date = new Date(numbers[2], numbers[0] - 1, numbers[1]);
+        }
+    function checkststusorder(status, callback) {
+        var valchk;
+        if (status = "") {
+            valchk == "0";
+        }
+        else if (status == "Order received") {
+            valchk = "1";
+        }
+        else if (status == "Preparing items") {
+            valchk = "2";
+        }
+        else if (status == "Picking items") {
+            valchk = "3";
+        }
+        else if (status == "Picking completed, awaiting packing") {
+            valchk = "4";
+        }
+        else if (status == "Packed, awaiting shipment") {
+            valchk = "5";
+        }
+        else if (status == "Out for delivery") {
+            valchk = "6";
+        }
+        callback(valchk);
+    }
+    $(document).delegate('#myHrefPrint', 'click', function () {
+        var ORD_ID = $(this).attr('ORD_ID');
+        var ORD_DocNo_x = $(this).attr('ORD_DocNo');
+        var ORD_DocNo = ORD_DocNo_x.substring(0, 11)   //
+        var ORD_Cus = $(this).attr('cus');
+        window.open("../Report/SOForm.aspx?SONUM=" + ORD_DocNo + "/" + ORD_Cus);
+        return false;
+    });
+    $(document).delegate('#myHrefmap', 'click', function () {
+        var latitude = $(this).attr('latitude');
+        var longitud = $(this).attr('longitude');
+        window.open('https://maps.google.com/maps?q=' + latitude + ',' + longitud);
+        return false;
+    });
+    $(document).delegate('#myHref', 'click', function () {
+        var ORD_ID = $(this).attr('ORD_ID');
+        var ORD_DocNo_x = $(this).attr('ORD_DocNo');
+        var ORD_DocNo = ORD_DocNo_x.substring(0, 11)
+        var DType = $(this).attr('DType');
+        var status = $(this).attr('status');
+        console.log("ORD_DocNo_x = " + ORD_DocNo_x);
+        console.log("ORD_DocNo = " + ORD_DocNo);
+        var statusdate = $(this).attr('statusdate');
+        var totalamt = $(this).attr('totalamt');
+        var cus = $(this).attr('cus');
+        $("#detailord").css("display", "block");
+        $("#mainorder").css("display", "none");
+        $('#ordeno').text(ORD_DocNo);
+        $('#statusord').text(status);
+        $('#orddate').text(statusdate);
+        $('#ordtotal').text(commaSeparateNumber(totalamt));
+        $('#statucuscod').text(cus);
+        fnGetOrderDetail(ORD_ID, ORD_DocNo, DType);
+    });
+    $(document).on('click', '#bckword', function () {
+        $("#detailord").css("display", "none");
+        $("#mainorder").css("display", "block");
+    });
+    function fnGetOrderDetail(ORD_ID, ORD_DocNo, DType) {
+        var res = [];
+        var MyIndexValue = $('#Customer').val();
+        if (MyIndexValue !== "") {
+            res = MyIndexValue.split("|");
+        } else { res[0] = "0"; }
+        var CUSCOD = res[0];
+        var slm = $('#slm').val();
+        var _STKCOD = $('#txtSTKCOD').val();
+        if (_STKCOD == "Search Products") {
+            _STKCOD = "";
+        }
+        $.ajax({
+            url: '@Url.Action("GetOrderDetail", "Statuslist")',
+            data: {
+                ORD_ID: ORD_ID
+                , ORD_DocNo: ORD_DocNo
+                , DType: DType
+                , STKCOD: _STKCOD
+                , CUSCOD: CUSCOD
+            },
+            type: "POST",
+            dataType: "JSON",
+            success: function (data) {
+                $('#fixed-table-container-2 tbody:last-child').html("");
+                if (data != "") {
+                    if (data.Getdata.length != 0) {
+                        var SubmithtmlPage = '';
+                        for (var i = 0; i < data.Getdata.length; i++) {
+                            SubmithtmlPage += '<tr><td align="center">' + data.Getdata[i].val.RowNo + '</td>';
+                            SubmithtmlPage += '<td align="left">' + data.Getdata[i].val.VSTKCOD + '</td>';
+                            SubmithtmlPage += '<td align="left">' + nl3br(data.Getdata[i].val.VSTKDES) + '</td>';
+                            SubmithtmlPage += '<td align="right">' + commaSeparateNumber(data.Getdata[i].val.VSalePrice) + '</td>';
+                            SubmithtmlPage += '<td align="center">' + data.Getdata[i].val.AmtQty + '</td>';
+                            SubmithtmlPage += '<td align="right">' + commaSeparateNumber(data.Getdata[i].val.TotalAmt) + '</td>';
+                            SubmithtmlPage += '</tr>';
+                        }
+                        $('#fixed-table-container-2 tbody:last-child').append(SubmithtmlPage);
+                    }
+                }
+                var fixedTable2 = fixTable(document.getElementById('fixed-table-container-2'));
+            }
+        });
+    }
+        $(document).on("click", "#nextsp", function () {
+            var _CUSCOD;
+            var Usertype = usertype;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                    _CUSCOD = res[0];
+                } else {
+                    _CUSCOD = "";
+                }
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+            var cusel = _CUSCOD;
+            if (cusel == "") {
+                window.location.replace("../SeleScrCustomer/dashboard");
+            } else {
+                window.location.replace("../SeleScrCustomer/dashboard?numcuber=" + btoa(cusel));
+            }
+        });
+        $(document).on("click", "#btnhisto", function () {
+            var _CUSCOD;
+            var Usertype = usertype;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                    _CUSCOD = res[0];
+                } else {
+                    _CUSCOD = "";
+                }
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+            var cusel = _CUSCOD;
+            if (cusel == "") {
+                window.location.replace("../Historypurchase/Index");
+            } else {
+                window.location.replace("../Historypurchase/Index?numcuber=" + btoa(cusel));
+            }
+        });
+        $(document).on("click", "#btnstatus", function () {
+            var _CUSCOD;
+            var Usertype = usertype;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                    _CUSCOD = res[0];
+                } else {
+                    _CUSCOD = "";
+                }
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+            var cusel = _CUSCOD;
+            if (cusel == "") {
+                window.location.replace("../Statuslist/Index");
+            } else {
+                window.location.replace("../Statuslist/Index?numcuber=" + btoa(cusel));
+            }
+        });
+        $(document).on("click", "#navbarhome", function () {
+            var Usertype = usertype;
+            var _CUSCOD;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                    _CUSCOD = res[0];
+                } else {
+                    _CUSCOD = "";
+                }
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+            var cusel = _CUSCOD;
+            if (cusel == "") {
+                window.location.replace("../Account/Login");
+            } else {
+                window.location.replace("../Orderlist/Index?numcuber=" + btoa(cusel));
+            }
+        });
+        $(document).on("click", "#navbarshowdetail", function () {
+            var Usertype = usertype;
+            var _CUSCOD;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                    _CUSCOD = res[0];
+                } else {
+                    _CUSCOD = "";
+                }
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+            var cusel = _CUSCOD;
+            if (cusel == "") {
+                window.location.replace("../Account/Login");
+            } else {
+                window.location.replace("../Cart/Index?numcuber=" + btoa(cusel));
+            }
+        });
+        $(document).on("click", "#navbarsselecus", function () {
+            var Usertype = usertype;
+            var _CUSCOD;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                    _CUSCOD = res[0];
+                } else {
+                    _CUSCOD = "";
+                }
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+
+            var cusel = _CUSCOD;
+            if (cusel == "") {
+                window.location.replace("../Account/Login");
+            } else {
+                window.location.replace("../SeleScrCustomer/dashboard?numcuber=" + btoa(cusel));
+            }
+        });
+        $(document).on("click", "#btnstatement", function () {
+            var Usertype = usertype;
+            var _CUSCOD;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                    _CUSCOD = res[0];
+                } else {
+                    _CUSCOD = "";
+                }
+            } else if (Usertype == "6") {
+                _CUSCOD = $('#selcus').val();
+            }
+            var cusel = _CUSCOD;
+            if (cusel == "") {
+                window.location.replace("../SelectPrintStatement/Index");
+            } else {
+                window.location.replace("../SelectPrintStatement/Index?numcuber=" + btoa(cusel));
+            }
+        });
+        $(document).on("click", "#btnexpdf", function () {
+            var res = [];
+            var Usertype = usertype;
+            if (Usertype != "6") {
+                var MyIndexValue = $('#Customer').val();
+                if (MyIndexValue !== "") {
+                    res = MyIndexValue.split("|");
+                } else { res[0] = "0"; }
+            } else if (Usertype == "6") {
+                res[0] = $('#selcus').val();
+            }
+            var StockCode = $('#txtSTKCOD').val();
+            var split_StockCode = StockCode.split('|');
+            var cus = res[0];
+            var STKCOD = split_StockCode[0];
+            var StartDate = $('#txtSOStartDate').val();
+            var EndDate = $('#txtSOEndDate').val();
+            var Slm = "";
+            Slm = $('#Slm').val();
+            if (Slm == "ALL") {
+                Slm = "0";
+            } else {
+                Slm = $('#Slm').val();
+            }
+            var UserCreate = userid;
+            var typeUser = usertype;
+            $("#salehis").css('display', 'block');
+            $("#ordercur").css("display", "none");
+            if (cus == '0') {
+                cus = "";
+            }
+            if (STKCOD == 'Search Products') {
+                STKCOD = "";
+            }
+            if (StartDate == '') {
+                StartDate = null;
+            }
+            if (EndDate == '') {
+                EndDate = null;
+            }
+            if (cus == "" && STKCOD == "" && StartDate == null && EndDate == null) {
+                $("#textAlertWarning").empty();
+                $("#textAlertWarning").text("Please select search criteria.");
+                $("#myModalWarning").modal(); return false;
+            }
+            var url = '@Url.Action("Order_History")';
+            $.get(url, {
+                cus: cus,
+                STKCOD: STKCOD,
+                StartDate: StartDate,
+                EndDate: EndDate,
+                Slm: Slm,
+                UserCreate: UserCreate,
+                typeUser: typeUser
+            },
+            function (result) {
+            $('#EmployeeViewGrid').html(result);
+        });
+    });
+    </script>
+</body>
+</html>

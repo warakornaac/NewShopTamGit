@@ -1,0 +1,225 @@
+﻿@model NewShopTAM.Models.LoginUserViewModel
+
+@{
+
+    // Layout = "~/Views/Shared/layout_tmart.cshtml";
+}
+
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Login</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="~/tmartcss/css/bootstrap.min.css">
+    <!-- Place favicon.ico in the root directory -->
+    <!--<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">-->
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+    <!-- All css files are included here. -->
+    <!-- Bootstrap fremwork main css -->
+    <link rel="stylesheet" href="~/tmartcss/css/bootstrap.min.css">
+    <!-- Owl Carousel main css -->
+    <link rel="stylesheet" href="~/tmartcss/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="~/tmartcss/css/owl.theme.default.min.css">
+    <!-- This core.css file contents all plugings css file. -->
+    <link rel="stylesheet" href="~/tmartcss/css/core.css">
+    <!-- Theme shortcodes/elements style -->
+    <link rel="stylesheet" href="~/tmartcss/css/shortcode/shortcodes.css">
+    <!-- Theme main style -->
+    <link rel="stylesheet" href="~/tmartcss/style.css">
+    <!-- Responsive css -->
+    <link rel="stylesheet" href="~/tmartcss/css/responsive.css">
+    <!-- User style -->
+    <link rel="stylesheet" href="~/tmartcss/css/custom.css">
+
+    <!-- Modernizr JS -->
+    <script src="~/tmartcss/js/vendor/modernizr-2.8.3.min.js"></script>
+
+    <!-- jquery latest version -->
+    <script src="~/tmartcss/js/vendor/jquery-1.12.0.min.js"></script>
+    <!-- Bootstrap framework js -->
+    <script src="~/tmartcss/js/bootstrap.min.js"></script>
+
+    <link href="~/cardoorcss/css/font-awesome.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <style>
+        body {
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(-120deg, #ef3b13fa, #1a30d0);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+        }
+
+        .field-icon {
+            float: right;
+            margin-left: -25px;
+            margin-top: -20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .container {
+            padding-top: 50px;
+            margin: auto;
+        }
+
+        #getdiploma {
+            position: relative;
+            padding: 0 35px 5px 39px;
+            /* margin-bottom: 125px; */
+            border-radius: 16px;
+            /* background-color: #282A35; */
+            background-color: #141689;
+            color: #FFC0C7;
+            font-family: 'Source Sans Pro', sans-serif;
+            margin-top: -100px;
+        }
+    </style>
+</head>
+
+<body>
+    <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Body main wrapper start -->
+    <div class="wrapper fixed__footer">
+        <!-- Warning Alert -->
+        <div class="body__overlay"></div>
+        <!-- Start Offset Wrapper -->
+        <div class="offset__wrapper">
+            <!-- Start Search Popap -->
+            <div class="search__area">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="search__inner">
+                                <form action="#" method="get">
+                                    <input placeholder="Search here... " type="text">
+                                    <button type="submit"></button>
+                                </form>
+                                <div class="search__close__btn">
+                                    <span class="search__close__btn_icon"><i class="zmdi zmdi-close"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Search Popap -->
+        </div>
+        <!-- End Offset Wrapper -->
+        <!-- Start Login Register Area -->
+        <div class="htc__login__register bg__white ptb--150" style="background: linear-gradient(-120deg,#ef3b13fa,#1a30d0);" @*style="background: rgba(0, 0, 0, 0) url(images/bg/5.jpg) no-repeat scroll center center / cover ;"*@>
+            @*<div class="container">*@
+            <!--  <div class="row">
+                <div class="col-md-6 col-md-offset-3">
+                    <ul class="login__register__menu" role="tablist">
+                        <li role="presentation" class="login active"><a href="#login" role="tab" data-toggle="tab">Login</a></li>
+
+                        @*<li role="presentation" class="register"><a href="#register" role="tab" data-toggle="tab">Register</a></li>*@
+                    </ul>
+                </div>
+            </div>-->
+            @*<div id="getdiploma">
+                    <div style="padding: 28px 0;font-size: 2rem;line-height: 1.25em;">
+                        <h1 style="color:wheat">แจ้งปิดปรับปรุงระบบ ชั่วคราว!</h1><br /> เรียน ผู้ใช้งานทุกท่าน<br />ทางบริษัทขอแจ้งให้ทราบ จะปิดปรับปรุงระบบ <br />ในวันเสาร์ที่ 04 กุมภาพันธ์ 2566 เวลา 18:00 – วันอาทิตย์ที่ 05 กุมภาพันธ์ 2566 เวลา 08:00 น. <br />ขออภัยในความไม่สะดวก
+                    </div>
+                </div>*@
+            <!-- Start Login Register Content -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-md-offset-3">
+                        <img src="~/images/logo/AACTAC185x70.jpg" style="width:30%" /><span style="font-size: 36px; transition: all 0.4s ease 0s; color: beige; "> Login Env TEST </span>
+                    </div>
+                    <div class="col-md-6 col-md-offset-3">
+                        <div class="panel panel-default" style="    background-color: #f1ecb645;">
+                            <div class="panel-body">
+                                @using (Html.BeginForm())
+                                {
+                                    <form class="form-horizontal" method="" action="">
+                                        <div class="form-group">
+                                            @Html.LabelFor(u => u.Usre)
+                                            @Html.TextBoxFor(u => u.Usre, new { required = "required", @class = "form-control" })
+                                            @Html.ValidationMessageFor(u => u.Usre)
+                                        </div>
+                                        <div class="form-group">
+                                            @Html.LabelFor(u => u.Password)
+                                            @Html.PasswordFor(u => u.Password, new { required = "required", @class = "form-control", @id = "password-field" })
+                                            @Html.ValidationMessageFor(u => u.Password)
+                                            <span toggle="#password-field" class="fa fa-fw fa-eye field-icon toggle-password"></span>
+                                            <div class="col-md-6">
+                                                <div style="color:red">@Html.ValidationSummary(true, "Login Failed, check details")</div>
+                                            </div>
+                                        </div>
+                                        @Html.Hidden("Latitude")
+                                        @Html.Hidden("Longitude")
+                                        <div class="htc__login__btn mt--30">
+                                            <input type="submit" value="Log In" class="btn btn-default" />
+                                            @*<a href="#">Login</a>*@
+                                        </div>
+                                    </form>
+                                }
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Login Register Content -->
+        </div>
+    </div>
+    <!-- End Login Register Area -->
+    @*</div>*@
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <script>
+        Swal.fire({
+            icon: 'warning',
+            title: 'Login Fail',
+            text: '@TempData["ErrorMessage"]',
+            confirmButtonText: 'OK',
+            confirmButtonColor: '#d33'
+        });
+        </script>
+    }
+    <script type="text/javascript">
+        //$("#myModalWarninglog").modal();
+        // alert("แจ้งปิดปรับปรุงระบบ ชั่วคราว!เรียน ผู้ใช้งานทุกท่าน ทางไอทีขอแจ้งให้ทราบ ระบบจะปิดปรับปรุง ในวันเสาร์ที่ 04 กุมภาพันธ์ 2566 เวลา 18:00 – วันอาทิตย์ เวลา 08:00 น. ขออภัยในความไม่สะดวก")
+        $(".toggle-password").click(function () {
+
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {
+                input.attr("type", "password");
+            }
+        });
+
+        $(document).ready(function () {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    var latitude = position.coords.latitude;
+                    var longitude = position.coords.longitude;
+
+                    // Set the hidden fields with the coordinates
+                    $('input[name="Latitude"]').val(latitude);
+                    $('input[name="Longitude"]').val(longitude);
+                });
+            } else {
+                console.log("Geolocation is not supported by this browser.");
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>

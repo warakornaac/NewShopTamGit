@@ -1,0 +1,103 @@
+﻿@using NewShopTAM.Models;
+
+<hr style="border-top: 1px solid #f4f4f4;">
+
+<div class="row">
+    <div class="col-sm-12 col-md-12">
+        <div class="table-responsive" style="margin-bottom: 0;">
+            <table id="tablePromotionDetail" class="table table-bordered table-hover table-striped" style="margin-bottom: 0px;">
+                <thead>
+                    <tr style="background-color:lightseagreen;">
+                        <th class="vcenter"> # </th>
+                        <th class="vcenter"> เหตุผล </th>
+                        <th class="vcenter"> แพ็คละ </th>
+                        <th class="vcenter"> จำนวนแพ็ค </th>
+                        <th class="vcenter"> รวมเป็นเงิน </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @{
+                        int rowList = 0;
+                        double sumPackAmtAll = 0;
+                        if (ViewBag.customerRegisterList.Count > 0)
+                        {
+                            foreach (var rowData in ViewBag.customerRegisterList)
+                            {
+                                string rowColorApprove = "";
+                                rowList++;
+                                sumPackAmtAll = sumPackAmtAll + @rowData.SumPackAmt;
+                                if (@rowData.FlagApprove == "Y")
+                                    rowColorApprove = "bisque";
+                                <tr style="background-color: @rowColorApprove;">
+                                    <td class="vcenter sticky-col first-col" style="cursor: pointer;"> @rowList </td>
+                                    <td class="vcenter" style="cursor: pointer;">
+                                        @{
+                                            string fullTextReason = string.IsNullOrWhiteSpace(rowData.Reason) ? "-" : rowData.Reason;
+                                            string shortTextReason = fullTextReason.Length > 30 ? fullTextReason.Substring(0, 30) : fullTextReason;
+                                            bool isTruncated = fullTextReason.Length > 30;
+                                        }
+                                        @shortTextReason
+                                        @if (isTruncated)
+                                        {
+                                            <a href="javascript:void(0);"
+                                               onclick="showFullTextReason('@Html.Raw((fullTextReason ?? "-").Replace("'", "\\'").Replace("\r", "").Replace("\n", "\\n"))')">
+                                                ...<span style="font-size: small;">more</span>
+                                            </a>
+                                        }
+                                    </td>
+                                    <td class="vright"> @string.Format("{0:N0}", rowData.PackAmt) </td>
+                                    <td class="vcenter">
+                                        @rowData.PackQty
+                                        @if (@rowData.FlagApprove == "Y")
+                                        {
+                                            <span class="label label-danger mt-1">
+                                                รอ Approve
+                                                @if (!string.IsNullOrEmpty(@rowData.PackQtyPedingApprove))
+                                                {
+                                                    @("(" + rowData.PackQtyPedingApprove + ")")
+                                                }
+                                            </span>
+                                        }
+                                    </td>
+                                    <td class="vright"> @string.Format("{0:N0}", rowData.SumPackAmt) </td>
+                                </tr>
+                            }
+                            <tr style="background-color: #cbcbcb;">
+                                <td class="bg-gray-100 vcenter font-weight-bold" colspan="4"> รวม </td>
+                                <td class="bg-gray-100 vright font-weight-bold"> @string.Format("{0:N0}", sumPackAmtAll) </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr style="background-color: #cbcbcb; ">
+                                <td class="bg-gray-100 vcenter font-weight-bold" colspan="5"> --ไม่พบข้อมูล-- </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script defer>
+    var promotionSeq = $("#promotionSeq").val();
+    //onsole.log("promotionSeq = " + promotionSeq);
+    function escapeHtml(unsafe) {
+        return unsafe
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function showFullTextReason(text) {
+        Swal.fire({
+            title: 'เหตุผล',
+            html: `<div style="text-align: center;">${text.replace(/\n/g, '<br>')}</div>`,
+            confirmButtonColor: '#5bc0de',
+            confirmButtonText: '<i class="fa fa-times"></i> ปิด',
+        });
+    }
+</script>
