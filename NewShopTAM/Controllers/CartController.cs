@@ -18,9 +18,7 @@ namespace NewShopTAM.Controllers
 {
     public class CartController : Controller
     {
-        //
         // GET: /Cart/
-
         public ActionResult Index()
         {
             //this.Session["UserType"] = "";
@@ -38,18 +36,14 @@ namespace NewShopTAM.Controllers
                 {
                     string Docdisplay = string.Empty;
                     string CUSCOD = string.Empty;
-
                     Docdisplay = Request.QueryString["numcuber"];
                     if (Docdisplay != null)
                     {
-
                         byte[] data = System.Convert.FromBase64String(Docdisplay);
                         CUSCOD = System.Text.ASCIIEncoding.ASCII.GetString(data);
-
                         // Doc = Docdisplay;
                         // Docsub = Docdisplay;
                     }
-
                     var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
                     SqlConnection Connection = new SqlConnection(connectionString);
                     Connection.Open();
@@ -58,58 +52,40 @@ namespace NewShopTAM.Controllers
                     command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
                     command.Parameters.AddWithValue("@UsrTyp", this.Session["UserType"]);
-                    //commandCrTerm.ExecuteNonQuery();
                     SqlDataReader cusdis = command.ExecuteReader();
                     while (cusdis.Read())
                     {
                         discount = cusdis["Discount"].ToString();
                     }
-                    //CrTerm.Dispose();
-                    //S20161016
                     cusdis.Close();
                     cusdis.Dispose();
                     ViewBag.Xcusdiscount = discount;
                     command.Dispose();
-
-
                     List<SelectListItem> Code = new List<SelectListItem>();
                     var commandTermDay = new SqlCommand("P_CusCreditTermDay", Connection);
                     commandTermDay.CommandType = CommandType.StoredProcedure;
-
-
-                    //commandCrTerm.ExecuteNonQuery();
                     SqlDataReader TermDay = commandTermDay.ExecuteReader();
                     while (TermDay.Read())
                     {
                         Code.Add(new SelectListItem()
                         {
-                            // ID = rev_CUSTYP.GetValue(0).ToString(),
                             Value = TermDay["Lookup ID"].ToString(),
                             Text = TermDay["Lookup ID"].ToString()
                         });
-
                     }
-                    //CrTerm.Dispose();
-                    //S20161016
                     TermDay.Close();
                     TermDay.Dispose();
-
                     commandTermDay.Dispose();
-
                     ViewBag.TermDay = Code;
-
-
                     string company = string.Empty;
                     var commandCom = new SqlCommand("P_Get_Companny_catalog", Connection);
                     commandCom.CommandType = CommandType.StoredProcedure;
                     commandCom.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
-                    // commandCom.ExecuteNonQuery();
                     SqlDataReader CrCom = commandCom.ExecuteReader();
                     while (CrCom.Read())
                     {
                         company = CrCom["Company"].ToString();
                     }
-
                     CrCom.Close();
                     CrCom.Dispose();
                     commandCom.Dispose();
@@ -129,10 +105,7 @@ namespace NewShopTAM.Controllers
             Connection.Open();
             try
             {
-
                 var command = new SqlCommand("P_CheckOrderCart_Catalog", Connection);
-
-                // var command = new SqlCommand("P_ShoppingCart_list", Connection);
                 command.CommandTimeout = 0;
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
@@ -140,35 +113,22 @@ namespace NewShopTAM.Controllers
                 command.Parameters.AddWithValue("@Company", Company);
                 command.Parameters.AddWithValue("@usrlogin", usrlogin);
                 command.Parameters.AddWithValue("@usrtype", usrtype);
-                command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
                     model = new ItemOrdering();
-
                     model.CUSCOD = dr["CUSCOD"].ToString();
-
                     Getdata.Add(new ItemListGetdata { val = model });
-
                 }
-                //dr.Dispose();
-                //S20161016
                 dr.Close();
                 dr.Dispose();
                 command.Dispose();
-                //E20161016
-
-
-                //E20161016
             }
             catch (Exception ex)
             {
-
                 exerror = ex.Message + '/' + ex.Source + '/' + ex.HelpLink + '/' + ex.HResult;
-
             }
             Connection.Close();
-
             return Json(new { Getdata, exerror }, JsonRequestBehavior.AllowGet);
         }
 
@@ -182,43 +142,27 @@ namespace NewShopTAM.Controllers
             Connection.Open();
             try
             {
-
                 var command = new SqlCommand("P_CheckQuatationOrderCart_Catalog", Connection);
-
-                // var command = new SqlCommand("P_ShoppingCart_list", Connection);
                 command.CommandTimeout = 0;
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@QuatationNo", Quatation);
-
                 command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
                     model = new ItemOrdering();
-
                     model.CUSCOD = dr["CUSCOD"].ToString();
-
                     Getdata.Add(new ItemListGetdata { val = model });
-
                 }
-                //dr.Dispose();
-                //S20161016
                 dr.Close();
                 dr.Dispose();
                 command.Dispose();
-                //E20161016
-
-
-                //E20161016
             }
             catch (Exception ex)
             {
-
                 exerror = ex.Message + '/' + ex.Source + '/' + ex.HelpLink + '/' + ex.HResult;
-
             }
             Connection.Close();
-
             return Json(new { Getdata, exerror }, JsonRequestBehavior.AllowGet);
         }
         public async Task<JsonResult> GetdataShoppingDapper(string CUSCOD, string usrlogin, string Company, string usrtype, string shiptocode)
@@ -229,20 +173,13 @@ namespace NewShopTAM.Controllers
             string exerror = string.Empty;
             string creditterm = string.Empty;
             List<ItemListGetdata> Getdata = new List<ItemListGetdata>();
-
             try
             {
                 var connectionString = ConfigurationManager
                     .ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
-
                 using (var connection = new SqlConnection(connectionString))
                 {
-                    // เปิด connection แบบ async
                     await connection.OpenAsync();
-
-                    // --------------------------------------------------
-                    // 1) Query Stored Procedure หลัก (Async + Dapper)
-                    // --------------------------------------------------
                     var parameters = new DynamicParameters();
                     parameters.Add("@inCUSCOD", CUSCOD);
                     parameters.Add("@inStatus", "N,W");
@@ -250,19 +187,14 @@ namespace NewShopTAM.Controllers
                     parameters.Add("@usrlogin", usrlogin);
                     parameters.Add("@usrtype", usrtype);
                     parameters.Add("@shiptocode", shiptocode);
-
-                    // 🔥 QueryAsync (Async)
                     var rows = (await connection.QueryAsync<dynamic>(
                         "P_ShoppingCart_list_catalog",
                         parameters,
                         commandType: CommandType.StoredProcedure
                     )).ToList();
-
-                    // Manual mapping
                     foreach (var r in rows)
                     {
                         var row = (IDictionary<string, object>)r;
-
                         var model = new ItemOrdering
                         {
                             CartID = row["ID"]?.ToString(),
@@ -303,15 +235,9 @@ namespace NewShopTAM.Controllers
                             Intransit = row["Intrnsit"]?.ToString(),
                             InsertedBy = row["Inserted By"]?.ToString()
                         };
-
                         sumQty += Convert.ToInt32(model.Qty ?? "0");
-
                         Getdata.Add(new ItemListGetdata { val = model });
                     }
-
-                    // --------------------------------------------------
-                    // 2) Query credit term (Async)
-                    // --------------------------------------------------
                     creditterm = await connection.ExecuteScalarAsync<string>(
                         "P_Search_Credit Term",
                         new { inCUSCOD = CUSCOD },
@@ -323,7 +249,6 @@ namespace NewShopTAM.Controllers
             {
                 exerror = ex.Message;
             }
-
             return Json(
                 new { Getdata, sumQty, sumSalePrice, sumDiscount, creditterm, exerror },
                 JsonRequestBehavior.AllowGet
@@ -344,26 +269,19 @@ namespace NewShopTAM.Controllers
             Connection.Open();
             try
             {
-
                 var command = new SqlCommand("P_ShoppingCart_list_catalog", Connection);
-
-                // var command = new SqlCommand("P_ShoppingCart_list", Connection);
                 command.CommandTimeout = 0;
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
-                //command.Parameters.AddWithValue("@inStatus", status);
                 command.Parameters.AddWithValue("@inStatus", "N,W");
                 command.Parameters.AddWithValue("@Company", Company);
                 command.Parameters.AddWithValue("@usrlogin", usrlogin);
                 command.Parameters.AddWithValue("@usrtype", usrtype);
                 command.Parameters.AddWithValue("@shiptocode", shiptocode);
-                // command.Parameters.AddWithValue("@QuotationNo", quatation);
-                //command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
                     model = new ItemOrdering();
-
                     model.CartID = dr["ID"].ToString();
                     model.PRCLST_NO = dr["PRCLST_NO"].ToString();
                     model.CUSCOD = dr["CUSCOD"].ToString();
@@ -406,45 +324,28 @@ namespace NewShopTAM.Controllers
                     model.AccessID = dr["AccessID"].ToString();
                     model.Intransit = dr["Intrnsit"].ToString();
                     model.InsertedBy = dr["Inserted By"].ToString();
-                    //model.Promotion_Foc = dr["Promotion_Foc"].ToString();
-                    //sumSalePrice += Convert.(sum);
                     Getdata.Add(new ItemListGetdata { val = model });
-
                 }
-                //dr.Dispose();
-                //S20161016
                 dr.Close();
                 dr.Dispose();
                 command.Dispose();
-                //E20161016
-
-
                 var commandCrTerm = new SqlCommand("P_Search_Credit Term", Connection);
                 commandCrTerm.CommandType = CommandType.StoredProcedure;
                 commandCrTerm.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
-
-                //commandCrTerm.ExecuteNonQuery();
                 SqlDataReader CrTerm = commandCrTerm.ExecuteReader();
                 while (CrTerm.Read())
                 {
                     creditterm = CrTerm["PayTrm"].ToString();
                 }
-                //CrTerm.Dispose();
-                //S20161016
                 CrTerm.Close();
                 CrTerm.Dispose();
-
                 commandCrTerm.Dispose();
-                //E20161016
             }
             catch (Exception ex)
             {
-
                 exerror = ex.Message + '/' + ex.Source + '/' + ex.HelpLink + '/' + ex.HResult;
-
             }
             Connection.Close();
-
             return Json(new { Getdata, sumQty, sumSalePrice, sumDiscount, creditterm, exerror }, JsonRequestBehavior.AllowGet);
         }
         [HttpPost]
@@ -467,18 +368,14 @@ namespace NewShopTAM.Controllers
                 });
 
             }
-            //S20161016
             dr.Close();
             dr.Dispose();
             command.Dispose();
-            //E20161016
             Connection.Close();
             return Json(List, JsonRequestBehavior.AllowGet);
-            //return Json(new { List }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult GetQuatationno(string CUSCOD)
         {
-
             List<ItemListQno> ListQno = new List<ItemListQno>();
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
@@ -516,7 +413,6 @@ namespace NewShopTAM.Controllers
             Connection.Open();
             try
             {
-
                 var command = new SqlCommand("P_QuatationCart_list", Connection);
                 command.CommandTimeout = 0;
                 command.CommandType = CommandType.StoredProcedure;
@@ -527,62 +423,11 @@ namespace NewShopTAM.Controllers
                 command.Parameters.AddWithValue("@QuatationNo", _valQuatation);
                 command.Parameters.AddWithValue("@usrtype", usrtype);
                 command.Parameters.AddWithValue("@shiptocode", shiptocode);
-                //command.ExecuteNonQuery();
                 SqlDataReader dr = command.ExecuteReader();
                 while (dr.Read())
                 {
                     model = new ItemOrdering();
-                    // DateTime date = Convert.ToDateTime(dr["ORDDAT"].ToString());
-                    // string formatted = date.ToString("dd/M/yyyy");
-                    // model.CartID = dr.GetValue(0).ToString();
-                    // model.PRCLST_NO = dr["PRCLST_NO"].ToString();
-                    // model.CUSCOD = dr["CUSCOD"].ToString();
-                    // model.ORDDAT = formatted;
-                    // model.STKCOD = dr["STKCOD"].ToString();
-                    // model.Company = dr["Company"].ToString();
-                    // model.STKGRP = dr["STKGRP"].ToString();
-                    // stkgrp = model.STKGRP;
-
-                    // model.STKGRPNam = "-";
-                    // model.STKDES = dr["STKDES"].ToString();
-                    // model.MINORD = dr["MINORD"].ToString();
-                    // model.Price = dr["Price"].ToString();
-                    // model.SalePrice = dr["SalePrice"].ToString();
-                    // model.ExpectPrice = dr["ExpectPrice"].ToString();
-                    // model.Qty = dr["Qty"].ToString();
-                    // model.TotalPrice = dr["TotalPrice"].ToString();
-                    // model.TotalDiscount = dr["TotalDiscount"].ToString();
-                    // model.Amt = dr["Amt"].ToString();
-                    // model.Discount = dr["Discount"].ToString();
-                    // //sumDiscount += Convert.ToInt32(dr["Discount"].ToString());
-                    // model.Status = dr["Status"].ToString();
-                    // model.LineNote = dr["LineNote"].ToString();
-                    // model.UOM = dr["UOM"].ToString();
-                    // model.Promotion = dr["Promotion"].ToString();
-                    // model.PromotionDesc = dr["PromotionDesc"].ToString();
-                    // sumQty += Convert.ToInt32(dr["Qty"].ToString());
-                    // string sum = dr["SalePrice"].ToString();
-                    // model.Item_Type = dr["Item_Type"].ToString();
-                    // model.InStock = dr["InStock"].ToString();
-                    // model.PrcApproveBy = dr["PrcApproveBy"].ToString();
-                    // model.Stock = dr["Stock"].ToString();
-                    // model.Backorder = dr["BackOrder"].ToString();
-                    // model.Ready_Status = dr["Ready_Status"].ToString();
-                    // model.maxord = dr["maxord"].ToString();
-                    // model.maxord = dr["maxord"].ToString();
-                    // model.PrcRemark = dr["PrcRemark"].ToString();
-                    // model.WH_Location = dr["WH Location"].ToString();
-
-
-                    //// model.Type_Cal = dr["Type_Cal"].ToString();
-                    // //model.Special_Discount = dr["Special_Discount"].ToString();
                     model.DiscountPercent = dr["ORD_DiscountPercent"].ToString();
-                    // model.ORDMOD_Type = dr["ORDMOD_Type"].ToString();
-                    // model.ORD_Type = dr["ORD_Type"].ToString();
-                    // model.GenID = dr["GenID"].ToString();
-                    // model.PrcRemark = dr["PrcRemark"].ToString();
-                    // model.WH_Location = dr["WH Location"].ToString();
-                    //sumSalePrice += Convert.(sum);
                     model.CartID = dr["ID"].ToString();
                     model.PRCLST_NO = dr["PRCLST_NO"].ToString();
                     model.CUSCOD = dr["CUSCOD"].ToString();
@@ -622,50 +467,32 @@ namespace NewShopTAM.Controllers
                     model.PDC_QTY = dr["PDC-QTY"].ToString();
                     model.AccessID = dr["AccessID"].ToString();
                     Getdata.Add(new ItemListGetdata { val = model });
-
                 }
-                //dr.Dispose();
-                //S20161016
                 dr.Close();
                 dr.Dispose();
                 command.Dispose();
-                //E20161016
-
-
                 var commandCrTerm = new SqlCommand("P_Search_Credit Term", Connection);
                 commandCrTerm.CommandType = CommandType.StoredProcedure;
                 commandCrTerm.Parameters.AddWithValue("@inCUSCOD", CUSCOD);
-
-                //commandCrTerm.ExecuteNonQuery();
                 SqlDataReader CrTerm = commandCrTerm.ExecuteReader();
                 while (CrTerm.Read())
                 {
                     creditterm = CrTerm["PayTrm"].ToString();
                 }
-                //CrTerm.Dispose();
-                //S20161016
                 CrTerm.Close();
                 CrTerm.Dispose();
-
                 commandCrTerm.Dispose();
-                //E20161016all
             }
             catch (Exception ex)
             {
-
                 exerror = ex.Message + '/' + ex.Source + '/' + ex.HelpLink + '/' + ex.HResult;
-
             }
             Connection.Close();
-
             return Json(new { Getdata, sumQty, sumSalePrice, sumDiscount, creditterm, exerror }, JsonRequestBehavior.AllowGet);
         }
         public async Task<JsonResult> DeliveryModeDapper(string userid, string cuscod)
         {
-            //หากเป็นคน Login เดิม จะดึง cache มาใช้
             string cacheKey = $"DeliveryMode_{userid}";
-
-            // เช็คใน MemoryCache ก่อน
             var cache = MemoryCache.Default;
             if (cache.Contains(cacheKey))
             {
@@ -678,16 +505,12 @@ namespace NewShopTAM.Controllers
             try
             {
                 string connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
-
                 using (var connection = new SqlConnection(connectionString))
                 {
                     await connection.OpenAsync();
-
                     var parameters = new DynamicParameters();
                     parameters.Add("@UsrID", userid);
                     parameters.Add("@CusCod", cuscod);
-
-                    //Dapper + Async read
                     var rows = await connection.QueryAsync<dynamic>(
                         "p_OrdType",
                         parameters,
@@ -717,7 +540,6 @@ namespace NewShopTAM.Controllers
             {
                 exerror = ex.Message;
             }
-
             return Json(ordertypes, JsonRequestBehavior.AllowGet);
         }
         //ดึง DeliveryMode CBI/CDB/MOT
@@ -731,8 +553,6 @@ namespace NewShopTAM.Controllers
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@UsrID", userid);
             command.Parameters.AddWithValue("@CusCod", cuscod);
-
-            //command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
@@ -742,11 +562,9 @@ namespace NewShopTAM.Controllers
                     ORD_TypeName = dr["Description"].ToString(),
                 });
             }
-            //S20161016
             dr.Close();
             dr.Dispose();
             command.Dispose();
-            //E20161016
             Connection.Close();
             return Json(ordertype, JsonRequestBehavior.AllowGet);
         }
@@ -755,48 +573,31 @@ namespace NewShopTAM.Controllers
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
             string ORD_Time = "";
-            //string DateCaldate = "";
             string DateCal = "";
-            // DateTime z ;
-            //SqlCommand cmd = new SqlCommand("SELECT ORD_Type, ORD_TypeName, ORD_Day, ORD_Time, CONVERT(varchar, GETDATE() + ORD_Day, 103) AS DateCal FROM   OrderType where ORD_Type =N'" + type + "'", Connection);
             SqlCommand cmd = new SqlCommand("SELECT ORDTYP,Description,ORD_Day,ORD_Time,DateCal,[MOD] FROM [v_ORDTYPE] where ORDTYP =N'" + type + "' and [MOD]  =N'" + mod + "' ", Connection);
-            //var data = db.v_OrderType.Where(c => c.ORD_Type == type).ToArray();
             SqlDataReader rev_typ = cmd.ExecuteReader();
             while (rev_typ.Read())
             {
-                // ORD_T ype = rev_typ.GetValue(0).ToString();
-                // ORD_TypeName = rev_typ.GetValue(1).ToString();
                 if (type != "S" && type != "X" && type != "BO" && type != "RS")
                 {
                     ORD_Time = rev_typ["ORD_Time"].ToString();
-                    // DateTime date = Convert.ToDateTime(rev_typ["DateCal"].ToString());
                     DateCal = rev_typ["DateCal"].ToString(); // date.ToString("yyyy-MM-dd");
-
-                    // z = DateTime.UtcNow;
                 }
                 else
                 {
                     ORD_Time = rev_typ["ORD_Time"].ToString();
-
                     DateCal = rev_typ["DateCal"].ToString();
-
                 }
             }
-
-            //S20161016
             rev_typ.Close();
             rev_typ.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
-
             return Json(new { ORD_Time, DateCal }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult Getordertypeby(string type)
         {
-
             List<Itemordertype> ordertype = new List<Itemordertype>();
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
@@ -805,24 +606,18 @@ namespace NewShopTAM.Controllers
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@Mode", type);
             command.Parameters.AddWithValue("@StrSql", "");
-
-            //command.ExecuteNonQuery();
             SqlDataReader dr = command.ExecuteReader();
             while (dr.Read())
             {
-
-
                 ordertype.Add(new Itemordertype()
                 {
                     ORD_Type = dr["ORD_Type"].ToString(),
                     ORD_TypeName = dr["ORD_TypeName"].ToString(),
                 });
             }
-            //S20161016
             dr.Close();
             dr.Dispose();
             command.Dispose();
-            //E20161016
             Connection.Close();
             return Json(ordertype, JsonRequestBehavior.AllowGet);
         }
@@ -837,51 +632,36 @@ namespace NewShopTAM.Controllers
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@inCUSCOD", cuscod);
             command.Parameters.AddWithValue("@UsrTyp", type);
-            //commandCrTerm.ExecuteNonQuery();
             SqlDataReader cusdis = command.ExecuteReader();
             while (cusdis.Read())
             {
                 CashDiscount = cusdis["Cash Discount"].ToString();
                 discount = cusdis["Discount"].ToString();
             }
-            //CrTerm.Dispose();
-            //S20161016
             cusdis.Close();
             cusdis.Dispose();
-
             command.Dispose();
             Connection.Close();
             return Json(new { discount, CashDiscount }, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult CusCreditTermDay()
         {
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
             List<string> Code = new List<string>();
             var command = new SqlCommand("P_CusCreditTermDay", Connection);
             command.CommandType = CommandType.StoredProcedure;
-
-
-            //commandCrTerm.ExecuteNonQuery();
             SqlDataReader cusdis = command.ExecuteReader();
             while (cusdis.Read())
             {
-
                 Code.Add(cusdis["Lookup ID"].ToString());
             }
-            //CrTerm.Dispose();
-            //S20161016
             cusdis.Close();
             cusdis.Dispose();
-
             command.Dispose();
             Connection.Close();
-
             return Json(Code, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult CusCreditTerm(string crdterm)
         {
@@ -892,23 +672,16 @@ namespace NewShopTAM.Controllers
             var command = new SqlCommand("P_CusCreditTerm", Connection);
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.AddWithValue("@CreditTerm", crdterm);
-
-            //commandCrTerm.ExecuteNonQuery();
             SqlDataReader cusdis = command.ExecuteReader();
             while (cusdis.Read())
             {
                 Creditper = cusdis["Lookup code"].ToString();
             }
-            //CrTerm.Dispose();
-            //S20161016
             cusdis.Close();
             cusdis.Dispose();
-
             command.Dispose();
             Connection.Close();
-
             return Json(Creditper, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult GetdataCusShipping(string XXcus)
         {
@@ -917,12 +690,8 @@ namespace NewShopTAM.Controllers
             Connection.Open();
             List<ItemListshipto> cusshipping = new List<ItemListshipto>();
             shipto model = null;
-            // SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr  where [customer No_] ='"+XXcus+"' and code not like 'N9%' ", Connection);
             SqlCommand cmd = new SqlCommand("select *    from dbo.v_NVcust_ShiptoAddr_TAM  where [customer No_] ='" + XXcus + "' order by [Code] ", Connection);
             SqlDataReader rev_Mod = cmd.ExecuteReader();
-            //var cusshipping = db.v_NVcust_ShiptoAddr.Where(c => c.Customer_No_ == XXcus && c.Code != "N9" || c.Code != "N99").ToArray();
-            // var cusshipping = rev_Mod;
-            // ID = rev_CUSTYP.GetValue(0).ToString(),
             while (rev_Mod.Read())
             {
                 model = new shipto();
@@ -936,14 +705,11 @@ namespace NewShopTAM.Controllers
                 model.postcode = rev_Mod["Post code"].ToString();
                 cusshipping.Add(new ItemListshipto { val = model });
             }
-            //S20161016
             rev_Mod.Close();
             rev_Mod.Dispose();
             cmd.Dispose();
-            //E20161016
             Connection.Close();
             return Json(cusshipping, JsonRequestBehavior.AllowGet);
-
         }
         public JsonResult DelShoppingCart(string DataSend)
         {
@@ -954,7 +720,6 @@ namespace NewShopTAM.Controllers
             conn.Open();
             try
             {
-
                 if (_ItemList.Count > 0)
                 {
                     for (int i = 0; i < _ItemList.Count; i++)
@@ -962,13 +727,11 @@ namespace NewShopTAM.Controllers
                         SqlCommand cmd = new SqlCommand("P_Del_Ordering_Cart", conn);
                         cmd.Connection = conn;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        //cmd.Parameters.AddWithValue("@inID", cartid);
                         cmd.Parameters.AddWithValue("@inID", _ItemList[i].Vidorder);
                         cmd.ExecuteNonQuery();
                         cmd.Dispose();
                     }
                 }
-
                 conn.Close();
                 message = true;
             }
@@ -977,14 +740,12 @@ namespace NewShopTAM.Controllers
                 message = false;
             }
             return Json(message, JsonRequestBehavior.AllowGet);
-
         }
 
         public JsonResult ConfirmationdataTemp(string totallabor, string totaltransportcost, string typecke, string CusPo, string CreditTerm, string takeorderby, string Remark, string codetransportation, string CusShipping, string codeShipping, string Moddate, string Modtime, string Modtype, string Xusrlogin, string Xcus, string XSul, string DataSend, string sumvat, string sumpro, string ORD_TotalPrice, string ORD_TotalDiscount, string sumqty, string sumstk, string dateDelivery, string DeliveryTime)
         {
 
             List<ItemConfirm> _ItemList = new JavaScriptSerializer().Deserialize<List<ItemConfirm>>(DataSend);
-            //List<ItemConfirmPro> _ItemListPro = new JavaScriptSerializer().Deserialize<List<ItemConfirmPro>>(DataSendPro);
             string message = "false";
             string Docorder = string.Empty;
             string Err_Flg = string.Empty;
@@ -994,24 +755,10 @@ namespace NewShopTAM.Controllers
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
-            // int seqmax= 0;
             int id = 0;
             int idorder = 0;
             string docgen = string.Empty;
             string DocNo = string.Empty;
-
-            //var commandDoc_Control = new SqlCommand("P_SearchSave_Doc_Control", Connection);
-            //commandDoc_Control.CommandType = CommandType.StoredProcedure;
-            //commandDoc_Control.Parameters.AddWithValue("@inDocNam", "Order");
-            //SqlParameter returnValuedoc = new SqlParameter("@outResult", SqlDbType.NVarChar, 100);
-            //returnValuedoc.Direction = System.Data.ParameterDirection.Output;
-            //commandDoc_Control.Parameters.Add(returnValuedoc);
-            //commandDoc_Control.ExecuteNonQuery();
-            //docgen = returnValuedoc.Value.ToString();
-            //string[] strSplit = docgen.Split('=');
-            //Docorder = strSplit[1];
-            //DocNo = Docorder;
             Connection.Close();
             if (_ItemList.Count > 0)
             {
@@ -1026,12 +773,9 @@ namespace NewShopTAM.Controllers
                         SqlCommand cmd = new SqlCommand("P_Save_OrderConfirmTH_Temp_catalog", conn);
                         cmd.Connection = conn;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        //cmd.Parameters.AddWithValue("@inORD_DocNo", Docorder);
                         cmd.Parameters.AddWithValue("@inORD_DocNo", "");
-                        //cmd.Parameters.AddWithValue("@inORD_Date", _ItemList[0].VORDDAT);
                         cmd.Parameters.AddWithValue("@inORD_Date", DateTime.Now.ToString("dd/MM/yyy"));
                         cmd.Parameters.AddWithValue("@inCUSCOD", CUSID);
-                        //cmd.Parameters.AddWithValue("@inCompany", _ItemList[0].VCompany);
                         cmd.Parameters.AddWithValue("@inORD_DiscountAmt", Convert.ToDecimal(_ItemList[0].AmtDiscount));
                         cmd.Parameters.AddWithValue("@inORD_DiscountPercent", Convert.ToDecimal(_ItemList[0].Credit));
                         cmd.Parameters.AddWithValue("@inORD_Status", "N");
@@ -1055,7 +799,6 @@ namespace NewShopTAM.Controllers
                         cmd.Parameters.AddWithValue("@inRemark", Remark);
                         cmd.Parameters.AddWithValue("@inInsertBy", Xusrlogin);
                         cmd.Parameters.AddWithValue("@inTakeORDBy", takeorderby);
-                        // cmd.Parameters.AddWithValue("@inCreditTerm", CreditTerm);
                         cmd.Parameters.AddWithValue("@inCreditTerm", "3");
                         cmd.Parameters.AddWithValue("@inCusPo", CusPo);
                         cmd.Parameters.AddWithValue("@intypecke", Convert.ToInt32(typecke));
@@ -1065,9 +808,7 @@ namespace NewShopTAM.Controllers
                         returnValue.Direction = System.Data.ParameterDirection.Output;
                         cmd.Parameters.Add(returnValue);
                         cmd.ExecuteNonQuery();
-                        //S20161016
                         cmd.Dispose();
-                        //E20161016
                         id = Convert.ToInt32(returnValue.Value);
                         int sop = 0;
                         string _str = string.Empty;
@@ -1079,7 +820,6 @@ namespace NewShopTAM.Controllers
                             idorder = Convert.ToInt32(_ItemList[i].Vidorder);
                             strFoc = _ItemList[i].Vtype;
                             _str = strFoc;
-
                             if (strFoc == "-")
                             {
                                 _str = "";
@@ -1089,16 +829,13 @@ namespace NewShopTAM.Controllers
                             {
                                 _str = strFoc;
                                 sop = 1;
-
                             }
                             else if (strFoc == "FOC")
                             {
                                 _str = strFoc;
                                 sop = 0;
                             }
-                            //Save รายการที่เป็นสินค้าขาย//
                             cmd = new SqlCommand("P_Save_CartConfirmTD_Temp_catalog", conn);
-                            // cmd = new SqlCommand("P_Save_CartConfirmTD_Temp_Test", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("@inORD_ID", id);
                             cmd.Parameters.AddWithValue("@inORD_STKCOD", _ItemList[i].VSTKCOD);
@@ -1119,12 +856,9 @@ namespace NewShopTAM.Controllers
                             cmd.Parameters.AddWithValue("@Backorder", Convert.ToInt32(_ItemList[i].Vbackorder));
                             cmd.Parameters.AddWithValue("@CartID", Convert.ToInt32(_ItemList[i].Vidorder));
                             cmd.Parameters.AddWithValue("@WH_Location", _ItemList[i].VWHLocation);
-                            // cmd.Parameters.AddWithValue("@inPRCLST_NO", Convert.ToInt32(_ItemList[i].PRCLST_NO));
                             cmd.Parameters.AddWithValue("@inSO", Docorder);
                             cmd.ExecuteNonQuery();
-                            //S20161016
                             cmd.Dispose();
-                            //E20161016
                             message = "true";
                         }
                         cmd = new SqlCommand("p_Chk_Promotion", conn);
@@ -1140,18 +874,11 @@ namespace NewShopTAM.Controllers
                             Err_Flg = rev_["Err_Flg"].ToString();
                             Err_Message = rev_["err_message"].ToString();
                             Prodiscount = rev_["PM_Qty"].ToString();
-                            // IDProc = rev_["ID"].ToString();
-
                         }
-                        //rev_.Dispose();
-                        //S20161016
                         rev_.Close();
                         rev_.Dispose();
                         cmd.Dispose();
-                        //E20161016
                         Connection.Close();
-
-
                     }
                     catch (Exception ex)
                     {
@@ -1160,7 +887,6 @@ namespace NewShopTAM.Controllers
                         {
                             trans.Rollback();
                         }
-                        //return -1;
                     }
                     finally
                     {
@@ -1169,12 +895,8 @@ namespace NewShopTAM.Controllers
                             conn.Close();
                         }
                     }
-
-
                 }
             }
-
-
             return Json(new { message, DocNo, Err_Flg, Err_Message, IDProc, id, Prodiscount }, JsonRequestBehavior.AllowGet);
         }
         public JsonResult ConfirmationdatacusQuatation(string typecke, string S_dis, string QNo, string Ts_dis, string CusPo, string CreditTerm, string takeorderby, string Remark, string codetransportation, string CusShipping, string codeShipping, string Moddate, string Modtime, string Modtype, string Xusrlogin, string Xcus, string XSul, string DataSend, string DataSendPro, string sumvat, string sumpro, string ORD_TotalPrice, string ORD_TotalDiscount, string sumqty, string sumstk, string dateDelivery, string DeliveryTime)
@@ -1190,14 +912,11 @@ namespace NewShopTAM.Controllers
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
             Connection.Open();
-
-            // int seqmax= 0;
             int id = 0;
             int idorder = 0;
             string docgen = string.Empty;
             string DocNo = string.Empty;
             string GenDoc_Quatation = string.Empty;
-
             Connection.Close();
             if (_ItemList.Count > 0)
             {
@@ -1212,9 +931,7 @@ namespace NewShopTAM.Controllers
                         SqlCommand cmd = new SqlCommand("P_Save_OrderConfirmTH_Quatation", conn);
                         cmd.Connection = conn;
                         cmd.CommandType = CommandType.StoredProcedure;
-                        //cmd.Parameters.AddWithValue("@inORD_DocNo", Docorder);
                         cmd.Parameters.AddWithValue("@inORD_DocNo", "");
-                        //cmd.Parameters.AddWithValue("@inORD_Date", _ItemList[0].VORDDAT);
                         cmd.Parameters.AddWithValue("@inORD_Date", DateTime.Now.ToString("dd/MM/yyy"));
                         cmd.Parameters.AddWithValue("@inCUSCOD", CUSID);
                         cmd.Parameters.AddWithValue("@inCompany", _ItemList[0].VCompany);
@@ -1232,10 +949,8 @@ namespace NewShopTAM.Controllers
                         cmd.Parameters.AddWithValue("@inSLMCODE", SLMCOD);
                         cmd.Parameters.AddWithValue("@inORD_TotalQty", Convert.ToInt32(sumqty)); //26002
                         cmd.Parameters.AddWithValue("@inORD_TotalItem", Convert.ToInt32(sumstk)); //12
-                        //cmd.Parameters.AddWithValue("@inORD_TotalPrice", Convert.ToDecimal(ORD_TotalPrice)); //26686284.30
                         cmd.Parameters.AddWithValue("@inORD_TotalPrice", Convert.ToDecimal(0)); //26686284.30
                         cmd.Parameters.AddWithValue("@inORD_TotalDiscount", Convert.ToDecimal(ORD_TotalDiscount));
-                        //cmd.Parameters.AddWithValue("@inORD_Vat", Convert.ToDecimal(sumvat));   //1868039.90
                         cmd.Parameters.AddWithValue("@inORD_Vat", Convert.ToDecimal(0));   //1868039.90
                         cmd.Parameters.AddWithValue("@inPro_Discount", Convert.ToDecimal(sumpro));
                         cmd.Parameters.AddWithValue("@inDeliveryDate", dateDelivery);
@@ -1256,16 +971,11 @@ namespace NewShopTAM.Controllers
                         returnValue_Quatation.Direction = System.Data.ParameterDirection.Output;
                         cmd.Parameters.Add(returnValue_Quatation);
                         cmd.ExecuteNonQuery();
-                        //S20161016
                         GenDoc_Quatation = Convert.ToString(cmd.Parameters["@outGenDoc_Quatation"].Value);
                         cmd.Dispose();
-                        //E20161016
                         id = Convert.ToInt32(returnValue.Value);
-                        // GenDoc_Po = Convert.ToString(returnValue_Po);
-                        //  Convert.ToString(returnValue_Po);
                         int sop = 0;
                         string _str = string.Empty;
-                        // int intstock = 0;
                         string strstock = string.Empty;
                         string strFoc = string.Empty;
                         string _gen = string.Empty;
@@ -1300,7 +1010,6 @@ namespace NewShopTAM.Controllers
                                 _str = strFoc;
                                 sop = 0;
                             }
-                            //Save รายการที่เป็นสินค้าขาย//
                             cmd = new SqlCommand("P_Save_CartConfirmTD_Quatation", conn);
                             cmd.CommandType = CommandType.StoredProcedure;
                             cmd.Parameters.AddWithValue("@inORD_ID", id);
@@ -1321,17 +1030,12 @@ namespace NewShopTAM.Controllers
                             cmd.Parameters.AddWithValue("@sop", sop);
                             cmd.Parameters.AddWithValue("@inInsertBy", Xusrlogin);
                             cmd.Parameters.AddWithValue("@Backorder", Convert.ToInt32(_ItemList[i].Vbackorder));
-                            // cmd.Parameters.AddWithValue("@inPRCLST_NO", Convert.ToInt32(_ItemList[i].PRCLST_NO));
                             cmd.Parameters.AddWithValue("@inSO", GenDoc_Quatation);
                             cmd.Parameters.AddWithValue("@cartid", Convert.ToInt32(_ItemList[i].Vidorder));
                             cmd.ExecuteNonQuery();
-                            //S20161016
                             cmd.Dispose();
-                            //E20161016
                             message = "true";
                         }
-
-
                         Connection.Close();
                     }
                     catch (Exception ex)
@@ -1341,7 +1045,6 @@ namespace NewShopTAM.Controllers
                         {
                             trans.Rollback();
                         }
-                        //return -1;
                     }
                     finally
                     {
@@ -1354,37 +1057,22 @@ namespace NewShopTAM.Controllers
             }
             return Json(new { message, GenDoc_Quatation, Err_Flg, Err_Message, IDProc, id, Prodiscount }, JsonRequestBehavior.AllowGet);
         }
-
-
-        // public JsonResult Confirmationdata(string company, string ordidtemp, string takeorderby, string Remark, string codetransportation, string CusShipping, string codeShipping, string Moddate, string Modtime, string Modtype, string Xusrlogin, string Xcus, string XSul, string DataSend, string DataSendPro, string sumvat, string sumpro, string ORD_TotalPrice, string ORD_TotalDiscount, string sumqty, string sumstk, string dateDelivery, string DeliveryTime)
         public JsonResult Confirmationdata(string DataSend, string Xusrlogin, string ordidtemp)
         {
-
             List<ItemConfirm> _ItemList = new JavaScriptSerializer().Deserialize<List<ItemConfirm>>(DataSend);
-
             string message = "false";
             string Docorder = string.Empty;
-
-
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection conn = new SqlConnection(connectionString);
             conn.Open();
-
-            // int seqmax= 0;
             int id = 0;
             int idorder = 0;
             string docgen = string.Empty;
             string DocNo = string.Empty;
             string ItemListORD_ID = string.Join(",", _ItemList.Select(item => item.Vidorder));
-            //message = ItemListORD_ID;
-
             if (_ItemList.Count > 0)
             {
-
-                // string CUSID = Xcus;
-                //string SLMCOD = XSul;
                 string com = _ItemList[0].VCompany;
-                //string com = "TAC";
                 SqlTransaction trans = null;
                 try
                 {
@@ -1401,43 +1089,16 @@ namespace NewShopTAM.Controllers
                     p.Direction = ParameterDirection.Output;
                     cmd.Parameters.Add(returnValue);
                     cmd.Parameters.Add(p);
-
                     using (SqlDataReader rev_ = cmd.ExecuteReader())
                     {
                         while (rev_.Read())
                         {
-                            // ตรวจสอบชื่อคอลัมน์ที่แน่นอน
                             DocNo = rev_["Sale Order"].ToString();
-
                         }
                     } // ปิด reader อัตโนมัติ
                     message = p.Value.ToString();
                     cmd.Dispose();
-
-                    //Comment
-                    /*
-
-                    for (int i = 0; i < _ItemList.Count; i++)
-                    {
-                        if (!string.IsNullOrEmpty(DocNo))
-                        {
-                            SqlCommand cmdupdate = new SqlCommand("P_UpdateStatus_Ordering_Cart", conn);
-                            cmdupdate.Connection = conn;
-                            cmdupdate.CommandType = CommandType.StoredProcedure;
-                            cmdupdate.Parameters.AddWithValue("@inCart_ID", _ItemList[i].Vidorder);
-                            //cmdupdate.Parameters.AddWithValue("@inCart_ID", null);
-                            cmdupdate.Parameters.AddWithValue("@inUser", Xusrlogin);
-                            cmdupdate.Parameters.AddWithValue("@inDocNo", DocNo);
-                            //cmdupdate.Parameters.Add(returnValue);
-                            cmdupdate.ExecuteReader();
-                            cmdupdate.Dispose();
-                        }
-                    }
-
-                    */
-
                     conn.Close();
-                    //}
                 }
                 catch (Exception ex)
                 {
@@ -1446,7 +1107,6 @@ namespace NewShopTAM.Controllers
                     {
                         trans.Rollback();
                     }
-                    //return -1;
                 }
                 finally
                 {
@@ -1455,7 +1115,6 @@ namespace NewShopTAM.Controllers
                         conn.Close();
                     }
                 }
-                //}
             }
             return Json(new { message, DocNo }, JsonRequestBehavior.AllowGet);
         }
@@ -1475,29 +1134,23 @@ namespace NewShopTAM.Controllers
             SqlParameter returnFlag = new SqlParameter("@outResult", SqlDbType.NVarChar, 100);
             returnFlag.Direction = System.Data.ParameterDirection.Output;
             command.Parameters.Add(returnFlag);
-
             SqlParameter returnUserLast = new SqlParameter("@outUser", SqlDbType.NVarChar, 100);
             returnUserLast.Direction = System.Data.ParameterDirection.Output;
             command.Parameters.Add(returnUserLast);
-
             SqlParameter returnTimeBefore = new SqlParameter("@outTimeUserBefore", SqlDbType.NVarChar, 100);
             returnTimeBefore.Direction = System.Data.ParameterDirection.Output;
             command.Parameters.Add(returnTimeBefore);
-
             SqlParameter returnTimeLast = new SqlParameter("@outTimeUserLast", SqlDbType.NVarChar, 100);
             returnTimeLast.Direction = System.Data.ParameterDirection.Output;
             command.Parameters.Add(returnTimeLast);
-
             Connection.Open();
             command.ExecuteNonQuery();
             flagCheck = returnFlag.Value.ToString();
             userLast = returnUserLast.Value.ToString();
             timeBefore = returnTimeBefore.Value.ToString();
             timeLast = returnTimeLast.Value.ToString();
-
             command.Dispose();
             Connection.Close();
-
             return Json(new { flagCheck, userLast, timeBefore, timeLast }, JsonRequestBehavior.AllowGet);
         }
         //เช็ค credit ลูกค้าก่อน confirm
@@ -1517,13 +1170,10 @@ namespace NewShopTAM.Controllers
             Connection.Open();
             command.ExecuteNonQuery();
             flagCheck = returnFlag.Value.ToString();
-
             command.Dispose();
             Connection.Close();
-
             return Json(new { flagCheck }, JsonRequestBehavior.AllowGet);
         }
-
         //เช็ค Quota พนักงาน 
         public JsonResult CheckEmployeeQuota(string Cuscod, string Shipto, string Amt)
         {
@@ -1542,15 +1192,12 @@ namespace NewShopTAM.Controllers
                 SqlParameter returnFlag = new SqlParameter("@outGenstatus", SqlDbType.NVarChar, 100);
                 returnFlag.Direction = System.Data.ParameterDirection.Output;
                 command.Parameters.Add(returnFlag);
-
                 SqlParameter returnAmt = new SqlParameter("@outAmtAll", SqlDbType.NVarChar, 100);
                 returnAmt.Direction = System.Data.ParameterDirection.Output;
                 command.Parameters.Add(returnAmt);
-
                 SqlParameter returnQuota = new SqlParameter("@outQuota", SqlDbType.NVarChar, 100);
                 returnQuota.Direction = System.Data.ParameterDirection.Output;
                 command.Parameters.Add(returnQuota);
-
                 Connection.Open();
                 command.ExecuteNonQuery();
                 flagCheck = returnFlag.Value.ToString();
@@ -1563,8 +1210,6 @@ namespace NewShopTAM.Controllers
             {
                 flagCheck = ex.Message;
             }
-
-
             return Json(new { flagCheck, allAmt, quotaEmp }, JsonRequestBehavior.AllowGet);
         }
     }
