@@ -2140,7 +2140,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!CUSNAM.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!CUSNAM.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -2174,7 +2174,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ADDR_01.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ADDR_01.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -2208,7 +2208,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_DocNo.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_DocNo.Value, "DataSet2")</Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
@@ -2241,7 +2241,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_Date.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_Date.Value, "DataSet2")</Value>
                       <Style>
                         <Format>dd/MM/yyyy</Format>
                       </Style>
@@ -2341,7 +2341,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ADDR_02.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ADDR_02.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -2409,7 +2409,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!SLMNAM.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!SLMNAM.Value, "DataSet2")</Value>
                       <Style>
                         <FontFamily>Angsana New</FontFamily>
                         <FontSize>12pt</FontSize>
@@ -2476,7 +2476,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!codeShipto.Value, "DataSet2")+"|"+First(Fields!NameShipto.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!codeShipto.Value, "DataSet2")+"|"+First(Fields!NameShipto.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -2510,7 +2510,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!AddressShipto.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!AddressShipto.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -2544,7 +2544,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Address2Shipto.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!Address2Shipto.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -2610,7 +2610,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORDMOD_Type.Value,"DataSet2")+"/"+First(Fields!Description.Value,"DataSet2")</Value>
+                      <Value>=Max(Fields!ORDMOD_Type.Value,"DataSet2")+"/"+First(Fields!Description.Value,"DataSet2")</Value>
                       <Style>
                         <FontFamily>AngsanaUPC</FontFamily>
                         <FontSize>12pt</FontSize>
@@ -2646,7 +2646,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORDMOD_Date.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORDMOD_Date.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2681,7 +2681,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORDMOD_Time.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORDMOD_Time.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8pt</FontSize>
                       </Style>
@@ -2716,7 +2716,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!TransportName.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!TransportName.Value, "DataSet2")</Value>
                       <Style>
                         <FontFamily>AngsanaUPC</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -2752,7 +2752,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_Type1.Value, "DataSet2")+"/"+First(Fields!ORD_TypeName.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_Type1.Value, "DataSet2")+"/"+First(Fields!ORD_TypeName.Value, "DataSet2")</Value>
                       <Style>
                         <FontFamily>AngsanaUPC</FontFamily>
                         <FontSize>12pt</FontSize>
@@ -2827,7 +2827,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!DeliveryDate.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!DeliveryDate.Value, "DataSet2")</Value>
                       <Style>
                         <FontFamily>AngsanaUPC</FontFamily>
                         <FontSize>12pt</FontSize>
@@ -2862,7 +2862,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!DeliveryTime.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!DeliveryTime.Value, "DataSet2")</Value>
                       <Style>
                         <FontFamily>AngsanaUPC</FontFamily>
                         <FontSize>14pt</FontSize>
@@ -3105,7 +3105,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!CustomerShipto.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!CustomerShipto.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -3139,7 +3139,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Cus_Po.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!Cus_Po.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -3414,7 +3414,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_DiscountAmt.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_DiscountAmt.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                         <Format>#,0.00;(#,0.00)</Format>
@@ -3449,7 +3449,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_Vat.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_Vat.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                         <Format>#,0.00;(#,0.00)</Format>
@@ -3484,7 +3484,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_TotalAmt.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_TotalAmt.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                         <Format>#,0.00;(#,0.00)</Format>
@@ -3520,7 +3520,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_TotalItem.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_TotalItem.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                       </Style>
@@ -3555,7 +3555,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_TotalQty.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_TotalQty.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                       </Style>
@@ -3590,7 +3590,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_DiscountPercent.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_DiscountPercent.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <Format>0.0;(0.0)</Format>
@@ -3626,7 +3626,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!VatPercent.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!VatPercent.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                       </Style>
@@ -3805,7 +3805,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_TotalDiscount.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_TotalDiscount.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                         <Format>#,0.00;(#,0.00)</Format>
@@ -4413,7 +4413,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!InsertBy.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!InsertBy.Value, "DataSet2")</Value>
                       <MarkupType>HTML</MarkupType>
                       <Style>
                         <FontSize>9pt</FontSize>
@@ -4667,7 +4667,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Remark.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!Remark.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                       </Style>
@@ -4744,7 +4744,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!Take_ORD_By.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!Take_ORD_By.Value, "DataSet2")</Value>
                       <MarkupType>HTML</MarkupType>
                       <Style>
                         <FontSize>9pt</FontSize>
@@ -4821,7 +4821,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!PayTRM.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!PayTRM.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                       </Style>
@@ -5066,7 +5066,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_Totallabor.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_Totallabor.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                         <Format>#,0.00;(#,0.00)</Format>
@@ -5181,7 +5181,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>=First(Fields!ORD_Totaltransportcost.Value, "DataSet2")</Value>
+                      <Value>=Max(Fields!ORD_Totaltransportcost.Value, "DataSet2")</Value>
                       <Style>
                         <FontSize>8.5pt</FontSize>
                         <Format>#,0.00;(#,0.00)</Format>

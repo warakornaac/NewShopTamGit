@@ -296,7 +296,7 @@
 
 		} else {
 			
-			this._timer && this._timer.clearTimeout(this._timer);
+			this._timer && clearTimeout(this._timer);
 
 			this.$modalMask.removeClass(this.set.animationIn).addClass(this.set.animationOut);
 

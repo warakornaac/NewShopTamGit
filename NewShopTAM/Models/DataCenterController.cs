@@ -425,10 +425,10 @@ namespace NewShopTAM.Models
 
             SqlCommand cmd = new SqlCommand(@"
             SELECT CUSCOD, CUSNAM, PRO, ADDR_01, CUSTYP,
-                   ISNULL(TAMCRLINE,0)   AS TAMCRLINE,
-                   ISNULL(TAMBAL,0)      AS TAMBAL,
-                   ISNULL(VELOXCRLINE,0) AS VELOXCRLINE,
-                   ISNULL(VELOXBAL,0)    AS VELOXBAL
+                   ISNULL(TAMCRLINE,'')   AS TAMCRLINE,
+                   ISNULL(TAMBAL,'')      AS TAMBAL,
+                   ISNULL(VELOXCRLINE,'') AS VELOXCRLINE,
+                   ISNULL(VELOXBAL,'')    AS VELOXBAL
             FROM v_CUSPROV 
             WHERE SLMCOD = @SLMCOD 
             ORDER BY SLMCOD", Connection);
