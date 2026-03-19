@@ -1095,17 +1095,23 @@
                                     }
                                 } else {
                                     if (Type != "FOC") {
-
                                         SubmithtmlPage += '<td style="">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '</td>';
                                     } else {
-                                        if (sta != "N" && sta != "Q") {
-                                            if (sta != "C") {
-                                                SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>รายการของแถม</div></td>';
-                                            } else {
-                                                SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">ไม่อนุมัติ<br>รายการของแถม</div></td>';
-                                            }
-                                        } else {
-                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">อนุมัติ<br>รายการของแถม</div></td>';
+                                        if (sta == "W") {
+                                            //รออนุมัติ FOC//
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>รายการของแถม</div></td>';
+                                        }
+                                        else if (sta == "C") {
+                                            //ไม่อนุมัติ FOC//
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">ไม่อนุมัติ<br>รายการของแถม</div></td>';
+                                        }
+                                        else if ((sta == "N" || sta == "Q") && Prcby != "") {
+                                            //อนุมัติแล้ว FOC//
+                                            SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">อนุมัติ<br>รายการของแถม</div></td>';
+                                        }
+                                        else {
+                                            //กรณีอื่นๆ FOC//
+                                            SubmithtmlPage += '<td style="">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '</td>';
                                         }
                                     }
                                 }
@@ -1906,18 +1912,23 @@
                                     }
                                 } else {
                                     if (Type != "FOC") {
-
                                         SubmithtmlPage += '<td style="">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '</td>';
                                     } else {
-
-                                        if (sta != "N" && sta != "Q") {
-                                            if (sta != "C") {
-                                                SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>รายการของแถม</div></td>';
-                                            } else {
-                                                SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">ไม่อนุมัติ<br>รายการของแถม</div></td>';
-                                            }
-                                        } else {
-                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">อนุมัติ<br>รายการของแถม</div></td>';
+                                        if (sta == "W") {
+                                            //รออนุมัติ FOC//
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>รายการของแถม</div></td>';
+                                        }
+                                        else if (sta == "C") {
+                                            //ไม่อนุมัติ FOC//
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">ไม่อนุมัติ<br>รายการของแถม</div></td>';
+                                        }
+                                        else if ((sta == "N" || sta == "Q") && Prcby != "") {
+                                            //อนุมัติแล้ว FOC//
+                                            SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">อนุมัติ<br>รายการของแถม</div></td>';
+                                        }
+                                        else {
+                                            //กรณีอื่นๆ FOC//
+                                            SubmithtmlPage += '<td style="">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '</td>';
                                         }
                                     }
                                 }
