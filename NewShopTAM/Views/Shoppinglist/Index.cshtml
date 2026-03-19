@@ -166,8 +166,8 @@
                             <div class="input-group">
                                 <span class="col-sm-6 input-group-addon">Company</span>
                                 <select id="Company" class="form-control" style="color:black">
-                                    <option value="TAM">TAM</option>
-                                    <option value="VELOX">VELOX</option>
+                                    @*<option value="TAM">TAM</option>
+                                    <option value="VELOX">VELOX</option>*@
                                 </select>
                             </div>
                         </div>
@@ -407,6 +407,7 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
+                    getListCompany();
                     $("#cus").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
                     $("#addcus").text(data[0].ADDR_01 + (data[0].ADDR_02) + "  เบอร์ติดต่อ: " + data[0].TELNUM);
                     $("#crlicustam").text(commaSeparateNumber(data[0].TAMCrlimit));
@@ -468,6 +469,25 @@
                 }
             }
         }
+        function getListCompany() {
+            $.ajax({
+                url: '@Url.Action("GetListCompany", "DataCenter")',
+                type: "POST",
+                dataType: "JSON",
+                success: function (data) {
+                    console.log(data);
+
+                    var select = $("#Company");
+                    select.empty();
+
+                    $(data).each(function (index, item) {
+                        select.append($("<option>").val(item).text(item));
+                    });
+
+                    $("#Company option[value='ALL']").remove();
+                }
+            });
+         }
         function commaSeparateNumber(val) {
 
             if (val === undefined || val === null || val === '') {
@@ -899,7 +919,7 @@
                     $("#myModalWarning").modal();
                     $("#" + idqty + "").val("");
                     return false;
-                } else { //ถ้ากรอกไม่เกินจำนวน stock 
+                } else { //ถ้ากรอกไม่เกินจำนวน stock
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(Seqval.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
                             $("#textAlertWarning").empty();
@@ -1010,7 +1030,7 @@
                     $("#myModalWarning").modal();
                     $("#" + idqty + "").val("");
                     return false;
-                } else { //ถ้ากรอกไม่เกินจำนวน stock 
+                } else { //ถ้ากรอกไม่เกินจำนวน stock
                     //ให้เช็คว่าเกินจำนวนที่ Coupong กำหนดไว้ไหม
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(Seqval.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
