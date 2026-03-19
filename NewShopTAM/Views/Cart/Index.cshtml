@@ -126,9 +126,9 @@
                             <div class="form-group">
                                 <div class="input-group ">
                                     <select class="form-control custom-select" id="company">
-                                        <option selected="selected" value="ALL">ALL</option>
+                                        @*<option selected="selected" value="ALL">ALL</option>
                                         <option value="TAM">TAM</option>
-                                        <option value="VELOX">VELOX</option>
+                                        <option value="VELOX">VELOX</option>*@
                                     </select>
                                 </div>
                             </div>
@@ -874,9 +874,28 @@
                 var html = el.substring(0, 40) + "<br>" + el.substring(40, 80) + "<br>" + el.substring(80, 120);
                 return html;
             }
+            //get list company
+            function getListCompany() {
+                $.ajax({
+                    url: '@Url.Action("GetListCompany", "DataCenter")',
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function (data) {
+                        console.log(data)
+                        var select = $("#company");
+                        select.children().remove();
+                        $(data).each(function (index, item) {
+                            select.append($("<option>").val(item).text(item));
+                        });
+                        $("#company option").prop("selected", false);
+                        $("#company option[value='ALL']").prop("selected", true);
+                    }
+                });
+            }
             function ShoppingCart_list(shipto) {
                 var CUSCOD = cuscod;
                 var Company = $("#company").val();
+                console.log("Company = " + Company);
                 var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true });
                 $.ajax({
                     url: '@Url.Action("GetdataShopping", "Cart")',
@@ -1161,6 +1180,7 @@
             resourceAddress.hash();
             var cuscod = atob(param_values.numcuber)
             expire(usrexpire)
+            getListCompany();
             if (usertype != "6") {
                 if (cuscod == "") {
                     var wi = window.open("../SeleScrCustomer/dashboard");
@@ -1441,6 +1461,10 @@
             var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true });
             var CUSCOD = cuscod;
             var Company = $("#company").val();
+            if (Company == null || Company == "") {
+                Company = "ALL";
+            }
+            console.log("Company = " + Company);
             $.ajax({
                 url: '@Url.Action("GetdataCheckShopping", "Cart")',
                 data: {

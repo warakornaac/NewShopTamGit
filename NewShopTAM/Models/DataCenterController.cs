@@ -1453,5 +1453,27 @@ namespace NewShopTAM.Models
             }
             return Json(new { message, StrStstuslogin }, JsonRequestBehavior.AllowGet);
         }
+        public JsonResult GetListCompany()
+        {
+            var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
+            var companyList = new List<string>();
+            using (var conn = new SqlConnection(connectionString))
+            using (var cmd = new SqlCommand(@"
+                                            SELECT Company
+                                            FROM Company
+                                            ORDER BY Seq", conn))
+            {
+                conn.Open();
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        companyList.Add(reader["Company"]?.ToString());
+                    }
+                }
+            }
+            companyList.Insert(0, "ALL");
+            return Json(companyList, JsonRequestBehavior.AllowGet);
+        }
     }
 }
