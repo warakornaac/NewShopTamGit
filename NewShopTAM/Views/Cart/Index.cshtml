@@ -383,7 +383,7 @@
                                                 <td style="float: right;"><span class="amount"><input id="texttotDis" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" /></span></td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <td>ภาษี 7% /Vat</td>
+                                                <td>ภาษี <span id="getVatAmtShow"></span>% /Vat <input type="hidden" id="getVatAmtVal" /></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td style="float: right;"><span class="amount"><input id="bvat" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" /></span></td>
@@ -636,7 +636,7 @@
                                         <td>บาท</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Vat/ภาษี 7% :</th>
+                                        <th scope="row">Vat/ภาษี <span id="getVatAmtShowPop"></span>% : </th>
                                         <td><p id="sumvat"></p></td>
                                         <td>บาท</td>
                                     </tr>
@@ -892,6 +892,33 @@
                     }
                 });
             }
+            //get vat rate
+            function getVatAmt() {
+                $.ajax({
+                    url: '@Url.Action("getVatAmt", "DataCenter")',
+                    type: "POST",
+                    dataType: "JSON",
+                    success: function (data) {
+                        if (data.Status === "success") {
+                            let vat = data.VatAmt;
+                            //let vat = data.VatAmt ?? 7;
+                            // เช็คว่าไม่มีค่า default = 7
+                            if (vat === null || vat === undefined || vat === "") {
+                                vat = 7;
+                            }
+                            console.log("Vat = " + vat);
+                            $("#getVatAmtVal").val(vat);
+                            $("#getVatAmtShow").html(vat);
+                        } else {
+                            alert(data.Message);
+                        }
+                    },
+                    error: function (xhr) {
+                        alert("Ajax getVatAmt error");
+                    }
+                });
+            }
+
             function ShoppingCart_list(shipto) {
                 var CUSCOD = cuscod;
                 var Company = $("#company").val();
@@ -1185,7 +1212,10 @@
             resourceAddress.hash();
             var cuscod = atob(param_values.numcuber)
             expire(usrexpire)
+
             getListCompany();
+            getVatAmt();
+
             if (usertype != "6") {
                 if (cuscod == "") {
                     var wi = window.open("../SeleScrCustomer/dashboard");
@@ -2219,6 +2249,9 @@
                 var data = [];
                 var chksop = 0;
                 var sumnetprice = 0;
+                var sumnetprice = 0;
+                var vatAmtVal = $("#getVatAmtVal").val() || 7;
+                console.log("vatAmtVal = " + vatAmtVal);
                 $('#exampletb tr').find('input[type="checkbox"]:checked').each(function () {
                     sumbeforePrice += parseFloat($(this).attr('totalprice'));
                     sumbeforeDiscount = 0;
@@ -2356,13 +2389,26 @@
                 chcksumbeforeDiscount = sumbeforeDiscount;
                 $("#texttotDis").val(sumbeforeDiscount.toFixed(2));  //ราคาก่อนบวก vat
                 $("#texttotDis").val(commaSeparateNumber($("#texttotDis").val()));//NET
-                sumActamt = parseFloat(sumbeforeDiscount) * (0.07);   //ราคาก่อนบวก vat * vat
-                sumActamt = sumActamt.toFixed(2);
+                //get late vat by table
+                console.log("vatAmtVal = " + vatAmtVal);
+                if (Number(vatAmtVal) === 0) {
+                    sumActamt = 0;
+                } else {
+                    sumActamt = parseFloat(sumbeforeDiscount) * (vatAmtVal / 100);  //ราคาก่อนบวก vat * vat
+                    sumActamt = sumActamt.toFixed(2);
+                }
+
                 sumnetpric = Number(sumbeforeDiscount) + Number(sumActamt);
                 $("#sumAmt").html(commaSeparateNumber($("#texttotDis").val())) //NET Summary
+                
                 $("#bvat").val(sumActamt); //ภาษี 7% /VAT
                 $("#bvat").val(commaSeparateNumber($("#bvat").val()));
+
                 $("#sumvat").html(commaSeparateNumber($("#bvat").val())); //Vat Summary
+
+                 //get late vat by table page popup
+                $("#getVatAmtShowPop").html(vatAmtVal); 
+
                 $("#bAmt").val((sumnetpric).toFixed(2));
                 $("#bAmt").val(commaSeparateNumber($("#bAmt").val()));//TOTAL
                 $("#sumTol").html(commaSeparateNumber($("#bAmt").val())); //TOTAL Summary
@@ -3587,15 +3633,7 @@
                                 });
                                 if (datacomTAM.length > 0 && datacomVELOX.length > 0) {
                                     ckVCompany = "ALL";
-                                } else if (datacomTAM.length > 0 && datacomVELOX.length > 0) {
-                                    ckVCompany = "ALL";
-                                } else if (datacomTAM.length > 0 && datacomVELOX.length == 0) {
-                                    ckVCompany = "ALL";
-                                } else if (datacomTAM.length == 0 && datacomVELOX.length > 0) {
-                                    ckVCompany = "ALL";
-                                } else if (datacomTAM.length > 0 && datacomVELOX.length > 0) {
-                                    ckVCompany = "ALL";
-                                } else if (datacomTAM.length > 0 && datacomVELOX.length == 0) {
+                                }  else if (datacomTAM.length > 0 && datacomVELOX.length == 0) {
                                     ckVCompany = "TAM";
                                 } else if (datacomTAM.length == 0 && datacomVELOX.length > 0) {
                                     ckVCompany = "VELOX";

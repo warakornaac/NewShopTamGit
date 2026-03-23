@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace NewShopTAM_TAM {
+namespace NewShopTAM {
     
     
     /// <summary>
@@ -2791,7 +2791,7 @@ namespace NewShopTAM_TAM {
         }
     }
 }
-namespace NewShopTAM_TAM.MobileOrdertDataSetTableAdapters {
+namespace NewShopTAM.MobileOrdertDataSetTableAdapters {
     
     
     /// <summary>

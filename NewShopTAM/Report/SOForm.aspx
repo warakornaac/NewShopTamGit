@@ -24,7 +24,7 @@
     <h1>Print Sale order</h1>
     <div class="myRow" style="clear:both" id="pnlReport">    
           <rsweb:ReportViewer ID="ReportViewer" runat="server" Font-Names="Verdana" Font-Size="8pt" Visible="true"
-        InteractiveDeviceInfos="(Collection)" ProcessingMode="Remote" WaitMessageFont-Names="Verdana" 
+        InteractiveDeviceInfos="(Collection)" ProcessingMode="Local" WaitMessageFont-Names="Verdana" 
         WaitMessageFont-Size="14pt" Width="1280px" Height="700px" ShowZoomControl="True" ShowPrintButton="True" ShowPageNavigationControls="True"
         ZoomMode="Percent" ZoomPercent="100" InternalBorderStyle="Solid" SizeToReportContent="True" AsyncRendering="False" >
               <LocalReport EnableHyperlinks="True">

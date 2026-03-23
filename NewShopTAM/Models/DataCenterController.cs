@@ -1475,5 +1475,48 @@ namespace NewShopTAM.Models
             companyList.Insert(0, "ALL");
             return Json(companyList, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public ActionResult getVatAmt()
+        {
+            double VatAmt = 0;
+            string txtStatus = "fail";
+            string txtMessage = "";
+            try
+            {
+                var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
+                using (SqlConnection Connection = new SqlConnection(connectionString))
+                {
+                    Connection.Open();
+                    using (SqlCommand cmdSearch = new SqlCommand("P_Get_Vat", Connection))
+                    {
+                        cmdSearch.CommandType = CommandType.StoredProcedure;
+
+                        SqlParameter returnResult = new SqlParameter("@outVatAmt", SqlDbType.NVarChar, 1000);
+                        returnResult.Direction = ParameterDirection.Output;
+
+                        cmdSearch.Parameters.Add(returnResult);
+
+                        cmdSearch.ExecuteNonQuery();
+
+                        if (returnResult.Value != DBNull.Value)
+                        {
+                            VatAmt = Convert.ToDouble(returnResult.Value);
+                        }
+                    }
+                }
+
+                txtStatus = "success";
+            }
+            catch (Exception ex)
+            {
+                txtMessage = ex.Message;
+            }
+            return Json(new
+            {
+                Status = txtStatus,
+                Message = txtMessage,
+                VatAmt = VatAmt
+            });
+        }
     }
 }
