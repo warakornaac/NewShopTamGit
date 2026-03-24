@@ -149,13 +149,13 @@
             <div class="content ptb--20 ">
                 <div class="row">
                     <div class="col-md-6" style="color: wheat; box-shadow: 0 1px 3px black;">
-                        <i>บัญชีลูกค้า:<i class="note-desc" style="color: white; cursor: help;" id="cus" title=""></i></i><br />
-                        <i>Credit เงินสด:<i class="note-desc" style="color:white" id="dis"></i></i><br />
+                        <i>Customer Account:<i class="note-desc" style="color: white; cursor: help;" id="cus" title=""></i></i><br />
+                        <i>Credit Cash:<i class="note-desc" style="color:white" id="dis"></i></i><br />
                         <i>Note:<i class="note-desc" style="color:white" id="note"></i></i><br />
-                        <i>พนักงานขาย:<input type="hidden" id="slmhid" /> <i id="slmshow"></i></i>
+                        <i>Sales Man:<input type="hidden" id="slmhid" /> <i id="slmshow"></i></i>
                     </div>
                     <div class="col-md-4" style="color: wheat; box-shadow: 0 1px 3px black;">
-                        <span>ที่อยู่ในการออกใบกำกับภาษี:<p class="note-desc" style="color:white" id="addcus"></p></span>
+                        <span>Billing Address:<p class="note-desc" style="color:white" id="addcus"></p></span>
                     </div>
                 </div>
             </div>
@@ -173,7 +173,7 @@
                         </div>
                     </div>
                     <div class="col-md-3" style="font-size: initial; color: cyan;">
-                        * จำนวนสั่งซื้อห้ามน้อยกว่า MOQ *
+                        * Minimum Order Quantity Required MoQ *
                     </div>
                     <hr />
                     <div class="col-md-12">
@@ -188,10 +188,10 @@
                                     <div class="form-group">
                                         <div class="input-group ">
                                             <span>
-                                                <button type="button" id="btncheck" class="btn btn-warning"> จำนวนสินค้าในตระกร้า</button>
+                                                <button type="button" id="btncheck" class="btn btn-warning"> Cart Quantity </button>
                                             </span>
-                                            <span class="col-sm-4 input-group-addon"><i><i id="Cuitem" style="color:crimson; font-size: large; font: icon;"> 0 </i>ชิ้น</i></span>
-                                            <span class="col-sm-4 input-group-addon"><i><i id="Cuqty" style="color: crimson; font-size: large; font: icon;"> 0</i> เบอร์</i></span>
+                                            <span class="col-sm-4 input-group-addon"><i><i id="Cuitem" style="color:crimson; font-size: large; font: icon;"> 0 </i>Units</i></span>
+                                            <span class="col-sm-4 input-group-addon"><i><i id="Cuqty" style="color: crimson; font-size: large; font: icon;"> 0</i>Size</i></span>
                                         </div>
                                     </div>
                                 </form>
@@ -206,8 +206,8 @@
                         <div class="form-group">
                             <div class="input-group">
                                 <select id="selval" class="form-control" style="color:black">
-                                    <option value="1">ค้นหาแบบอิสระ</option>
-                                    <option value="2">ค้นหาแบบเจาะจงเบอร์</option>
+                                    <option value="1">Free Text Search</option>
+                                    <option value="2">Search by Size</option>
                                 </select>
                             </div>
                         </div>
@@ -215,7 +215,7 @@
                     <div class="col-md-3">
                         <div class="form-group">
                             <div class="input-group">
-                                <input type="Text" @*onfocus="this.select();"*@ onmouseup="return false;" name="search_query" class="form-control" placeholder="ค้นหาสินค้า" id="search" />
+                                <input type="Text" @*onfocus="this.select();"*@ onmouseup="return false;" name="search_query" class="form-control" placeholder="Product Search" id="search" />
                             </div>
                         </div>
                     </div>
@@ -229,7 +229,7 @@
                     </div>
                     <div class="col-md-6" style="text-align: right; text-align: right;">
                         <span class="col-md-3 input-group-btn">
-                            <button type="button" id="bntHis" class="btn btn-default btn-large" style="width: 100px;display:none">ดูประวัติ </button>
+                            <button type="button" id="bntHis" class="btn btn-default btn-large" style="width: 100px;display:none">View History</button>
                         </span>
                         <span class="col-md-3"><button type="button" id="bntcan" class="btn btn-warning btn-large" style="width: 100px;">CANCEL</button></span>
                         <span class="col-md-3"><button type="submit" id="btnsubmitinsert" class="fa fa-shopping-cart  btn btn-success btn-large" style="width: 200px;">Add To Cart </button></span>
@@ -247,33 +247,33 @@
                                 {
                                     <th style="text-align: center; width: 11%; height: -webkit-fill-available;" id="saleplus">Sales<br />Plus</th>
                                 }
-                                <th>ราคา Hot </th>
+                                <th>Hot Price</th>
                                 <th>Delete</th>
-                                <th>จำนวน</th>
+                                <th>Units</th>
                                 <th>B/O</th>
                                 <th>Company<br />|Stkcod</th>
                                 <th>Brand</th>
                                 <th>Stkdes</th>
                                 <th>Sales Packing<br />Standard</th>
                                 <th>Moq</th>
-                                <th>Uom   </th>
-                                <th>ราคาป้าย</th>
-                                <th>ราคาซื้อ</th>
+                                <th>Uom</th>
+                                <th>List Price</th>
+                                <th>Purchase Price</th>
                                 <th>Price<br />Str</th>
-                                <th>ราคาพิเศษ</th>
+                                <th>Special Price</th>
                                 <th>Stock</th>
                                 <th>Rework <br /> CanSales</th>
                                 <th>Rework <br /> Clearance</th>
                                 <th>Clearance</th>
                                 <th>In-transit</th>
                                 <th>Back<br>Order</th>
-                                <th>ราคาต่อรอง</th>
+                                <th>Negotiated Price</th>
                                 <th>Line Note</th>
                                 <th style="min-width:200px">Spc<br />remark</th> @*spcRemake*@
-                                <th>ราคาซื้อ/<br />หน่วย ล่าสุด</th>
-                                <th>ราคา<br />ส่วนลดล่าสุด</th>
-                                <th>ราคา<br />ซื้อล่าสุด</th>
-                                <th>วันที่<br />ซื้อล่าสุด</th>
+                                <th>Purchase Price/<br />Latest Unit</th>
+                                <th>Price<br />Latest Discount</th>
+                                <th>Price<br />Last Purchase</th>
+                                <th>Date<br />Last Purchase</th>
                                 <th>TotBck</th>
                                 <th>Spc<br />moq</th>
                                 <th>Spc<br />start<br />date</th>
@@ -282,7 +282,7 @@
                                 <th>Promo<br />Desc</th>
                                 <th>Promo<br />Price</th>
                                 <th>Promo<br />MOQ</th>
-                                <th>วันที่คาดว่า<br />ของเข้าคลัง</th>
+                                <th>Estimated Date<br />Goods Received into Warehouse</th>
                             </tr>
                         </thead>
                         <tbody></tbody>
@@ -296,7 +296,7 @@
                     <div class="col-md-12">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <legend>รายการของแถม(FOC)</legend>
+                                <legend>Free Gift Items(FoC)</legend>
                             </div>
                         </div>
                         <div class="col-md-3">
@@ -313,10 +313,10 @@
                                 <tr>
                                     <th style="text-align: center;width: 20px;">Delete</th>
                                     <th style="text-align: center;width: 15px;">In Stock</th>
-                                    <th style="text-align: center;width: 191px;">รายการของแถม / STKCOD</th>
+                                    <th style="text-align: center;width: 191px;">Free Gift Items / STKCOD</th>
                                     <th style="text-align: center;width: 200px;">Stkdes</th>
                                     <th style="text-align: center;width: 20px;">Stkgrp</th>
-                                    <th style="text-align: center;width:7%">จำนวน</th>
+                                    <th style="text-align: center;width:7%">Units</th>
                                     <th style="text-align: center;width:7%">B/O</th>
                                     <th style="text-align: center;width: 20px;">SPack<br />UOM</th>
                                     <th style="text-align: center;width: 20px;">UOM</th>
@@ -375,7 +375,7 @@
                 <div class="modal-header">
                 </div>
                 <div class="modal-body">
-                    มีสินค้าอยู่ในตระกร้า คุณต้องการ Shopping ต่อหรือไม่ <i class="fa fa-shopping-cart fa-3x"></i><i class="fa fa-shopping-cart fa-2x"></i>
+                    Items are already in your cart. Do you want to continue shopping? <i class="fa fa-shopping-cart fa-3x"></i><i class="fa fa-shopping-cart fa-2x"></i>
                 </div>
                 <div class="modal-footer">
                     <button type="button" id="btnnext" class="btn btn-default" data-dismiss="modal">No</button>
@@ -409,7 +409,7 @@
                 success: function (data) {
                     getListCompany();
                     $("#cus").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
-                    $("#addcus").text(data[0].ADDR_01 + (data[0].ADDR_02) + "  เบอร์ติดต่อ: " + data[0].TELNUM);
+                    $("#addcus").text(data[0].ADDR_01 + (data[0].ADDR_02) + "  Contact: " + data[0].TELNUM);
                     $("#crlicustam").text(commaSeparateNumber(data[0].TAMCrlimit));
                     $("#crlicusvelox").text(commaSeparateNumber(data[0].VELOXCrlimit));
                     $("#crbarcustam").text(commaSeparateNumber(data[0].TAMBalance));
@@ -463,9 +463,9 @@
             expireval = x.replace("' days", "");
             if (parseInt(expireval) <= 15) {
                 if (_typ == "2") {
-                    alert("Password ของท่านอีก" + usrexpire + "วัน ใกล้หมดอายุ กรุณาเปลี่ยน Password  เข้าไปเปลี่ยน Password ได้ที่ App Citrix");
+                    alert("Your Password " + usrexpire + "Days is about to expire. Please change it via the Citrix App.");
                 } else if (_typ == "1") {
-                    alert("Password ของท่านอีก " + usrexpire + "วัน ใกล้หมดอายุ กรุณาเปลี่ยน Password ");
+                    alert("Your Password " + usrexpire + "Days is about to expire. Please change.");
                 }
             }
         }
@@ -558,9 +558,9 @@
                     }
                 }
                 var val = ui.item.value;
-                if (val == "ค้นหาสินค้า" || val == "") {
+                if (val == "Search Product" || val == "") {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("กรุณาเลือก Stock code");
+                    $("#textAlertWarning").text("Select Stock code");
                     $("#myModalWarning").modal(); return false;
                 }
                 //////////////////********//////////////////
@@ -633,7 +633,7 @@
                                     dtachcolo = "";
                                 } else {
                                     SubmithtmlPage += '<tr style="color: #DA1D1D;background: aliceblue;">';
-                                    dtachcolo = "<div style='color: #DA1D1D'> ราคาพิเศษหหมดอายุ</div>";
+                                    dtachcolo = "<div style='color: #DA1D1D'> The special price has expired.</div>";
                                 }
                                 if (Usertype == "1") {
                                     SubmithtmlPage += '<td style="text-align: center;font-size: x-large;"><input id="checkbox' + (i + 1) + '" class="chksop" value="1" type="checkbox" ></td>';
@@ -697,7 +697,7 @@
                             $(".last_col").css("dispaly", "none");
                         } else {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("ไม่มีรายละเอียดสินค้าที่ท่านต้องการสั่งซื้อ กรุณาติดต่อพนักงานขาย");
+                            $("#textAlertWarning").text("No product details found for your order. Please contact the salesperson.");
                             $("#myModalWarning").modal();
                         }
                         var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
@@ -752,9 +752,9 @@
                     }
                 }
                 var val = ui.item.value;
-                if (val == "ค้นหาสินค้า" || val == "") {
+                if (val == "Search Product" || val == "") {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("กรุณาเลือก Stock code");
+                    $("#textAlertWarning").text("Select Stock code");
                     $("#myModalWarning").modal(); return false;
                 }
                 //////////////////********//////////////////
@@ -795,7 +795,7 @@
                             $('#example1').prepend(SubmithtmlPage);
                         } else {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("ไม่มีรายละเอียดสินค้าที่ท่านต้องการสั่งซื้อ กรุณาติดต่อพนังงานขาย");
+                            $("#textAlertWarning").text("No product details found for your order. Please contact the salesperson.");
                             $("#myModalWarning").modal();
                         }
                     }
@@ -915,7 +915,7 @@
             if (_Pro != '') {
                 if (parseFloat(Seqval.replace(',', '').replace(' ', '')) > parseFloat(Seqvalst.replace(',', '').replace(' ', ''))) {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ Stock เนื่องจากสินค้าเป็นราคา Promotion");
+                    $("#textAlertWarning").text("Order quantity must be less than or equal to available stock, as this is a promotional product.");
                     $("#myModalWarning").modal();
                     $("#" + idqty + "").val("");
                     return false;
@@ -923,7 +923,7 @@
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(Seqval.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("จำนวนสั้งซื้อต้องไม่เกิน Promotion (" + promotionAmountMax[1] + ")");
+                            $("#textAlertWarning").text("Order quantity must not exceed the promotion limit. (" + promotionAmountMax[1] + ")");
                             $("#myModalWarning").modal();
                             $("#" + idqty + "").val("");
                             return false;
@@ -936,7 +936,7 @@
                 if (parseFloat(Seqval) > 0) {
                     if (valExpect == "") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาใส่ราคาต่อรอง เนื่องจากราคา เป็น 0 บาท");
+                        $("#textAlertWarning").text("Please enter a negotiated price since the current price is 0 Baht.");
                         $("#myModalWarning").modal();
                         $("#" + idqty + "").val("");
                         return false;
@@ -949,7 +949,7 @@
                     if (valExpect == "") {
                         $("#" + idqty + "").val("");
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาใส่ราคาต่อรองเนื่องจากราคา เป็น 1 บาท ");
+                        $("#textAlertWarning").text("Please enter a negotiated price since the current price is 1 Baht. ");
                         $("#myModalWarning").modal(); return false;
                     }
                 }
@@ -959,7 +959,7 @@
                     if (valExpect == "") {
                         $("#" + idqty + "").val("");
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาใส่ราคาต่อรอง");
+                        $("#textAlertWarning").text("Please enter the negotiated price.");
                         $("#myModalWarning").modal(); return false;
                     }
                 }
@@ -977,7 +977,7 @@
                     if (_val % 1 === 0) {
                     } else {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("ใส่จำนวนสั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + Spackuom);
+                        $("#textAlertWarning").text("Enter the order quantity for product code " + _NoAr[1] + " Invalid quantity. The order quantity is not valid. (Sales Packing Standard) = " + Spackuom);
                         $("#myModalWarning").modal();// return false;
                         $(this).val(""); //return false;
                         $("#" + idqty + "").val("");
@@ -990,7 +990,7 @@
                     return false;
                 } else {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนที่สั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ห้ามน้อยกว่า " + Spackuom + " (Sales Packing Standard )");
+                    $("#textAlertWarning").text("Order Quantity for Product Code " + _NoAr[1] + " Cannot be less than " + Spackuom + " (Sales Packing Standard )");
                     $("#myModalWarning").modal();// return false;
                     $(this).val(""); //return false;
                     $("#" + idqty + "").val("");
@@ -1000,7 +1000,7 @@
             if (parseFloat(QtPas) < parseFloat(Seqvalmoq)) {
 
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("จำนวนที่สั่งซื้อห้ามน้อยกว่า MOQ");
+                $("#textAlertWarning").text("Order quantity cannot be less than MoQ");
                 $("#myModalWarning").modal();// return false;
                 $(this).val(""); //return false;
                 $("#" + idqty + "").val("");
@@ -1026,7 +1026,7 @@
             if (_Pro != '') {
                 if (parseFloat(Seqval.replace(',', '').replace(' ', '')) > parseFloat(Seqvalst.replace(',', '').replace(' ', ''))) {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ Stock เนื่องจากสินค้าเป็นราคา Promotion");
+                    $("#textAlertWarning").text("Order quantity must be less than or equal to available stock, as this is a promotional product.");
                     $("#myModalWarning").modal();
                     $("#" + idqty + "").val("");
                     return false;
@@ -1035,7 +1035,7 @@
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(Seqval.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ (" + promotionAmountMax[1] + ") จำนวนที่ Promotion กำหดไว้ เนื่องจากเป็นสินค้าราคา Promotion");
+                            $("#textAlertWarning").text("Order quantity must be less than or equal to (" + promotionAmountMax[1] + ") Quantity is limited by the promotion, as this is a promotional product.");
                             $("#myModalWarning").modal();
                             $("#" + idqty + "").val("");
                             return false;
@@ -1048,7 +1048,7 @@
                 if (parseFloat(Seqval) > 0) {
                     if (valExpect == "") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาใส่ราคาต่อรอง เนื่องจากราคา เป็น 0 บาท");
+                        $("#textAlertWarning").text("Please enter a negotiated price since the current price is 0 Baht.");
                         $("#myModalWarning").modal();
                         $("#" + idqty + "").val("");
                         return false;
@@ -1061,7 +1061,7 @@
                     if (valExpect == "") {
                         $("#" + idqty + "").val("");
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาใส่ราคาต่อรองเนื่องจากราคา เป็น 1 บาท ");
+                        $("#textAlertWarning").text("Please enter a negotiated price since the current price is 1 Baht. ");
                         $("#myModalWarning").modal(); return false;
                     }
                 }
@@ -1071,7 +1071,7 @@
                     if (valExpect == "") {
                         $("#" + idqty + "").val("");
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาใส่ราคาต่อรอง");
+                        $("#textAlertWarning").text("Please enter the negotiated price.");
                         $("#myModalWarning").modal(); return false;
                     }
                 }
@@ -1089,7 +1089,7 @@
                     if (_val % 1 === 0) {
                     } else {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("ใส่จำนวนสั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + Spackuom);
+                        $("#textAlertWarning").text("Enter the order quantity for product code " + _NoAr[1] + " Invalid quantity. The order quantity is not valid. (Sales Packing Standard) = " + Spackuom);
                         $("#myModalWarning").modal();// return false;
                         $(this).val(""); //return false;
                         $("#" + idqty + "").val("");
@@ -1102,7 +1102,7 @@
                     return false;
                 } else {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนที่สั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ห้ามน้อยกว่า " + Spackuom + " (Sales Packing Standard )");
+                    $("#textAlertWarning").text("Order Quantity for Product Code " + _NoAr[1] + " Cannot be less than " + Spackuom + " (Sales Packing Standard )");
                     $("#myModalWarning").modal();// return false;
                     $(this).val(""); //return false;
                     $("#" + idqty + "").val("");
@@ -1111,7 +1111,7 @@
             }
             if (parseFloat(QtPas) < parseFloat(Seqvalmoq)) {
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("จำนวนที่สั่งซื้อห้ามน้อยกว่า MOQ");
+                $("#textAlertWarning").text("Minimum Order Quantity Required MoQ");
                 $("#myModalWarning").modal();// return false;
                 $(this).val(""); //return false;
                 $("#" + idqty + "").val("");
@@ -1132,7 +1132,7 @@
                     if (_val % 1 === 0) {
                     } else {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("ใส่จำนวนสั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + Spackuom);
+                        $("#textAlertWarning").text("Enter the order quantity for product code " + _NoAr[1] + " Invalid quantity. The order quantity is not valid. (Sales Packing Standard) = " + Spackuom);
                         $("#myModalWarning").modal();// return false;
                         $(this).val(""); //return false;
                         $("#" + idqty + "").val("");
@@ -1145,7 +1145,7 @@
                     return false;
                 } else {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนที่สั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ห้ามน้อยกว่า " + Spackuom + " (Sales Packing Standard )");
+                    $("#textAlertWarning").text("Order Quantity for Product Code " + _NoAr[1] + " Cannot be less than " + Spackuom + " (Sales Packing Standard )");
                     $("#myModalWarning").modal();// return false;
                     $(this).val(""); //return false;
                     $("#" + idqty + "").val("");
@@ -1166,7 +1166,7 @@
                     if (_val % 1 === 0) {
                     } else {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("ใส่จำนวนสั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + Spackuom);
+                        $("#textAlertWarning").text("Enter the order quantity for product code " + _NoAr[1] + " Invalid quantity. The order quantity is not valid. (Sales Packing Standard) = " + Spackuom);
                         $("#myModalWarning").modal();// return false;
                         $(this).val(""); //return false;
                         $("#" + idqty + "").val("");
@@ -1179,7 +1179,7 @@
                     return false;
                 } else {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนที่สั่งซื้อสินค้าเบอร์ " + _NoAr[1] + " ห้ามน้อยกว่า " + Spackuom + " (Sales Packing Standard )");
+                    $("#textAlertWarning").text("Order Quantity for Product Code " + _NoAr[1] + " Cannot be less than " + Spackuom + " (Sales Packing Standard )");
                     $("#myModalWarning").modal();// return false;
                     $(this).val(""); //return false;
                     $("#" + idqty + "").val("");
@@ -1253,7 +1253,7 @@
                     if (MyIndexValueExpectPrice == "" && MyIndexValueQty != "") {
                         $("#btnsubmitinsert").attr("disabled", false);
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาใส่ราคาต่อรองของสินค้ารหัส   " + res[1]);
+                        $("#textAlertWarning").text("Please enter the negotiated price for product code. " + res[1]);
                         $("#myModalWarning").modal();
                         return false;
                     }
@@ -1299,7 +1299,7 @@
                     alert(parseFloat(ItemList.Qty))
                     $("#btnsubmitinsert").attr("disabled", false);
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " กรุณาใส่จำนวนสั่งซื้อใหม่ จำนวนสั่งซื้อติดลบ");
+                    $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " Please enter a new order quantity. The quantity cannot be negative.");
                     $("#myModalWarning").modal();
                     return false;
                 }
@@ -1308,14 +1308,14 @@
                         if (ItemList.ExpectPrice == "") {
                             $("#btnsubmitinsert").attr("disabled", false);
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " ราคาเป็น 0 บาท กรุณาใส่ราคาต่อรอง ");
+                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " The price is 0 Baht. Please enter a valid negotiated price. ");
                             $("#myModalWarning").modal();
                             return false;
                         }
                         if (ItemList.ExpectPrice == "0") {
                             $("#btnsubmitinsert").attr("disabled", false);
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " กรุณาใส่ราคาต่อรองใหม่ ราคาต่อรองห้ามเป็น 0 บาท");
+                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " Please enter a new negotiated price. The negotiated price cannot be 0.");
                             $("#myModalWarning").modal();
                             return false;
                         }
@@ -1326,14 +1326,14 @@
                         if (ItemList.ExpectPrice == "") {
                             $("#btnsubmitinsert").attr("disabled", false);
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " ราคาเป็น 1 บาท กรุณาใส่ราคาต่อรอง ");
+                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " The price is 1 Baht. Please enter a valid negotiated price. ");
                             $("#myModalWarning").modal();
                             return false;
                         }
                         if (ItemList.ExpectPrice == "0") {
                             $("#btnsubmitinsert").attr("disabled", false);
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " กรุณาใส่ราคาต่อรองใหม่ ราคาต่อรองห้ามเป็น 0 บาท");
+                            $("#textAlertWarning").text("P/N:" + ItemList.STKCOD + " Please enter a new negotiated price. The negotiated price cannot be 0.");
                             $("#myModalWarning").modal();
                             return false;
                         }
@@ -1343,7 +1343,7 @@
                     if (MyIndexValueSpcRemark =="") {
                         $("#btnsubmitinsert").attr("disabled", false);
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือก Spc Remark");
+                        $("#textAlertWarning").text("Select Spc Remark");
                         $("#myModalWarning").modal();
                         return false;
                     }
@@ -1409,14 +1409,14 @@
                 if (dataPro.length == 0) {
                     $("#btnsubmitinsert").attr("disabled", false);
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("ไม่มีสินค้าที่จะสั่งซื้อ");
+                    $("#textAlertWarning").text("No products available to order.");
                     $("#myModalWarning").modal(); return false;
                 }
             }
             if (data.length == 0 && dataPro.length == 0) {
                 $("#btnsubmitinsert").attr("disabled", false);
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("ไม่มีสินค้าที่จะสั่งซื้อ");
+                $("#textAlertWarning").text("No products available to order.");
                 $("#myModalWarning").modal();
                 $(".fixed_headers > tbody").empty();
                 $("#example1 > tbody").empty();
@@ -1439,13 +1439,13 @@
                         $(".fixed_headers > tbody").empty();
                         $("#example1 > tbody").empty();
                         $("#textAlertSucces").empty();
-                        $("#textAlertSucces").text("บันทึกสินค้าเข้าตะกร้าสำเร็จ");
+                        $("#textAlertSucces").text("Items successfully added to the cart.");
                         $("#myModalSucces").modal();
                         ShoppingCartNumber()
                     } else {
                         $("#btnsubmitinsert").attr("disabled", false);
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("บันทึกสินค้าเข้าตะกร้าไม่สำเร็จกรุณาทำรายการใหม่");
+                        $("#textAlertWarninglog").text("Failed to add items to the cart. Please try again.");
                         $("#myModalWarninglog").modal();
                     }
                 }
@@ -1528,7 +1528,7 @@
                             typin = data[0].INACTIVE;
                             if (typin == "Y") {
                                 $("#textAlertWarning").empty();
-                                $("#textAlertWarning").text("ลูกค้าร้าน " + data[0].CUSNAM + "INACTIVE กรุณาติดต่อแผนก Credit Control หรือ Sales Admin");
+                                $("#textAlertWarning").text("Store Customer " + data[0].CUSNAM + "INACTIVE. Please contact the Credit Control or Sales Admin department.");
                                 $("#myModalWarning").modal();
                                 return false;
                             } else {

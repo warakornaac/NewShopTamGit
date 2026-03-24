@@ -3,42 +3,26 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <link href="~/features/css/coomingson.css" rel="stylesheet" />
-
     <link href="~/Content/Normalize.css" rel="stylesheet" />
-
     <script src="~/CSS/jQueryv3.1.1.js"></script>
     <link rel="stylesheet" href="~/tmartcss/css/shortcode/shortcodes.css">
-
-    <!-- Owl Carousel main css -->
     <link rel="stylesheet" href="~/tmartcss/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/tmartcss/css/owl.theme.default.min.css">
-    <!-- This core.css file contents all plugings css file. -->
     <link rel="stylesheet" href="~/tmartcss/css/core.css">
-    <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="~/tmartcss/css/shortcode/shortcodes.css">
-    <!-- Theme main style -->
     <link rel="stylesheet" href="~/tmartcss/style.css">
-    <!-- Responsive css -->
     <link rel="stylesheet" href="~/tmartcss/css/responsive.css">
-    <!-- User style -->
     <link rel="stylesheet" href="~/tmartcss/css/custom.css">
-    <!-- Modernizr JS -->
     <script src="~/tmartcss/js/vendor/modernizr-2.8.3.min.js"></script>
-
-    <!-- jquery latest version -->
     <script src="~/tmartcss/js/vendor/jquery-1.12.0.min.js"></script>
 
     <style>
         .header {
-            /*background-color: #3c8dbc;*/
             background: linear-gradient(-180deg,#ef3b13fa,#1a30d0a3);
             font-size: 12px;
         }
@@ -87,75 +71,48 @@
             <div class="float-left"> <a href="#" class="button-left"><span class="fa fa-fw fa-bars "></span></a> </div>
             <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    @*<li class="nav-item dropdown messages-menu">
-            <a class="nav-link dropdown-toggle" href="#">Action</a>
-
-        </li>*@
-                    @*<li class="nav-item dropdown messages-menu">
-
-            <a class="nav-link dropdown-toggle" href="~/Home2/Index">Home2</a>
-
-        </li>*@
                     @if (Session["UserType"].ToString() != "5")
                     {
-                        @*<li class="nav-item dropdown messages-menu">
-
-                <a class="nav-link dropdown-toggle" id="btnhome">ช้อปปิ้ง</a>
-            </li>
-            <li class="nav-item dropdown messages-menu">
-
-                <a class="nav-link dropdown-toggle" id="btncart">ตระกร้าสินค้า</a>
-            </li>*@
                         if (Session["UserType"].ToString() == "1")
                         {
                             <li class="nav-item dropdown messages-menu">
-
-                                <a class="nav-link dropdown-toggle" id="nextcheckstock">ตรวจสอบ Stock สินค้า</a>
+                                <a class="nav-link dropdown-toggle" id="nextcheckstock">Check Inventory Stock</a>
                             </li>
                             <li class="nav-item dropdown messages-menu">
-
                                 <a class="nav-link dropdown-toggle" id="nextcrm">CRM</a>
                             </li>
                             <li class="nav-item dropdown messages-menu">
-
                                 <a class="nav-link dropdown-toggle" id="nextbck">Back Order</a>
                             </li>
-
                             <li class="nav-item dropdown messages-menu">
-
-                                <a class="nav-link dropdown-toggle" id="btnstatus">การสั่งซื้อของฉัน</a>
+                                <a class="nav-link dropdown-toggle" id="btnstatus">My Order</a>
                             </li>
                             <li class="nav-item dropdown messages-menu">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarshowdetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-shopping-cart" style="font-size: 1.7em;"></i>
                                     <span class="label label-success bg-success" id="countsku"></span>
-                                    <span>ตะกร้าสินค้า</span>
+                                    <span>Shopping Cart</span>
                                 </a>
-
                             </li>
                             <li class="nav-item dropdown messages-menu">
 
-                                <a class="nav-link dropdown-toggle" id="btndetail">บัญชีลูกค้า</a>
+                                <a class="nav-link dropdown-toggle" id="btndetail">Customer Account</a>
                             </li>
                         }
                         else if (Session["UserType"].ToString() == "2")
                         {
-
                             <li class="nav-item dropdown messages-menu">
-
-                                <a class="nav-link dropdown-toggle" id="btnstatus">การสั่งซื้อของฉัน</a>
+                                <a class="nav-link dropdown-toggle" id="btnstatus">My Order</a>
                             </li>
                             <li class="nav-item dropdown messages-menu">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarshowdetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-shopping-cart" style="font-size: 1.7em;"></i>
                                     <span class="label label-success bg-success" id="countsku"></span>
-                                    <span>ตะกร้าสินค้า</span>
+                                    <span>Shopping Cart</span>
                                 </a>
-
                             </li>
                             <li class="nav-item dropdown messages-menu">
-
-                                <a class="nav-link dropdown-toggle" id="btndetail">บัญชีลูกค้า</a>
+                                <a class="nav-link dropdown-toggle" id="btndetail">Customer Account</a>
                             </li>
                         }
                     }
@@ -164,7 +121,7 @@
                     {
                         <li class="nav-item dropdown messages-menu">
 
-                            <a class="nav-link dropdown-toggle" href="~/Promotion/ApproveChangeCustomer">อนุมัติเปลี่ยนโปรโมชั่น</a>
+                            <a class="nav-link dropdown-toggle" href="~/Promotion/ApproveChangeCustomer">Approve Promotion Change</a>
                         </li>
                         <li class="nav-item dropdown messages-menu">
 
@@ -172,154 +129,56 @@
                         </li>
                         <li class="nav-item dropdown messages-menu">
 
-                            <a class="nav-link dropdown-toggle" href="~/Orderlist/Index">ช้อปปิ้ง</a>
+                            <a class="nav-link dropdown-toggle" href="~/Orderlist/Index">Shopping</a>
                         </li>
                         <li class="nav-item dropdown messages-menu">
 
-                            <a class="nav-link dropdown-toggle" href="~/SCStockSco/Index">ตรวจสอบ Stock สินค้า</a>
+                            <a class="nav-link dropdown-toggle" href="~/SCStockSco/Index">Check Product Stock</a>
                         </li>
                         <li class="nav-item dropdown messages-menu">
 
-                            <a class="nav-link dropdown-toggle" href="~/PriceApproval/Index">อนุมัติราคา</a>
+                            <a class="nav-link dropdown-toggle" href="~/PriceApproval/Index">Approve Pricing</a>
                         </li>
                         <li class="nav-item dropdown messages-menu">
-                            <a class="nav-link dropdown-toggle" href="~/Promotion/ApproveChangeCustomer">อนุมัติเปลี่ยนโปรโมชั่น</a>
+                            <a class="nav-link dropdown-toggle" href="~/Promotion/ApproveChangeCustomer">Approve Promotion Change</a>
                         </li>
                     }
                     <li class="nav-item dropdown messages-menu">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarcart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <!--<i class="fa fa-shopping-cart" style="font-size: 1.7em;"></i>
-            <span class="label label-success bg-success" id="countsku"></span>-->
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @*<ul class="dropdown-menu-over list-unstyled">
-                    <li class="header-ul text-center">You have 4 messages</li>
-                    <li>
-                        <!-- inner menu: contains the actual data -->
-                        <ul class="menu list-unstyled">
-                            <li>
-                                <!-- start message -->
-                                <a href="#">
-                                    <div class="pull-left">
-                                        <img src="http://via.placeholder.com/160x160" class="rounded-circle  " alt="User Image">
-                                    </div>
-                                    <h4>
-                                        Support Team
-                                        <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                    </h4>
-                                    <p>Why not buy a new awesome theme?</p>
-                                </a>
-                            </li>
-                            <!-- end message -->
-                            <li>
-                                <a href="#">
-                                    <div class="pull-left">
-                                        <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                    </div>
-                                    <h4>
-                                        AdminLTE Design Team
-                                        <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                    </h4>
-                                    <p>Why not buy a new awesome theme?</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="pull-left">
-                                        <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                    </div>
-                                    <h4>
-                                        Developers
-                                        <small><i class="fa fa-clock-o"></i> Today</small>
-                                    </h4>
-                                    <p>Why not buy a new awesome theme?</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="pull-left">
-                                        <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                    </div>
-                                    <h4>
-                                        Sales Department
-                                        <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                    </h4>
-                                    <p>Why not buy a new awesome theme?</p>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <div class="pull-left">
-                                        <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                    </div>
-                                    <h4>
-                                        Reviewers
-                                        <small><i class="fa fa-clock-o"></i> 2 days</small>
-                                    </h4>
-                                    <p>Why not buy a new awesome theme?</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="footer-ul text-center"><a href="#">See All Messages</a></li>
-                </ul>*@
                         </div>
                     </li>
                     <li class="nav-item dropdown  user-menu ">
-
-
                         <a class="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                             @if (Session["UserType"].ToString() != "6")
                             {
-                                <span class="toggle__menu hidden-xs">บัญชีของคุณ @Session["UserID"]  </span>
+                                <span class="toggle__menu hidden-xs">Profile @Session["UserID"]  </span>
                             }
                             else if (Session["UserType"].ToString() == "6")
                             {
-                                <span class="toggle__menu hidden-xs">บัญชีของคุณ @Session["UserID"]  </span>
+                                <span class="toggle__menu hidden-xs">Profile @Session["UserID"]  </span>
                             }
-
-
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @*<a class="dropdown-item" href="#">Action</a>*@
-                            @*<a class="dropdown-item" href="~/Home2/Index">Home2</a>*@
                             @if (Session["UserType"].ToString() == "5")
                             {
-                                <a class="dropdown-item" href="~/Orderlist/Index">Hoช้อปปิ้งme</a>
+                                <a class="dropdown-item" href="~/Orderlist/Index">Home</a>
                             }
                             else if (Session["UserType"].ToString() != "5")
                             {
-                                <!--<a class="dropdown-item" href="~/Home/Index">ช้อปปิ้ง</a>
-                <a class="dropdown-item" href="~/Cart/Index">ตระกร้าสินค้า</a>
-                <a class="dropdown-item" href="~/SeleScrCustomer/Index">บัญชีลูกค้า</a>-->
                             }
                         </div>
                     </li>
                     <li class="nav-item dropdown messages-menu">
-
-                        <a class="nav-link dropdown-toggle" href="~/Account/LogOut">ออกจากระบบ</a>
+                        <a class="nav-link dropdown-toggle" href="~/Account/LogOut">Logout</a>
                     </li>
-
-
-
-
-
-
                 </ul>
-
             </div>
         </nav>
     </header>
-
-
     @RenderBody()
-
-    <!-- Body main wrapper end -->
-    <!-- Placed js at the end of the document so the pages load faster -->
-    <!-- Bootstrap framework js -->
     <script src="~/bootstrap-select-1.13.14/Bootstrapv4.1.0.js"></script>
-
 </body>
-
 </html>

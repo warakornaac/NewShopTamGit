@@ -1,30 +1,17 @@
 ﻿@{
     Layout = "~/Views/Shared/_LayoutOrderlist.cshtml";
-
-    // Layout = "~/Views/Shared/_Layoutnavigationbar.cshtml";
-    //Layout = "~/Views/Shared/_LayoutStatus.cshtml";
-    //Layout = "~/Views/Shared/View3.cshtml";
-    //Layout = "~/Views/Shared/_LayoutPage.cshtml";
-
-
 }
 <html class="no-js" lang="">
 <head>
     <meta charset="utf-8">
     <title></title>
     <meta name="description" content="">
-    @*<meta name="viewport" content="width=device-width, initial-scale=1">*@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta property="og:title" content="">
     <meta property="og:type" content="">
     <meta property="og:url" content="">
     <meta property="og:image" content="">
-
-    <!-- <link rel="manifest" href="~/html5boilerplate_v8/site.webmanifest">-->
-
     <link rel="apple-touch-icon" href="icon.png">
-    <!-- Place favicon.ico in the root directory -->
-
     <link href="~/html5boilerplate_v8/css/main.css" rel="stylesheet" />
     <link rel="stylesheet" href="~/html5boilerplate_v8/css/normalize.css">
     <link rel="stylesheet" href="~/html5boilerplate_v8/css/main.css">
@@ -75,8 +62,6 @@
         }
 
         .tableFixHead {
-            /*overflow-y: auto;
-                height: 1000px;*/
         }
 
             .tableFixHead thead th {
@@ -102,15 +87,11 @@
         .rat__qun {
             color: #FFFFFF;
             background-color: #4CAF50;
-            /*float: right;
-                margin-right: 470px;*/
         }
 
         .rat__sp {
             color: #FFFFFF;
             background-color: #1c6c65;
-            /*float: right;
-                margin-right: 470px;*/
         }
 
         .fa fa-star-half-o {
@@ -118,9 +99,6 @@
             -webkit-text-stroke-width: 1px;
             -webkit-text-stroke-color: orange;
         }
-        /*#sidebar{
-                font-size:larger;
-            }*/
         .clabl {
             font: unset;
             font-weight: bold;
@@ -148,39 +126,25 @@
         }
     </style>
 </head>
-
-
 <body>
-
-    <!-- Add your site or application content here -->
-    <!--<p>Hello world! This is HTML5 Boilerplate.</p> -->
     <script src="~/html5boilerplate_v8/js/vendor/modernizr-3.11.2.min.js"></script>
     <script src="~/html5boilerplate_v8/js/plugins.js"></script>
     <script src="~/html5boilerplate_v8/js/main.js"></script>
-
-    @*<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>*@
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
     <link href="~/bootstrap-4.0.0/dist/css/bootstrap.css" rel="stylesheet" />
-
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    @*<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>*@
     <script src="~/bootstrap/bootstrap3_4_1.js"></script>
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
     <link href="~/bootstrap-select-1.13.14/dist/css/bootstrap-select.css" rel="stylesheet" />
     <script src="~/bootstrap-select-1.13.14/dist/js/bootstrap-select.js"></script>
-
-
     <script src="~/Loadingmodal/js/modal-loading.js"></script>
     <link href="~/Loadingmodal/css/modal-loading-animate.css" rel="stylesheet" />
     <link href="~/Loadingmodal/css/modal-loading.css" rel="stylesheet" />
     <script src="~/Scripts/webAddress.js"></script>
     <script src="~/Scripts/CheckFuntion/Loginexpire.js"></script>
-
     <link href="~/tmartcss/JSautocomplete/jquery-ui.css" rel="stylesheet" />
     <script src="~/tmartcss/JSautocomplete/jquery-ui-1.9.2.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
-
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" rel="stylesheet" />
     <script src="~/fixed-table-master/fixed-table.js"></script>
     <link href="~/fixed-table-master/fixed-table.css" rel="stylesheet" />
@@ -196,12 +160,8 @@
                     <div id="close-sidebar">
                         <i class="fas fa-times"></i>
                     </div>
-
                 </div>
-
-
                 <div class="panel-bodydis  scrollable">
-
                     <div class="panel-group">
                         <div class="panel panel-default">
                             <div class="panel-heading">
@@ -216,10 +176,8 @@
                             </div>
                             <div id="filter1" class="panel-collapse collapse in">
                                 <div class="panel-body">
-                                    @*<label>แสดงตัวกรอง</label>*@
                                     <div class="filter-setting">
                                         <form>
-
                                             <div class="col-md-6">
                                                 <button type="button" class="btn btn-block btn-warning" id="searchbox">
                                                     <span class="glyphicon">Search  </span>
@@ -231,7 +189,7 @@
                                                 </button>
                                             </div>
                                             <br />
-                                            <label class="clabl">ค้นหาเบอร์สินค้า</label>
+                                            <label class="clabl">Search Product Number</label>
                                             <a class="pull-right collapsed-icon-toggle" href="#coll-0" data-toggle="collapse">
                                                 <span class="glyphicon glyphicon-minus on-opened"></span>
                                                 <span class="glyphicon glyphicon-plus on-closed"></span>
@@ -239,31 +197,26 @@
                                             <br />
                                             <div id="coll-0" class="collapse in">
                                                 <select class="form-control-lg" data-container="body" data-live-search="false" data-hide-disabled="true" id="optionsearch">
-                                                    <option value="1">ค้นหาแบบอิสระ</option>
-                                                    <option value="2">ค้นหาแบบเจาะจงเบอร์</option>
-
+                                                    <option value="1">Free Search</option>
+                                                    <option value="2">Search by part number.</option>
                                                 </select>
-                                                <input type="search" id="textfree" placeholder="ค้นหาสินค้าที่คุณต้องการได้ที่นี่..." class="form-control ui-autocomplete-input" autocomplete="off">
-                                                <input type="search" id="textfreeoe" placeholder="ค้นหาเบอร์OEที่คุณต้องการได้ที่นี่..." class="form-control ui-autocomplete-input" autocomplete="off">
+                                                <input type="search" id="textfree" placeholder="Search for your products here..." class="form-control ui-autocomplete-input" autocomplete="off">
+                                                <input type="search" id="textfreeoe" placeholder="Search for the OE number here..." class="form-control ui-autocomplete-input" autocomplete="off">
                                             </div>
                                             <hr class="line" />
-                                            <label class="clabl">ประเภทรถยนต์(segment)</label>
+                                            <label class="clabl">Segment</label>
                                             <a class="pull-right collapsed-icon-toggle" href="#coll-1" data-toggle="collapse">
                                                 <span class="glyphicon glyphicon-minus on-opened"></span>
                                                 <span class="glyphicon glyphicon-plus on-closed"></span>
                                             </a>
                                             <br />
-
                                             <div id="coll-1" class="collapse in">
                                                 <div class="padding-v-xs" data-toggle="buttons">
-
                                                     <select class="selectpicker form-control p-2 bg-warning" data-container="body" data-live-search="true" data-hide-disabled="true" id="segment"></select>
-
                                                 </div>
-
                                             </div>
                                             <hr class="line" />
-                                            <label class="clabl">หมวดสินค้า(Product Group)</label>
+                                            <label class="clabl">Product Group</label>
                                             <a class="pull-right collapsed-icon-toggle" href="#coll-2" data-toggle="collapse">
                                                 <span class="glyphicon glyphicon-minus on-opened"></span>
                                                 <span class="glyphicon glyphicon-plus on-closed"></span>
@@ -273,7 +226,7 @@
                                                 <select class="selectpicker form-control p-2 bg-warning" data-container="body" name="selValuebproductgroup" data-live-search="true" data-hide-disabled="true" id="productgroup"></select>
                                             </div>
                                             <hr class="line" />
-                                            <label class="clabl">ประเภทสินค้า(Product Line)</label>
+                                            <label class="clabl">Product Line</label>
                                             <a class="pull-right collapsed-icon-toggle" href="#coll-3" data-toggle="collapse">
                                                 <span class="glyphicon glyphicon-minus on-opened"></span>
                                                 <span class="glyphicon glyphicon-plus on-closed"></span>
@@ -282,7 +235,6 @@
                                             <div id="coll-3" class="scroll-v-250px collapse in">
                                                 <div class="padding-v-xs" data-toggle="buttons">
                                                     <select class="selectpicker form-control p-2 bg-warning" data-container="body" name="selValuebproductline" data-live-search="true" data-hide-disabled="true" id="productline"></select>
-
                                                 </div>
                                             </div>
                                             <hr class="line" />
@@ -295,11 +247,10 @@
                                             <div id="coll-4" class="scroll-v-250px collapse in">
                                                 <div class="padding-v-xs" data-toggle="buttons">
                                                     <select class="selectpicker form-control p-2 bg-warning" name="selValuebrand" data-container="body" data-live-search="true" data-hide-disabled="true" id="brand"></select>
-
                                                 </div>
                                             </div>
                                             <hr class="line" />
-                                            <label class="clabl">ยี่ห้อรถ(Maker)</label>
+                                            <label class="clabl">Maker</label>
                                             <a class="pull-right collapsed-icon-toggle" href="#coll-5" data-toggle="collapse">
                                                 <span class="glyphicon glyphicon-minus on-opened"></span>
                                                 <span class="glyphicon glyphicon-plus on-closed"></span>
@@ -308,11 +259,9 @@
                                             <div id="coll-5" class="scroll-v-250px collapse in">
                                                 <div class="padding-v-xs" data-toggle="buttons">
                                                     <select class="selectpicker form-control bg-primary" data-container="body" data-live-search="true" data-hide-disabled="true" id="maker"></select>
-
                                                 </div>
-                                                <label class="clabl">รุ่น(Model)</label>
+                                                <label class="clabl">Model</label>
                                                 <br />
-
                                                 <div class="padding-v-xs" data-toggle="buttons">
                                                     <select class="selectpicker form-control bg-primary" data-container="body" data-live-search="true" data-hide-disabled="true" id="Model"></select>
 
@@ -320,13 +269,8 @@
                                                         <option selected value="">Submodel</option>
                                                     </select>
                                                 </div>
-
                                             </div>
-
                                             <hr class="line" />
-
-
-
                                             <label class="clabl">Company</label>
                                             <a class="pull-right collapsed-icon-toggle" href="#coll-6" data-toggle="collapse">
                                                 <span class="glyphicon glyphicon-minus on-opened"></span>
@@ -335,7 +279,6 @@
                                             <br />
                                             <div id="coll-6" class="scroll-v-250px collapse in">
                                                 <div class="padding-v-xs" data-toggle="buttons">
-
                                                     <select class="form-control-lg" data-container="body" data-live-search="false" data-hide-disabled="true" id="company"></select>
                                                 </div>
                                             </div>
@@ -349,25 +292,9 @@
                                             <div id="coll-7" class="scroll-v-250px collapse in">
                                                 <div class="padding-v-xs" data-toggle="buttons">
                                                     <select class="selectpicker form-control" data-container="body" data-live-search="true" data-hide-disabled="true" id="catalogue"></select>
-
                                                 </div>
                                             </div>
                                             <hr class="line" />
-
-                                            @*<div class="col-md-6">
-                                                    <button type="button" class="btn btn-block btn-warning" id="searchbox">
-                                                        <span class="glyphicon">Search  </span>
-                                                    </button>
-                                                </div>
-                                                <div class="col-md-6">
-                                                    <button type="button" class="btn btn-block btn-secondary" id="crsearchbox">
-                                                        <span class="glyphicon">ClearFilter</span>
-                                                    </button>
-                                                </div>*@
-
-
-
-
                                         </form>
                                     </div>
                                 </div>
@@ -375,186 +302,13 @@
                         </div>
                     </div>
                 </div>
-                <!-- sidebar-header  -->
-                <!-- <div class="sidebar-search">
-                    <div>
-                        <div class="input-group">
-                            <input type="text" class="form-control search-menu" placeholder="Search...">
-                            <div class="input-group-append">
-                                <span class="input-group-text">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>-->
-                <!-- sidebar-search  -->
-                <!--  <div class="sidebar-menu">
-                     <ul>
-                         <li class="header-menu">
-                             <span>General</span>
-                         </li>
-                         <li class="sidebar-dropdown">
-                             <a href="#">
-                                 <i class="fa fa-tachometer-alt"></i>
-                                 <span>Dashboard</span>
-                                 <span class="badge badge-pill badge-warning">New</span>
-                             </a>
-                             <div class="sidebar-submenu">
-                                 <ul>
-                                     <li>
-                                         <a href="#">
-                                             Dashboard 1
-                                             <span class="badge badge-pill badge-success">Pro</span>
-                                         </a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Dashboard 2</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Dashboard 3</a>
-                                     </li>
-                                 </ul>
-                             </div>
-                         </li>
-                         <li class="sidebar-dropdown">
-                             <a href="#">
-                                 <i class="fa fa-shopping-cart"></i>
-                                 <span>E-commerce</span>
-                                 <span class="badge badge-pill badge-danger">3</span>
-                             </a>
-                             <div class="sidebar-submenu">
-                                 <ul>
-                                     <li>
-                                         <a href="#">
-                                             Products
-
-                                         </a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Orders</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Credit cart</a>
-                                     </li>
-                                 </ul>
-                             </div>
-                         </li>
-                         <li class="sidebar-dropdown">
-                             <a href="#">
-                                 <i class="far fa-gem"></i>
-                                 <span>Components</span>
-                             </a>
-                             <div class="sidebar-submenu">
-                                 <ul>
-                                     <li>
-                                         <a href="#">General</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Panels</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Tables</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Icons</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Forms</a>
-                                     </li>
-                                 </ul>
-                             </div>
-                         </li>
-                         <li class="sidebar-dropdown">
-                             <a href="#">
-                                 <i class="fa fa-chart-line"></i>
-                                 <span>Charts</span>
-                             </a>
-                             <div class="sidebar-submenu">
-                                 <ul>
-                                     <li>
-                                         <a href="#">Pie chart</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Line chart</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Bar chart</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Histogram</a>
-                                     </li>
-                                 </ul>
-                             </div>
-                         </li>
-                         <li class="sidebar-dropdown">
-                             <a href="#">
-                                 <i class="fa fa-globe"></i>
-                                 <span>Maps</span>
-                             </a>
-                             <div class="sidebar-submenu">
-                                 <ul>
-                                     <li>
-                                         <a href="#">Google maps</a>
-                                     </li>
-                                     <li>
-                                         <a href="#">Open street map</a>
-                                     </li>
-                                 </ul>
-                             </div>
-                         </li>
-                         <li class="header-menu">
-                             <span>Extra</span>
-                         </li>
-                         <li>
-                             <a href="#">
-                                 <i class="fa fa-book"></i>
-                                 <span>Documentation</span>
-                                 <span class="badge badge-pill badge-primary">Beta</span>
-                             </a>
-                         </li>
-                         <li>
-                             <a href="#">
-                                 <i class="fa fa-calendar"></i>
-                                 <span>Calendar</span>
-                             </a>
-                         </li>
-                         <li>
-                             <a href="#">
-                                 <i class="fa fa-folder"></i>
-                                 <span>Examples</span>
-                             </a>
-                         </li>
-                     </ul>
-                 </div> -->
-                <!-- sidebar-menu  -->
             </div>
             <!-- sidebar-content  -->
             <div class="sidebar-footer">
-                <!--   <a href="#">
-                     <i class="fa fa-bell"></i>
-                     <span class="badge badge-pill badge-warning notification">3</span>
-                 </a>
-                 <a href="#">
-                     <i class="fa fa-envelope"></i>
-                     <span class="badge badge-pill badge-success notification">7</span>
-                 </a>
-                 <a href="#">
-                     <i class="fa fa-cog"></i>
-                     <span class="badge-sonar"></span>
-                 </a>
-                 <a href="#">
-                     <i class="fa fa-power-off"></i>
-                 </a> -->
             </div>
         </nav>
-        <!-- sidebar-wrapper  -->
         <main class="page-content">
-
-
             <div>
-
-
                 <div class="form-group">
                     <div class="col-md-4">
 
@@ -569,61 +323,39 @@
                                 <option value="6">Pricelist</option>
                             </select>
                         </div>
-
                     </div>
                     <div class="col-md-2">
-
                     </div>
                     <div class="col-md-4">
-
                         <div class="form-group">
                             <div class="input-group ">
                                 <span class="col-sm-4 input-group-addon" style="float: initial;padding: 0px 0px;">
                                     <button type="button" id="btncheck" class="btn btn-warning">
-                                        จำนวนสินค้าในตระกร้า
+                                        Cart Items
                                     </button>
                                 </span>
-                                <span class="col-sm-4 input-group-addon" style="float: initial;padding: 0px 0px;"><i><i id="Cuitem" style="color:crimson; font-size: large; font: icon;">0</i>ชิ้น</i></span>
-                                <span class="col-sm-4 input-group-addon" style="float: initial;padding: 0px 0px;"><i><i id="Cuqty" style="color: crimson; font-size: large; font: icon;">0</i> เบอร์</i></span>
+                                <span class="col-sm-4 input-group-addon" style="float: initial;padding: 0px 0px;"><i><i id="Cuitem" style="color:crimson; font-size: large; font: icon;">0</i>Units</i></span>
+                                <span class="col-sm-4 input-group-addon" style="float: initial;padding: 0px 0px;"><i><i id="Cuqty" style="color: crimson; font-size: large; font: icon;">0</i>Size</i></span>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
-
             <div class="form-group col-md-12 content">
-
                 <div class="col-md-6 sort">
-                    <h2>รายการสินค้า</h2>
+                    <h2>Product List</h2>
                 </div>
                 <div class="col-md-4" @*style="float: right;"*@>
                     <div class="form-group">
                         <div class="input-group ">
-
                             <span>
                                 <button type="submit" id="btnsubmitinsert" class="fa fa-shopping-cart  btn btn-success btn-large" style="width: 200px;">Add To Cart </button>
                             </span>
-
-
                         </div>
                     </div>
-
-
                 </div>
-
                 <div class="form-group col-md-12 content">
-
-
-
-                    @*<p>This is a responsive sidebar template with dropdown menu based on bootstrap 4 framework.</p>
-                        <p>
-                            You can find the complete code on <a href="https://github.com/azouaoui-med/pro-sidebar-template" target="_blank">
-                                Github
-                            </a>, it contains more themes and background image option
-                        </p>*@
                     <div class="table-responsive">
-                        @*<div class="tableFixHead">*@
                         <table class="js-sort-table table table-hover shopping-cart-wrap" id="fixed-table-container-1">
                             <thead class="text-muted">
                                 <tr>
@@ -639,15 +371,10 @@
                         </table>
                     </div>
                 </div>
-
-
             </div>
             <hr>
-
         </main>
-        <!-- page-content" -->
     </div>
-    <!-- ModalWarning -->
     <div class="modal fade" id="myModalWarning" role="dialog">
         <div class="modal-dialog">
             <div class="alert alert-warning alert-dismissible" role="alert">
@@ -660,8 +387,6 @@
             </div>
         </div>
     </div>
-    <!-- ModalWarning -->
-    <!-- ModalWarning -->
     <div class="modal" id="myModalWarninglog" role="dialog">
         <div class="modal-dialog">
             <div class="alert alert-warning alert-dismissible" role="alert">
@@ -673,7 +398,6 @@
             </div>
         </div>
     </div>
-    <!-- Modalsuccess -->
     <div class="modal" id="myModalSucces" role="dialog">
         <div class="modal-dialog">
             <div class="alert alert-success alert-dismissible" role="alert">
@@ -682,12 +406,9 @@
                 <div class="modal-body">
                     <div id="textAlertSucces">Save success</div>
                 </div>
-
             </div>
         </div>
     </div>
-    <!-- EndModalsuccess -->
-    <!-- page-wrapper -->
     <div id="classModal" class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="classInfo" aria-hidden="true">
         <div class="modal-dialog modal-lg">
             <div class="modal-content">
@@ -695,7 +416,6 @@
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
                         ×
                     </button>
-
                 </div>
                 <div class="modal-body">
                     <strong>Detail</strong>
@@ -721,50 +441,24 @@
             </div>
         </div>
     </div>
-
-    <!-- Modal -->
-
     <div class="modal" id="myModal" style="background-color: black;">
-
         <div class="modal-dialog" role="document" style="width: 360px;">
-
             <div class="modal-content">
-
                 <div class="modal-header" style="background-color: #337AB7; padding: 16px 16px; color: #FFF; border-bottom: 2px dashed #337AB7; ">
-
-                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>*@
-
-                    <h4 class="modal-title" id="myModalLabel"></h4>
-
+                <h4 class="modal-title" id="myModalLabel"></h4>
                 </div>
-
                 <div class="modal-body" id="texterror">
                 </div>
-
                 <div class="modal-footer">
-
-                    @*<button type="button" class="btn btn btn-primary" data-dismiss="modal">OK</button>*@
-
-                    <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">เข้าสู่ระบบอีกครั้ง</button>
-
-                    @*<button type="button" class="btn btn-orange" data-dismiss="modal">Cancel</button>*@
-
+                    <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">Login again</button>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-
-
     <script type="text/javascript">
-
         window.ga = function () { ga.q.push(arguments) }; ga.q = []; ga.l = +new Date;
         ga('create', 'UA-XXXXX-Y', 'auto'); ga('set', 'anonymizeIp', true); ga('set', 'transport', 'beacon'); ga('send', 'pageview')
-
         jQuery(function ($) {
-
             $(".sidebar-dropdown > a").click(function () {
                 $(".sidebar-submenu").slideUp(200);
                 if (
@@ -793,7 +487,6 @@
             $("#show-sidebar").click(function () {
                 $(".page-wrapper").addClass("toggled");
             });
-
         });
         var id = '@Request.RequestContext.HttpContext.Session["ID"]';
         var userid = '@Request.RequestContext.HttpContext.Session["UserID"]';
@@ -801,7 +494,6 @@
         var usercode = '@Request.RequestContext.HttpContext.Session["CUSCOD"]';
         var usrexpire = '@Request.RequestContext.HttpContext.Session["expdatecal"]';
         expire(usrexpire)
-       // alert(usercode)
         if (usertype == "") {
             window.location.replace("../Account/LogIn");
 
@@ -809,18 +501,13 @@
             if (usertype == "1" || usertype == "2") {
                 resourceAddress.hash();
                 var cuscod = atob(param_values.numcuber);
-
-               // var cuscod = "110Z0001O";
                 $("#changepass").css("display", "none");
             } else if (usertype == "5") {
                 var cuscod = "110Z0001O";
                 $("#changepass").css("display", "none");
-
             } else if (usertype == "6") {
                  resourceAddress.hash();
-                // var cuscod = usercode;
                  var cuscod = atob(param_values.numcuber);
-
                  $("#changepass").css("display", "block");
             }
         }
@@ -830,28 +517,19 @@
                 data: {
                     UsrID: userid,
                     cuscod: cuscod
-
                 },
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
                     var splitstring = data.StrStstuslogin;
-                    //console.log(splitstring);
-                    //let text = splitstring;
-                    //const myArray = text.split("|");
-                    //let mysession = myArray[1];
-                    //let mystatus = myArray[0];
-                    // console.log("mystatus " + mystatus + "//////" + "mysession " + mysession);
                     if (splitstring == "1") {
                         $("#texterror").empty();
-                        $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                         $("#myModal").modal();
                         return false;
-
                     }
                 }
             });
-
         }
         function checklogin(userid, id) {
             $.ajax({
@@ -859,7 +537,6 @@
                 data: {
                     UsrID: userid,
                     SessionId: id
-
                 },
                 type: "POST",
                 dataType: "JSON",
@@ -870,26 +547,19 @@
                     const myArray = text.split("|");
                     let mysession = myArray[1];
                     let mystatus = myArray[0];
-                    //myModal
-
-                    //console.log("mystatus " + mystatus + "//////" + "mysession " + mysession);
                     if (id != mysession) {
                         $("#texterror").empty();
-                        $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                         $("#myModal").modal();
-                        //window.location.replace("../Account/LogIn");
                     } else{
-
                         if (mystatus == "0") {
                             $("#texterror").empty();
-                            $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                            $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                             $("#myModal").modal();
-                           // window.location.replace("../Account/LogIn");
                         }
                     }
                 }
             });
-
         }
 
         $(document).ready(function () {
@@ -898,15 +568,12 @@
                     checkPrivilege(userid, cuscod)
                 }
                 $(window).on('load', function () {
-                    //alert("load")
                     checklogin(userid, id)
                 });
                 window.onclick = function () {
-                    //alert("onclick")
                     checklogin(userid, id)
                 };
                 $('.navbar-nav').click(function () {
-                    // alert("navbar-nav")
                     checklogin(userid, id)
                 });
                 $(document).bind('mousedown keydown', function (ed, e) {
@@ -938,32 +605,20 @@
                 $('.sidebar').toggleClass('fliph');
             });
             $('li a .toggle__menu').on('click', function () {
-
-
                   $('.offsetmenu').addClass('offsetmenu__on');
                    $('.body__overlay').addClass('is-visible');
-
             });
             $('.offsetmenu__close__btn').on('click', function () {
-
                     $('.offsetmenu').removeClass('offsetmenu__on');
                    $('.body__overlay').removeClass('is-visible');
-
-
             });
-
         });
         var select = $("#company");
-       // select.children().remove();
         select.append($("<option>").val("ALL").text("ALL"));
         select.append($("<option>").val("AAC").text("AAC"));
         select.append($("<option>").val("TAC").text("TAC"));
         select.append($("<option>").val("OMP").text("OMP"));
-        //$('.selectpicker').selectpicker('val', 'ALL');
-        //$('.selectpicker').selectpicker('refresh');
-       // $("#company").val('ALL');
         var _var = $("#company").val();
-        // var _var = "TAC";
         $("#txtId").val(cuscod);
         $.ajax({
             url: '@Url.Action("GetCatProductGroup", "DataCenter")',
@@ -974,27 +629,19 @@
             type: "POST",
             dataType: "JSON",
             success: function (data) {
-
                 var select = $("#productgroup");
                 select.children().remove();
-                select.append($("<option>").val("").text("หมวดสินค้า(Product Group)"));
+                select.append($("<option>").val("").text("Product Group"));
                 $(data).each(function (index, item) {
-
                     select.append($("<option>").val(item.ProductGroup).text(item.ProductGroup));
-
                 });
-
                 $('.selectpicker').selectpicker('refresh');
-                //$('.selectpicker').selectpicker('val', '');
-               // $("#productgroup").val("");
             }
         });
 
         $('.selectpicker').selectpicker({
             noneResultsText: 'Not found'
-
         });
-
 
         $.ajax({
             url: '@Url.Action("GetCatProductGroupline", "DataCenter")',
@@ -1007,21 +654,13 @@
             type: "POST",
             dataType: "JSON",
             success: function (data) {
-                //console.log(data)
                 var select = $("#productline");
                 select.children().remove();
-                select.prepend($("<option>").val("").text("ประเภทสินค้า(Product Line)"));
+                select.prepend($("<option>").val("").text("Product Line"));
                 $(data).each(function (index, item) {
-
                     select.append($("<option custyp='" + item.ProductGroup + "'>").val(item.ProductLine).text(item.ProductLine));
-
                 });
-               // $('.selectpicker').selectpicker('val', '');
-                //$('.selectpicker').selectpicker('refresh');
                 $("#productline").selectpicker('refresh');
-
-            //    $('.selectpicker').selectpicker('val', '');
-                //$("#productline").val("");
                 $(".selectpicker #productline").selectpicker({
                     noneSelectedText: 'Product Line All' // by this default 'Nothing selected' -->will change to Please Select
                 });
@@ -1038,7 +677,6 @@
             type: "POST",
             dataType: "JSON",
             success: function (data) {
-                //console.log(data)
                 var select = $("#catalogue");
                 select.children().remove();
                 select.append($("<option>").val("").text("Group"));
@@ -1046,11 +684,6 @@
                     select.append($("<option custyp=" + item.STKGRP + ">").val(item.STKGRP).text(item.GRPNAM));
                 });
                 $('#catalogue').selectpicker('refresh');
-                //$('.selectpicker').selectpicker('refresh');
-                //$("#catalogue").selectpicker('refresh');
-                //$("#catalogue").selectpicker('val', "");
-                //$('.selectpicker').selectpicker('val', '');
-                //$("#catalogue").val("");
             }
         });
         $.ajax({
@@ -1062,49 +695,30 @@
             type: "POST",
             dataType: "JSON",
             success: function (data) {
-                //console.log(data)
                 var optgroup = "";
-                optgroup = "<optgroup label='ยี่ห้อรถ'>";
+                optgroup = "<optgroup label='Maker'>";
                 var select = $("#maker");
-                //select.children().remove();
-
                 $(data).each(function (index, item) {
                     if (index == 0 || index == 1 || index == 2 ) {
                         optgroup += "<option value='" + item.Code + "'>" + item.Code + "</option>"
-
                     }else{
                         select.append($("<option custyp=" + item.Code + ">").val(item.Code).text(item.Code));
                     }
                 });
                 var select = $("#Model");
                 select.children().remove();
-                select.append($("<option>").val("").text("รุ่น(Model)"));
+                select.append($("<option>").val("").text("Model"));
                 var select = $("#submodel");
                 select.children().remove();
                 select.append($("<option>").val("").text("Sub/Engine"));
-
-
                 optgroup += "</optgroup>"
-                var foptgroup = '<option value="" >ยี่ห้อรถ(Maker)</option>';
+                var foptgroup = '<option value="" >Maker</option>';
                 $('#maker').prepend(optgroup);
                 $('#maker').prepend(foptgroup);
                 $('#maker option[value=""]').attr("selected", true);
                 $('.selectpicker').selectpicker('refresh');
-                //$('.selectpicker').selectpicker('val', '');
-
-
-
-
-
-
-
-               // $('#maker option[value=""]').attr("selected", true);
-
                 return false;
-
-               // $("#maker").val("");
             }
-
         });
 
         $.ajax({
@@ -1116,20 +730,14 @@
             type: "POST",
             dataType: "JSON",
             success: function (data) {
-                //console.log(data)
                 var select = $("#brand");
                 select.children().remove();
                 select.append($("<option>").val("").text("Brand"));
                 $(data).each(function (index, item) {
 
                     select.append($("<option custyp=" + item.CODE + ">").val(item.CODE).text(item.CODE));
-
                 });
-                //$('.selectpicker').selectpicker('refresh');
                 $("#brand").selectpicker('refresh');
-               // $('.selectpicker').selectpicker('val', '');
-               // $("#brand").val("");
-               // $('#brand>option[value=""]').prop('selected', true);
             }
         });
         $.ajax({
@@ -1140,20 +748,13 @@
             type: "POST",
             dataType: "JSON",
             success: function (data) {
-                //console.log(data)
                 var select = $("#segment");
                 select.children().remove();
-                select.prepend($("<option>").val("").text("ประเภทรถยนต์(segment)"));
+                select.prepend($("<option>").val("").text("Segment"));
                 $(data).each(function (index, item) {
-
                     select.append($("<option custyp=" + item.CODE + ">").val(item.CODE).text(item.segment));
-
                 });
-                //$('.selectpicker').selectpicker('refresh');
-
                 $('#segment').selectpicker('refresh');
-               // $('.selectpicker').selectpicker('val', '');
-              //  $("#segment").val("");
             }
         });
 
@@ -1167,17 +768,12 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data)
                     var select = $("#catalogue");
                     select.children().remove();
                     select.append($("<option>").val("").text("Group"));
                     $(data).each(function (index, item) {
-
                         select.append($("<option custyp=" + item.STKGRP + ">").val(item.STKGRP).text(item.GRPNAM));
-
                     });
-                    //$('.selectpicker').selectpicker('refresh');
-                    //$('.selectpicker').selectpicker('val', '');
                 }
             });
             var productlin= $("#productline").val();
@@ -1190,25 +786,19 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data)
                     var select = $("#brand");
                     select.children().remove();
                     select.append($("<option>").val("").text("Brand"));
                     $(data).each(function (index, item) {
-
                         select.append($("<option custyp=" + item.CODE + ">").val(item.CODE).text(item.CODE));
-
                     });
                     $('.selectpicker').selectpicker('refresh');
-                  //  $('.selectpicker').selectpicker('val', '');
-                    //$("#brand").val("").change();
                 }
             });
         });
         countorder()
 
         function countorder() {
-            // var SLM = $("#Slm").val()
             $.ajax({
                 url: '@Url.Action("GetdateContorder", "DataCenter")',
                 data: {
@@ -1216,15 +806,11 @@
                     Slm: "",
                     Usertype: usertype,
                     UserIn: userid
-
                 },
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data);
-
                     $("#countsku").html(data.Getdata[0].val.SumQty);
-
                 }
             });
         }
@@ -1255,13 +841,11 @@
 
         $("#productgroup").change(function () {
             var _progroup = $(this).val();
-            // var _var = $("#company").val();
             var _var = $("#company").val();
             var brand = $("#brand").val();
             if (_var == null) {
                 _var = "ALL";
             }
-           // alert(_var)
             $.ajax({
                 url: '@Url.Action("GetCatProductGroupline", "DataCenter")',
                 data: {
@@ -1273,21 +857,15 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data)
                     var select = $("#productline");
                     select.children().remove();
-                    select.append($("<option>").val("").text("ประเภทสินค้า(Product Line)"));
+                    select.append($("<option>").val("").text("Product Line"));
                     $(data).each(function (index, item) {
-
                         select.append($("<option custyp=" + item.ProductGroup + ">").val(item.ProductLine).text(item.ProductLine));
-
                     });
                     $('.selectpicker').selectpicker('refresh');
-                    //$('.selectpicker').selectpicker('val', '');
-
                 }
             });
-
         });
         $("#productline").change(function () {
             var _productline = $(this).val();
@@ -1295,7 +873,6 @@
             var _progroup = $('option:selected', this).attr('custyp');
             var brand = $("#brand").val();
             var _vakbrand = brand;
-           // $("#productgroup").val(_progroup);
             $.ajax({
                 url: '@Url.Action("GetBrand", "DataCenter")',
                 data: {
@@ -1305,26 +882,19 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data)
                     var select = $("#brand");
                     select.children().remove();
                     select.append($("<option>").val("").text("Brand"));
                     $(data).each(function (index, item) {
-
                         select.append($("<option custyp=" + item.CODE + ">").val(item.CODE).text(item.CODE));
-
                     });
-
                     $('select[name=selValuebrand]').selectpicker('refresh');
-
                     $('select[name=selValuebrand]').selectpicker('val', _vakbrand);
-
                     $('select[name=selValuebproductgroup]').selectpicker('val', _progroup);
                 }
             });
         });
         $("#brand").change(function () {
-
             var maker = $("#maker").val();
             var Model = $("#Model").val();
             var submodel = $("#submodel").val();
@@ -1337,8 +907,6 @@
             var textfree = $("#textfree").val();
             textfree = splitval(textfree);
             var itemsegment = $("#segment").val();
-            //alert("xxxx"+ _productline)
-            // alert("xxxx" + _productline)
             $.ajax({
                 url: '@Url.Action("GetCatProductGroupline", "DataCenter")',
                 data: {
@@ -1353,51 +921,30 @@
                     //console.log(data)
                     var select = $("#productline");
                     select.children().remove();
-                    select.append($("<option>").val("").text("ประเภทสินค้า(Product Line)"));
+                    select.append($("<option>").val("").text("Product Line"));
                     $(data).each(function (index, item) {
-
                         select.append($("<option custyp=" + item.ProductGroup + ">").val(item.ProductLine).text(item.ProductLine));
-
                     });
-
-
                     $('.selectpicker').selectpicker('refresh');
                     $('select[name=selValuebproductline]').selectpicker('val', _valproductline);
-                   // $('select[name=selValuebproductline]').val(_valproductline);
-                    //$('.selectpicker').selectpicker('val', '');
-                    // $("#productline").val("").change();
                  }
                });
             });
         function nl2br(str) {
-           //return str.replace(/(?!$|\n)([^\n]{4}(?!\n))/g, '$1\n');
-            //var string = str.replace(/(?!$|\n)([^\n]{4}(?!\n))/g, '$1\n');
             return str.replace(/(?!$|\n)([^\n]{4}(?!\n))/g, '$1\n');
-
         }
-        //var fixedTable1 = fixTable(document.getElementById('fixed-table-container'));
         function ShoppingCartNumber() {
             var MyRows = $('#fixed-table-container-1').find('tbody').find('tr');
-
             var datacount = new Array();
-
             var datacountsum = new Array();
             var datacountQty = new Array();
             var data = [];
             var chunk = 0;
             var chunkfoc = 0;
             var chunksum = 0;
-
             var CUS = cuscod;
             var XXusrlogin = userid;
             var sQshow = "";
-            @*$.ajax({
-                url: '@Url.Action("GetdataShopping", "Shoppinglist")',
-                data: {
-                    CUSCOD: CUS,
-                    Usrlogin: XXusrlogin,
-                    Qshow: sQshow
-                },*@
             $.ajax({
                 url: '@Url.Action("GetdateContorder", "DataCenter")',
                 data: {
@@ -1409,8 +956,6 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data);
-
                     chunk = parseFloat(data.Getdata[0].val.SumQty);
                     Row = parseFloat(data.Getdata[0].val.Countrow);
                     for (var i = 0; i < MyRows.length; i++) {
@@ -1426,56 +971,29 @@
                                 VQty: MyIndexValueQty,
                                 VSTKCOD: res[0]
                             };
-                            //console.log(ItemList)
-                            // chunk += parseFloat(MyIndexValueQty);
                             chunk += parseFloat(MyIndexValueQty.replace(',', '').replace(' ', ''))
-                            //datacount.push(MyIndexValueQty);
-                            //datacountsum.push(MyIndexValueQty);
                             datacountsum.push(ItemList.VSTKCOD);
-
-                            //console.log("ItemList"+ItemList);
-                            //data.push(ItemList);
                         }
                     }
-
                     var sorted_arr = datacountsum.sort();
                     var sorted_arrnum = 0;
-
-                    // //console.log("รายการ:" + datacountsum);
                     var results = [];
-
                     for (var i = 0; i < sorted_arr.length - 1; i++) {
                         var x = $.trim(sorted_arr[i]);
                         var y = $.trim(sorted_arr[i + 1]);
-                        //console.log("xxxxxx:  " + x);
-                        //console.log("yyy:  " + y);
                         if (y == x) {
                             results.push(x);
                         }
                     }
                     var groupedData = jQuery.grep(datacountsum, function (d) { return d });
-
-                    //console.log(" groupedData" + groupedData.length);
-
                     var bsum = sorted_arr.length;
-
                     var fsum = results.length;
-                    //console.log("เบอร์ Row  " + Row);
-                    //console.log("เบอร์ OrderP/N  " + bsum);
-                    //console.log("เบอร์ foc   " + fsum);
                     $("#Cuqty").text(Row + bsum - fsum);
-                    // $("#Cuitem").text(datacountsum.length);
-                    //console.log(" จำนวนชิ้นOrder  " + chunk);
-                    // //console.log("จำนวนชิ้นfoc   " + chunkfoc);
                     var x = $("#Cuitem").text(chunk);
                     var y = $("#countsku").text(chunk);
-
                     $("#Cuitem").digits();
                     $("#countsku").digits();
-
                 }
-
-
             });
         }
         $("#fixed-table-container-1").on('blur', "input[name='S_Qty']", function () {
@@ -1491,14 +1009,12 @@
             MyIndexValueSalePrice = $(this).parents("tr:eq(0)").find('td .rat0').html();
             var bytes0 = CryptoJS.AES.decrypt(MyIndexValueSalePrice.toString(), 'secret key 123');
             MyIndexValueSalePrice = bytes0.toString(CryptoJS.enc.Utf8);
-            //alert(MyIndexValueSalePrice)
 
             if (MyIndexValueSalePrice == "0") {
-                //$(this).val(maxord);//aps//
                 $(this).val("");
                 $("#" + idqty + "").val("");
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+                $("#textAlertWarning").text("Cannot process. Contact salesperson.");
                 $("#myModalWarning").modal(); return false;
             }
             var idqty = $(this).parents("tr:eq(0)").find(".tQty").attr('id');
@@ -1509,22 +1025,19 @@
                $(this).val("1");//aps//
             }
            if (parseInt(qtyinput) > parseInt(maxord)) {
-              //$(this).val(maxord);//aps//
               $(this).val("");
               $("#" + idqty + "").val("");
               $("#textAlertWarning").empty();
-              $("#textAlertWarning").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+              $("#textAlertWarning").text("Cannot process. Contact salesperson.");
               $("#myModalWarning").modal();return false;
            }
            if (parseFloat(qtyinput) < parseFloat(Seqvalmoq)) {
 
               $("#textAlertWarning").empty();
-              $("#textAlertWarning").text("จำนวนที่สั่งซื้อห้ามน้อยกว่า MOQ");
+              $("#textAlertWarning").text("Minimum Order Quantity Required MนQ");
               $("#myModalWarning").modal();// return false;
-              // $(this).parents("tr:eq(0)").find(".tQty").val(cQty);
               $(this).val(""); //return false;
               $("#" + idqty + "").val("");
-             // ShoppingCartNumber();
            }
 
             console.log("event = " + blur + ", promotionCode = " + promotionCode + ", promotionAmountMax = " + promotionAmountMax + ", totalStock = " + totalStock);
@@ -1532,7 +1045,7 @@
             if (promotionCode != '') { //ถ้าเป้นสินค้า Promotion
                 if (parseFloat(qtyinput.replace(',', '').replace(' ', '')) > parseFloat(totalStock.replace(',', '').replace(' ', ''))) {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ Stock เนื่องจากสินค้าเป็นราคา Promotion");
+                    $("#textAlertWarning").text("Order quantity must be less than or equal to Stock as this is a promotional product.");
                     $("#myModalWarning").modal();
                     $(this).val("");
                     return false;
@@ -1541,7 +1054,7 @@
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(qtyinput.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ (" + promotionAmountMax[1] + ") จำนวนที่ Promotion กำหดไว้ เนื่องจากเป็นสินค้าราคา Promotion");
+                            $("#textAlertWarning").text("Order quantity must be less than or equal to (" + promotionAmountMax[1] + ") Quantity is limited by the promotion, as this is a promotional product.");
                             $("#myModalWarning").modal();
                             $(this).val("");
                             return false;
@@ -1556,34 +1069,25 @@
 
               if (typeof _val === 'number') {
                   if (_val % 1 === 0) {
-                      // int
-                      // alert(_val);
                   } else {
                       $("#textAlertWarning").empty();
-                      $("#textAlertWarning").text("ใส่จำนวนสั่งซื้อสินค้าเบอร์ " + _NoAr[0] + " ไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + spackuom);
+                      $("#textAlertWarning").text("Enter Order Quantity for Item " + _NoAr[0] + " Invalid quantity. The order quantity is not valid. (Sales Packing Standard) = " + spackuom);
                       $("#myModalWarning").modal();// return false;
                       $(this).val(""); //return false;
-                     // $("#" + idqty + "").val("");
-                     // ShoppingCartNumber();
                   }
               } else {
                   // not a number
               }
-              // alert(_val);
-              // if()
           } else {
 
               if (isNaN(QtPas)) {
 
                   return false;
               } else {
-
                   $("#textAlertWarning").empty();
-                  $("#textAlertWarning").text("จำนวนที่สั่งซื้อสินค้าเบอร์ " + _NoAr[0] + " ห้ามน้อยกว่า " + spackuom + " (Sales Packing Standard )");
+                  $("#textAlertWarning").text("Order Quantity for Item " + _NoAr[0] + " must not be less than " + spackuom + " (Sales Packing Standard )");
                   $("#myModalWarning").modal();// return false;
                   $(this).val(""); //return false;
-                  //$("#" + idqty + "").val("");
-                 // ShoppingCartNumber();
               }
           }
         })
@@ -1594,7 +1098,6 @@
             var promotionCode = $(this).attr('promotionCode');
             var totalStock = $(this).attr('totalStock');
             var promotionAmountMax = promotionCode.split("|");
-            // alert(spackuom)
             var idqty = $(this).parents("tr:eq(0)").find(".tQty").attr('id');
             var qtyinput = $(this).val();
             var _StkNo = $('#fixed-table-container-1').find('tbody').find('tr').find('td figcaption .STKCODdiv').html();
@@ -1607,40 +1110,35 @@
             MyIndexValueSalePrice = $(this).parents("tr:eq(0)").find('td .rat0').html();
             var bytes0 = CryptoJS.AES.decrypt(MyIndexValueSalePrice.toString(), 'secret key 123');
             MyIndexValueSalePrice = bytes0.toString(CryptoJS.enc.Utf8);
-            //alert(MyIndexValueSalePrice)
 
             if (MyIndexValueSalePrice == "0") {
-                //$(this).val(maxord);//aps//
                 $(this).val("");
                 $("#" + idqty + "").val("");
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+                $("#textAlertWarning").text("Cannot process. Contact salesperson.");
                 $("#myModalWarning").modal(); return false;
             }
             if (parseInt(qtyinput) > parseInt(maxord)) {
-                //$(this).val(maxord);//aps//
                 $(this).val("");
                 $("#" + idqty + "").val("");
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+                $("#textAlertWarning").text("Cannot process. Contact salesperson.");
                 $("#myModalWarning").modal(); return false;
             }
             if (parseFloat(qtyinput) < parseFloat(Seqvalmoq)) {
 
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("จำนวนที่สั่งซื้อห้ามน้อยกว่า MOQ");
+                $("#textAlertWarning").text("Minimum Order Quantity Required MOQ");
                 $("#myModalWarning").modal();// return false;
-                // $(this).parents("tr:eq(0)").find(".tQty").val(cQty);
                 $(this).val(""); //return false;
                 $("#" + idqty + "").val("");
-                // ShoppingCartNumber();
             }
             console.log("event = " + blur + ", promotionCode = " + promotionCode + ", promotionAmountMax = " + promotionAmountMax + ", totalStock = " + totalStock);
 
             if (promotionCode != '') { //ถ้าเป้นสินค้า Promotion
                 if (parseFloat(qtyinput.replace(',', '').replace(' ', '')) > parseFloat(totalStock.replace(',', '').replace(' ', ''))) {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ Stock เนื่องจากสินค้าเป็นราคา Promotion");
+                    $("#textAlertWarning").text("Order quantity must be less than or equal to Stock as this is a promotional product.");
                     $("#myModalWarning").modal();
                     $(this).val("");
                     return false;
@@ -1649,7 +1147,7 @@
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(qtyinput.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ (" + promotionAmountMax[1] + ") จำนวนที่ Promotion กำหดไว้ เนื่องจากเป็นสินค้าราคา Promotion");
+                            $("#textAlertWarning").text("Order quantity must be less than or equal to (" + promotionAmountMax[1] + ") Quantity is limited by the promotion, as this is a promotional product.");
                             $("#myModalWarning").modal();
                             $(this).val("");
                             return false;
@@ -1667,30 +1165,23 @@
                         // alert(_val);
                     } else {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("ใส่จำนวนสั่งซื้อสินค้าเบอร์ " + _NoAr[0] + " ไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + spackuom);
+                        $("#textAlertWarning").text("Enter the order quantity for product code " + _NoAr[0] + " Invalid quantity. The order quantity is not valid. (Sales Packing Standard) = " + spackuom);
                         $("#myModalWarning").modal();// return false;
                         $(this).val(""); //return false;
-                        // $("#" + idqty + "").val("");
-                        // ShoppingCartNumber();
                     }
                 } else {
                     // not a number
                 }
-                // alert(_val);
-                // if()
             } else {
 
                 if (isNaN(QtPas)) {
 
                     return false;
                 } else {
-
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("จำนวนที่สั่งซื้อสินค้าเบอร์ " + _NoAr[0] + " ห้ามน้อยกว่า " + spackuom + " (Sales Packing Standard )");
+                    $("#textAlertWarning").text("Order Quantity for Item " + _NoAr[0] + " must not be less than " + spackuom + " (Sales Packing Standard )");
                     $("#myModalWarning").modal();// return false;
                     $(this).val(""); //return false;
-                    //$("#" + idqty + "").val("");
-                    // ShoppingCartNumber();
                 }
             }
             ShoppingCartNumber();
@@ -1700,310 +1191,6 @@
                 $(this).text($(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,"));
             })
         }
-
-        @*function getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno) {
-            //console.log(_productgroup);
-            //alert(submodel)
-             _submodel = "";
-            var _maker = maker;
-            var _Model = Model;
-            var _submodel = submodel;
-            var _company = company;
-            var _catalogue = catalogue;
-            var _brand = brand;
-            var productgroup = _productgroup;
-            var productline = _productline;
-            // var textfree = $("#textfree").val();
-            var textfree = textfree;
-            textfree = splitval(textfree);
-            var _itemsegment = itemsegment
-            //alert(textfree);
-
-           // $('#fixbox').empty();
-            var MyRows = $('#fixed-table-container-1').find('tbody').find('tr');
-            for (var i = 0; i < MyRows.length; i++) {
-
-                var MyIndexValueQty = $(MyRows[i]).find('td .tQty').val();
-
-                // alert(MyIndexValueQty)
-                if (MyIndexValueQty == "") {
-                    $(MyRows[i]).find('td .tQty').parent().parent().remove();
-                }
-            }
-            //$('.loader').css("display", "block");
-            var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true, });
-            // $("#scrollUp").trigger("click");
-
-            $.ajax({
-                url: '@Url.Action("Getdataitemdetail", "Home")',
-                data: {
-                    maker: _maker,
-                    modelno: _Model,
-                    submodel: _submodel,
-                    company: _company,
-                    catalogue: _catalogue,
-                    brand: _brand,
-                    textfree: textfree,
-                    cuscod: cuscod,
-                    yrStart: "",
-                    yrEnd: "",
-                    itemno: itemno,
-                    engine: "",
-                    productgroup: productgroup,
-                    productline: productline,
-                    itemsegment: _itemsegment,
-                    sortby: sortby,
-                    usrtyp: usertype
-                },
-                type: "POST",
-                dataType: "JSON",
-                success: function (data) {
-                   // console.log(data);
-                    employees = data;
-
-                    $('#fixbox').empty();
-                    if (employees.length > 0) {
-                        var favitm = "";
-                        var displ = "";
-                        var displstr = "";
-                        var displnew = "";
-                        var displstrnew = "";
-                        var newitem = "";
-                        var strph = "";
-                        var strphsrc = "";
-                        var _strinactive = "";
-                        var displinactive = "";
-                        var imgdisplinactive = "";
-                        var displbut = "";
-                        var SalePrice = "";
-                        var moq = "";
-                        var fastar = "";
-                        var PlcPrice = "";
-                        var SpcPrice = "";
-                        var PromotionCode = "";
-                        var PromoDesc = "";
-                        var PromoPrice = "";
-                        var Maxord = "";
-                        var idlink = "";
-                        var imgpromotion = "";
-                        var procodsub = "";
-                        var prclstno = "";
-
-                        //$('.loader').css("display", "none");
-                        loading.out()
-                        var SubmithtmlPage = "";
-                        for (var i = 0; i < employees.length; i++) {
-                            var flagShowStock = "";
-                            var txtShowStock = "";
-                            ItemNo = employees[i].ItemNo;
-                           //Supdescri = splitval2(employees[i].Description).substr(0, 50);
-                            //Supdescri = nl2br(employees[i].Description);
-                            Supdescri = employees[i].Description;
-                            Price = employees[i].Price;
-                            Stock = employees[i].Stock;
-                            ItemClass = employees[i].ItemClass;
-                            Company = employees[i].Company;
-                            Available_Stock = employees[i].Available_Stock;
-                            SalePrice = employees[i].SalePrice;
-                            PlcPrice = employees[i].PlcPrice;//ราคาป้าย//
-                            SpcPrice = employees[i].SpcPrice;//ราคาพิเศษ//
-                            PromotionCode = employees[i].PromotionCode;//PromotionCode//
-                            var strprocodsub = PromotionCode;
-                            procodsub = strprocodsub.substring(8, 13);
-                            PromoDesc = employees[i].PromoDesc;
-                            PromoPrice = employees[i].PromoPrice;//ราคาโปรโมชั่น//
-                            strph = employees[i].PATH;
-                            Maxord = employees[i].maxord;
-                            moq = employees[i].minord;
-                            spackuom = employees[i].spackuom;
-                            if (Available_Stock != "Y") {
-                                Stravailable_Stock = "Sold out"
-                                Stravailable_Stock = "";
-                            } else { Stravailable_Stock = "" }
-                            favitm = employees[i].FavoriteItem;
-                            newitem = employees[i].NewItem;
-                            _strinactive = employees[i].Inactive;
-                            prclstno = employees[i].prclst_no;
-                            //console.log(favitm)
-                            if (favitm != "") {
-
-                                displ = "display:block"
-                                displstr = "data-selected='true'";
-                                if (favitm == "1") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "2") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-half-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "3") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "4") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-half-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "5") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "6") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-half-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "7") {
-                                    fastar =  '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "8") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-half-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "9") {
-                                    fastar = '<i class="fa fa-star" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                } else if (favitm == "10") {
-                                    fastar = '<i class="fa fa-star-half-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o" style="font-size:15px;color: #b1b148;" aria-hidden="true"></i><i class="fa fa-star-o"  style="font-size:15px;color: #b1b148;" aria-hidden="true"></i>';
-                                }
-                            } else {
-
-                                displ = "display:none";
-                                displstr = "";
-                                fastar = "";
-                            }
-                            if (newitem != "") {
-                                // displnew = "<div style='background-color: red;width: 111px;color: white;font-size: smaller;'>New</div>";
-                                displnew = "<i style='font-size: inherit;color: red;float: right;'>New item</i>";
-                                displstrnew = "data-selected='true'";
-                            } else {
-                                displnew = ""
-                                displstrnew = "";
-
-                            }
-                            var ustypdisp
-                            var ustyp = usertype;
-                            if (ustyp == "") {
-                                ustypdisp = "display:none";
-                            } else {
-                                ustypdisp = "";
-                            }
-                            if (strph == "") {
-                                strph = 'holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail';
-                                strphsrc = 'data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22348%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20348%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1754a3eb838%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A17pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1754a3eb838%22%3E%3Crect%20width%3D%22348%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%22116.71875%22%20y%3D%22120.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E'
-                            } else {
-                                strph = strph;
-                                strphsrc = strph;
-                            }
-                            if (_strinactive == "Y") {
-                                //RED//
-                                // displinactive = "<i class='fa fa-circle text-danger'></i> InActive"
-                                displinactive = "<i class=''></i>"
-                                imgdisplinactive = '<img src="../images/logo/cancelled.png" style="width: 127px;"/>';
-                                displbut = "display:none";
-                                idlink = "";
-                            } else {
-                                //Graee//
-                                //displinactive = "<i class='fa fa-circle text-success'></i> Active"
-                                imgdisplinactive = '';
-                                displbut = "display:block";
-                                idlink = "id='_btnlinkdetail'";
-                            }
-                            if (PromotionCode != "") {
-                                if (procodsub != "Flash") {
-                                    imgpromotion = '<img src="../images/promotion_png.png" style="width: 88px;"/>';
-                                } else {
-                                    imgpromotion = '<img src="../images/flash_sale_f.gif"/>';
-                                }
-                            } else {
-                                imgpromotion = '';
-                            }
-                            // //<div class="col-sm-3 d-flex align-items-stretch">' +
-                            //console.log(fastar);
-
-                            SubmithtmlPage += '<tr>';
-                            SubmithtmlPage += '<td>';
-
-                            SubmithtmlPage += '<figure class="media">';
-                            SubmithtmlPage += '<div class="img-wrap" style="margin-right: 6px;"><img src="' + strphsrc + '"  class="img-thumbnail img-sm" style="width: 65px;"></div>';
-                            SubmithtmlPage += '<div style="width: 10%;">' + imgpromotion + '</div>';
-                            SubmithtmlPage += '<figcaption class="media-body" style="width: 500px;">';
-                            SubmithtmlPage += '<a class="STKCODdiv" ' + idlink + '  card__buy=' + CryptoJS.AES.encrypt(Company, 'secret key 123') + ' card__item="' + CryptoJS.AES.encrypt(ItemNo, 'secret key 123') + '">' + ItemNo + ' </a>';
-
-                            SubmithtmlPage += '<dl class="param param-inline small">';
-                            SubmithtmlPage += '<div>' + fastar +'</div>';
-                           // SubmithtmlPage += '<div>' + favitm + '</div>';
-                            SubmithtmlPage += '<dt><p style="margin-block-start:auto;position:inherit;z-index: 9999;">' + imgdisplinactive + '</p></dt>';
-                            SubmithtmlPage += '</dl>';
-                            SubmithtmlPage += '<dl class="param param-inline small" style="margin-bottom: -51px;">';
-                            // SubmithtmlPage += '<dd>' + Supdescri + ' </dd>';
-                            SubmithtmlPage += '<div style="word-break: break-all;display: flex; align-items: stretch;flex-wrap: nowrap;align-content: space-between;flex-direction: column;width: 454px;">' + Supdescri + ' </div>';
-                            SubmithtmlPage += '<dd style="width: 168px;"></span><span class="rat__qun">(MOQ:' + moq + ')</span>&nbsp;<span class="rat__sp"> (standard packing:' + spackuom + ')</span><p style="margin-block-start:auto;">' + displinactive + "<br>  " + displnew + '</p><span class="rat0" id="second-element">' + CryptoJS.AES.encrypt(commaSeparateNumber(Price), 'secret key 123') + '</span><span class="ratmoq" id="second-element">' + CryptoJS.AES.encrypt(moq, 'secret key 123') + '</span><span class="ratcy" id="second-element">' + CryptoJS.AES.encrypt(Company, 'secret key 123') + '</dd>';
-                            SubmithtmlPage += '<span class="ratplc" id="second-element">' + CryptoJS.AES.encrypt(commaSeparateNumber(PlcPrice), 'secret key 123') + '</span><span class="ratprc" id="second-element">' + CryptoJS.AES.encrypt(SalePrice, 'secret key 123') + '</span><span class="ratspc" id="second-element">' + CryptoJS.AES.encrypt(SpcPrice, 'secret key 123') + '</span><span class="ratprcod" id="second-element">' + CryptoJS.AES.encrypt(PromotionCode, 'secret key 123') + '</span><span class="ratprde" id="second-element">' + CryptoJS.AES.encrypt(PromoDesc, 'secret key 123') + '</span><span class="ratprpr" id="second-element">' + CryptoJS.AES.encrypt(PromoPrice, 'secret key 123') + '</span><span class="rttprclst" id="second-element">' + CryptoJS.AES.encrypt(prclstno, 'secret key 123') + '</span></dd>';
-
-                            //SubmithtmlPage += '<dd>(MOQ:' + moq + ')</dd>';
-                            SubmithtmlPage += '</dl>';
-                            SubmithtmlPage += '</figcaption>';
-                            SubmithtmlPage += '</figure>';
-                            SubmithtmlPage += '</td>';
-
-                            SubmithtmlPage += '<td>';
-                            SubmithtmlPage += '<input  name="S_Qty" class="tQty" maxlength="5" min="1" max=' + Maxord + ' moq=' + moq + '  ratspackuom =' + spackuom + '  type="number" style=" background-color:white; color: blue; width: 81px; height: 35px;font-size: 20px;' + displbut + '">';
-                            SubmithtmlPage += '</td>';
-
-                            SubmithtmlPage += '<td>';
-                            SubmithtmlPage += '<div class="price-wrap">';
-                            SubmithtmlPage += '<var style="' + displbut + '"  class="price">' + commaSeparateNumber(Price) + '</var>';
-                            SubmithtmlPage += '<small class="text-muted" style=" text-decoration: line-through;color: deeppink;font-family: cursive;font-size:revert;text-align: left;margin-left: 1rem;' + displbut + '"  class="pricehot">฿ ' + commaSeparateNumber(PlcPrice) + ' </small>';
-                            SubmithtmlPage += '</div> ';
-                            SubmithtmlPage += '</td>';
-                            //stock
-                            if (usertype == "1" || usertype == "2" || usertype == "5") {
-                                flagShowStock = "yes";
-                            } else {
-                                if (Stock != "0") {
-                                    if (ItemClass == "A") {
-                                        if (parseInt(Stock) > 10) { //มากกว่า 10 Show in stock
-                                            flagShowStock = "no";
-                                        } else if (parseInt(Stock) <= 10) { //น้อยกว่า 10 Show
-                                            flagShowStock = "yes";
-                                        }
-                                    } else {
-                                        if (parseInt(Stock) > 20) { //มากกว่า 10 Show in stock
-                                            flagShowStock = "no";
-                                        } else if (parseInt(Stock) <= 20) { //น้อยกว่า 10 Show
-                                            flagShowStock = "yes";
-                                        }
-                                    }
-                                }
-                            }
-                            SubmithtmlPage += '<td style="text-align: center; font-weight: bold;">';
-                            SubmithtmlPage += '<div class="wrap">';
-                            SubmithtmlPage += '<span style="font-style: italic;" class="Stock"> ';
-                            if (Stock == 0) {
-                                SubmithtmlPage += "<div style='color: red;'>Out Of Stock</div>";
-                            } else {
-                                if (flagShowStock == 'no') { //ไม่แสดงจำนวน
-                                    SubmithtmlPage += '<div style="color: blue;">In Stock</div>';
-                                    //SubmithtmlPage += commaSeparateNumber(Stock);
-                                } else { //แสดงจำนวน
-                                    SubmithtmlPage += commaSeparateNumber(Stock);
-                                }
-                            }
-                            SubmithtmlPage += '</span>';
-                            SubmithtmlPage += '</div> ';
-                            SubmithtmlPage += '</td>';
-                            //linenote
-                            SubmithtmlPage += '<td>';
-                            SubmithtmlPage += '<input  name="S_Linenote" class="tlinenote" style=" background-color:white;' + displbut + '">';
-                            SubmithtmlPage += '</td>';
-                            //SubmithtmlPage += '<td class="text-right">';
-                            //SubmithtmlPage += '</td>';
-                            SubmithtmlPage += '</tr>';
-
-                        }
-                        //$('#fixed-table-container-1  tbody:last-child').append(SubmithtmlPage);
-                        //$('#fixed-table-container-1  tbody:last-child').prepend(SubmithtmlPage);
-                        var $tbody = $('#fixed-table-container-1 tbody');
-                        $tbody.html(SubmithtmlPage);
-                    } else {
-                        //$('.loader').css("display", "none");
-                        loading.out()
-                        $('#fixbox').empty();
-
-                        $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("No Data.....");
-                        $("#myModalWarning").modal();
-                    }
-
-                }
-
-            });
-        }*@
         let batchSize = 20;
         let currentIndex = 0;
 
@@ -2019,8 +1206,6 @@
             var productline = _productline;
             var textfree = splitval(textfree);
             var _itemsegment = itemsegment;
-
-            // Remove rows with no qty
             var MyRows = $('#fixed-table-container-1 tbody tr');
             for (var i = 0; i < MyRows.length; i++) {
                 var qty = $(MyRows[i]).find('td .tQty').val();
@@ -2068,11 +1253,11 @@
                     if (data.length === 0) {
                         const loadingRow = `
                         <tr class="loading-row">
-                            <td colspan="100%" style="text-align:center;">No Data.....</td>
+                            <td colspan="100%" style="text-align:center;">No Data...</td>
                         </tr>`;
                         $tbody.append(loadingRow);
                         loading.out();
-                        $("#textAlertWarning").text("No Data.....");
+                        $("#textAlertWarning").text("No Data...");
                         $("#myModalWarning").modal();
                         return;
                     }
@@ -2147,9 +1332,7 @@
             newitem = employees.NewItem;
             _strinactive = employees.Inactive;
             prclstno = employees.prclst_no;
-            //console.log(favitm)
             if (favitm != "") {
-
                 displ = "display:block"
                 displstr = "data-selected='true'";
                 if (favitm == "1") {
@@ -2185,7 +1368,6 @@
                 displnew = ""
                 displstrnew = "";
             }
-
             var ustypdisp
             var ustyp = usertype;
             if (ustyp == "") {
@@ -2224,16 +1406,13 @@
             if (usertype == "1" || usertype == "2" || usertype == "5") {
                 TextItemCompany = "   (" + ItemCompany + ")";
             }
-
             SubmithtmlPage += '<tr>';
             SubmithtmlPage += '<td>';
-
             SubmithtmlPage += '<figure class="media">';
             SubmithtmlPage += '<div class="img-wrap" style="margin-right: 6px;"><img src="' + strphsrc + '"  class="img-thumbnail img-sm" style="width: 65px;"></div>';
             SubmithtmlPage += '<div style="width: 10%;">' + imgpromotion + '</div>';
             SubmithtmlPage += '<figcaption class="media-body" style="width: 500px;">';
             SubmithtmlPage += '<a class="STKCODdiv" ' + idlink + '  card__buy=' + CryptoJS.AES.encrypt(Company, 'secret key 123') + ' card__item="' + CryptoJS.AES.encrypt(ItemNo, 'secret key 123') + '">' + ItemNo + ' </a>' + '<span style="color: #0068c1;font-size: 14px; font-weight: 100;padding-left: 5px;">' + TextItemCompany + '</span>';
-
             SubmithtmlPage += '<dl class="param param-inline small">';
             SubmithtmlPage += '<div>' + fastar + '</div>';
             SubmithtmlPage += '<dt><p style="margin-block-start:auto;position:inherit;z-index: 9999;">' + imgdisplinactive + '</p></dt>';
@@ -2242,27 +1421,22 @@
             SubmithtmlPage += '<div style="word-break: break-all;display: flex; align-items: stretch;flex-wrap: nowrap;align-content: space-between;flex-direction: column;width: 454px;">' + Supdescri + ' </div>';
             SubmithtmlPage += '<dd style="width: 168px;"></span><span class="rat__qun">(MOQ:' + moq + ')</span>&nbsp;<span class="rat__sp"> (standard packing:' + spackuom + ')</span><p style="margin-block-start:auto;">' + displinactive + "<br>  " + displnew + '</p><span class="rat0" id="second-element">' + CryptoJS.AES.encrypt(commaSeparateNumber(Price), 'secret key 123') + '</span><span class="ratmoq" id="second-element">' + CryptoJS.AES.encrypt(moq, 'secret key 123') + '</span><span class="ratcy" id="second-element">' + CryptoJS.AES.encrypt(Company, 'secret key 123') + '</dd>';
             SubmithtmlPage += '<span class="ratplc" id="second-element">' + CryptoJS.AES.encrypt(commaSeparateNumber(PlcPrice), 'secret key 123') + '</span><span class="ratprc" id="second-element">' + CryptoJS.AES.encrypt(SalePrice, 'secret key 123') + '</span><span class="ratspc" id="second-element">' + CryptoJS.AES.encrypt(SpcPrice, 'secret key 123') + '</span><span class="ratprcod" id="second-element">' + CryptoJS.AES.encrypt(PromotionCode, 'secret key 123') + '</span><span class="ratprde" id="second-element">' + CryptoJS.AES.encrypt(PromoDesc, 'secret key 123') + '</span><span class="ratprpr" id="second-element">' + CryptoJS.AES.encrypt(PromoPrice, 'secret key 123') + '</span><span class="rttprclst" id="second-element">' + CryptoJS.AES.encrypt(prclstno, 'secret key 123') + '</span></dd>';
-
             SubmithtmlPage += '</dl>';
             SubmithtmlPage += '</figcaption>';
             SubmithtmlPage += '</figure>';
             SubmithtmlPage += '</td>';
-
             SubmithtmlPage += '<td style="text-align: center; font-weight: bold;">';
             SubmithtmlPage += '' + branddes + '';
             SubmithtmlPage += '</td>';
-
             SubmithtmlPage += '<td>';
             SubmithtmlPage += '<input  name="S_Qty" class="tQty" maxlength="5" min="1" max=' + Maxord + ' moq=' + moq + '  ratspackuom = ' + spackuom + '  PromotionCode = "' + PromotionCode + '" TotalStock = "' + Stock + '" type="number" style=" background-color:white; color: blue; width: 81px; height: 35px;font-size: 20px;' + displbut + '">';
             SubmithtmlPage += '</td>';
-
             SubmithtmlPage += '<td>';
             SubmithtmlPage += '<div class="price-wrap">';
             SubmithtmlPage += '<var style="' + displbut + '"  class="price">' + commaSeparateNumber(Price) + '</var>';
             SubmithtmlPage += '<small class="text-muted" style=" text-decoration: line-through;color: deeppink;font-family: cursive;font-size:revert;text-align: left;margin-left: 1rem;' + displbut + '"  class="pricehot">฿ ' + commaSeparateNumber(PlcPrice) + ' </small>';
             SubmithtmlPage += '</div> ';
             SubmithtmlPage += '</td>';
-            //stock
             if (usertype == "1" || usertype == "2" || usertype == "5") {
                 flagShowStock = "yes";
             } else {
@@ -2290,7 +1464,6 @@
             } else {
                 if (flagShowStock == 'no') { //ไม่แสดงจำนวน
                     SubmithtmlPage += '<div style="color: blue;">In Stock</div>';
-                    //SubmithtmlPage += commaSeparateNumber(Stock);
                 } else { //แสดงจำนวน
                     SubmithtmlPage += commaSeparateNumber(Stock);
                 }
@@ -2298,7 +1471,6 @@
             SubmithtmlPage += '</span>';
             SubmithtmlPage += '</div> ';
             SubmithtmlPage += '</td>';
-            //linenote
             SubmithtmlPage += '<td>';
             SubmithtmlPage += '<input  name="S_Linenote" class="tlinenote" style=" background-color:white;' + displbut + '">';
             SubmithtmlPage += '</td>';
@@ -2324,11 +1496,8 @@
         }
 
         $("table").on("click", "tr #_btnlinkdetail", function () {
-        //$(document).on("click", "#_btnlinkdetail", function () {
             var _vcom = $(this).attr('card__buy');
-
             var _vfd = $(this).attr('card__item');
-
             var bytesc = CryptoJS.AES.decrypt(_vcom.toString(), 'secret key 123');
             var MyIndexValuecom = bytesc.toString(CryptoJS.enc.Utf8);
             var bytesitm = CryptoJS.AES.decrypt(_vfd.toString(), 'secret key 123');
@@ -2336,32 +1505,25 @@
 
             if (usertype == "6") {
                 if (cuscod != "") {
-                    ///var wi = window.open("../Product_details/frmViewLabel.aspx?ClmNUM=" + btoa(nokey) + "/" + btoa(nosubkey));
                     var wi = window.open("../Productdetails/Index?prodenum=" + btoa(MyIndexValuitm) + "/" + btoa(MyIndexValuecom) + "/" + btoa(cuscod));
                     wi.focus();
                 } else {
                     //login//
                 }
             }
-
             else if (usertype == "1" || usertype == "2") {//saleman//
-
                 if (cuscod != "") {
                     var wi = window.open("../Productdetails/Index?prodenum=" + btoa(MyIndexValuitm) + "/" + btoa(MyIndexValuecom) + "/" + btoa(cuscod));
                     wi.focus();
-
                 } else {
                     $("#myModal").modal('show');
                     $.ajax({
                         url: '@Url.Action("Getdateslm", "DataCenter")',
                         data: {
-
                         },
                         type: "POST",
                         dataType: "JSON",
                         success: function (data) {
-                            //console.log(data)
-
                             var select = $("#selslm");
                             select.children().remove();
                             select.append($("<option>").val("").text("Sales Man"));
@@ -2374,110 +1536,60 @@
             }
             else if (usertype == "5") {
                 var cu = "110Z0001O";
-
                 var wi = window.open("../Productdetails/Index?prodenum=" + btoa(MyIndexValuitm) + "/" + btoa(MyIndexValuecom) + "/" + btoa(cu));
                 wi.focus();
-
             }
         });
-      //Lock show code display //
-        //$(document).bind("contextmenu", function (e) {
-        //    e.preventDefault();
-        //    alert('not allowed');
-        //})
-        //document.onkeydown = function (e) {
-
-        //    if (e.ctrlKey &&
-        //    (e.keyCode === 85)) {
-        //        return false;
-        //        alert('not allowed');
-        //    }else {
-        //          return true;
-
-        //      }
-        //};
-        //Lock show code display //
         $('#fixed-table-container-1 .compan').hide();
         $(document).on("click", "#btnsubmitinsert", function () {
-            // $("#btnsubmitinsert").attr("disabled", "disabled");rttprclst
             var data = new Array();
             var dataPro = new Array();
             var res = "";
             var chksop = "";
             var MyRows = $('#fixed-table-container-1').find('tbody').find('tr');
-
             for (var i = 0; i < MyRows.length; i++) {
-
                 var MyIndexValueSTKCOD = $(MyRows[i]).find('td .STKCODdiv').html();
                 if(MyIndexValueSTKCOD !== ""){
                     res = MyIndexValueSTKCOD.split("|");
-
                 } else { res[0] = ""; }
-
                 var MyIndexValueQty = $(MyRows[i]).find('td .tQty').val().replace(',', '').replace(' ', '');
                 var MyIndexValueMoq;
                   MyIndexValueMoq = $(MyRows[i]).find('td .ratmoq').html();
-                  var bytesm = CryptoJS.AES.decrypt(MyIndexValueMoq.toString(), 'secret key 123');
+                var bytesm = CryptoJS.AES.decrypt(MyIndexValueMoq.toString(), 'secret key 123');
                   MyIndexValueMoq = bytesm.toString(CryptoJS.enc.Utf8);
-
                 var MyIndexValueLinenote = $(MyRows[i]).find('td .tlinenote').val();
-
                 var MyIndexValueSalePrice;
                 MyIndexValueSalePrice = $(MyRows[i]).find('td .rat0').html();
                 var bytes0 = CryptoJS.AES.decrypt(MyIndexValueSalePrice.toString(), 'secret key 123');
                 MyIndexValueSalePrice= bytes0.toString(CryptoJS.enc.Utf8);
-
                 var MyIndexValuecompany;
                     MyIndexValuecompany = $(MyRows[i]).find('td .ratcy').html();
-
                 var bytesc = CryptoJS.AES.decrypt(MyIndexValuecompany.toString(), 'secret key 123');
                 MyIndexValuecompany = bytesc.toString(CryptoJS.enc.Utf8);
-
                 var MyIndexValueratplc;
                 MyIndexValueratplc = $(MyRows[i]).find('td .ratplc').html();
-
                 var byteplc = CryptoJS.AES.decrypt(MyIndexValueratplc.toString(), 'secret key 123');
                 MyIndexValueratplc= byteplc.toString(CryptoJS.enc.Utf8);
-
                 var MyIndexValueratspc;
                 MyIndexValueratspc = $(MyRows[i]).find('td .ratspc').html();
-
                 var byteratspc = CryptoJS.AES.decrypt(MyIndexValueratspc.toString(), 'secret key 123');
                 MyIndexValueratspc = byteratspc.toString(CryptoJS.enc.Utf8);
-
                 var MyIndexValueratprcod;
                 MyIndexValueratprcod = $(MyRows[i]).find('td .ratprcod').html();
-
                 var byteratprcod = CryptoJS.AES.decrypt(MyIndexValueratprcod.toString(), 'secret key 123');
                 MyIndexValueratprcod = byteratprcod.toString(CryptoJS.enc.Utf8);
-
                 var MyIndexValueratprde;
                 MyIndexValueratprde = $(MyRows[i]).find('td .ratprde').html();
-
                 var byteratprde = CryptoJS.AES.decrypt(MyIndexValueratprde.toString(), 'secret key 123');
                 MyIndexValueratprde = byteratprde.toString(CryptoJS.enc.Utf8);
-
                 var MyIndexValuerratprpr;
                 MyIndexValuerratprpr = $(MyRows[i]).find('td .ratprpr').html();
-
                 var byteratprpr = CryptoJS.AES.decrypt(MyIndexValuerratprpr.toString(), 'secret key 123');
                 MyIndexValuerratprpr = byteratprpr.toString(CryptoJS.enc.Utf8);
-
-
                 var MyIndexValuerrttprclst;
                 MyIndexValuerrttprclst = $(MyRows[i]).find('td .rttprclst').html();
-
                 var byterttprclst = CryptoJS.AES.decrypt(MyIndexValuerrttprclst.toString(), 'secret key 123');
                 MyIndexValuerrttprclst = byterttprclst.toString(CryptoJS.enc.Utf8);
-                //ratplc = PlcPrice
-                //ratprc = SalePrice
-                //ratspc = SpcPrice
-                //ratprcod = PromotionCode
-                //ratprde = PromoDesc
-                //ratprpr = PromoPrice  .replace(',', '').replace(' ', '').replace(',', '').replace(' ', '')
-                //(age >= 21) ? "Beer" : "Juice";
-
-
                 var ItemList = {
                     CUSCOD: cuscod.toUpperCase(),
                     STKCOD: res[0],
@@ -2503,9 +1615,7 @@
                 }
 
             }
-
             var DataSend = JSON.stringify(data);
-
             if (data.length == 0 ) {
                 $("#btnsubmitinsert").attr("disabled", false);
                 $("#textAlertWarning").empty();
@@ -2520,7 +1630,6 @@
                 url: '@Url.Action("Confirmationdata", "Orderlist")',
                 data: {
                     DataSend: DataSend,
-
                 },
                 type: "POST",
                 dataType: "JSON",
@@ -2530,28 +1639,21 @@
                         $("#fixed-table-container-1 > tbody").empty();
                         $("#example1 > tbody").empty();
                         $("#textAlertSucces").empty();
-                        $("#textAlertSucces").text("บันทึกสินค้าเข้าตะกร้าสำเร็จ");
+                        $("#textAlertSucces").text("Items successfully added to the cart.");
                         $("#myModalSucces").modal();
                         ShoppingCartNumber()
-                        //location.reload();
-                        //setTimeout(function () { window.close() }, 2000); //2วิ
-
                     } else {
                         $("#btnsubmitinsert").attr("disabled", false);
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("บันทึกสินค้าเข้าตะกร้าไม่สำเร็จกรุณาทำรายการใหม่");
+                        $("#textAlertWarninglog").text("Failed to add items to the cart. Please try again.");
                         $("#myModalWarninglog").modal();
-
                     }
                 }
-
             });
-
         });
 
         $("#sortby").change(function () {
             var vb = $(this).val();
-
             var maker = $("#maker").val();
             var Model = $("#Model").val();
             var submodel = $("#submodel").val();
@@ -2566,8 +1668,6 @@
             var sortby = vb;
             var itemno = $("#textfreeoe").val();
             getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno);
-
-
         });
 
         $("#catalogue").change(function () {
@@ -2582,19 +1682,13 @@
             var textfree = $("#textfree").val();
             textfree = splitval(textfree);
             var itemsegment = $("#segment").val();
-
             $("#sortby").val("0");
-
-            //  getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment);
-
-
         });
         function clearval() {
             $("#sortby").val("0");
         }
         $("#maker").change(function () {
             var _var = $(this).val();
-
             var select = $("#submodel");
             select.children().remove();
             $.ajax({
@@ -2603,26 +1697,19 @@
                     Name: _var,
                     sty: '1'
                },
-
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                   // //console.log(data)
                     $("#submodel").append($("<option>").val("").text("submodel"));
                     var select = $("#Model");
                     select.children().remove();
                     select.append($("<option>").val("").text("Model"));
                     $(data).each(function (index, item) {
-
                         select.append($("<option custyp=" + item.Code + ">").val(item.Code).text(item.Code));
-
                     });
                     $('.selectpicker').selectpicker('refresh');
-                    //$('.selectpicker').selectpicker('val', '');
-                   // $("#Model").val("");
                 }
             });
-
             var maker = $("#maker").val();
             var Model = $("#Model").val();
             var submodel = $("#submodel").val();
@@ -2634,33 +1721,13 @@
             var textfree = $("#textfree").val();
             textfree = splitval(textfree);
             var itemsegment = $("#segment").val();
-
             $("#sortby").val("0");
-
-            // getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment);
         });
         $("#Model").change(function () {
             var _var = $(this).val();
-            @*$.ajax({
-                url: '@Url.Action("GetdateRelation", "DataCenter")',
-                data: {
-                    Name: _var,
-                    sty: '2'
-                },
-                type: "POST",
-                dataType: "JSON",
-                success: function (data) {
-                    //console.log(data)*@
-                    var select = $("#submodel");
-                    select.children().remove();
-                    select.append($("<option>").val("").text("Submodel"));
-                    //$(data).each(function (index, item) {
-
-                    //    select.append($("<option custyp=" + item.Code + ">").val(item.Code).text(item.Type));
-
-                    //});
-                //}
-            //});
+            var select = $("#submodel");
+            select.children().remove();
+            select.append($("<option>").val("").text("Submodel"));
             var maker = $("#maker").val();
             var Model = $("#Model").val();
             var submodel = $("#submodel").val();
@@ -2672,10 +1739,7 @@
             var textfree = $("#textfree").val();
             textfree = splitval(textfree);
             var itemsegment = $("#segment").val();
-
             $("#sortby").val("0");
-
-            // getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment);
         });
         $("#submodel").change(function () {
 
@@ -2690,20 +1754,16 @@
             var textfree = $("#textfree").val();
             textfree = splitval(textfree);
             var itemsegment = $("#segment").val();
-            // getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment);
         });
 
         $(document).on("click", ".fv-btn", function () {
-
-
             var customer = cuscod;
             var stkcod = $(this).attr('stock');
             var company = $(this).attr('com');
             var moq = $(this).attr('moq');
             var price = $(this).attr('price');
             var saleprice = $(this).attr('saleprice');
-
-            var loading = new Loading({ direction: 'hor', discription: 'กำลังบันทึกสินค้าเข้าตระกร้า...', defaultApply: true, });
+            var loading = new Loading({ direction: 'hor', discription: 'Saving items to the cart...', defaultApply: true, });
             $.ajax({
                 url: '@Url.Action("GetdataitemdetailbyMoq", "productdetails")',
                 data: {
@@ -2715,15 +1775,10 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data);
-
                     if (data.length > 0) {
                         loading.out()
                         var price = data[0].val.Price0
                         var sprice = data[0].val.Price;
-                        //var price = price;
-                       // var sprice = saleprice;
-                        //var qty = "1";
                         var qty = moq;
                         var bckorder = "0";
                         var expectprice = "0";
@@ -2732,74 +1787,53 @@
                         if (qty == "0") {
                             if (foc == "0") {
                                 $("#textAlertWarninglog").empty();
-                                $("#textAlertWarninglog").text("กรุณาใส่จำนวนสั่งซื้อ");
+                                $("#textAlertWarninglog").text("Please enter order quantity.");
                                 $("#myModalWarninglog").modal();
-
                                 return false;
                             }
                         }
                         if (qty == "") {
                             if (foc == "0") {
                                 $("#textAlertWarninglog").empty();
-                                $("#textAlertWarninglog").text("กรุณาใส่จำนวนสั่งซื้อ");
+                                $("#textAlertWarninglog").text("Please enter order quantity.");
                                 $("#myModalWarninglog").modal();
-
                                 return false;
                             }
                         }
-
-                        //else {
-                        //    foc = "0"
-                        //}
-
                         if (usertype == "6") {
-
                             if (sprice == "0") {
-                                //if (expectprice == "0") {
                                 $("#textAlertWarninglog").empty();
-                                $("#textAlertWarninglog").text("กรุณาติดต่อพนักงานขาย");
+                                $("#textAlertWarninglog").text("Please contact the salesperson.");
                                 $("#myModalWarninglog").modal();
                                 $(".fv-btn").attr("disabled", false)
                                 return false;
-                                //}
-                                //return false;
                             }
                             if (sprice == "999999") {
-                                //if (expectprice == "0") {
                                 $("#textAlertWarninglog").empty();
-                                $("#textAlertWarninglog").text("กรุณาติดต่อพนักงานขาย");
+                                $("#textAlertWarninglog").text("Please contact the salesperson.");
                                 $("#myModalWarninglog").modal();
                                 $(".fv-btn").attr("disabled", false)
                                 return false;
-                                //}
-                                //return false;
                             }
                         } else {
                             if (sprice == "0") {
-
                                 $("#textAlertWarninglog").empty();
-                                $("#textAlertWarninglog").text("กรุณากดปุ่ม See Detail เพื่อใส่ราคาต่อรอง  เนื่องจากราคา 0 บาท");
+                                $("#textAlertWarninglog").text("Click See Detail to enter negotiated price (current price is 0 Baht).");
                                 $("#myModalWarninglog").modal();
                                 return false;
                             }
                             if (sprice == "999999") {
-                                //if (expectprice == "0") {
-
                                 $("#textAlertWarninglog").empty();
-                                $("#textAlertWarninglog").text("กรุณากดปุ่ม See Detail เพื่อใส่ราคาต่อรอง  เนื่องจากราคา Indent");
+                                $("#textAlertWarninglog").text("Click See Detail to enter negotiated price.");
                                 $("#myModalWarninglog").modal();
                                 return false;
                             }
                         }
                         var insertedby = userid;
-
                         var pomocode = data[0].val.PromotionCode;
-
-                        // var minord = data[0].val.minord;
                         var minord = moq;
                         var prclstno = data[0].val.PRCLST_NO;
                         var specprice = data[0].val.Special_Price;
-
                         var promoprice = "";
                         promoprice = data[0].val.PromoPrice;
                         if (promoprice == "") {
@@ -2810,7 +1844,6 @@
                         var promodesc = data[0].val.PromoDesc;
                         var lastinvprice = data[0].val.LastInvPrice;
                         var lastinvdate = data[0].val.LastInvdate;
-
                         $.ajax({
                             url: '@Url.Action("Confirmationdata", "Productdetails")',
                             data: {
@@ -2837,53 +1870,30 @@
                             type: "POST",
                             dataType: "JSON",
                             success: function (data) {
-                                //console.log(data)
-                                //alert(data)
-                                //if (data.length > 0) {
                                 if (data == "Y") {
                                     $("#textAlertSucces").empty();
-                                    $("#textAlertSucces").text("บันทึกสินค้าเข้าตะกร้าสำเร็จ");
+                                    $("#textAlertSucces").text("Items successfully added to the cart.");
                                     $("#myModalSucces").modal();
-
-                                    //location.reload();
                                     setTimeout(function () { window.close() }, 2000); //2วิ
                                     countorder();
                                 } else {
-
                                     $("#textAlertWarninglog").empty();
-                                    $("#textAlertWarninglog").text("บันทึกสินค้าเข้าตะกร้าไม่สำเร็จกรุณาทำรายการใหม่");
+                                    $("#textAlertWarninglog").text("Failed to add items to the cart. Please try again.");
                                     $("#myModalWarninglog").modal();
                                 }
-                                //}
                             }
                         });
-
                     } else {
                         loading.out()
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("บันทึกราการไม่สำเร็จ กรุณาทำรายการใหม่");
+                        $("#textAlertWarninglog").text("Failed to save data. Please try again.");
                         $("#myModalWarninglog").modal();
-
                     }
                 }
             });
-
-
-
-
-
-
-
-
-
-
             return false;
-            //////////////////// save/////////////////////////
-
-
         });
             $("#crsearchbox").click(function () {
-
             $("#maker").val("");
             $("#Model").val("");
             $("#submodel").val("");
@@ -2907,20 +1917,13 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data)
                     var select = $("#productline");
                     select.children().remove();
                     select.append($("<option>").val("").text("Product Line All"));
                     $(data).each(function (index, item) {
-
                         select.append($("<option custyp=" + item.ProductLine + ">").val(item.ProductLine).text(item.ProductLine));
-
                     });
                     $('.selectpicker').selectpicker('refresh');
-                   // $('.selectpicker').selectpicker('val', '');
-                    // $("#productline").val("").change();
-
-
                 }
             });
         });
@@ -2938,15 +1941,8 @@
             var itemsegment = $("#segment").val();
             var sortby = $("#sortby").val();
             var itemno = $("#textfreeoe").val();
-          //alert(company);
-          //return false;
             getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno);
         });
-
-
-
-            // getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment);
-
         $("#textfree").click(function () {
             this.select();
             countorder();
@@ -2955,10 +1951,7 @@
             selectFirst: true,
             autoFocus: true,
             timeout: 1000000,
-
             source: function (request, response) {
-                //alert('99');
-
                 var param = {
                     maker: $("#maker").val(),
                     modelno: $("#Model").val(),
@@ -2977,8 +1970,6 @@
                     itemsegment: $("#segment").val(),
                     Xval: $("#optionsearch").val()
                 };
-                // $('#fixbox').empty();
-                // $('.loader').css("display", "block");
 
                 $.ajax({
                     url: '@Url.Action("GetdateStockCode", "Home")',
@@ -2988,8 +1979,6 @@
                     contentType: "application/json; charset=utf-8",
                     dataFilter: function (data) { return data; },
                     success: function (data) {
-                        //console.log(data.length
-                        // //console.log("xxxx:" + data);
                         response($.map(data.slice(0, 50), function (item) {
                             return {
                                 value: item
@@ -2997,7 +1986,6 @@
                         }))
                     },
                     error: function (XMLhttpsRequest, textStatus, errorThrown) {
-                        //  alert(textStatus + '&&' + errorThrown + '&&' + XMLhttpsRequest);
                         alert(request.term);
                     }
                 });
@@ -3006,70 +1994,34 @@
                 var maker = $("#maker").val();
                 var Model = $("#Model").val();
                 var submodel = $("#submodel").val();
-                // var company= $("#company").val();
                 var catalogue = $("#catalogue").val();
                 var brand = $("#brand").val();
                 var _productgroup = $("#productgroup").val();
                 var _productline = $("#productline").val();
                 var textfree = ui.item.value;
-
                 var _splval = splitval(textfree);
                 var company = splitval3(textfree);
-
                 var itemsegment = $("#segment").val();
                 var sortby = $("#sortby").val();
-                //var itemno = _splval;
                 var itemno = $("#textfreeoe").val();
                 if (usertype == "1" || usertype == "2") {
                     if (cuscod != "") {
-                        ///var wi = window.open("../Product_details/frmViewLabel.aspx?ClmNUM=" + btoa(nokey) + "/" + btoa(nosubkey));
                         var wi = window.open("../Productdetails/Index?prodenum=" + btoa(_splval) + "/" + btoa(company) + "/" + btoa(cuscod));
                         wi.focus();
                     } else {
                         //login//
                     }
                 } else {
-
                     getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, _splval, itemsegment, sortby, itemno);
                 }
                 countorder();
             },
             minLength: 2//minLength as 2, it means when ever user enter 2 character in TextBox the AutoComplete method will fire and get its source data.
         });
-        @*$('#selslm').change(function () {
-
-            var SLM = $(this).val()
-            var SLMt = $("#Slm option:selected").text();
-            $.ajax({
-                url: '@Url.Action("Getdatabyslm", "DataCenter")',
-                data: {
-                    SLXX: SLM,
-                    SLMNAME: SLMt
-                },
-                type: "POST",
-                dataType: "JSON",
-                success: function (data) {
-                    // //console.log(data);
-                    var select = $("#selcus");
-                    select.children().remove();
-                    select.append($("<option>").val("0").text("ลูกค้า"));
-                    $(data).each(function (index, item) {
-                        select.append($("<option custyp=" + item.CUSTYP + ">").val(item.CUSCOD).text(item.CUSCOD + "|" + item.CUSNAM + "----ที่อยู่ " + item.ADDR_01 + "/" + item.PRO));
-                    });
-                    var CUSCODt = $("#CUSCOD option:selected").text();
-                    //$('#UserID').val(CUSCODt);
-                }
-            });
-
-
-        });*@
-        // $("#nextsp").click(function () {
         if (usertype != "6") {
             if (usertype == "5") {
-
             } else {
                 if (cuscod == "") {
-
                     var wi = window.open("../SeleScrCustomer/dashboard");
                     wi.focus();
                 } else {
@@ -3081,8 +2033,6 @@
                         type: "POST",
                         dataType: "JSON",
                         success: function (data) {
-                            //console.log(data);
-                            //$("#cusname").text("Custome Code:" + data[0].CUSCOD + "/" + data[0].CUSNAM);
                             $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
                             $("#addcus").text(data[0].ADDR_01 + data[0].ADDR_02);
                             $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
@@ -3109,8 +2059,6 @@
                     type: "POST",
                     dataType: "JSON",
                     success: function (data) {
-                        //console.log(data);
-                        // $("#cusname").text("Custome Code" + data[0].CUSCOD + "  Customer Name" + data[0].CUSNAM);
                         $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
                         $("#addcus").text(data[0].ADDR_01 + data[0].ADDR_02);
                         $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
@@ -3135,23 +2083,15 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data);
-
                     $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
                     $("#crlicustac").text("TAC: " + commaSeparateNumber(data[0].TACCrlimit));
-
-
                 }
             });
         }
         $(document).on('click', '#btncheck', function () {
             window.location.replace("../Cart/Index?numcuber=" + btoa(cuscod));
-
         });
         $('#navbarcart').click(function () {
-            // $(document).on("click", "#navbarcart", function () {
-
-            //var wi = window.open("../Cart/Index");
             if (cuscod == "") {
                 var wi = window.open("../Account/LogIn");
                 wi.focus();
@@ -3161,7 +2101,6 @@
             }
         });
         $(document).on("click", "#btnhome", function () {
-            //var wi = window.open("../Cart/Index");
             if (cuscod == "") {
                 var wi = window.open("../Account/LogIn");
                 wi.focus();
@@ -3171,7 +2110,6 @@
             }
         });
         $(document).on("click", "#btncart", function () {
-            //var wi = window.open("../Cart/Index");
             if (cuscod == "") {
                 var wi = window.open("../Account/LogIn");
                 wi.focus();
@@ -3181,22 +2119,14 @@
             }
         });
         $(document).on("click", "#btndetail", function () {
-            //var wi = window.open("../Cart/Index");
-
             if (cuscod == "") {
                 var wi = window.open("../Account/LogIn");
                 wi.focus();
             } else {
                 window.location.replace("../SeleScrCustomer/dashboard?numcuber=" + btoa(cuscod));
             }
-            // var wi = window.open("../SeleScrCustomer/Index?numcuber=" + btoa(cuscod));
-            // wi.focus();
-
         });
         $(document).on("click", "#btnstatus", function () {
-            //var wi = window.open("../Cart/Index");
-            //var wi = window.open("../Statuslist/Index?numcuber=" + btoa(cuscod));
-            //wi.focus();
             if (cuscod == "") {
                 var wi = window.open("../Account/LogIn");
                 wi.focus();
@@ -3205,29 +2135,26 @@
             }
         });
         $("#segment").selectpicker({
-            noneSelectedText: 'ประเภทรถยนต์(segment)' // by this default 'Nothing selected' -->will change to Please Select
+            noneSelectedText: 'Segment' // by this default 'Nothing selected' -->will change to Please Select
         });
         $("#productgroup").selectpicker({
-            noneSelectedText: 'หมวดสินค้า(Product Group)' // by this default 'Nothing selected' -->will change to Please Select
+            noneSelectedText: 'Product Group' // by this default 'Nothing selected' -->will change to Please Select
         });
         $("#productline").selectpicker({
-            noneSelectedText: 'ประเภทสินค้า(Product Line)' // by this default 'Nothing selected' -->will change to Please Select
+            noneSelectedText: 'Product Line' // by this default 'Nothing selected' -->will change to Please Select
         });
         $("#brand").selectpicker({
             noneSelectedText: 'Brand' // by this default 'Nothing selected' -->will change to Please Select
         });
         $("#maker").selectpicker({
-            noneSelectedText: 'ยี่ห้อรถ(Maker)' // by this default 'Nothing selected' -->will change to Please Select
+            noneSelectedText: 'Maker' // by this default 'Nothing selected' -->will change to Please Select
         });
         $("#Model").selectpicker({
-            noneSelectedText: 'รุ่น(Model)' // by this default 'Nothing selected' -->will change to Please Select
+            noneSelectedText: 'Model' // by this default 'Nothing selected' -->will change to Please Select
         });
         $("#catalogue").selectpicker({
             noneSelectedText: 'Group' // by this default 'Nothing selected' -->will change to Please Select
         });
-        //$(".selectpicker").selectpicker({
-        //    noneSelectedText: 'Please Select' // by this default 'Nothing selected' -->will change to Please Select
-        //});
     </script>
 
     <script src="https://www.google-analytics.com/analytics.js" async></script>
