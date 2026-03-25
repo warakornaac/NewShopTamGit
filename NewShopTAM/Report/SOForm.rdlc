@@ -1919,7 +1919,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>บริษัท ออโตโมทีฟ เอเชียติ๊ก (ประเทศไทย) จำกัด   </Value>
+                      <Value>Tru Automotive (M) Sdn. Bhd.   </Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1929,7 +1929,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  </Value>
+                      <Value>No 22, Jalan Astaka U8/84, Seksyen U8 Bukit Jelutong Industrial Park Shah Alam Selangor, 40150 MALAYSIA Tel:60378458700 Fax.:+603 7845 8708</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1939,33 +1939,11 @@
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
                 </Paragraph>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>เลขประจำตัวผู้เสียภาษีอาการ 0105540090011</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Angsana New</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value xml:space="preserve">
-</Value>
-                      <Style>
-                        <FontFamily>Angsana New</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                      </Style>
-                    </TextRun>
-                    <TextRun>
-                      <Value>บริษัท ทรู ออโตโมทีฟ จำกัด  </Value>
+                      <Value>Velox Automotive Sdn. Bhd. </Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1975,7 +1953,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>เลขที่ 46 อาคารรุ่งโรจน์ธนกุล ชั้น 14 ถนนรัชดาภิเษก แขวงห้วยขวาง เขตห้วยขวาง กรุงเทพมหานคร 10310 โทร +66(0) 2494 3800 โทรสาร +66(0) 2494 3831,2494-3832  </Value>
+                      <Value>12A-2, Jalan Eco Majestic 10/1B, Eco Majestic Semenyih SELANGOR, 43500 MALAYSIA Tel:+603 8724 6865</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1985,26 +1963,6 @@
                       </Style>
                     </TextRun>
                   </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>เลขประจำตัวผู้เสียภาษีอาการ 0105550085240</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>Angsana New</FontFamily>
-                        <FontSize>9pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox38</rd:DefaultName>

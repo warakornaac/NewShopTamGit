@@ -100,7 +100,7 @@
                             <form role="form">
                                 <div class="form-group">
                                     <div class="input-group ">
-                                        <a href="#" id="nextspold"><<<< Shopping เวอร์ชั่นเก่า <<<<</a>
+                                        <a href="#" id="nextspold"><<<< Shopping Old Version <<<<</a>
                                     </div>
                                 </div>
                             </form>
@@ -114,9 +114,9 @@
                                 <div class="input-group ">
                                     <span class="input-group-addon"><input id="checkboxAll" type="checkbox"></span>
                                     <span class="input-group-btn">
-                                        <div id="btncheck" class="btn btn-info btn-block" style="cursor: no-drop;"><span></span>เลือกสินค้าทั้งหมด</div>
+                                        <div id="btncheck" class="btn btn-info btn-block" style="cursor: no-drop;"><span></span>Select all product</div>
                                     </span>
-                                    <div class="input-group-addon" id="cancelxall" style=" color: red; cursor: pointer; ">ลบ</div>
+                                    <div class="input-group-addon" id="cancelxall" style=" color: red; cursor: pointer; ">Delete</div>
                                 </div>
                             </div>
                         </form>
@@ -140,10 +140,10 @@
                                 <div class="form-group">
                                     <div class="input-group ">
                                         <span class="input-group-btn">
-                                            <div id="btncheck" class="btn btn-default btn-block " style="cursor: no-drop;">จำนวนสินค้าในตระกร้า</div>
+                                            <div id="btncheck" class="btn btn-default btn-block " style="cursor: no-drop;"> Cart Quantity </div>
                                         </span>
-                                        <span class="input-group-addon"><i id="Cuqty" style="color: crimson; font-size: large; font: icon;"></i> ชิ้น</span>
-                                        <span class="input-group-addon"><i id="Cuitem" style="color: crimson; font-size: large; font: icon;">0</i> เบอร์</span>
+                                        <span class="input-group-addon"><i id="Cuqty" style="color: crimson; font-size: large; font: icon;"></i>Units</span>
+                                        <span class="input-group-addon"><i id="Cuitem" style="color: crimson; font-size: large; font: icon;">0</i>Size</span>
                                     </div>
                                 </div>
                             </form>
@@ -169,15 +169,15 @@
                             <table id="exampletb" style="border-bottom: 1px solid #ccc;">
                                 <thead>
                                     <tr>
-                                        <th class="product-thumbnail" style="line-height: 31px;">เลือก</th>
-                                        <th class="product-thumbnail">ลำดับ</th>
-                                        <th class="product-remove">ลบ</th>
-                                        <th class="product-name">เบอร์สินค้า</th>
-                                        <th class="product-name">ชื่อสินค้า</th>
-                                        <th class="product-thumbnail">จำนวนสั่งซื้อ</th>
-                                        <th class="product-price">ราคาต่อชิ้น</th>
-                                        <th class="product-price" id="column-i">ราคาต่อรอง</th>
-                                        <th class="product-price">ราคารวม</th>
+                                        <th class="product-thumbnail" style="line-height: 31px;">Select</th>
+                                        <th class="product-thumbnail">No.</th>
+                                        <th class="product-remove">Delete</th>
+                                        <th class="product-name">Product Number</th>
+                                        <th class="product-name">Product Name</th>
+                                        <th class="product-thumbnail">Order Quantity</th>
+                                        <th class="product-price">Price per Unit</th>
+                                        <th class="product-price" id="column-i">Negotiated Price</th>
+                                        <th class="product-price">Total Price</th>
                                         <th class="product-subtotal">Back<br>order</th>
                                         <th class="product-subtotal" id="column-l">Stock</th>
                                         <th class="product-subtotal" id="column-lKDC">Stock<br>KDC</th>
@@ -185,11 +185,11 @@
                                         <th class="product-subtotal" id="column-lWH">WH<br>Location</th>
                                         <th class="product-subtotal" id="column-lWH">In-transit </th>
                                         <th class="product-name">Line Note</th>
-                                        <th class="product-name">หมายเหตุ PM</th>
-                                        <th class="product-name">วันที่เลือกซื้อ</th>
-                                        <th class="product-name">โปรโมชั่น</th>
+                                        <th class="product-name">Remark PM</th>
+                                        <th class="product-name">Order Date</th>
+                                        <th class="product-name">Promotion</th>
                                         <th class="product-name">Type</th>
-                                        <th class="product-name" style="text-align: center;">เพิ่มโดย</th>
+                                        <th class="product-name" style="text-align: center;">Add by</th>
                                     </tr>
                                 </thead>
                                 <tbody></tbody>
@@ -203,18 +203,18 @@
                             <input type="text" id="NameShipping" class="form-control" style="display:none" disabled="disabled">
                             <input type="text" id="AddressShipping" class="form-control" style="display:none" disabled="disabled">
                             <div class="col-md-12">
-                                <h2>การจัดส่ง</h2>
+                                <h2>Delivery</h2>
                                 <div>
                                     <table id="tbaddr">
                                         <tbody>
                                             <tr>
-                                                <th>ที่อยู่ในการจัดส่ง/ใบกำกับภาษี</th>
+                                                <th>Delivery / Billing Address</th>
                                                 <td colspan="4">
                                                     <textarea class="form-control" rows="3" id="shipadd" style="z-index: 0;background-color: white;border: 0px;" disabled="disabled" name="example"></textarea>
                                                 </td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <th>เปลี่ยนที่อยู่จัดส่ง</th>
+                                                <th>Change Delivery Address</th>
                                                 <td>
                                                     <div class="col-md-2">
                                                         <div class="form-group">
@@ -244,28 +244,28 @@
                                                 </td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <th>Type ส่งสินค้า</th>
+                                                <th>Delivery Type</th>
                                                 <td>
                                                     <select id="Ordertype_ID" class="form-control"></select>
                                                 </td>
                                                 <td>
-                                                    วันที่ส่งสินค้า
+                                                    Delivery Date
                                                 </td>
                                                 <td>
                                                     <input id="datepickerStart" type="text" class="form-control" disabled="disabled" name="begin">
                                                 </td>
                                                 <td>
-                                                    เวลา HH:mm:ss
+                                                    Time HH:mm:ss
                                                 </td>
                                                 <td>
                                                     <input type="text" id="time" class="form-control input-lg" name="example" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px;" disabled="disabled">
                                                 </td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <th>ขนส่ง</th>
+                                                <th>Shipping</th>
                                                 <th>
                                                     <select id="codetransportation" class="form-control" style="color:black">
-                                                        <option value="0">เลือก ขนส่ง</option>
+                                                        <option value="0">Select Shipping</option>
                                                     </select>
                                                 </th>
                                                 <td>
@@ -289,17 +289,17 @@
                             </div>
                             <div class="col-md-12">
                                 <div class="table-responsive">
-                                    <h2 style="float: right;">สรุปรายการสั่งซื้อ</h2><br />
+                                    <h2 style="float: right;">Order Summary</h2><br />
                                     <table class="table">
                                         <tbody>
                                             <tr class="cart-subtotal">
-                                                <td>จำนวนสินค้า/Total Qty</td>
+                                                <td>Total Qty</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td style="float: right;"><span class="amount"><input id="bQty" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" disabled="disabled" /></span></td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <td>จำนวนเบอร์สินค้า/No of Product</td>
+                                                <td>No. of Product</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td style="float: right;"><span class="amount"><input id="bQtystk" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" disabled="disabled" /></span></td>
@@ -311,9 +311,9 @@
                                                 <td style="float: right;"><span class="amount"><input id="bAmtSalePrices" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" disabled="disabled" /></span></td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <td>เครดิต/Credit Term</td>
+                                                <td>Credit Term</td>
                                                 <td></td>
-                                                <td><select class="form-control" id="cho-pay" style="background-color: rgba(208, 182, 75, 0.31);"><option value="1">ชำระปกติ</option><option value="2">ชำระเงินสด</option></select></td>
+                                                <td><select class="form-control" id="cho-pay" style="background-color: rgba(208, 182, 75, 0.31);"><option value="1">Regular Payment</option><option value="2">Cash Payment</option></select></td>
                                                 <td>
                                                     <span class="amount">
                                                         <input type="text" class="form-control" id="CreditTerm" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" disabled="disabled" />
@@ -321,31 +321,31 @@
                                                 </td>
                                             </tr>
                                             <tr class="cart-subtotal" id="boxdis">
-                                                <td><input type="checkbox" checked="checked" id="ckeckdiscount" name="vehicle" value="1">     ส่วนลดท้ายบิล</td>
+                                                <td><input type="checkbox" checked="checked" id="ckeckdiscount" name="vehicle" value="1">   End-of-Bill Discount</td>
                                                 <td><input id="inputdis" type="number" min="0" style="width: 89px;" class="form-control"></td>
                                                 <td style="text-align:left;">
                                                     <select id="discon" style="width: 89px;" class="form-control">
                                                         <option value="2">Baht</option>
                                                         <option value="0">%</option>
                                                     </select>
-                                                    <a id="btncal" style="cursor: pointer; font-size: medium; font-weight: bold;">>>>กดคํานวณส่วนลด<<<</a>
+                                                    <a id="btncal" style="cursor: pointer; font-size: medium; font-weight: bold;">>>>Click to calculate discount<<<</a>
                                                 </td>
                                                 <td style="float: right;"> <span class="amount"><input id="sumdiscountprice" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" /></span></td>
                                             </tr>
                                             <tr class="cart-subtotal" id="boxlabo">
-                                                <td><input type="checkbox" id="checklabor" name="vehiclelabor" value="2">     ค่าแรง</td>
+                                                <td><input type="checkbox" id="checklabor" name="vehiclelabor" value="2">   Labor Cost</td>
                                                 <td><input id="inputlabor" type="number" min="0" style="width: 89px;" class="form-control" disabled="disabled"></td>
                                                 <td style="text-align:left;">
                                                     <select id="disconlabor" style="width: 89px;" class="form-control">
                                                         <option value="2">Baht</option>
                                                         <option value="0">%</option>
                                                     </select>
-                                                    <a id="btncallabor" style="cursor: pointer; font-size: medium; font-weight: bold;">>>>กดคํานวณค่าแรง<<<</a>
+                                                    <a id="btncallabor" style="cursor: pointer; font-size: medium; font-weight: bold;">>>>Click to calculate discount<<<</a>
                                                 </td>
                                                 <td style="float: right;"><span class="amount"><input id="sumdiscountpricelabor" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" /></span></td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <td>ส่วนลดเงินสด % /Cash Discount</td>
+                                                <td>Cash Discount</td>
                                                 <td></td>
                                                 <td>
                                                     @if (Xcusdiscount != "")
@@ -377,19 +377,19 @@
                                                 <td colspan="2"><span class="amount"><input type="text" id="bdicAmt" readonly="readonly" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" /></span></td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <td>จำนวนเงินก่อนภาษี/Net</td>
+                                                <td>Amount Before Tax/Net</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td style="float: right;"><span class="amount"><input id="texttotDis" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" /></span></td>
                                             </tr>
                                             <tr class="cart-subtotal">
-                                                <td>ภาษี <span id="getVatAmtShow"></span>% /Vat <input type="hidden" id="getVatAmtVal" /></td>
+                                                <td>Tax<span id="getVatAmtShow"></span>% /Vat <input type="hidden" id="getVatAmtVal" /></td>
                                                 <td></td>
                                                 <td></td>
                                                 <td style="float: right;"><span class="amount"><input id="bvat" style="z-index: 0; color: rgb(6, 6, 6); background-color: white; text-align: right; border: 0px; font-weight: bold;" /></span></td>
                                             </tr>
                                             <tr class="order-total">
-                                                <td>ยอดเงิน/Total</td>
+                                                <td>Total Amount</td>
                                                 <td></td>
                                                 <td></td>
                                                 <td style="float: right;">
@@ -481,14 +481,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    ยืนยันการลบข้อมูล
+                    Confirm data deletion.
                 </div>
                 <div class="modal-body">
-                    คุณต้องการลบข้อมูลหรือไม่
+                    Do you want to delete the data?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">ไม่ต้องการ</button>
-                    <button type="button" id="del" class="btn btn-danger btn-ok" data-dismiss="modal">ต้องการ</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" id="del" class="btn btn-danger btn-ok" data-dismiss="modal">Yes</button>
                 </div>
             </div>
         </div>
@@ -498,14 +498,14 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    ยืนยันการลบข้อมูล
+                    Confirm data deletion.
                 </div>
                 <div class="modal-body">
-                    คุณต้องการลบสินค้าทั้งหมดหรือไม่
+                    Do you want to delete the data?
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">ไม่ต้องการ</button>
-                    <button type="button" id="delall" class="btn btn-danger btn-ok" data-dismiss="modal">ต้องการ</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                    <button type="button" id="delall" class="btn btn-danger btn-ok" data-dismiss="modal">Yes</button>
                 </div>
             </div>
         </div>
@@ -527,7 +527,7 @@
         <div class="modal-dialog modal-md">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="color:black;"> <i class="fa fa-info-circle" style="color: #dd8d1b;"></i> พบข้อผิดพลาด </h4>
+                    <h4 class="modal-title" style="color:black;"> <i class="fa fa-info-circle" style="color: #dd8d1b;"></i> An error occurred. </h4>
                 </div>
                 <div class="modal-body">
                     <h6 id="textConfirmorder"></h6>
@@ -544,7 +544,7 @@
             <!-- Modal content-->
             <div class="modal-content " id="ColorboxError">
                 <div class="modal-header">
-                    <h4 class="modal-title" style="color:black;">เลือกที่อยู่จัดส่งสินค้า</h4>
+                    <h4 class="modal-title" style="color:black;">Select delivery address.</h4>
                 </div>
                 <div class="modal-body" style="overflow-y: scroll;overflow-x: scroll;">
                     <div id="textAlert">
@@ -564,7 +564,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-default" id="CancalShippto" data-dismiss="modal">ส่งตามที่อยู่ในใบกำกับภาษี</button>
+                    <button type="button" class="btn btn-default" id="CancalShippto" data-dismiss="modal">Ship to the billing address.</button>
                 </div>
             </div>
         </div>
@@ -591,69 +591,69 @@
                                 </thead>
                                 <tbody>
                                     <tr>
-                                        <th scope="row">จำนวนสินค้า</th>
+                                        <th scope="row">Number of Items</th>
                                         <td><p id="sumqty"></p></td>
-                                        <td>ชิ้น</td>
+                                        <td>Units</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">จำนวนเบอร์สินค้า</th>
+                                        <th scope="row">Number of Product Codes</th>
                                         <td><p id="sumstk"></p></td>
-                                        <td>เบอร์</td>
+                                        <td>Size</td>
                                     </tr>
                                     <tr style="display:none;">
-                                        <th scope="row">ราคาก่อนส่วนลด:</th>
+                                        <th scope="row">Price Before Discount:</th>
                                         <td><p id="Msumbeforprice"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Sub total/ราคารวมทั้งสิ้น:</th>
+                                        <th scope="row">Total Amount:</th>
                                         <td><p id="TotalAmt"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Discount/ส่วนลดท้ายบิล:</th>
+                                        <th scope="row">End-of-Bill Discount:</th>
                                         <td><p id="Msumbedisprice"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">ค่าแรง:</th>
+                                        <th scope="row">Labor Cost:</th>
                                         <td><p id="summarylaber"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr style="display:none">
-                                        <th scope="row">ส่วนลดโปรโมชั่น:</th>
+                                        <th scope="row">Promotional Discount:</th>
                                         <td><p id="sumPro"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Cash Discount/ส่วนลดเงินสด<i id="cr"></i>:</th>
+                                        <th scope="row">Cash Discount<i id="cr"></i>:</th>
                                         <td><p id="sumDiscount"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Net/จำนวนเงินก่อนภาษี:</th>
+                                        <th scope="row">Amount Before Tax:</th>
                                         <td><p id="sumAmt"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Vat/ภาษี <span id="getVatAmtShowPop"></span>% : </th>
+                                        <th scope="row">Vat/Tax <span id="getVatAmtShowPop"></span>% : </th>
                                         <td><p id="sumvat"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr style="border: 1px solid #56922a;display:none ">
-                                        <th scope="row">ราคาสินค้าพร้อมส่ง:</th>
+                                        <th scope="row">Product Price Including Delivery:</th>
                                         <td><p id="sumrealprices"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr style="display:none">
-                                        <th scope="row">ค่าขนส่ง:</th>
+                                        <th scope="row">Delivery Fee:</th>
                                         <td><p id="sumtarnport"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
-                                        <th scope="row">Total/จำนวนเงินทั้งสิ้น :</th>
+                                        <th scope="row">Total Amount:</th>
                                         <td><p id="sumTol"></p></td>
-                                        <td>บาท</td>
+                                        <td>Bath</td>
                                     </tr>
                                     <tr>
                                         <th scope="row"> <input type="hidden" id="accessIdCurrentPop" value="" /> </th>
@@ -680,7 +680,7 @@
                     <div class="modal-header">
                     </div>
                     <div class="modal-body">
-                        คุณต้องการเลือก Ship To Code หรือไม่ <i class="fa fa-shopping-cart fa-3x"></i><i class="fa fa-shopping-cart fa-2x"></i>
+                        Do you want to select a Ship To Code? <i class="fa fa-shopping-cart fa-3x"></i><i class="fa fa-shopping-cart fa-2x"></i>
                     </div>
                     <div class="modal-footer">
                         <button type="button" id="btncancelShiptoQuote" class="btn btn-default" data-dismiss="modal" style="display:none;">No</button>
@@ -700,7 +700,7 @@
                             <div id="textAlertnextshopping">Some text in the modal.</div>
                         </div>
                         <div class="modal-body">
-                            คุณต้องการเลือก Shopping ต่อหรือไม่ <i class="fa fa-shopping-cart fa-2x"></i><i class="fa fa-shopping-cart fa-2x"></i>
+                            Do you want to continue shopping? <i class="fa fa-shopping-cart fa-2x"></i><i class="fa fa-shopping-cart fa-2x"></i>
                         </div>
                         <div class="modal-footer">
                             <button type="button" id="btncancelnextshopping" class="btn btn-default" data-dismiss="modal">No</button>
@@ -720,12 +720,12 @@
                     <div class="modal-body" id="texterror">
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">เข้าสู่ระบบอีกครั้ง</button>
+                        <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">Login again</button>
                     </div>
                 </div>
             </div>
         </div>
-        <input type="submit" id="btnChk" style="display:none" value="คำนวนcheck">
+        <input type="submit" id="btnChk" style="display:none" value="Check Calculation">
         <button type="button" data-column="#column-i" style="display:none"></button>
         <button type="button" data-column="#column-l" style="display:none"></button>
         <button type="button" data-column="#column-lKDC" style="display:none"></button>
@@ -773,7 +773,7 @@
                             var splitstring = data.StrStstuslogin;
                             if (splitstring == "1") {
                                 $("#texterror").empty();
-                                $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                                $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                                 $("#myModal3").modal();
                                 return false;
                             }
@@ -798,13 +798,13 @@
                             let mystatus = myArray[0];
                             if (id != mysession) {
                                 $("#texterror").empty();
-                                $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                                $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                                 $("#myModal3").modal();
                             } else {
 
                                 if (mystatus == "0") {
                                     $("#texterror").empty();
-                                    $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                                    $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                                     $("#myModal3").modal();
                                 }
                             }
@@ -1125,15 +1125,15 @@
                                     //รายการส่งไปต่อรองราคาสินค้าขาย//
                                     if (sta == "W") {
                                         //รออนุมัติ//
-                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>ราคาต่อรอง</div></td>';
+                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">Pending<br>Negotiated Price</div></td>';
                                     }
                                     else if (sta == "C") {
                                         //ไม่อนุมัติ//
-                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;color:rgb(180, 239, 35);color: rgba(25, 185, 212, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(255, 0, 116);">ไม่อนุมัติ</div></td>';
+                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;color:rgb(180, 239, 35);color: rgba(25, 185, 212, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(255, 0, 116);">Rejected</div></td>';
                                     }
                                     else if ((sta == "N" || sta == "Q") && Prcby != "") {
                                         //อนุมัติแล้ว//
-                                        SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">ราคาอนุมัติ</div></td>';
+                                        SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">Approved Price</div></td>';
                                     }
                                     else {
                                         //กรณีอื่นๆ//
@@ -1145,15 +1145,15 @@
                                     } else {
                                         if (sta == "W") {
                                             //รออนุมัติ FOC//
-                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>รายการของแถม</div></td>';
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">Pending Approval<br>Free Gift Items</div></td>';
                                         }
                                         else if (sta == "C") {
                                             //ไม่อนุมัติ FOC//
-                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">ไม่อนุมัติ<br>รายการของแถม</div></td>';
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">Rejected<br>Free Gift Items</div></td>';
                                         }
                                         else if ((sta == "N" || sta == "Q") && Prcby != "") {
                                             //อนุมัติแล้ว FOC//
-                                            SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">อนุมัติ<br>รายการของแถม</div></td>';
+                                            SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">Approved<br>Free Gift Items</div></td>';
                                         }
                                         else {
                                             //กรณีอื่นๆ FOC//
@@ -1238,7 +1238,7 @@
                                 $("#crbarcustam").text("TAM: " + commaSeparateNumber(data[0].TAMBalance));
                                 $("#crbarcusvelox").text("VELOX: " + commaSeparateNumber(data[0].VELOXBalance));
                                 $("#d1").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
-                                $("#shipadd").val("ร้าน:" + data[0].CUSNAM + "(รหัสร้าน:" + data[0].CUSCOD + ")" + "\n" + "ที่อยู่จัดส่งสินค้า" + data[0].ADDR_01 + "  " + data[0].ADDR_02);
+                                $("#shipadd").val("Store:" + data[0].CUSNAM + "(Storr Code:" + data[0].CUSCOD + ")" + "\n" + "Delivery Address" + data[0].ADDR_01 + "  " + data[0].ADDR_02);
                                 getCreditcuskey(cuscod);//ดึงวงเงินจากร้านแม่
                                 $.ajax({
                                     url: '@Url.Action("Getdateslmbysalmcod", "DataCenter")',
@@ -1250,7 +1250,7 @@
                                     success: function (data) {
                                         optText = "(" + data[0].SLMCOD + ")" + data[0].SLMNAM;
                                         optValue = data[0].SLMCOD;
-                                        $('#d1').append(" พนักงาน :" + optText);
+                                        $('#d1').append(" Employee :" + optText);
                                     }
                                 });
                             }
@@ -1285,7 +1285,7 @@
                                 $("#crlicusvelox").text("VELOX: " + commaSeparateNumber(data[0].VELOXCrlimit));
                                 $("#crbarcustam").text("TAM: " + commaSeparateNumber(data[0].TAMBalance));
                                 $("#crbarcusvelox").text("VELOX: " + commaSeparateNumber(data[0].VELOXBalance));
-                                $("#shipadd").val("ร้าน:" + data[0].CUSNAM + "(รหัสร้าน:" + data[0].CUSCOD + ")" + "\n" + "ที่อยู่จัดส่งสินค้า" + data[0].ADDR_01 + data[0].ADDR_02);
+                                $("#shipadd").val("Store:" + data[0].CUSNAM + "(Store Code:" + data[0].CUSCOD + ")" + "\n" + "Delivery Address" + data[0].ADDR_01 + data[0].ADDR_02);
                                 getCreditcuskey(cuscod);//ดึงวงเงินจากร้านแม่
                             }
                         }
@@ -1325,7 +1325,7 @@
                 success: function (data) {
                     var select = $("#codetransportation");
                     select.children().remove();
-                    select.append($("<option>").val("0").text("เลือก ขนส่ง"));
+                    select.append($("<option>").val("0").text("Select Delivery Method"));
                     $(data).each(function (index, item) {
                         select.append($("<option>").val(item.Code).text(item.Code + "/" + item.Name));
                     });
@@ -1367,7 +1367,7 @@
                             } else {
                                 $("#cho-pay").val("1");
                                 $("#textAlertWarning").empty();
-                                $("#textAlertWarning").text("ไม่สามารถชำระเงินสดได้ กรุณาติดต่อแผนก Credit Control หรือ Sales Admin");
+                                $("#textAlertWarning").text("Cash payment not allowed. Please contact Credit Control or Sales Admin.");
                                 $("#myModalWarning").modal();
                                 $("#myModal").modal('hide');
                                 return false;
@@ -1391,7 +1391,7 @@
                                 $("#btnChk").trigger('click');
                             } else {
                                 $("#textAlertWarning").empty();
-                                $("#textAlertWarning").text("ไม่สามารถชำระเงินสดได้ กรุณาติดต่อแผนก Credit Control หรือ Sales Admin");
+                                $("#textAlertWarning").text("Cash payment not allowed. Please contact Credit Control or Sales Admin.");
                                 $("#myModalWarning").modal();
                                 $("#myModal").modal('hide');
                                 return false;
@@ -1419,7 +1419,7 @@
                             $("#btnChk").trigger('click');
                         } else {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("ไม่มีเครดิต/Credit Term นี้ในระบบ");
+                            $("#textAlertWarning").text("No credit/credit term found in the system.");
                             $("#myModalWarning").modal();
                             $("#myModal").modal('hide');
                             return false;
@@ -1475,7 +1475,7 @@
                 var cusel = cuscod;
                 if (cusel == "") {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("กรุณาเลือกลูกค้าที่ต้องการ Shopping");
+                    $("#textAlertWarning").text("Please select the customer to Shopping");
                     $("#myModalWarning").modal();
                     $("#myModal").modal('hide');
                     return false;
@@ -1521,10 +1521,10 @@
                         return false;
                     }
                     if (data.Getdata.length > 0) {
-                        console.log("มีสินค้า จำนวน:", data.Getdata.length);
+                        console.log("Items available: Quantity:", data.Getdata.length);
                         checkgetshipto()
                     } else {
-                        console.log("ตะกร้าว่างเปล่า");
+                        console.log("Shopping cart is empty.");
                         loading.out();
                         $("#ModalShipping").modal('hide');
                     }
@@ -1542,7 +1542,7 @@
                     success: function (data) {
                         console.log("ShipTo count:", data.length);
                         if (data.length > 0) {
-                            console.log("มี ShipTo → เปิด Modal");
+                            console.log("Has ShipTo → Open Modal");
                             $("#ModalShipping").modal();
                             $('#openShipping').css("display", "block");
                             $("#Shipping > tbody").empty();
@@ -1559,7 +1559,7 @@
                                 $("#Shipping").append(SubmithtmlPage);
                             }
                         } else {
-                            console.log("ไม่มี ShipTo → ShoppingCart_list");
+                            console.log("None ShipTo → ShoppingCart_list");
                             $("#ModalShipping").modal('hide');
                             ShoppingCart_list("");
                         }
@@ -1633,7 +1633,7 @@
                     type: "POST",
                     dataType: "JSON",
                     success: function (data) {
-                        $("#shipadd").val("ร้าน:" + data[0].CUSNAM + "(รหัสร้าน:" + data[0].CUSCOD + ")" + "\n" + "ที่อยู่จัดส่งสินค้า" + data[0].ADDR_01 + "  " + data[0].ADDR_02);
+                        $("#shipadd").val("Store:" + data[0].CUSNAM + "(Store Code:" + data[0].CUSCOD + ")" + "\n" + "Delivery Address" + data[0].ADDR_01 + "  " + data[0].ADDR_02);
                     }
                 });
                 $("#changeshipadd").val("");
@@ -1656,7 +1656,7 @@
                 $('#NameShipping').val(name);
                 $('#AddressShipping').val(address + " " + Address_2);
                 $("#ModalShipping").modal('hide');
-                $("#changeshipadd").val("ร้าน:" + name + "(" + code + " )" + " ที่อยู่จัดส่งสินค้า:" + address + "  " + Address_2 + " " + postcode);
+                $("#changeshipadd").val("Store:" + name + "(" + code + " )" + " Delivery Address:" + address + "  " + Address_2 + " " + postcode);
             });
             $.ajax({
                 url: '@Url.Action("GetdataCusShipping", "Cart")',
@@ -1681,7 +1681,7 @@
                 success: function (data) {
                     var select = $("#Modtype_ID");
                     select.children().remove();
-                    select.append($("<option>").val("ALL").text("เลือกDeliveryMode"));
+                    select.append($("<option>").val("ALL").text("Select Delivery Mode   "));
                     $(data).each(function (index, item) {
                         select.append($("<option>").val(item.ORD_Type).text(item.ORD_Type + "/" + item.ORD_TypeName));
                     });
@@ -1699,7 +1699,7 @@
                     success: function (data) {
                         var select = $("#Modtype_ID");
                         select.children().remove();
-                        select.append($("<option>").val("ALL").text("เลือกDeliveryMode"));
+                        select.append($("<option>").val("ALL").text("Select Delivery Mode   "));
                         $(data).each(function (index, item) {
                             select.append($("<option>").val(item.ORD_Type).text(item.ORD_Type + "/" + item.ORD_TypeName));
                         });
@@ -1788,7 +1788,7 @@
                             checkgetshiptoQ()
                         } else {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("ไม่มีข้อมูลที่ท่านต้องการ");
+                            $("#textAlertWarning").text("No data found.");
                             $("#myModalWarning").modal();
                             return false;
                         }
@@ -1950,15 +1950,15 @@
                                     //รายการส่งไปต่อรองราคาสินค้าขาย//
                                     if (sta == "W") {
                                         //รออนุมัติ//
-                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>ราคาต่อรอง</div></td>';
+                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">Pending Approval<br>Negotiated Price</div></td>';
                                     }
                                     else if (sta == "C") {
                                         //ไม่อนุมัติ//
-                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;color:rgb(180, 239, 35);color: rgba(25, 185, 212, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(255, 0, 116);">ไม่อนุมัติ</div></td>';
+                                        SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;color:rgb(180, 239, 35);color: rgba(25, 185, 212, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(255, 0, 116);">Rejected</div></td>';
                                     }
                                     else if ((sta == "N" || sta == "Q") && Prcby != "") {
                                         //อนุมัติแล้ว//
-                                        SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">ราคาอนุมัติ</div></td>';
+                                        SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">Approved</div></td>';
                                     }
                                     else {
                                         //กรณีอื่นๆ//
@@ -1970,15 +1970,15 @@
                                     } else {
                                         if (sta == "W") {
                                             //รออนุมัติ FOC//
-                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">รออนุมัติ<br>รายการของแถม</div></td>';
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">Pending Approval<br>Free Gift Items</div></td>';
                                         }
                                         else if (sta == "C") {
                                             //ไม่อนุมัติ FOC//
-                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">ไม่อนุมัติ<br>รายการของแถม</div></td>';
+                                            SubmithtmlPage += '<td style="color:rgb(180, 239, 35);color: rgba(212, 25, 84, 0.98);/* text-align: right; *//* background-color: burlywood; */font-weight: bold;">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color: rgb(249, 160, 22);">Rejected<br>Free Gift Items</div></td>';
                                         }
                                         else if ((sta == "N" || sta == "Q") && Prcby != "") {
                                             //อนุมัติแล้ว FOC//
-                                            SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">อนุมัติ<br>รายการของแถม</div></td>';
+                                            SubmithtmlPage += '<td style="font-weight: bold;color:rgba(31, 113, 21, 0.98);">' + commaSeparateNumber(data.Getdata[i].val.ExpectPrice) + '<br><div style="color:rgb(31, 113, 21);">Approved<br>Free Gift Items</div></td>';
                                         }
                                         else {
                                             //กรณีอื่นๆ FOC//
@@ -2004,7 +2004,7 @@
                         } else {
                             loading.out()
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("ไม่มีข้อมูลที่ท่านต้องการค้นหา");
+                            $("#textAlertWarning").text("No data found.");
                             $("#myModalWarning").modal();
                             return false;
                         }
@@ -2070,7 +2070,7 @@
                     if (parseInt(valqty) > parseInt(maxord)) {
                         $(this).val(oldord);//aps//
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+                        $("#textAlertWarning").text("Cannot process. Contact salesperson.");
                         $("#myModalWarning").modal();
                     }
                 }
@@ -2096,7 +2096,7 @@
                     if (parseInt(valqty) > parseInt(maxord)) {
                         $(this).val(oldord);//aps//
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+                        $("#textAlertWarning").text("Cannot process. Contact salesperson.");
                         $("#myModalWarning").modal();
                     }
                 }
@@ -2422,7 +2422,7 @@
                         if (type == "MOT") {
                             if (parseFloat(checkamt) < parseFloat(4000)) {
                                 $("#textAlertnextshopping").empty();
-                                $("#textAlertnextshopping").text("ซื้อสินค้าครบ 4,000 ขึ้นไป ฟรีค่าขนส่งมอเตอร์ไซค์");
+                                $("#textAlertnextshopping").text("Get free motorcycle delivery for orders of 4,000 Baht or more.");
                                 $("#confirm-nextshopping").modal();
 
                             }
@@ -2575,7 +2575,7 @@
                 });
                 if (data.length == 0) {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("กรุณาเลือกสินค้าที่ต้องการลบ");
+                    $("#textAlertWarning").text("Please select the item(s) you want to delete.");
                     $("#myModalWarning").modal(); return false;
                 }
                 var DataSend = JSON.stringify(data);
@@ -2589,13 +2589,13 @@
                     success: function (data) {
                         if (data == true) {
                             $("#textAlertSucces").empty();
-                            $("#textAlertSucces").text("ลบข้อมูลเรียบร้อยแล้ว");
+                            $("#textAlertSucces").text("Data deleted successfully.");
                             $("#myModalSucces").modal();
                             location.reload();
                         }
                         else {
                             $("#textAlert").empty();
-                            $("#textAlert").text("ลบข้อมูลไม่สำเร็จกรุณาทำรายการใหม่");
+                            $("#textAlert").text("Failed to delete data. Please try again.");
                             $("#myModal").modal();
                         }
                     }
@@ -2627,13 +2627,13 @@
                     success: function (data) {
                         if (data == true) {
                             $("#textAlertSucces").empty();
-                            $("#textAlertSucces").text("ลบข้อมูลเรียบร้อยแล้ว");
+                            $("#textAlertSucces").text("Data deleted successfully.");
                             $("#myModalSucces").modal();
                             location.reload();
                         }
                         else {
                             $("#textAlert").empty();
-                            $("#textAlert").text("ลบข้อมูลไม่สำเร็จกรุณาทำรายการใหม่");
+                            $("#textAlert").text("Failed to delete data. Please try again.");
                             $("#myModal").modal();
                         }
                     }
@@ -2692,7 +2692,7 @@
                 });
                 if (data.length == 0) {
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("กรุณาเลือกสินค้าเพื่อ Confirm order");
+                    $("#textAlertWarning").text("Please Select to Confirm order");
                     $("#myModalWarning").modal();
                     $('#Ordertype_ID').val("0");
                     return false;
@@ -2713,7 +2713,7 @@
 
                         select.children().remove();
 
-                        select.append($("<option>").val("0").text("เลือกQuotation No"));
+                        select.append($("<option>").val("0").text("Select Quotation No"));
 
                         $(data).each(function (index, item) {
                             select.append($("<option>").val(item.QuatationNo).text(item.QuatationNo + "|" + "TotalAmt:" + item.Detail));
@@ -2734,7 +2734,7 @@
                     var Modtype = $("#Modtype_ID").val();
                     if (Modtype == "ALL") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือก Delivery Mode ");
+                        $("#textAlertWarning").text("Please select Delivery Mode.");
                         $("#myModalWarning").modal(); return false;
                     }
                     var Moddate = $("#ModdatepickerStart").val();
@@ -2742,14 +2742,14 @@
                     var Ordertype = $("#Ordertype_ID").val();
                     if (Ordertype == "0") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือก Type ส่งสินค้า ");
+                        $("#textAlertWarning").text("Please select the delivery type.");
                         $("#myModalWarning").modal(); return false;
                     }
                     var dateDelivery = $("#datepickerStart").val();
                     if (Ordertype == "S") {
                         if (dateDelivery == "") {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("กรุณาระบุวันที่ส่งสินค้า");
+                            $("#textAlertWarning").text("Please specify the delivery date.");
                             $("#myModalWarning").modal(); return false;
                         }
                     }
@@ -2845,7 +2845,7 @@
                     var companiesWithZeroTotal = [];
                     if (data.length == 0) {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือกสินค้าเพื่อ Confirm order");
+                        $("#textAlertWarning").text("Select Product to Confirm order");
                         $("#myModalWarning").modal(); return false;
                     }
                     var DataSend = JSON.stringify(data);
@@ -2964,7 +2964,7 @@
                                     dataType: "JSON",
                                     beforeSend: function () {
                                         $('#checkCreditCustomer').empty();
-                                        $('#checkCreditCustomer').html('<div style="padding: 2px 0 15px 2px; font-size: 16px;"> <i class="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i> <b> กำลังเช็คเครดิต... </b> </div>');
+                                        $('#checkCreditCustomer').html('<div style="padding: 2px 0 15px 2px; font-size: 16px;"> <i class="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i> <b> Checking Credit... </b> </div>');
                                     },
                                     success: function (data) {
                                        //return false;
@@ -2973,7 +2973,7 @@
 
                                             $("#checkCreditCustomer").html('<div class="row">' +
                                                                                 '<div class="col-sm-12">' +
-                                                                                    '<div class="alert alert-danger text-left mt-2" style="font-size: 16px; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Order นี้ต้องรอ CRC ตรวจสอบเครดิตอาจใช้เวลานานกว่า Order จะส่งไปคลังสินค้า </div>' +
+                                                                                    '<div class="alert alert-danger text-left mt-2" style="font-size: 16px; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> This order must wait for CRC to check credit, which may delay delivery to the warehouse. </div>' +
                                                                                 '</div>' +
                                                                             '</div>')
                                         } else {  //ไม่ติดเครดิต
@@ -2989,7 +2989,7 @@
                                                     $('#checkCreditCustomer').empty();
                                                     if (cuscod == '110Z0001A') {
                                                      $("#btnOK").prop('disabled', true);
-                                                     $('#checkCreditCustomer').html('<div style="padding: 2px 0 15px 2px; font-size: 16px;"> <i class="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i> <b> กำลังเช็คโควต้า... </b> </div>');
+                                                        $('#checkCreditCustomer').html('<div style="padding: 2px 0 15px 2px; font-size: 16px;"> <i class="fa fa-spinner fa-spin fa-2x" aria-hidden="true"></i> <b> Checking quota... </b> </div>');
                                                     }
                                                 },
                                                 success: function (res) {
@@ -3001,13 +3001,13 @@
                                                         $("#btnOK").prop('disabled', true);
                                                         $("#checkCreditCustomer").html('<div class="row">' +
                                                             '<div class="col-sm-12">' +
-                                                            '<div class="alert alert-danger text-left mt-2" style="font-size: 16px; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Quota การซื้อสินค้าเกินจำนวนที่กำหนด : ' + commaSeparateNumber(res.allAmt) + ' / 20,000' + ' | กรุณาติดต่อแผนก CS </div>' +
+                                                            '<div class="alert alert-danger text-left mt-2" style="font-size: 16px; font-weight: bold;"><i class="fa fa-exclamation-triangle" aria-hidden="true"></i> Quota Purchasing quantity exceeds the allowed limit. : ' + commaSeparateNumber(res.allAmt) + ' / 20,000' + ' | Please contact the department CS </div>' +
                                                             '</div>' +
                                                             '</div>')
                                                     }
                                                     else {
                                                         $("#textAlert").empty();
-                                                        $("#textAlert").text("บันทึกข้อมูลไม่สำเร็จกรุณาทำรายการใหม่ " + res.flagCheck);
+                                                        $("#textAlert").text("Failed to save data. Please try again." + res.flagCheck);
                                                         $("#myModal").modal();
                                                     }
                                                 },
@@ -3020,7 +3020,7 @@
                                 //end call
                             } else {
                                 $("#textAlert").empty();
-                                $("#textAlert").text("บันทึกข้อมูลไม่สำเร็จกรุณาทำรายการใหม่ " + data.message);
+                                $("#textAlert").text("Failed to save data. Please try again." + data.message);
                                 $("#myModal").modal();
                             }
                         }
@@ -3049,7 +3049,7 @@
                     var Modtype = $("#Modtype_ID").val();
                     if (Modtype == "ALL") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือก Delivery Mode ");
+                        $("#textAlertWarning").text("Please select Delivery Mode ");
                         $("#myModalWarning").modal(); return false;
                     }
                     var Moddate = $("#ModdatepickerStart").val();
@@ -3057,7 +3057,7 @@
                     var Ordertype = $("#Ordertype_ID").val();
                     if (Ordertype == "0") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือก Type ส่งสินค้า ");
+                        $("#textAlertWarning").text("Please select the delivery type.");
                         $("#myModalWarning").modal(); return false;
                     }
                     var dateDelivery = $("#datepickerStart").val();
@@ -3139,7 +3139,7 @@
                     });
                     if (data.length == 0) {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือกสินค้าเพื่อ Confirm order");
+                        $("#textAlertWarning").text("Select Product to Confirm order");
                         $("#myModalWarning").modal(); return false;
                     }
                     var MyRowsShipp = $('#Shipping').find('tbody').find('tr').length;
@@ -3250,7 +3250,7 @@
                                 $("#ordidtemp").val(data.id);
                             } else {
                                 $("#textAlert").empty();
-                                $("#textAlert").text("บันทึกข้อมูลไม่สำเร็จกรุณาทำรายการใหม่ " + data.message);
+                                $("#textAlert").text("Failed to save data. Please try again. " + data.message);
                                 $("#myModal").modal();
                             }
                         }
@@ -3277,19 +3277,19 @@
 
                     if (Modtype == "ALL") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือก Mode of Delivery(Area) ");
+                        $("#textAlertWarning").text("Please select Mode of Delivery(Area) ");
                         $("#myModalWarning").modal(); return false;
                     }
                     if (Ordertype == "0") {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือก Type ส่งสินค้า ");
+                        $("#textAlertWarning").text("Please select the delivery type.");
                         $("#myModalWarning").modal(); return false;
                     }
                     if (Ordertype == "S") {
                         $("#datepickerStart").attr("disabled", false);
                         if (dateDelivery == "") {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("กรุณาระบุ  วันที่ส่งสินค้า");
+                            $("#textAlertWarning").text("Please specify the delivery date.");
                             $("#myModalWarning").modal(); return false;
                         }
                     }
@@ -3297,7 +3297,7 @@
                         $("#datepickerStart").attr("disabled", false);
                         if (dateDelivery == "") {
                             $("#textAlertWarning").empty();
-                            $("#textAlertWarning").text("กรุณาระบุ  วันที่ส่งสินค้า");
+                            $("#textAlertWarning").text("Please specify the delivery date.");
                             $("#myModalWarning").modal(); return false;
                         }
                     }
@@ -3439,12 +3439,12 @@
                     }
                     if (rowBckorder > 0) {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("รายการ BckOrder ไม่สามารถออก Quotation ได้");
+                        $("#textAlertWarning").text("Back Order items cannot be issued for Quotation.");
                         $("#myModalWarning").modal(); return false;
                     }
                     if (data.length == 0) {
                         $("#textAlertWarning").empty();
-                        $("#textAlertWarning").text("กรุณาเลือกสินค้าเพื่อ Confirm order");
+                        $("#textAlertWarning").text("Select Product to Confirm order");
                         $("#myModalWarning").modal(); return false;
                     }
                     var DataSend = JSON.stringify(data);
@@ -3526,7 +3526,7 @@
                                 location.reload();
                             } else {
                                 $("#textAlert").empty();
-                                $("#textAlert").text("บันทึกข้อมูลไม่สำเร็จกรุณาทำรายการใหม่ " + data.message);
+                                $("#textAlert").text("Failed to save data. Please try again. " + data.message);
                                 $("#myModal").modal();
                             }
                         }
@@ -3606,7 +3606,7 @@
                         success: function (data) {
                             console.log("data.userLast = " + data);
                             if (data.flagCheck != "Y") { //ถ้าไม่ใช่ lastID Refresh
-                                $("#textConfirmorder").html("ท่านเข้าหน้าตะกร้าสินค้าเวลา <b>" + data.timeBefore + "</b> พบว่ามี <b> user " + data.userLast + "</b> กำลังแก้ไขหน้ารายการสินค้า ณ เวลา <b>" + data.timeLast + "</b> <br><br> กรุณากดปุ่ม <b>Refresh</b> เพื่อดำเนินการอีกครั้ง");
+                                $("#textConfirmorder").html("You accessed the shopping cart at <b>" + data.timeBefore + "</b> It appears that <b> user " + data.userLast + "</b> is currently editing the product list as of <b>" + data.timeLast + "</b> <br><br> Please click the <b>Refresh</b> button to try again.");
                                 $("#ModalConfirmorder").modal();
                                 $("#btnConfirmorder").click(function () {
                                     var url = window.location.href;
@@ -3710,7 +3710,7 @@
                                 });
                                 if (data.length == 0) {
                                     $("#textAlertWarning").empty();
-                                    $("#textAlertWarning").text("กรุณาเลือกสินค้าเพื่อ Confirm order");
+                                    $("#textAlertWarning").text("Select Product to Confirm order");
                                     $("#myModalWarning").modal(); return false;
                                 }
                                 var DataSend = JSON.stringify(data);
@@ -3726,7 +3726,7 @@
                                     success: function (data) {
                                         if (data.message == "true") {
                                             $("#textAlertSucces").empty();
-                                            $("#textAlertSucces").text("บันทึกข้อมูลสำเร็จ");
+                                            $("#textAlertSucces").text("Data saved successfully.");
                                             $("#myModalSucces").modal();
                                             $("#myModalSucces").click(function () {
                                                 var url = window.location.href;
@@ -3740,7 +3740,7 @@
                                             });
                                         } else {//alert  After Roll Back
                                             $("#textAlertWarning").empty();
-                                            $("#textAlertWarning").text("บันทึกข้อมูลไม่สำเร็จกรุณาทำรายการใหม่ " + data.message);
+                                            $("#textAlertWarning").text("Failed to save data. Please try again. " + data.message);
                                             $("#myModalWarning").modal();
                                         }
                                     }

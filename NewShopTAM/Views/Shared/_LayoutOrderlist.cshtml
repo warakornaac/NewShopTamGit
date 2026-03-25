@@ -3,35 +3,19 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- Place favicon.ico in the root directory -->
     <link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico">
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
-
-    <!-- All css files are included here. -->
-    <!-- Bootstrap fremwork main css -->
     <link rel="stylesheet" href="~/tmartcss/css/bootstrap.min.css">
-    <!-- Owl Carousel main css -->
     <link rel="stylesheet" href="~/tmartcss/css/owl.carousel.min.css">
     <link rel="stylesheet" href="~/tmartcss/css/owl.theme.default.min.css">
-    <!-- This core.css file contents all plugings css file. -->
     <link rel="stylesheet" href="~/tmartcss/css/core.css">
-    <!-- Theme shortcodes/elements style -->
     <link rel="stylesheet" href="~/tmartcss/css/shortcode/shortcodes.css">
-    <!-- Theme main style -->
     <link rel="stylesheet" href="~/tmartcss/style.css">
-    <!-- Responsive css -->
-    <!-- <link rel="stylesheet" href="~/tmartcss/css/responsive.css">-->
-    <!-- User style -->
-    <!--<link rel="stylesheet" href="~/tmartcss/css/custom.css">-->
-    <!-- Modernizr JS -->
     <script src="~/tmartcss/js/vendor/modernizr-2.8.3.min.js"></script>
     <style>
         .header {
-            /*background-color: #3c8dbc;*/
             background: linear-gradient(-180deg,#ef3b13fa,#1a30d0a3);
         }
 
@@ -68,7 +52,6 @@
                 text-align: center;
                 padding: 14px 16px;
                 text-decoration: none;
-                /*font-size: 17px;*/
             }
 
                 #navbar a:hover {
@@ -95,7 +78,6 @@
                 padding-top: 60px;
             }
         .header {
-            /*background-color: #3c8dbc;*/
             background: linear-gradient(-180deg,#ef3b13fa,#1a30d0a3);
         }
         #countsku {
@@ -114,35 +96,25 @@
 
 <body>
     <nav class="navbar navbar-expand-lg navbar-light header" id="navbar" style="z-index: auto;">
-      
-       
         <a class="navbar-brand p-0 mr-5" href="#"><img src="~/images/logo/AACTAC185x70.jpg" style="width: 73%;" /></a>
         <div> <a href="#" class="button-left"><span></span></a> </div>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-           
             <ul class="nav justify-content-end">
-
                 @if (Session["UserType"].ToString() != "5") //5=PM//
                 {
                     <li class="nav-item">
-
                         <a class="nav-link" id="btnhome"></a>
                     </li>
                   <li class="nav-item">
-
-                        <!--<a class="nav-link dropdown-toggle"  id="btncart">ตระกร้าสินค้า</a>-->
                     </li>
-
                  <li class="nav-item">
-
-                        <a class="nav-link" href="#" id="btnstatus">การสั่งซื้อของฉัน</a>
+                        <a class="nav-link" href="#" id="btnstatus">My Order</a>
                     </li>
                     <li class="nav-item">
-
-                        <a class="nav-link" id="btndetail">บัญชีลูกค้า</a>
+                        <a class="nav-link" id="btndetail">Customer Account</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link " href="#" id="navbarcart" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -157,95 +129,53 @@
                 else if (Session["UserType"].ToString() == "5")
                 {
                     <li class="nav-item">
-
-                        <a class="nav-link" href="~/Orderlist/Index">ช้อปปิ้ง</a>
+                        <a class="nav-link" href="~/Orderlist/Index">Shopping</a>
                     </li>
                     <li class="nav-item">
-
-                        <a class="nav-link" href="~/SCStockSco/Index">ตรวจสอบ Stock สินค้า</a>
+                        <a class="nav-link" href="~/SCStockSco/Index">Check Inventory Stock</a>
                     </li>
                     <li class="nav-item">
-
-                        <a class="nav-link" href="~/PriceApproval/Index">อนุมัติราคา</a>
+                        <a class="nav-link" href="~/PriceApproval/Index">Approve Price</a>
                     </li>
                 }
                 <li class="nav-item">
-
-
                     <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                         @if (Session["UserType"].ToString() != "6")
                         {
-                            <span class="toggle__menu hidden-xs">บัญชีของคุณ @Session["UserID"]  </span>
+                            <span class="toggle__menu hidden-xs">Profile @Session["UserID"]  </span>
                         }
                         else if (Session["UserType"].ToString() == "6")
                         {
-                            <span class="toggle__menu hidden-xs">บัญชีของคุณ @Session["UserID"]  </span>
+                            <span class="toggle__menu hidden-xs">Profile @Session["UserID"]  </span>
                         }
-
-
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        @*<a class="dropdown-item" href="#">Action</a>*@
-                        @*<a class="dropdown-item" href="~/Home2/Index">Home2</a>*@
                         @if (Session["UserType"].ToString() == "5")
                         {
                             <a class="dropdown-item" href="~/Orderlist/Index">Home</a>
                         }
                         else if (Session["UserType"].ToString() != "5")
                         {
-                            <!-- <a class="dropdown-item" href="~/Home/Index">ช้อปปิ้ง</a>
-                <a class="dropdown-item" href="~/Cart/Index">ตระกร้าสินค้า</a>
-                <a class="dropdown-item" href="~/Statuslist/Index">ติดตามการสั่งซื้อ</a>
-                <a class="dropdown-item" href="~/SeleScrCustomer/Index">บัญชีลูกค้า</a>-->
                         }
                     </div>
                 </li>
                 <li class="nav-item">
-
-                    <a class="nav-link" href="~/Account/LogOut">ออกจากระบบ</a>
+                    <a class="nav-link" href="~/Account/LogOut">Logout</a>
                 </li>
-
             </ul>
-
-
-
-                @*<form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>*@
-</div>
-        
+        </div>
     </nav>
     @RenderBody()
     <div class="container">
         <div class="row">
-
-           
-
         </div>
     </div>
-
-    <!-- Body main wrapper end -->
-    <!-- Placed js at the end of the document so the pages load faster -->
-    <!-- jquery latest version -->
-    @*<script src="~/tmartcss/js/vendor/jquery-1.12.0.min.js"></script>*@
-    <!-- Bootstrap framework js -->
-    @*<script src="~/tmartcss/js/bootstrap.min.js"></script>
-     All js plugins included in this file. 
-    <script src="~/tmartcss/js/plugins.js"></script>
-    <script src="~/tmartcss/js/slick.min.js"></script>
-    <script src="~/tmartcss/js/owl.carousel.min.js"></script>*@
-    <!-- Waypoints.min.js. -->
     <script src="~/tmartcss/js/waypoints.min.js"></script>
-    <!-- Main js file that contents all jQuery plugins activation. -->
-    @*<script src="~/tmartcss/js/main.js"></script>*@
     <script>
         window.onscroll = function () { myFunction() };
-
         var navbar = document.getElementById("navbar");
         var sticky = navbar.offsetTop;
-
         function myFunction() {
             if (window.pageYOffset >= sticky) {
                 navbar.classList.add("sticky")
@@ -255,6 +185,4 @@
         }
     </script>
 </body>
-
 </html>
-

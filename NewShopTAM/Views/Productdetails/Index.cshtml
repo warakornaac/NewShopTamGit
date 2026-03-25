@@ -1,6 +1,4 @@
 ﻿@{
-    //Layout = "~/Views/Shared/layout_tmart.cshtml";
-
     Layout = "~/Views/Shared/layout_view.cshtml";
 
     var number = ViewBag.Nodisplay;
@@ -14,17 +12,12 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <title>Product Detail</title>
     <meta name="description" content="">
-    @*<meta name="viewport" content="width=device-width, initial-scale=1">*@
     <meta name="viewport" content="width=1024">
     <script src="~/contentfilter/js/jquery-2.1.1.js"></script>
     <script src="~/contentfilter/js/jquery.mixitup.min.js"></script>
-    <!--  <script src="~/contentfilter/js/main.js"></script>  Resource jQuery -->
-
     <link href="~/Content/Normalize.css" rel="stylesheet" />
-
     <script src="~/CSS/jQueryv3.1.1.js"></script>
     <link href="~/Content/designblocks/designgallery.css" rel="stylesheet" />
-
     <link href="~/Scripts/carousel-slider/slides.css" rel="stylesheet" />
     <script src="~/Scripts/carousel-slider/js/jssor.slider-28.1.0.min.js"></script>
     <style>
@@ -103,7 +96,6 @@
             color: #f1f1f1;
             font-size: 57px;
             font-weight: bold;
-            /* transition: 0.3s; */
             left: 1656px;
         }
 
@@ -134,7 +126,6 @@
         }
 
         #contents {
-            /* overflow: auto;*/
             margin: auto;
             margin-bottom: 10px;
             width: 100%;
@@ -156,7 +147,6 @@
 
 
         #mainContents {
-            /*width: 60%;*/
             margin: 0px;
             padding-top: 95px;
         }
@@ -165,7 +155,6 @@
             position: -webkit-sticky;
             position: sticky;
             top: 0;
-            /* font-size: 20px; */
             z-index: 99;
         }
 
@@ -202,80 +191,19 @@
 </head>
 
 <body>
-
-    <!-- Body main wrapper start -->
     <div class="wrapper fixed__footer">
-
-
-        <!-- Start Bradcaump area -->
-        <!-- End Bradcaump area -->
-        <!-- Start Product Details -->
         <section class="cd-gallery filter-is-visible" id="mainContents">
             <div class="container">
                 <div class="">
                     <div class="col-md-12" id="rowdetail">
-
                         <div class="col-md-8">
-                            @*<div class="col-md-6 col-lg-6 col-sm-12 col-xs-12 smt-30 xmt-30">
-                                    <div class="htc__product__details__inner">
-                                        <div class="pro__detl__title">
-                                            <h2>Black Clock</h2>
-                                        </div>
-                                        <div class="pro__dtl__rating">
-                                            <ul class="pro__rating">
-                                                <li><span class="ti-star"></span></li>
-                                                <li><span class="ti-star"></span></li>
-                                                <li><span class="ti-star"></span></li>
-                                                <li><span class="ti-star"></span></li>
-                                                <li><span class="ti-star"></span></li>
-                                            </ul>
-                                            <span class="rat__qun">(Based on 0 Ratings)</span>
-                                        </div>
-                                        <div class="pro__details">
-                                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit, sed do eiusmod temf incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, nostr exercitation ullamco laboris nisi ut aliquip ex ea. </p>
-                                        </div>
-                                        <ul class="pro__dtl__prize">
-                                            <li class="old__prize">$15.21</li>
-                                            <li>$10.00</li>
-                                        </ul>
-
-
-                                        <div class="product-action-wrap">
-                                            <div class="prodict-statas"><span>Quantity :</span></div>
-                                            <div class="product-quantity">
-                                                <form id='myform' method='POST' action='#'>
-                                                    <div class="product-quantity">
-                                                        <div class="cart-plus-minus">
-                                                            <input class="cart-plus-minus-box" type="text" name="qtybutton" value="02">
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
-                                        <ul class="pro__dtl__btn">
-                                            <li class="buy__now__btn"><a href="#">buy now</a></li>
-                                            <li><a href="#"><span class="ti-heart"></span></a></li>
-                                            <li><a href="#"><span class="ti-email"></span></a></li>
-                                        </ul>
-                                        <div class="pro__social__share">
-                                            <h2>Share :</h2>
-                                            <ul class="pro__soaial__link">
-                                                <li><a href="#"><i class="zmdi zmdi-twitter"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-instagram"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-facebook"></i></a></li>
-                                                <li><a href="#"><i class="zmdi zmdi-google-plus"></i></a></li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </div>*@
                         </div>
                     </div>
                 </div>
                 <div class="row text-center">
-                    <div class="ontop">สินค้าที่คุณอาจจะชอบ</div>
+                    <div class="ontop">Products You Might Like</div>
                     <div class="card-deck" id="fixbox1">
                         <div class="row">
-
                         </div>
                     </div>
                     <div id="jssor_1" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:250px;overflow:hidden;visibility:hidden;">
@@ -287,15 +215,6 @@
 
                         </div>
                         <a data-scale="0" href="#" style="display:none;position:absolute;">web animation composer</a>
-                        <!-- Bullet Navigator -->
-                        <!--<div data-u="navigator" class="jssorb057" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-                            <div data-u="prototype" class="i" style="width:14px;height:14px;">
-                                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                                    <circle class="b" cx="8000" cy="8000" r="5000"></circle>
-                                </svg>
-                            </div>
-                        </div> -->
-                        <!-- Arrow Navigator -->
                         <div data-u="arrowleft" class="jssora073" style="width:50px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
                             <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                                 <path class="a" d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z"></path>
@@ -308,7 +227,7 @@
                         </div>
                     </div>
 
-                    <div class="ontop">สินค้าแนะนำประจำวัน</div>
+                    <div class="ontop">Today's Recommended Products</div>
                     <div id="jssor_2" style="position:relative;margin:0 auto;top:0px;left:0px;width:980px;height:250px;overflow:hidden;visibility:hidden;">
                         <!-- Loading Screen -->
                         <div data-u="loading" class="jssorl-009-spin" style="position:absolute;top:0px;left:0px;width:100%;height:100%;text-align:center;background-color:rgba(0,0,0,0.7);">
@@ -318,15 +237,6 @@
 
                         </div>
                         <a data-scale="0" href="#" style="display:none;position:absolute;">web animation composer</a>
-                        <!-- Bullet Navigator -->
-                        <!--<div data-u="navigator" class="jssorb057" style="position:absolute;bottom:12px;right:12px;" data-autocenter="1" data-scale="0.5" data-scale-bottom="0.75">
-                            <div data-u="prototype" class="i" style="width:14px;height:14px;">
-                                <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
-                                    <circle class="b" cx="8000" cy="8000" r="5000"></circle>
-                                </svg>
-                            </div>
-                        </div> -->
-                        <!-- Arrow Navigator -->
                         <div data-u="arrowleft" class="jssora073" style="width:50px;height:50px;top:0px;left:30px;" data-autocenter="2" data-scale="0.75" data-scale-left="0.75">
                             <svg viewbox="0 0 16000 16000" style="position:absolute;top:0;left:0;width:100%;height:100%;">
                                 <path class="a" d="M4037.7,8357.3l5891.8,5891.8c100.6,100.6,219.7,150.9,357.3,150.9s256.7-50.3,357.3-150.9 l1318.1-1318.1c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3L7745.9,8000l4216.4-4216.4 c100.6-100.6,150.9-219.7,150.9-357.3c0-137.6-50.3-256.7-150.9-357.3l-1318.1-1318.1c-100.6-100.6-219.7-150.9-357.3-150.9 s-256.7,50.3-357.3,150.9L4037.7,7642.7c-100.6,100.6-150.9,219.7-150.9,357.3C3886.8,8137.6,3937.1,8256.7,4037.7,8357.3 L4037.7,8357.3z"></path>
@@ -338,18 +248,11 @@
                             </svg>
                         </div>
                     </div>
-
                 </div>
             </div>
-
         </section>
-        <!-- Page Features -->
-        <!-- /.row -->
-        <!-- End Product Details -->
-
     </div>
     <div class="body__overlay"></div>
-    <!-- Start Offset MEnu -->
     <div class="offsetmenu">
         <div class="offsetmenu__inner">
             <div class="offsetmenu__close__btn">
@@ -359,21 +262,16 @@
                 <div class="logo">
                     <a href="">
                         My Account Customer
-
                     </a>
                 </div>
                 <div class="offset__single">
                     <div id="cusname">
-
                     </div>
-
                 </div>
                 <p>DEFAULT BILLING ADDRESS</p>
                 <div class="offset__single">
                     <div id="addcus">
-
                     </div>
-
                 </div>
             </div>
 
@@ -381,84 +279,29 @@
                 <div class="offset__single">
                     <h4 class="offset__title">Credit Limit</h4>
                     <div id="crlicusaac">
-
                     </div>
                     <div id="crlicustac">
-
                     </div>
                 </div>
                 <div class="offset__single">
                     <h4 class="offset__title">Credit Balance</h4>
                     <div id="crbarcusaac">
-
                     </div>
                     <div id="crbarcustac">
-
                     </div>
                 </div>
             </div>
             <div class="offset__sosial__share">
                 <div class="offset__title" id="changepass">Change password</div>
-
-                @*<h4 class="offset__title">Follow Us On Social</h4>
-                    <ul class="off__soaial__link">
-                        <li><a class="bg--twitter" href="#" title="Twitter"><i class="zmdi zmdi-twitter"></i></a></li>
-
-                        <li><a class="bg--instagram" href="#" title="Instagram"><i class="zmdi zmdi-instagram"></i></a></li>
-
-                        <li><a class="bg--facebook" href="#" title="Facebook"><i class="zmdi zmdi-facebook"></i></a></li>
-
-                        <li><a class="bg--googleplus" href="#" title="Google Plus"><i class="zmdi zmdi-google-plus"></i></a></li>
-
-                        <li><a class="bg--google" href="#" title="Google"><i class="zmdi zmdi-google"></i></a></li>
-                    </ul>*@
             </div>
         </div>
     </div>
-    <!-- End Offset MEnu -->
-    <!-- Start Cart Panel -->
-    <!-- <div class="shopping__cart">
-        <div class="shopping__cart__inner">
-            <div class="offsetmenu__close__btn">
-                <a href="#"><i class="zmdi zmdi-close"></i></a>
-            </div>
-            <div class="shp__cart__wrap">
-                <div class="shp__single__product">
-                    <div class="shp__pro__details">
-                        <h2><a href="product-details.html">BO&Play Wireless Speaker</a></h2>
-                        <span class="quantity">QTY: 1</span>
-                        <span class="shp__price">$105.00</span>
-                    </div>
-                    <div class="remove__btn">
-                        <a href="#" title="Remove this item"><i class="zmdi zmdi-close"></i></a>
-                    </div>
-                </div>
-
-            </div>
-            <ul class="shoping__total">
-                <li class="subtotal">Subtotal:</li>
-                <li class="total__price">$130.00</li>
-            </ul>
-            <ul class="shopping__btn">
-                <li><a href="cart.html">View Cart</a></li>
-                <li class="shp__checkout"><a href="checkout.html">Checkout</a></li>
-            </ul>
-        </div>
-    </div>  -->
-    <!-- End Cart Panel -->
-    <!-- Body main wrapper end -->
-    <!-- The Modal -->
     <div id="myModalzoom" class="modalx" style="z-index: 11;">
-        <!-- The Close Button -->
-        @*<span class="close">&times;</span>*@
-        <!-- Modal Content (The Image) -->
         <img class="modal-contentx" id="img01">
         <div class="modal-contentx" id="img01" style="background-color: #191919;"><button class="btn btn-secondary" type="button" data-dismiss="modal" id="closeimg" style="margin-left: 91%;">Close</button></div>
         <!-- Modal Caption (Image Text) -->
         <div id="caption"></div>
     </div>
-    <!-- ModalWarning -->
-    <!-- ModalWarning -->
     <div class="modal" id="myModalWarninglog" role="dialog">
         <div class="modal-dialog">
             <div class="alert alert-warning alert-dismissible" role="alert">
@@ -481,7 +324,6 @@
                 <div class="modal-body">
                     <div id="textAlertSucces">Save success</div>
                 </div>
-
             </div>
         </div>
     </div>
@@ -495,47 +337,27 @@
                     <div id="textAlertWarning">Some text in the modal.</div>
                 </div>
                 <div class="modal-footer">
-
                     <button type="button" class="btn btn-primary" id="btnclose">Close</button>
                 </div>
             </div>
         </div>
     </div>
     <div class="modal" id="myModal" style="background-color: black;">
-
         <div class="modal-dialog" role="document" style="width: 360px;">
-
             <div class="modal-content">
-
                 <div class="modal-header" style="background-color: #337AB7; padding: 16px 16px; color: #FFF; border-bottom: 2px dashed #337AB7; ">
-
-                    @*<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>*@
-
                     <h4 class="modal-title" id="myModalLabel"></h4>
-
                 </div>
-
                 <div class="modal-body" id="texterror">
                 </div>
-
                 <div class="modal-footer">
-
-                    @*<button type="button" class="btn btn btn-primary" data-dismiss="modal">OK</button>*@
-
                     <button type="button" class="btn btn btn-success" data-dismiss="modal" id="btnlogin">เข้าสู่ระบบอีกครั้ง</button>
-
-                    @*<button type="button" class="btn btn-orange" data-dismiss="modal">Cancel</button>*@
-
                 </div>
-
             </div>
-
         </div>
-
     </div>
     <input type="hidden" id="_udernumber" value="@number" />
     <input type="hidden" id="_udercompan" value="@compan" />
-
     <script src="~/Loadingmodal/js/modal-loading.js"></script>
     <link href="~/Loadingmodal/css/modal-loading-animate.css" rel="stylesheet" />
     <link href="~/Loadingmodal/css/modal-loading.css" rel="stylesheet" />
@@ -557,23 +379,14 @@
         var data = [];
         data = location.search.substring(1).split("/")
         var nokey = data[2]
-        // expire(usrexpire)
-        ////console.log(param_values_Product)
-        ////console.log(location.search.substring(1).split("/"))
         var cuscod = atob(nokey);
-        // var cuscod = "";
-        //alert(cuscod)
         if (usertype == "1" || usertype == "2") {
             $("#changepass").css("display", "none");
         } else if (usertype == "5") {
-
             $("#changepass").css("display", "none");
-
         } else if (usertype == "6") {
-
             $("#changepass").css("display", "block");
         }
-
         function commaSeparateNumber(val) {
             while (/(\d+)(\d{3})/.test(val.toString())) {
                 val = val.toString().replace(/(\d+)(\d{3})/, '$1' + ',' + '$2');
@@ -598,7 +411,6 @@
                 data: {
                     UsrID: userid,
                     SessionId: id
-
                 },
                 type: "POST",
                 dataType: "JSON",
@@ -609,28 +421,22 @@
                     const myArray = text.split("|");
                     let mysession = myArray[1];
                     let mystatus = myArray[0];
-                    // console.log("mystatus " + mystatus + "//////" + "mysession " + mysession);
                     if (id != mysession) {
-
                         $("#texterror").empty();
-                        $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวาลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                         $("#myModal").modal();
-
                         return false;
-                        //window.location.replace("../Account/LogIn");
                     } else {
 
                         if (mystatus == "0") {
                             $("#texterror").empty();
-                            $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวาลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                            $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                             $("#myModal").modal();
                             return false;
-                            //window.location.replace("../Account/LogIn");
                         }
                     }
                 }
             });
-
         }
         function checkPrivilege(userid, cuscod) {
             $.ajax({
@@ -638,73 +444,49 @@
                 data: {
                     UsrID: userid,
                     cuscod: cuscod
-
                 },
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
                     var splitstring = data.StrStstuslogin;
-                    //console.log(splitstring);
-                    //let text = splitstring;
-                    //const myArray = text.split("|");
-                    //let mysession = myArray[1];
-                    //let mystatus = myArray[0];
-                    // console.log("mystatus " + mystatus + "//////" + "mysession " + mysession);
                     if (splitstring == "1") {
                         $("#texterror").empty();
-                        $("#texterror").text("ขออภัย ท่านทำรายการเกินระยะเวลาที่กำหนด กรุณาเข้าใช้งานใหม่อีกครั้ง");
+                        $("#texterror").text("Sorry, your session has timed out. Please log in again.");
                         $("#myModal").modal();
                         return false;
-
                     }
                 }
             });
-
         }
         if (usertype == "6") {
             if (cuscod != "") {
                 checkPrivilege(userid, cuscod)
             }
             $(window).on('load', function () {
-                //alert("load")
                 checklogin(userid, id)
             });
             window.onclick = function () {
-                //alert("onclick")
                 checklogin(userid, id)
             };
             $('.navbar-nav').click(function () {
-                // alert("navbar-nav")
                 checklogin(userid, id)
-
             });
             $('a').click(function () {
-                //  alert("a")
                 checklogin(userid, id)
-
             });
-            //$(document).bind('keypress.session', function (ed, e) {
-            //    checklogin(userid, id)
-            //});
             $(document).bind('mousedown keydown', function (ed, e) {
-
                 checklogin(userid, id)
             });
             $(window).scroll(function (e) {
-
                 checklogin(userid, id)
             });
         }
         var g_getcoutorder = 0;
         countorder();
         function countorder() {
-            // var SLM = $("#Slm").val()
             $.ajax({
                 url: '@Url.Action("GetdateContorder", "DataCenter")',
                 data: {
-                   // cus: cuscod,
-                   // Slm: ""
-
                     cus: cuscod,
                     Slm: "",
                     Usertype: usertype,
@@ -741,21 +523,13 @@
                     $SpacingY: 16
                 }
             };
-
             var jssor_1_slider = new $JssorSlider$("jssor_1", jssor_1_options);
-
-            /*#region responsive code begin*/
-
             var MAX_WIDTH = 980;
-
             function ScaleSlider() {
                 var containerElement = jssor_1_slider.$Elmt.parentNode;
                 var containerWidth = containerElement.clientWidth;
-
                 if (containerWidth) {
-
                     var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
                     jssor_1_slider.$ScaleWidth(expectedWidth);
                 }
                 else {
@@ -768,26 +542,6 @@
             $Jssor$.$AddEvent(window, "load", ScaleSlider);
             $Jssor$.$AddEvent(window, "resize", ScaleSlider);
             $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider);
-
-            //function ScaleSlider_2() {
-            //    var containerElement = jssor_2_slider.$Elmt.parentNode;
-            //    var containerWidth = containerElement.clientWidth;
-
-            //    if (containerWidth) {
-
-            //        var expectedWidth = Math.min(MAX_WIDTH || containerWidth, containerWidth);
-
-            //        jssor_2_slider.$ScaleWidth(expectedWidth);
-            //    }
-            //    else {
-            //        window.setTimeout(ScaleSlider_2, 30);
-            //    }
-            //}
-            //ScaleSlider_2()
-            //$Jssor$.$AddEvent(window, "load", ScaleSlider_2);
-            //$Jssor$.$AddEvent(window, "resize", ScaleSlider_2);
-            //$Jssor$.$AddEvent(window, "orientationchange", ScaleSlider_2);
-            /*#endregion responsive code end*/
         };
         function getcatalog(cuscod, stkcod) {
             var stkcod = $("#_udernumber").val();
@@ -804,7 +558,6 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data);
                     employees = data;
 
                     $('#fixbox').empty();
@@ -855,15 +608,10 @@
                                                   '</div>' +
                                               '</div>' +
                                '</div>');
-
-
                         }
                         jssor_1_slider_init()
                     } else {
-                        //$('.loader').css("display", "none");
                         $('#fixbox').empty();
-                        // alert("No Data.....")
-
                     }
                 }
             });
@@ -912,8 +660,6 @@
                             strph = employees[i].PATH;
                             strtopint = i;
                             runtop = strtopint + 1;
-                            // strtop = '<i class="fa fa-bookmark fa-2x fa-4x" style="color: rgba(255,212,36,.9);position: absolute;top: -10px;right: -10px;"><br></i> <i style="position: absolute;top: 0px;right: -6px;color: black;">Top ' + runtop + '</i> <br>'
-                            //strtop = '<i class="fa fa-bookmark fa-2x fa-4x" style="color: rgba(255,212,36,.9);position: absolute;top: -10px;right: -10px;"><br></i> <i style="position: absolute;top: -8px;right: -1px;color: black;">Top<br>Sale</i> <br>'
                             strtop = "";
                             if (Supdescri.length > 50) {
                                 sprstkdes = Supdescri.substr(0, 50) + "...";
@@ -937,39 +683,10 @@
                                                  '</div>' +
                                              '</div>' +
                                           '</div>');
-                            //$("#fixboxstkgrpgroup").append('<div  class="d-flex" >' +
-                            //    ' <div style="background: linear-gradient(-180deg,#ef3b1333,#1a30d047);">' +
-                            //         //'<img  data-u="image" data-src="' + strph + '" src="' + strph + '">' +
-
-                            //        '<div class="card-body">' +
-                            //          '<h6 class="card-title">' + ItemNo + '  </h6>' +
-                            //          '<div  class="pro__dtl__rating"  style="' + displ + '">' + strtop +
-
-                            //           '</div>' +
-                            //            '<div><div class="jssora_1coN">' + Supdescri + '</div></div>' +
-
-                            //       '  </div>' +
-                            //           '<div class="card-footer">' +
-                            //           '<h4 class="card-text" style=" text-decoration: line-through;color: deeppink;font-family: cursive;font-size: large;text-align: left;margin-left: 1rem;">฿ ' + commaSeparateNumber(Price) + ' </h4>' +
-
-                            //           '</div>' +
-                            //        '<div class="d-flex" style="margin-block-start: auto;">' +
-                            //                 '<div class="justify-content-end btn-group ">' +
-                            //                   '<a href="#" class="btn btn-primary" id="_btnlinkdetail" com=' + Company + ' stock="' + ItemNo + '">See Detail</a> ' +
-                            //                ' </div>' +
-                            //         '</div>' +
-
-                            //     '</div>' +
-
-                            // '</div>');
-
                         }
                         jssor_2_slider_init()
                     } else {
-                        //$('.loader').css("display", "none");
                         $('#fixboxstkgrpgroup').empty();
-                        // alert("No Data.....")
-
                     }
                 }
             });
@@ -995,10 +712,7 @@
             };
 
             var jssor_2_slider = new $JssorSlider$("jssor_2", jssor_2_options);
-            /*#region responsive code begin*/
-
             var MAX_WIDTH = 980;
-
             function ScaleSlider_2() {
                 var containerElement = jssor_2_slider.$Elmt.parentNode;
                 var containerWidth = containerElement.clientWidth;
@@ -1017,7 +731,6 @@
             $Jssor$.$AddEvent(window, "load", ScaleSlider_2);
             $Jssor$.$AddEvent(window, "resize", ScaleSlider_2);
             $Jssor$.$AddEvent(window, "orientationchange", ScaleSlider_2);
-            /*#endregion responsive code end*/
         };
         function getFormattedDate(date) {
             var year = date.getFullYear();
@@ -1036,7 +749,6 @@
             return dat_all;
         }
         var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true, });
-        //alert("stkcod = " + stkcod);
         $.ajax({
             url: '@Url.Action("Getdataitemdetail", "productdetails")',
             data: {
@@ -1047,8 +759,6 @@
             type: "POST",
             dataType: "JSON",
             success: function (data) {
-                ////console.log(data)
-
                 if (data.length > 0) {
                     loading.out()
                     var SubmithtmlPage = '';
@@ -1056,11 +766,7 @@
                     var promocod = '';
                     var srtpromo = '';
                     var procodsub = ''; //get promotion code 
-
-
                     $("#appimg").html("");
-
-
                     $("#rowdetail").html("");
                     for (var i = 0; i < data.length; i++) {
                         var disabledInputBackorder = "";
@@ -1074,7 +780,6 @@
                         var ItemClass = data[i].val.ItemClass.trim();
                         var ItemCompany = data[i].val.company || "";
                         var TextItemCompany = "";
-                        //console.log("Stock Total = " + TOTBAL + " ItemClass = " + ItemClass);
                         var chkstock = "0";
                         var flagShow = "no";
                         if(parseInt(TOTBAL) <  parseInt(SPackUOM) )
@@ -1083,20 +788,16 @@
                         } else {
                             chkstock = TOTBAL;
                         }
-                        // var formatDate = getFormattedDate(date);
                         Expected_Receipt
                         if (Expec_o != "") {
                             Expected_Receipt = Expec_o;
                         } else {
                             Expected_Receipt = "-";
                         }
-                        // alert(Expected_Receipt)
                         if (strph == "") {
                             strph = '<img src="~/images/product/big-img/1.jpg" id="myImg"/>';
-                            //$("#appimg").append(strph);
                         } else {
                             strph = '<img src=' + data[i].val.PATH + ' id="myImg"/>';
-                            // $("#appimg").append(strph);
                         }
                         promocod = data[i].val.PromotionCode;
                         procodsub = promocod.substring(8, 13);
@@ -1131,43 +832,6 @@
                         SubmithtmlPage += '  <div class="product-video">';
                         SubmithtmlPage += ' </div>';
                         SubmithtmlPage += ' </div>';
-                        /////////////////////////Function show image//////////////////////////////////
-
-                        //SubmithtmlPage += '<div class="portfolio-full-image tab-content">';
-                        //SubmithtmlPage += '<div class="product__big__images">';
-                        //SubmithtmlPage += '<div class="container-fluid px-sm-1 py-5 mx-auto">';
-                        //SubmithtmlPage += '<div class="row justify-content-center">';
-                        //SubmithtmlPage += '<div class="d-flex">';
-                        //SubmithtmlPage += '<div class="card">';
-                        //SubmithtmlPage += '<div class="d-flex flex-column thumbnails">';
-                        //SubmithtmlPage += '<div id="f1" class="tb tb-active"> <img class="thumbnail-img fit-image" src="https://i.imgur.com/wL1uRBk.jpg"> </div>';
-                        //SubmithtmlPage += '<div id="f2" class="tb"> <img class="thumbnail-img fit-image" src="https://i.imgur.com/3NusNP2.jpg"> </div>';
-                        //SubmithtmlPage += '<div id="f3" class="tb"> <img class="thumbnail-img fit-image" src="https://i.imgur.com/pXUPOVR.jpg"> </div>';
-                        //SubmithtmlPage += '<div id="f4" class="tb"> <img class="thumbnail-img fit-image" src="https://i.imgur.com/xX5Qmsa.jpg"> </div>';
-                        //SubmithtmlPage += '</div>';
-                        //SubmithtmlPage += '<fieldset id="f11" class="active">';
-                        //SubmithtmlPage += '<div class="product-pic"> <img class="pic0" src="https://i.imgur.com/wL1uRBk.jpg"> </div>';
-                        //SubmithtmlPage += '</fieldset>';
-                        //SubmithtmlPage += '<fieldset id="f21" class="">';
-                        //SubmithtmlPage += '<div class="product-pic"> <img class="pic0" src="https://i.imgur.com/3NusNP2.jpg"> </div>';
-                        //SubmithtmlPage += '</fieldset>';
-                        //SubmithtmlPage += '<fieldset id="f31" class="">';
-                        //SubmithtmlPage += '<div class="product-pic"> <img class="pic0" src="https://i.imgur.com/pXUPOVR.jpg"> </div>';
-                        //SubmithtmlPage += '</fieldset>';
-                        //SubmithtmlPage += '<fieldset id="f41" class="">';
-                        //SubmithtmlPage += '<div class="product-pic"> <img class="pic0" src="https://i.imgur.com/xX5Qmsa.jpg"> </div>';
-                        //SubmithtmlPage += '</fieldset>';
-                        //SubmithtmlPage += '</div>';
-                        //SubmithtmlPage += '</div>';
-                        //SubmithtmlPage += '</div>';
-                        //SubmithtmlPage += '</div>';
-                        //SubmithtmlPage += '</div>';
-
-
-
-
-
-                        //////////////////////////////////////Function show image/////////////////////////////////
                         SubmithtmlPage += ' </div>';
                         SubmithtmlPage += ' </div>';
                         SubmithtmlPage += '</div>';
@@ -1176,16 +840,10 @@
                         SubmithtmlPage += '<div class="mb-2">';
                         SubmithtmlPage += '<div class="htc__product__details__inner">';
                         SubmithtmlPage += '<div class="pro__detl__title">';
-                        SubmithtmlPage += '<h2 style="display:inline; margin:0;" title=กลุ่มสินค้า' + data[i].val.STKGRP_PRC + '>' + data[i].val.STKCOD + '</h2>' + '<span style="color: #005eaf;font-size: 20px; font-weight: 700;">' + TextItemCompany + '</span>';
+                        SubmithtmlPage += '<h2 style="display:inline; margin:0;" title=Product Group' + data[i].val.STKGRP_PRC + '>' + data[i].val.STKCOD + '</h2>' + '<span style="color: #005eaf;font-size: 20px; font-weight: 700;">' + TextItemCompany + '</span>';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '<div class="pro__dtl__rating">';
                         SubmithtmlPage += '<ul class="pro__rating">';
-                        //SubmithtmlPage += '<li><span class="ti-star"></span></li>';
-                        //SubmithtmlPage += '<li><span class="ti-star"></span></li>';
-                        //SubmithtmlPage += '<li><span class="ti-star"></span></li>';
-                        //SubmithtmlPage += '<li><span class="ti-star"></span></li>';
-                        //SubmithtmlPage += '<li><span class="ti-star"></span></li>';
-                        //SubmithtmlPage += '<i class="fa fa-star" style="font-size:28px;color:yellow" aria-hidden="true"></i><i class="fa fa-star" style="font-size:28px;color:yellow" aria-hidden="true"></i><i class="fa fa-star" style="font-size:28px;color:yellow" aria-hidden="true"></i><i class="fa fa-star" style="font-size:28px;color:yellow" aria-hidden="true"></i><i class="fa fa-star"  style="font-size:28px;color:yellow" aria-hidden="true"></i>';
                         SubmithtmlPage += '</ul>';
                         SubmithtmlPage += '<span class="rat__qun" >(MOQ:' + data[i].val.minord + ')</span><input type="hidden" id="moq' + (i + 1) + 'a"" value="' + data[i].val.minord + '" /><input type="hidden" id="max_o' + (i + 1) + 'a"" value="' + max_o_t + '" />';
                         SubmithtmlPage += '</div>';
@@ -1208,20 +866,16 @@
                         SubmithtmlPage += '<input type="hidden" id="STKGRP' + (i + 1) + 'a" value="' + data[i].val.STKGRP_PRC + '" />';
                         SubmithtmlPage += '</ul>';
                         SubmithtmlPage += '<div class="product-action-wrap">';
-
                         SubmithtmlPage += '<div class="prodict-statas"><span>Stock:</span></div>';
                         if (usertype == "1" || usertype == "2" || usertype == "5") {
                             SubmithtmlPage += '<div class="product-quantity">';
-                            // SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<input class="cart-plus-minus-box" type="text" name="qtybutton" id="stock' + (i + 1) + 'a"" value="' + data[i].val.TOTBAL + '" style="max-width: 150px;" disabled="disabled">';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                         } else { //usrType = 4, 5 ร้านค้า
-                            //if (data[i].val.TOTBAL != "0") {
                             if (chkstock != "0") {
                                 if (ItemClass == "A") {
                                     if (parseInt(chkstock) > 10) { //มากกว่า 10 Show in stock
@@ -1229,7 +883,6 @@
                                     } else if (parseInt(chkstock) <= 10) { //น้อยกว่า 10 Show
                                         var flagShow = "yes";
                                     }
-
                                 } else {
                                     if (parseInt(chkstock) > 20) { //มากกว่า 10 Show in stock
                                         var flagShow = "no";
@@ -1238,228 +891,159 @@
                                     }
                                 }
                                 console.log("ItemClass = " + ItemClass + " chkstock = " + chkstock + " flagShow = " + flagShow);
-
                                 if (flagShow == 'no') { //ไม่แสดงจำนวน
                                      SubmithtmlPage += '<div style="color: blue;">In Stock</div>';
                                      SubmithtmlPage += '<input class="cart-plus-minus-box" type="text" name="qtybutton" id="stock' + (i + 1) + 'a"" value="' + chkstock + '" style="max-width: 150px;display:none" disabled="disabled">';
                                 } else { //แสดงจำนวน
-                                    //SubmithtmlPage += '<div style="color: blue;">In Stock</div>';
                                     SubmithtmlPage += '<input class="cart-plus-minus-box" type="text" name="qtybutton" id="stock' + (i + 1) + 'a"" value="' + chkstock + '" style="max-width: 150px;" disabled="disabled">';
                                 }
-
                             } else {
                                 SubmithtmlPage += '<div style="color: red;">Out Of Stock</div>';
                                 SubmithtmlPage += '<input class="cart-plus-minus-box" type="text" name="qtybutton" id="stock' + (i + 1) + 'a"" value="' + chkstock + '" style="max-width: 150px;display:none" disabled="disabled">';
                             }
-
                         }
                         SubmithtmlPage += '</div>';
-
                         if (usertype == "6") { //ร้านค้า
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span>วันที่คาดว่าของเข้าคลัง:</span></div>';
-
+                            SubmithtmlPage += '<div class="prodict-statas"><span>Estimated Goods Receipt Date:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            //  SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<div>' + Expected_Receipt + '</div>';
-
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
                         }
-
                         SubmithtmlPage += '<div class="product-action-wrap">';
-
                         SubmithtmlPage += '<div class="prodict-statas"><span>Quantity:</span></div>';
                         SubmithtmlPage += '<div class="product-quantity">';
-                        // SubmithtmlPage += '<form id="myform">';
                         SubmithtmlPage += '<div class="product-quantity">';
                         SubmithtmlPage += '<div class="cart-plus-minus">';
                         SubmithtmlPage += '<input class="cart-plus-minus-box" type="number"  name="S_Qty" min="1"  id="qty' + (i + 1) + 'a"" style="max-width: 150px;" >';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '</div>';
-                        //SubmithtmlPage += '</form>';
                         SubmithtmlPage += '</div>';
-
                         SubmithtmlPage += '<div class="prodict-statas"><span style="word-spacing: 30px;"> B/0:</span></div>';
                         SubmithtmlPage += '<div class="product-quantity">';
-                        // SubmithtmlPage += '<form id="myform">';
                         SubmithtmlPage += '<div class="product-quantity">';
                         SubmithtmlPage += '<div class="cart-plus-minus">';
                         SubmithtmlPage += '<input ' + disabledInputBackorder + ' class="cart-plus-minus-box" type="number" name="S_bo" min="0" id="bckorder' + (i + 1) + 'a"" style="max-width: 150px;" >';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '</div>';
-                        // SubmithtmlPage += '</form>';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '</div>';
-
-
-
                         if (usertype == "1" || usertype == "2" || usertype == "5") {
-
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span> ราคาต่อรอง:</span></div>';
+                            SubmithtmlPage += '<div class="prodict-statas"><span> Negotiated Price:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            // SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<input class="cart-plus-minus-box" type="number" name="" min="1" id="expectprice' + (i + 1) + 'a"" style="max-width: 150px;" >';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span> แบรนด์:</span></div>';
+                            SubmithtmlPage += '<div class="prodict-statas"><span> Brand:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            // SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<div>' + data[i].val.Brand + '</div>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
-
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span> ราคาซื้อล่าสุด:</span></div>';
+                            SubmithtmlPage += '<div class="prodict-statas"><span> Last Purchase Price:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            // SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
-                            SubmithtmlPage += '<div>' + commaSeparateNumber(data[i].val.LastInvPrice) + ' บาท ณวันที่: ' + data[i].val.LastInvdate + '</div>';
+                            SubmithtmlPage += '<div>' + commaSeparateNumber(data[i].val.LastInvPrice) + ' THB as of Date: ' + data[i].val.LastInvdate + '</div>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
-
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span>โครงสร้าง:</span></div>';
-
+                            SubmithtmlPage += '<div class="prodict-statas"><span>Structure:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            //  SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<div>' + data[i].val.PCDES + '</div>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
-
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span>วันที่คาดว่าของเข้าคลัง:</span></div>';
-
+                            SubmithtmlPage += '<div class="prodict-statas"><span>Estimated Goods Receipt Date:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            //  SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<div>' + Expected_Receipt + '</div>';
-
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span>ยอดค้างส่ง:</span></div>';
-
+                            SubmithtmlPage += '<div class="prodict-statas"><span>Outstanding Delivery:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            //  SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<div>' + data[i].val.BackOrder + '</div>';
-
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
-                            //spc remark
                             SubmithtmlPage += '<div class="product-action-wrap" id="spc-hide" hidden>';
                             SubmithtmlPage += '<div class="prodict-statas"><span>SPC Remark:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            // SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
-                            // SubmithtmlPage += '<input class="cart-plus-minus-box" type="checkbox" name="qtybutton" id="foc' + (i + 1) + 'a" style="max-width: 150px;" >';
                             SubmithtmlPage += '<div class="spc_remarkxxx">' + data[i].val.spc_remark + '</div>';
                             SubmithtmlPage += '<select class="form-control spc_remark"  id="spcRemake' + (i + 1) + 'a" style="max-width: 270px;" ></select> ';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
-                            //end spc
-
                             SubmithtmlPage += '<div class="product-action-wrap">';
                             SubmithtmlPage += '<div class="prodict-statas"><span>FOC:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            // SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
-                            // SubmithtmlPage += '<input class="cart-plus-minus-box" type="checkbox" name="qtybutton" id="foc' + (i + 1) + 'a" style="max-width: 150px;" >';
                             SubmithtmlPage += '<input class="cart-plus-minus-box" type="number" name="" min="1" id="foc' + (i + 1) + 'a" style="max-width: 150px;" >';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-
                         }
-
-
-
                         if (usertype == "6") {
                             SubmithtmlPage += '<div class="product-action-wrap">';
-                            SubmithtmlPage += '<div class="prodict-statas"><span> แบรนด์:</span></div>';
+                            SubmithtmlPage += '<div class="prodict-statas"><span> Brand:</span></div>';
                             SubmithtmlPage += '<div class="product-quantity">';
-                            // SubmithtmlPage += '<form id="myform">';
                             SubmithtmlPage += '<div class="product-quantity">';
                             SubmithtmlPage += '<div class="cart-plus-minus">';
                             SubmithtmlPage += '<div>' + data[i].val.Brand + '</div>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
-                            // SubmithtmlPage += '</form>';
                             SubmithtmlPage += '</div>';
                             SubmithtmlPage += '</div>';
                         }
-
                         SubmithtmlPage += '<div class="product-action-wrap">';
                         SubmithtmlPage += '<div class="prodict-statas"><span>Line Note:</span></div>';
                         SubmithtmlPage += '<div class="product-quantity">';
-                        // SubmithtmlPage += '<form id="myform">';
                         SubmithtmlPage += '<div class="product-quantity">';
                         SubmithtmlPage += '<div class="cart-plus-minus">';
                         SubmithtmlPage += '<input class="cart-plus-minus-box" type="text" name="qtybutton" id="linenot' + (i + 1) + 'a" style="max-width: 150px;" >';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '</div>';
-                        // SubmithtmlPage += '</form>';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '</div>';
-
                         SubmithtmlPage += '<ul class="pro__dtl__btn">';
                         if (usertype != "5") {
                             SubmithtmlPage += '<li class="buy__now__btn"> <button type="submit" class="fv-btn" id="btnsubmitinser' + (i + 1) + 'a">Add to cart</button></li>';
                         }
-                        //SubmithtmlPage += '<li><a href="#"><span class="ti-heart"></span></a></li>';
-                        //SubmithtmlPage += '<li><a href="#"><span class="ti-email"></span></a></li>';
                         SubmithtmlPage += '</ul>';
                         SubmithtmlPage += '<div class="pro__social__share">';
-                        //SubmithtmlPage += '<h2>Share :</h2>';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '</div>';
                         SubmithtmlPage += '</div>';
@@ -1467,15 +1051,12 @@
                         SubmithtmlPage += '</div>';
                         $('#rowdetail').append(SubmithtmlPage);
                     }
-                    // $('#rowdetail').append(SubmithtmlPage);
 
                 } else {
                     loading.out()
-                    //alert("No. Detail");
                     $("#textAlertWarning").empty();
-                    $("#textAlertWarning").text("ไม่มีรายละเอียดสินค้าที่ท่านต้องการสั่งซื้อ กรุณาติดต่อพนักงานขาย");
+                    $("#textAlertWarning").text("No product details available for your order. Please contact the salesperson.");
                     $("#myModalWarning").modal();
-
                 }
             }
         });
@@ -1522,10 +1103,8 @@
             });
         });
 
-
         $(document).on("click", "#btnclose", function () {
             window.close();
-
         });
 
         $(document).on("click", "#_btnlinkdetail", function () {
@@ -1533,7 +1112,6 @@
             var _vfd = $(this).attr('stock');
             if (usertype == "6") {
                 if (cuscod != "") {
-                    ///var wi = window.open("../Product_details/frmViewLabel.aspx?ClmNUM=" + btoa(nokey) + "/" + btoa(nosubkey));
                     var wi = window.open("../Productdetails/Index?prodenum=" + btoa(_vfd) + "/" + btoa(_vcom) + "/" + btoa(cuscod));
                     wi.focus();
                 } else {
@@ -1551,27 +1129,15 @@
         });
 
         $(document).on("click", "#btnhome", function () {
-            //var wi = window.open("../Cart/Index");
-            //var wi = window.open("../Home/Index?numcuber=" + btoa(cuscod));
-            //wi.focus();
             window.location.replace("../Orderlist/Index?numcuber=" + btoa(cuscod));
         });
-
         $(document).on("click", "#navbarcart", function () {
-            //var wi = window.open("../Cart/Index");
-            //var wi = window.open("../Cart/Index?numcuber=" + btoa(cuscod));
-            //wi.focus();
             window.location.replace("../Cart/Index?numcuber=" + btoa(cuscod));
-
         });
         $(document).on("click", "#btndetail", function () {
-            //var wi = window.open("../Cart/Index");
-            //var wi = window.open("../SeleScrCustomer/Index?numcuber=" + btoa(cuscod));
-            //wi.focus();
             window.location.replace("../SeleScrCustomer/dashboard?numcuber=" + btoa(cuscod));
         });
         $(document).on("click", "#btnstatus", function () {
-            //var wi = window.open("../Cart/Index");
             var wi = window.open("../Statuslist/Index?numcuber=" + btoa(cuscod));
             wi.focus();
 
@@ -1610,82 +1176,51 @@
             }
             if ((qty === "" || Number(qty) === 0) && (bckorder === "" || Number(bckorder) === 0) && (foc === "" || Number(foc) === 0)) {
                 $("#textAlertWarninglog").empty();
-                $("#textAlertWarninglog").text("กรุณาใส่จำนวนสั่งซื้อ");
+                $("#textAlertWarninglog").text("Please enter the order quantity.");
                 $("#myModalWarninglog").modal();
                 $(".fv-btn").attr("disabled", false)
                 return false;
             }
-            //if (qty == "") {
-            //    if (foc == "0") {
-            //        $("#textAlertWarninglog").empty();
-            //        $("#textAlertWarninglog").text("กรุณาใส่จำนวนสั่งซื้อ");
-            //        $("#myModalWarninglog").modal();
-            //        $(".fv-btn").attr("disabled", false)
-            //        return false;
-            //    }
-                //else if (typeof focvalue === "undefined") {
-                //    $("#textAlertWarninglog").empty();
-                //    $("#textAlertWarninglog").text("กรุณาใส่จำนวนสั่งซื้อ");
-                //    $("#myModalWarninglog").modal();
-                //    $(".fv-btn").attr("disabled", false)
-                //    return false;
-                //}
-            //}
-
-            //else  {
-            //    foc = "0"
-            //}
 
             if (foc == "0") {
                 if (sprice == "0") {
                     if (expectprice == "0") {
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("กรุณาใส่ราคาต่อรอง");
+                        $("#textAlertWarninglog").text("Please enter the negotiated price.");
                         $("#myModalWarninglog").modal();
                         $(".fv-btn").attr("disabled", false)
                         return false;
                     }
-                    //return false;
                 }
                 if (sprice == "999999") {
                     if (expectprice == "0") {
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("กรุณาใส่ราคาต่อรอง");
+                        $("#textAlertWarninglog").text("Please enter the negotiated price.");
                         $("#myModalWarninglog").modal();
                         $(".fv-btn").attr("disabled", false)
                         return false;
                     }
-                    //return false;
                 }
             }
             if (usertype == "6") {
 
                 if (sprice == "0") {
-                    //if (expectprice == "0") {
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("กรุณาติดต่อพนักงานขาย");
+                        $("#textAlertWarninglog").text("Please contact the salesperson.");
                         $("#myModalWarninglog").modal();
                         $(".fv-btn").attr("disabled", false)
                         return false;
-                    //}
-                    //return false;
                 }
                 if (sprice == "999999") {
-                    //if (expectprice == "0") {
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("กรุณาติดต่อพนักงานขาย");
+                        $("#textAlertWarninglog").text("Please contact the salesperson.");
                         $("#myModalWarninglog").modal();
                         $(".fv-btn").attr("disabled", false)
                         return false;
-                    //}
-                    //return false;
                 }
             }
-
             var insertedby = userid;
-
             var pomocode = $("#pomocode" + res).val();
-
             var minord = $("#minord" + res).val();
             var prclstno = $("#prclstno" + res).val();
             var specprice = $("#specprice" + res).val();
@@ -1699,14 +1234,9 @@
             var promodesc = $("#promodesc" + res).val();
             var lastinvprice = $("#lastinvprice" + res).val();
             var lastinvdate = $("#lastinvdate" + res).val();
-
-
-            //List ARM 19/11/2025
             var spcremark = $('.spc_remark').val();
             var stkgrp = $('#STKGRP' + res).val();
-
             console.log(`STKGRP = ${stkgrp}`);
-
             var ItemList = {
                 CUSCOD: customer,
                 STKCOD: stkcod,
@@ -1736,7 +1266,7 @@
             if (ItemList.ExpectPrice != "0") {
                 if (spcremark == "") {
                     $("#textAlertWarninglog").empty();
-                    $("#textAlertWarninglog").text("กรุณาเลือก SpcRemark");
+                    $("#textAlertWarninglog").text("Select SpcRemark");
                     $("#myModalWarninglog").modal();
                     $(".fv-btn").attr("disabled", false)
                     return false;
@@ -1744,14 +1274,10 @@
             }
             console.log("ItemList.Qty = " + ItemList.Qty);
             console.log("ItemList.Qtybo = " + ItemList.Qtybo);
-
             if ((ItemList.Qty && ItemList.Qty !== "0")) {
                 data.push(ItemList);
             }
             var DataSend = JSON.stringify(data);
-            //console.log("DataSend = " + DataSend);
-            //cal Backorderfoc
-            //ถ้ามี FOC
             var focBackOrder = "";
             if (foc > 0) {
                 //ถ้า foc มากกว่าจำนวน stock ทั้งหมด ให้ลบจำนวน stock แล้วเป็น focBackOrder
@@ -1761,10 +1287,6 @@
                     focBackOrder = "0";
                 }
             }
-            //console.log("foc = " + foc);
-            //console.log("focBackOrder = " + focBackOrder);
-            //return false;
-            //end cal Backorderfoc
             var ItemListPro = {
                 chk: "1",
                 VQty: foc,
@@ -1774,7 +1296,6 @@
                 VSTKGRP: stkgrp,
                 VLineNote: linenote,
                 Uom: '',
-                //Backorderfoc: (bckorder >= 0) ? foc : bckorder,
                 Backorderfoc: focBackOrder
             }
             var cPRo = "";
@@ -1783,34 +1304,14 @@
             if (cPRo != "0") {
                 dataPro.push(ItemListPro);
             }
-
             var DataSendPro = JSON.stringify(dataPro);
-            //console.log("DataSendPro = " + DataSendPro);
-
-
-
-            //if (data.length == 0) {
-            //    if (dataPro.length == 0) {
-            //        $(".fv-btn").attr("disabled", false)
-            //        $("#textAlertWarning").empty();
-            //        $("#textAlertWarning").text("ไม่มีสินค้าที่จะสั่งซื้อ");
-            //        $("#myModalWarning").modal();
-            //        return false;
-            //    }
-            //}
             if (data.length == 0 && dataPro.length == 0) {
                 $(".fv-btn").attr("disabled", false)
                 $("#textAlertWarning").empty();
-                $("#textAlertWarning").text("ไม่มีสินค้าที่จะสั่งซื้อ");
+                $("#textAlertWarning").text("No products to order.");
                 $("#myModalWarning").modal();
                 return false;
             }
-
-            //List ARM 19/11/2025
-
-            //ARM 19/11/2025
-
-
             $.ajax({
                 url: '@Url.Action("Confirmationdata", "Shoppinglist")',
                 data: {
@@ -1824,82 +1325,24 @@
                 success: function (data) {
                     if (data == "Y") {
                         $("#textAlertSucces").empty();
-                        $("#textAlertSucces").text("บันทึกสินค้าเข้าตะกร้าสำเร็จ");
+                        $("#textAlertSucces").text("Items successfully added to the cart.");
                         $("#myModalSucces").modal();
                         $(".fv-btn").attr("disabled", false)
-                        //location.reload();
                         countorder();
                         setTimeout(function () { window.close() }, 2000); //2วิ
 
                     } else {
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("บันทึกสินค้าเข้าตะกร้าไม่สำเร็จกรุณาทำรายการใหม่");
+                        $("#textAlertWarninglog").text("Failed to add items to the cart. Please try again.");
                         $("#myModalWarninglog").modal();
                         $(".fv-btn").attr("disabled", false)
                     }
                 }
             });// end ajx
-
-            //end ARM
-
-
-
-            //old Logic
-            @*$.ajax({
-                url: '@Url.Action("Confirmationdata", "Productdetails")',
-                data: {
-                    customer: customer,
-                    stkcod: stkcod,
-                    company: company,
-                    price: price,
-                    sprice: sprice,
-                    qty: qty,
-                    bckorder: bckorder,
-                    expectprice: expectprice,
-                    linenote: linenote,
-                    insertedby: insertedby,
-                    pomocode: pomocode,
-                    foc: foc,
-                    minord: minord,
-                    prclstno: prclstno,
-                    specprice: specprice,
-                    promoprice: promoprice,
-                    promodesc: promodesc,
-                    lastinvprice: lastinvprice,
-                    lastinvdate: lastinvdate
-                },
-                type: "POST",
-                dataType: "JSON",
-                success: function (data) {
-                    ////console.log(data)
-                    //alert(data)
-                    //if (data.length > 0) {
-                    if (data == "Y") {
-                        $("#textAlertSucces").empty();
-                        $("#textAlertSucces").text("บันทึกสินค้าเข้าตะกร้าสำเร็จ");
-                        $("#myModalSucces").modal();
-                        $(".fv-btn").attr("disabled", false)
-                        //location.reload();
-                        countorder();
-                        setTimeout(function () { window.close() }, 2000); //2วิ
-
-                    } else {
-                        $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("บันทึกสินค้าเข้าตะกร้าไม่สำเร็จกรุณาทำรายการใหม่");
-                        $("#myModalWarninglog").modal();
-                        $(".fv-btn").attr("disabled", false)
-                    }
-                    //}
-                }
-            });*@
-
-            //end ajax
-            //end old Logic
         });
         $(document).on("keyup", "input[name='S_bo']", function () {
 
             var Seqvalbackorder = $(this).val();
-            // alert(Seqvalbackorder)
         });
         $(document).on("change", "input[name='S_Qty']", function () {
             console.log("change");
@@ -1913,13 +1356,11 @@
             var qtybag = g_getcoutorder;
             var Procode = $("#pomocode" + res).val();
             var promotionAmountMax = Procode.split("|");
-
-            //ถ้ามี code promotion
             if (Procode != '') { //เป็น Promorion
                 //กรอกเกินจำนวน stock
                 if (parseFloat(valqty.replace(',', '').replace(' ', '')) > parseFloat(valstock.replace(',', '').replace(' ', ''))) {
                     $("#textAlertWarninglog").empty();
-                    $("#textAlertWarninglog").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ Stock เนื่องจากสินค้าเป็นราคา Promotion");
+                    $("#textAlertWarninglog").text("Order quantity must be less than or equal to stock, as this is a promotional product.");
                     $("#myModalWarninglog").modal();// return false;
                     $("#" + valqty + "").val("");
                     return false;
@@ -1928,7 +1369,7 @@
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(valqty.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
                             $("#textAlertWarninglog").empty();
-                            $("#textAlertWarninglog").text("จำนวนสั้งซื้อต้องไม่เกิน Promotion (" + promotionAmountMax[1] + ")");
+                            $("#textAlertWarninglog").text("Order quantity must not exceed Promotion (" + promotionAmountMax[1] + ")");
                             $("#myModalWarninglog").modal();// return false;
                             $("#" + valqty + "").val("");
                             return false;
@@ -1946,68 +1387,48 @@
                     $("#bckorder" + res).val("");
                 }
             }
-
             if (isNaN(parseFloat(valqty))) {
                 return false;
             } else {
-
                 if (parseFloat(valqty) >= parseFloat(Spackuom)) {
                     var _val = parseFloat(valqty) / parseFloat(Spackuom);
-
                     if (typeof _val === 'number') {
                         if (_val % 1 === 0) {
-                            // int
-                            // alert(_val);
                         } else {
                             $("#textAlertWarninglog").empty();
-                            $("#textAlertWarninglog").text("ใส่จำนวนสั่งซื้อไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + Spackuom);
+                            $("#textAlertWarninglog").text("Invalid order quantity. Quantity is not in correct multiples. (Sales Packing Standard) = " + Spackuom);
                             $("#myModalWarninglog").modal();// return false;
                             $(this).val(""); //return false;
-                            // $("#" + idqty + "").val("");
                             $("#bckorder" + res).val("");
-                            //ShoppingCartNumber();
                         }
                     } else {
                         // not a number
                     }
-                    // alert(_val);
-                    // if()
                 } else {
-
                     if (isNaN(valqty)) {
-
                         return false;
                     } else {
-
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("จำนวนที่สั่งซื้อ ห้ามน้อยกว่า " + Spackuom + " (Sales Packing Standard )");
+                        $("#textAlertWarninglog").text("Order quantity cannot be less than " + Spackuom + " (Sales Packing Standard )");
                         $("#myModalWarninglog").modal();// return false;
                         $(this).val(""); //return false;
-                        //$("#" + idqty + "").val("");
                         $("#bckorder" + res).val("");
-                        //ShoppingCartNumber();
                     }
                 }
             }
             if (parseFloat(valqty) < parseFloat(valmoq)) {
-
                 $("#textAlertWarninglog").empty();
-                $("#textAlertWarninglog").text("จำนวนที่สั่งซื้อห้ามน้อยกว่า MOQ");
+                $("#textAlertWarninglog").text("Order quantity cannot be less than MoQ");
                 $("#myModalWarninglog").modal();// return false;
-                // $(this).parents("tr:eq(0)").find(".tQty").val(cQty);
                 $(this).val(""); //return false;
                 $("#" + idqty + "").val("");
-                //ShoppingCartNumber();
             }
             if (parseInt(valqty) > parseInt(valmax_o)) {
-                //$(this).val(maxord);//aps//
                 $(this).val("");
                 $("#textAlertWarninglog").empty();
-                $("#textAlertWarninglog").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+                $("#textAlertWarninglog").text("Cannot process. Contact salesperson.");
                 $("#myModalWarninglog").modal();// return false;
-                // $(this).parents("tr:eq(0)").find(".tQty").val(cQty);
                 $(this).val(""); //return false;
-                //$("#" + idqty + "").val("");
                 $("#bckorder" + res).val("");
                 return false;
             }
@@ -2025,23 +1446,20 @@
             var Procode = $("#pomocode" + res).val();
             var promotionAmountMax = Procode.split("|");
 
-            //ถ้ามี code promotion
-            //console.log("promotionAmountMax = " + promotionAmountMax);
             if (Procode != '') { //เป็น Promorion
                 //กรอกเกินจำนวน stock
                 if (parseFloat(valqty.replace(',', '').replace(' ', '')) > parseFloat(valstock.replace(',', '').replace(' ', ''))) {
                     $("#textAlertWarninglog").empty();
-                    $("#textAlertWarninglog").text("จำนวนสั้งซื้อต้องน้อยกว่าหรือเท่ากับ Stock เนื่องจากสินค้าเป็นราคา Promotion");
+                    $("#textAlertWarninglog").text("Order quantity must be less than or equal to stock, as this is a promotional product.");
                     $("#myModalWarninglog").modal();// return false;
                     $("#qty" + res).val("");
                     return false;
                 } else { //ถ้ากรอกไม่เกินจำนวน stock 
                     //ให้เช็คว่าเกินจำนวนที่ Coupong กำหนดไว้ไหม
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
-                        //console.log(parseFloat(valqty.replace(',', '').replace(' ', '')) + " " + parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', '')));
                         if (parseFloat(valqty.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
                             $("#textAlertWarninglog").empty();
-                            $("#textAlertWarninglog").text("จำนวนสั้งซื้อต้องไม่เกิน Promotion (" + promotionAmountMax[1] + ")");
+                            $("#textAlertWarninglog").text("Order quantity must not exceed Promotion (" + promotionAmountMax[1] + ")");
                             $("#myModalWarninglog").modal();// return false;
                             $("#qty" + res).val("");
                             return false;
@@ -2060,68 +1478,49 @@
                 }
             }
 
-
             if (isNaN(parseFloat(valqty))) {
                 return false;
             } else {
-
                 if (parseFloat(valqty) >= parseFloat(Spackuom)) {
                     var _val = parseFloat(valqty) / parseFloat(Spackuom);
-
                     if (typeof _val === 'number') {
                         if (_val % 1 === 0) {
-                            // int
-                            // alert(_val);
                         } else {
                             $("#textAlertWarninglog").empty();
-                            $("#textAlertWarninglog").text("ใส่จำนวนสั่งซื้อไม่ถูกต้อง จำนวนสั่งซื้อไม่ลงตัว (Sales Packing Standard) = " + Spackuom);
+                            $("#textAlertWarninglog").text("Invalid order quantity. Quantity is not in correct multiples. (Sales Packing Standard) = " + Spackuom);
                             $("#myModalWarninglog").modal();// return false;
                             $(this).val(""); //return false;
-                            // $("#" + idqty + "").val("");
                             $("#bckorder" + res).val("");
-                            //ShoppingCartNumber();
                         }
                     } else {
                         // not a number
                     }
-                    // alert(_val);
-                    // if()
                 } else {
-
                     if (isNaN(valqty)) {
-
                         return false;
                     } else {
-
                         $("#textAlertWarninglog").empty();
-                        $("#textAlertWarninglog").text("จำนวนที่สั่งซื้อ ห้ามน้อยกว่า " + Spackuom + " (Sales Packing Standard )");
+                        $("#textAlertWarninglog").text("Order quantity cannot be less than " + Spackuom + " (Sales Packing Standard )");
                         $("#myModalWarninglog").modal();// return false;
                         $(this).val(""); //return false;
-                        //$("#" + idqty + "").val("");
                         $("#bckorder" + res).val("");
-                        //ShoppingCartNumber();
                     }
                 }
             }
             if (parseFloat(valqty) < parseFloat(valmoq)) {
 
                 $("#textAlertWarninglog").empty();
-                $("#textAlertWarninglog").text("จำนวนที่สั่งซื้อห้ามน้อยกว่า MOQ");
+                $("#textAlertWarninglog").text("Order quantity cannot be less than MoQ");
                 $("#myModalWarninglog").modal();// return false;
-                // $(this).parents("tr:eq(0)").find(".tQty").val(cQty);
                 $(this).val(""); //return false;
                 $("#" + idqty + "").val("");
-                //ShoppingCartNumber();
             }
             if (parseInt(valqty) > parseInt(valmax_o)) {
-                //$(this).val(maxord);//aps//
                 $(this).val("");
                 $("#textAlertWarninglog").empty();
-                $("#textAlertWarninglog").text("ไม่สามารถทำรายการตามจำนวนที่ระบุได้ โปรดติดต่อพนักงานขาย");
+                $("#textAlertWarninglog").text("Cannot process. Contact salesperson.");
                 $("#myModalWarninglog").modal();// return false;
-                // $(this).parents("tr:eq(0)").find(".tQty").val(cQty);
                 $(this).val(""); //return false;
-                //$("#" + idqty + "").val("");
                 $("#bckorder" + res).val("");
                 return false;
             }
@@ -2166,8 +1565,6 @@
                     type: "POST",
                     dataType: "JSON",
                     success: function (data) {
-                        ////console.log(data);
-                        // $("#cusname").text("Custome Code:" + data[0].CUSCOD + "/" + data[0].CUSNAM);
                         $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
                         $("#addcus").text(data[0].ADDR_01 + data[0].PRO);
                         $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
@@ -2194,8 +1591,6 @@
                     type: "POST",
                     dataType: "JSON",
                     success: function (data) {
-                        ////console.log(data);
-                        // $("#cusname").text("Custome Code:" + data[0].CUSCOD + "/" + data[0].CUSNAM);
                         $("#cusname").text(data[0].CUSNAM + " (" + data[0].CUSCOD + ")");
                         $("#addcus").text(data[0].ADDR_01 + data[0].PRO);
                         $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
@@ -2217,16 +1612,11 @@
                 type: "POST",
                 dataType: "JSON",
                 success: function (data) {
-                    //console.log(data);
-
                     $("#crlicusaac").text("AAC: " + commaSeparateNumber(data[0].AACCrlimit));
                     $("#crlicustac").text("TAC: " + commaSeparateNumber(data[0].TACCrlimit));
-
-
                 }
             });
         }
-
 
         /// SPC Remark
         $(document).on('focusout', '[id^="expectprice"]', function () {
@@ -2238,7 +1628,6 @@
                 var $select = $('#' + rowIdPart);
                 divSpc.removeAttr('hidden');
                 var currentRemark = $select.closest('div').find('.spc_remarkxxx').text().trim();
-                //$select.closest('div').find('.spc_remarkxxx').attr('hidden', true);
                 console.log(`text spc : ${currentRemark}`);
                 $.ajax({
                     url: '@Url.Action("GetSpcRemark", "Shoppinglist")',
@@ -2246,17 +1635,12 @@
                     type: 'post',
                     dataType: 'Json',
                     beforeSend: function () {
-
                     },
                     success: function (data) {
-                       // $select.removeAttr('hidden');
-
                         if (data.respone == 'Y') {
                             $select.empty();
                             $select.append('<option value="">-- Select Remark --</option>');
                             data.result.forEach(item => {
-                                //console.log('LoopEach');
-                                //$select.append(`<option value="${item.VAL}">${item.VAL}</option>`);
                                 const selected = (item.VAL.trim() === currentRemark) ? 'selected' : '';
                                 $select.append(`<option value="${item.VAL}" ${selected}>${item.VAL}</option>`);
                                 console.log(`select spc : ${selected}`);
@@ -2275,11 +1659,8 @@
                 var rowIdPart = $input.attr('id').replace('expectprice', 'spcRemake');
                 var $select = $('#' + rowIdPart);
                 divSpc.attr('hidden', true);
-               // $select.attr('hidden', true);
-                //$select.closest('div').find('.spc_remarkxxx').attr('hidden', true);
             }
         });
     </script>
-
 </body>
 </html>
