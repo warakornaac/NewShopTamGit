@@ -243,7 +243,10 @@
                                                     <option value="2">ค้นหาแบบเจาะจงเบอร์</option>
 
                                                 </select>
-                                                <input type="search" id="textfree" placeholder="ค้นหาสินค้าที่คุณต้องการได้ที่นี่..." class="form-control ui-autocomplete-input" autocomplete="off">
+
+                                                @* <input type="search" id="textfree" placeholder="ค้นหาสินค้าที่คุณต้องการได้ที่นี่..." class="form-control ui-autocomplete-input" autocomplete="off">*@
+                                                <textarea id="textfree" class="form-control ui-autocomplete-input" placeholder="ค้นหาสินค้าที่คุณต้องการได้ที่นี่..." autocomplete="off"></textarea>
+
                                                 <input type="search" id="textfreeoe" placeholder="ค้นหาเบอร์OEที่คุณต้องการได้ที่นี่..." class="form-control ui-autocomplete-input" autocomplete="off">
                                             </div>
                                             <hr class="line" />
@@ -1536,7 +1539,7 @@
                     $("#myModalWarning").modal();
                     $(this).val("");
                     return false;
-                } else { //ถ้ากรอกไม่เกินจำนวน stock 
+                } else { //ถ้ากรอกไม่เกินจำนวน stock
                     //ให้เช็คว่าเกินจำนวนที่ Coupong กำหนดไว้ไหม
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(qtyinput.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
@@ -1644,7 +1647,7 @@
                     $("#myModalWarning").modal();
                     $(this).val("");
                     return false;
-                } else { //ถ้ากรอกไม่เกินจำนวน stock 
+                } else { //ถ้ากรอกไม่เกินจำนวน stock
                     //ให้เช็คว่าเกินจำนวนที่ Coupong กำหนดไว้ไหม
                     if (promotionAmountMax.length > 1 && promotionAmountMax[1].trim() !== "") {
                         if (parseFloat(qtyinput.replace(',', '').replace(' ', '')) > parseFloat(promotionAmountMax[1].replace(',', '').replace(' ', ''))) {
@@ -2007,7 +2010,7 @@
         let batchSize = 20;
         let currentIndex = 0;
 
-        function getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno) {
+        function getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno,loading, doneCallback) {
             currentIndex = 0;
             var _maker = maker;
             var _Model = Model;
@@ -2017,10 +2020,11 @@
             var _brand = brand;
             var productgroup = _productgroup;
             var productline = _productline;
-            var textfree = splitval(textfree);
+            //var textfree = splitval(textfree);
             var _itemsegment = itemsegment;
-
-            // Remove rows with no qty
+            //SearchARM
+            // Remove rows with no qty ARM
+            /*
             var MyRows = $('#fixed-table-container-1 tbody tr');
             for (var i = 0; i < MyRows.length; i++) {
                 var qty = $(MyRows[i]).find('td .tQty').val();
@@ -2028,7 +2032,8 @@
                     $(MyRows[i]).remove();
                 }
             }
-
+            */
+           /*
             var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true });
             let $tbody = $('#fixed-table-container-1 tbody');
             $tbody.empty();
@@ -2037,6 +2042,7 @@
                     <td colspan="100%" style="text-align:center;">Loading data...</td>
                 </tr>`;
             $tbody.append(loadingRow);
+            */
 
             $.ajax({
                 url: '@Url.Action("Getdataitemdetail", "Home")',
@@ -2062,10 +2068,11 @@
                     usrtyp: usertype
                 },
                 success: function (data) {
-                    $tbody.find('.loading-row').remove();
-                    $tbody.empty();
-
+                    //$tbody.find('.loading-row').remove();
+                    //$tbody.empty();
+                    let $tbody = $('#fixed-table-container-1 tbody');
                     if (data.length === 0) {
+                        /*
                         const loadingRow = `
                         <tr class="loading-row">
                             <td colspan="100%" style="text-align:center;">No Data.....</td>
@@ -2074,15 +2081,24 @@
                         loading.out();
                         $("#textAlertWarning").text("No Data.....");
                         $("#myModalWarning").modal();
+                        */
+
+
+                        doneCallback(false); // แจ้งว่าไม่มี data
                         return;
                     }
+                    else {
+                        appendBatch(data, $tbody, 0);
+                        doneCallback(true);
+                    }
 
-                    appendBatch(data, $tbody, () => {
-                        loading.out();
-                    });
+                    //appendBatch(data, $tbody);
+
                 }
             });
         }
+
+
 
         function buildRowHtml(employees, index) {
             let position = index + 1;
@@ -2306,20 +2322,40 @@
             return SubmithtmlPage;
         }
 
-        function appendBatch(data, $tbody, onComplete) {
-            let batch = data.slice(currentIndex, currentIndex + batchSize);
+        //function appendBatch(data, $tbody, onComplete) {
+        //    let batch = data.slice(currentIndex, currentIndex + batchSize);
+
+        //    batch.forEach((employees, i) => {
+        //        let rowHtml = buildRowHtml(employees, currentIndex + i);
+        //        $tbody.append(rowHtml);
+        //    });
+
+        //    currentIndex += batchSize;
+
+        //    if (currentIndex < data.length) {
+        //        setTimeout(() => appendBatch(data, $tbody, onComplete), 100);
+        //    } else if (onComplete) {
+        //        onComplete();
+        //    }
+        //}
+        function appendBatch(data, $tbody, index = 0, onComplete) {
+
+            let batch = data.slice(index, index + batchSize);
 
             batch.forEach((employees, i) => {
-                let rowHtml = buildRowHtml(employees, currentIndex + i);
+                let rowHtml = buildRowHtml(employees, index + i);
                 $tbody.append(rowHtml);
             });
 
-            currentIndex += batchSize;
+            index += batchSize;
 
-            if (currentIndex < data.length) {
-                setTimeout(() => appendBatch(data, $tbody, onComplete), 100);
-            } else if (onComplete) {
-                onComplete();
+            if (index < data.length) {
+                setTimeout(function () {
+                    appendBatch(data, $tbody, index, onComplete);
+                }, 100);
+            }
+            else {
+                if (onComplete) onComplete();
             }
         }
 
@@ -2552,6 +2588,26 @@
         $("#sortby").change(function () {
             var vb = $(this).val();
 
+            //var maker = $("#maker").val();
+            //var Model = $("#Model").val();
+            //var submodel = $("#submodel").val();
+            //var company = $("#company").val();
+            //var catalogue = $("#catalogue").val();
+            //var brand = $("#brand").val();
+            //var _productgroup = $("#productgroup").val();
+            //var _productline = $("#productline").val();
+            //var textfree = $("#textfree").val();
+            //textfree = splitval(textfree);
+            //var itemsegment = $("#segment").val();
+            //var sortby = vb;
+            //var itemno = $("#textfreeoe").val();
+
+
+
+            //getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno);
+
+
+
             var maker = $("#maker").val();
             var Model = $("#Model").val();
             var submodel = $("#submodel").val();
@@ -2563,9 +2619,79 @@
             var textfree = $("#textfree").val();
             textfree = splitval(textfree);
             var itemsegment = $("#segment").val();
-            var sortby = vb;
+            var sortby = vb
             var itemno = $("#textfreeoe").val();
-            getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno);
+            //alert(company);
+            //return false;
+            //SearchARM
+            var MyRows = $('#fixed-table-container-1 tbody tr');
+            for (var i = 0; i < MyRows.length; i++) {
+                var qty = $(MyRows[i]).find('td .tQty').val();
+                if (qty == "") {
+                    $(MyRows[i]).remove();
+                }
+            }
+            var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true });
+            let $tbody = $('#fixed-table-container-1 tbody');
+            $tbody.empty();
+            const loadingRow = `
+                <tr class="loading-row">
+                    <td colspan="100%" style="text-align:center;">Loading data...</td>
+                </tr>`;
+            $tbody.append(loadingRow);
+
+            $tbody.find('.loading-row').remove();
+            $tbody.empty();
+
+            var val = $("#textfree").val();
+            var arr = val.split(",")
+                .map(x => x.trim())
+                .filter(x => x !== "");
+            var foundData = false;
+            var pendingRequest = arr.length;
+            arr.forEach(function (clean) {
+
+                console.log(clean);
+
+                getcatalog(
+                    maker,
+                    Model,
+                    submodel,
+                    company,
+                    catalogue,
+                    brand,
+                    _productgroup,
+                    _productline,
+                    clean,
+                    itemsegment,
+                    sortby,
+                    itemno,
+                    loading,
+                    function (hasData) {
+
+                        if (hasData) {
+                            foundData = true;
+                        }
+                        pendingRequest--;
+
+                        if (pendingRequest === 0) {
+                            loading.out();
+                            if (!foundData) {
+                                let $tbody = $('#fixed-table-container-1 tbody');
+                                $tbody.append(`
+                                    <tr>
+                                        <td colspan="100%" style="text-align:center;">
+                                            No Data.....
+                                        </td>
+                                    </tr>
+                                `);
+                            }
+                        }
+
+                    }
+                );
+
+            });
 
 
         });
@@ -2940,15 +3066,183 @@
             var itemno = $("#textfreeoe").val();
           //alert(company);
           //return false;
-            getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno);
+          //SearchARM
+          var MyRows = $('#fixed-table-container-1 tbody tr');
+          for (var i = 0; i < MyRows.length; i++) {
+              var qty = $(MyRows[i]).find('td .tQty').val();
+              if (qty == "") {
+                  $(MyRows[i]).remove();
+              }
+          }
+          var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true });
+          let $tbody = $('#fixed-table-container-1 tbody');
+          $tbody.empty();
+          const loadingRow = `
+                <tr class="loading-row">
+                    <td colspan="100%" style="text-align:center;">Loading data...</td>
+                </tr>`;
+          $tbody.append(loadingRow);
+
+          $tbody.find('.loading-row').remove();
+          $tbody.empty();
+
+          var val = $("#textfree").val();
+          var arr = val.split(",")
+              .map(x => x.trim())
+              .filter(x => x !== "");
+          var foundData = false;
+          var pendingRequest = arr.length === 0 ? 1 : arr.length;
+          if (arr.length === 0) {
+              getcatalog(
+                  maker,
+                  Model,
+                  submodel,
+                  company,
+                  catalogue,
+                  brand,
+                  _productgroup,
+                  _productline,
+                  textfree,
+                  itemsegment,
+                  sortby,
+                  itemno,
+                  loading,
+                  function (hasData) {
+
+                      if (hasData) {
+                          foundData = true;
+                      }
+                      pendingRequest--;
+
+                      if (pendingRequest === 0) {
+                          loading.out();
+                          if (!foundData) {
+                              let $tbody = $('#fixed-table-container-1 tbody');
+                              $tbody.append(`
+                           <tr>
+                               <td colspan="100%" style="text-align:center;">
+                                   No Data.....
+                               </td>
+                           </tr>
+                       `);
+                          }
+                      }
+
+                  }
+              );
+          }
+          else {
+              arr.forEach(function (clean) {
+
+                  console.log(clean);
+
+                  getcatalog(
+                      maker,
+                      Model,
+                      submodel,
+                      company,
+                      catalogue,
+                      brand,
+                      _productgroup,
+                      _productline,
+                      clean,
+                      itemsegment,
+                      sortby,
+                      itemno,
+                      loading,
+                      function (hasData) {
+
+                          if (hasData) {
+                              foundData = true;
+                          }
+                          pendingRequest--;
+
+                          if (pendingRequest === 0) {
+                              loading.out();
+                              if (!foundData) {
+                                  let $tbody = $('#fixed-table-container-1 tbody');
+                                  $tbody.append(`
+                           <tr>
+                               <td colspan="100%" style="text-align:center;">
+                                   No Data.....
+                               </td>
+                           </tr>
+                       `);
+                              }
+                          }
+
+                      }
+                  );
+
+              });
+          }
+
+
+         // loading.out();
+            //getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment, sortby, itemno);
         });
 
 
 
             // getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, textfree, itemsegment);
+        function splitArea(val) {
+            return val.split(/,\s*/);
+        }
+
+        function extractLast(term) {
+            return splitArea(term).pop();
+        }
+        //$("#textfree").on("keydown", function (e) {
+
+        //    if (e.key === "Enter") {
+
+        //        e.preventDefault();
+        //        let val = $(this).val().trim();
+        //        if (val !== "" && !val.endsWith(",")) {
+        //            $(this).val(val + ",");
+        //        }
+        //    }
+        //});
+        $("#textfree").on("keydown", function (e) {
+
+            if (e.key === "Enter") {
+                e.preventDefault();
+                let val = $(this).val().trim();
+
+                if (val !== "" && !val.endsWith(",")) {
+                    $(this).val(val + ",");
+                }
+
+            }
+
+        });
+
+        $("#textfree").on("paste", function (e) {
+
+            e.preventDefault();
+            let pasteData = (e.originalEvent || e).clipboardData.getData('text');
+            pasteData = pasteData
+                .replace(/\r\n/g, ",")
+                .replace(/\n/g, ",")
+                .replace(/\r/g, ",")
+                .replace(/,+/g, ",")
+                .replace(/^,|,$/g, "");
+            let currentVal = $(this).val();
+            if (currentVal && !currentVal.endsWith(",")) {
+                currentVal += ",";
+            }
+            $(this).val(currentVal + pasteData);
+        });
+        let navUsed = false;
+
+        $("#textfree").on("keydown", function (e) {
+            if (e.key === "ArrowUp" || e.key === "ArrowDown") {
+                navUsed = true;
+            }
+        });
 
         $("#textfree").click(function () {
-            this.select();
+            //this.select();
             countorder();
         });
         $("#textfree").autocomplete({
@@ -2958,6 +3252,7 @@
 
             source: function (request, response) {
                 //alert('99');
+                var keyword = extractLast(request.term);
 
                 var param = {
                     maker: $("#maker").val(),
@@ -2966,7 +3261,8 @@
                     XvalCompany: $("#company").val(),
                     catalogue: $("#catalogue").val(),
                     brand: $("#brand").val(),
-                    Name: $("#textfree").val(),
+                    //Name: $("#textfree").val(),
+                    Name: keyword,
                     Xcus: cuscod,
                     yrStart: "",
                     yrEnd: "",
@@ -2979,7 +3275,7 @@
                 };
                 // $('#fixbox').empty();
                 // $('.loader').css("display", "block");
-
+                console.log('word:' + keyword);
                 $.ajax({
                     url: '@Url.Action("GetdateStockCode", "Home")',
                     data: JSON.stringify(param),
@@ -2991,9 +3287,16 @@
                         //console.log(data.length
                         // //console.log("xxxx:" + data);
                         response($.map(data.slice(0, 50), function (item) {
+
+                            var code = item.split('|')[0].trim();
+
                             return {
-                                value: item
+                                label: item,
+                                value: code
                             }
+                            //return {
+                            //    value: item
+                            //}
                         }))
                     },
                     error: function (XMLhttpsRequest, textStatus, errorThrown) {
@@ -3002,7 +3305,21 @@
                     }
                 });
             },
+            focus: function (event, ui) {
+                if (!navUsed) {
+                    return false;
+                }
+                var terms = splitArea(this.value);
+                terms.pop();
+                terms.push(ui.item.value);
+                this.value = terms.join(", ");
+                return false;
+            },
             select: function (event, ui) {
+                if (event.originalEvent && event.originalEvent.key === "Enter") {
+                    event.preventDefault();
+                    return false;
+                }
                 var maker = $("#maker").val();
                 var Model = $("#Model").val();
                 var submodel = $("#submodel").val();
@@ -3011,7 +3328,7 @@
                 var brand = $("#brand").val();
                 var _productgroup = $("#productgroup").val();
                 var _productline = $("#productline").val();
-                var textfree = ui.item.value;
+                var textfree = ui.item.label;
 
                 var _splval = splitval(textfree);
                 var company = splitval3(textfree);
@@ -3020,7 +3337,7 @@
                 var sortby = $("#sortby").val();
                 //var itemno = _splval;
                 var itemno = $("#textfreeoe").val();
-                if (usertype == "1" || usertype == "2") {
+                if (usertype == "1" || usertype == "2" || usertype == "6") {
                     if (cuscod != "") {
                         ///var wi = window.open("../Product_details/frmViewLabel.aspx?ClmNUM=" + btoa(nokey) + "/" + btoa(nosubkey));
                         var wi = window.open("../Productdetails/Index?prodenum=" + btoa(_splval) + "/" + btoa(company) + "/" + btoa(cuscod));
@@ -3029,8 +3346,17 @@
                         //login//
                     }
                 } else {
+                    //ARM
+                    //getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, _splval, itemsegment, sortby, itemno);
+                    var terms = splitArea(this.value);
+                    terms.pop();
+                    terms.push(ui.item.value);
+                    terms.push("");
 
-                    getcatalog(maker, Model, submodel, company, catalogue, brand, _productgroup, _productline, _splval, itemsegment, sortby, itemno);
+                    this.value = terms.join(", ");
+
+                    return false;
+
                 }
                 countorder();
             },
