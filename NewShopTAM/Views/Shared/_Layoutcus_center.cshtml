@@ -126,9 +126,25 @@
             <a class="navbar-brand p-0 mr-5" href="#"><img src="~/images/logo/AACTAC185x70.jpg" /></a>
             <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
                 <ul class="navbar-nav">
-                    @if (Session["UserType"].ToString() != "6")
+                    @if (Session["UserType"].ToString() == "1")
                     {
                         <div class="dropdownb">
+                        <li class="nav-item dropdown messages-menu">
+                            <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fa fa fa-user-o" style="font-size: 1.7em;"></i>
+                                <span class="dropbtnb">Admin</span>
+                            </a>
+                        </li>
+                        <div class="dropdownb-content">
+                            <a class="nav-link" href="~/ManageUser/Index">
+                                <span>Manage User</span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                @if (Session["UserType"].ToString() != "6")
+                {
+                    <div class="dropdownb">
                         <li class="nav-item dropdown messages-menu">
                             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <i class="fa fa fa-address-book-o" style="font-size: 1.7em;"></i>
@@ -158,79 +174,79 @@
                                 <span>Customer Portal</span>
                             </a>
                         </div>
-                </div>
-            }
-                    <li class="nav-item dropdown messages-menu">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa fa-exchange"></i>
-                            <span>Upload order</span>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown messages-menu">
-
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarshowdetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa-shopping-cart"></i>
-                            <span class="label label-success bg-success" id="countsku"></span>
-                            <span>Shopping Cart</span>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown messages-menu">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarwait" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa fa-clock-o"></i>
-                            <span class="label label-success bg-success" id="rd"></span>
-                            <span>Pending</span>
-                        </a>
-                    </li>
-                    <li class="nav-item dropdown messages-menu">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarstatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa fa fa-truck"></i>
-
-                            <span>My Orders</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/SeleScrCustomer/dashboard">Account</a>
-                    </li>
-                    @if (Session["UserType"].ToString() != "6")
-                    {
-                        <span style=" padding: 12px 0px 0px;color: white; font-size: 14px;">Profile @Session["UserID"]</span>}
-                    else if (Session["UserType"].ToString() == "6")
-                    {
-        <span style=" padding: 12px 0px 0px; color: white; font-size: 14px;">Profile @Session["UserID"]  </span>
-                    }
-                    <li class="nav-item dropdown  user-menu ">
-
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                            @if (Session["UserType"].ToString() == "5")
-                            {
-                                <a class="dropdown-item" href="~/Orderlist/Index">Home</a>
-                            }
-                            else if (Session["UserType"].ToString() != "5")
-                            {
-                                <a class="dropdown-item" href="~/Orderlist/Index">Home</a>
-                                <a class="dropdown-item" href="~/Cart/Index">Cart</a>
-                                <a class="dropdown-item" href="~/SeleScrCustomer/Index">Detail Customer</a>
-                            }
-                        </div>
-                    </li>
-                    @if (Session["UserType"].ToString() != "6")
-                    {
-                        <li class="nav-item dropdown messages-menu">
-                            <a class="nav-link dropdown-toggle" href="#" id="formChangePassword">
-                                <i class="fa fa fa-undo"></i>
-                                <span>Change Password</span>
-                            </a>
-                        </li>
-                    }
-                    <li class="nav-item dropdown messages-menu">
-                        <a class="nav-link dropdown-toggle" href="~/Account/LogOut">
-                            <i class="fa fa fa-outdent"></i>
-                            <span>Logout</span>
-                        </a>
-                    </li>
-                    </ul>
                     </div>
-                </nav>
+                }
+                <li class="nav-item dropdown messages-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarload" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa fa-exchange"></i>
+                        <span>Upload order</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown messages-menu">
+
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarshowdetail" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-shopping-cart"></i>
+                        <span class="label label-success bg-success" id="countsku"></span>
+                        <span>Shopping Cart</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown messages-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarwait" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa fa-clock-o"></i>
+                        <span class="label label-success bg-success" id="rd"></span>
+                        <span>Pending</span>
+                    </a>
+                </li>
+                <li class="nav-item dropdown messages-menu">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarstatus" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa fa-truck"></i>
+
+                        <span>My Orders</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/SeleScrCustomer/dashboard">Account</a>
+                </li>
+                @if (Session["UserType"].ToString() != "6")
+                {
+                    <span style=" padding: 12px 0px 0px;color: white; font-size: 14px;">Profile @Session["UserID"]</span>}
+                else if (Session["UserType"].ToString() == "6")
+                {
+                    <span style=" padding: 12px 0px 0px; color: white; font-size: 14px;">Profile @Session["UserID"]  </span>
+                }
+                <li class="nav-item dropdown  user-menu ">
+
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @if (Session["UserType"].ToString() == "5")
+                        {
+                            <a class="dropdown-item" href="~/Orderlist/Index">Home</a>
+                        }
+                        else if (Session["UserType"].ToString() != "5")
+                        {
+                            <a class="dropdown-item" href="~/Orderlist/Index">Home</a>
+                            <a class="dropdown-item" href="~/Cart/Index">Cart</a>
+                            <a class="dropdown-item" href="~/SeleScrCustomer/Index">Detail Customer</a>
+                        }
+                    </div>
+                </li>
+                @if (Session["UserType"].ToString() != "6")
+                {
+                    <li class="nav-item dropdown messages-menu">
+                        <a class="nav-link dropdown-toggle" href="#" id="formChangePassword">
+                            <i class="fa fa fa-undo"></i>
+                            <span>Change Password</span>
+                        </a>
+                    </li>
+                }
+                <li class="nav-item dropdown messages-menu">
+                    <a class="nav-link dropdown-toggle" href="~/Account/LogOut">
+                        <i class="fa fa fa-outdent"></i>
+                        <span>Logout</span>
+                    </a>
+                </li>
+                </ul>
+                </div>
+            </nav>
             </header>@RenderBody()
             <div class="container">
                 <div class="row">
