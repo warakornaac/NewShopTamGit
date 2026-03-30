@@ -255,7 +255,7 @@ namespace NewShopTAM.Controllers
                         //cmd.Parameters.AddWithValue("@Department", user.Department);
                         //cmd.Parameters.AddWithValue("@EMail", user.EMail);
                         //cmd.Parameters.AddWithValue("@UsrTyp", user.UsrTyp);
-                        cmd.Parameters.AddWithValue("@SLMCOD", user.SLMCOD);
+                        cmd.Parameters.AddWithValue("@SLMCOD", (object)user.SLMCOD ?? DBNull.Value);
 
                         SqlParameter outParam = new SqlParameter("@outGenstatus", SqlDbType.NVarChar, 100)
                         { Direction = ParameterDirection.Output };
