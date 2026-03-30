@@ -262,7 +262,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>Sale Code</label>
-                                    <input type="text" class="form-control" id="edit_SLMCOD" disabled />
+                                    <input type="text" class="form-control" id="edit_SLMCOD"  />
                                 </div>
                             </div>
                         </div>
@@ -455,6 +455,7 @@
                     UsrID: currentEditUsrID, // use the stored value instead of a missing DOM field
                     No: no,
                     UsrTyp: usrTyp,
+                    SLMCOD: document.getElementById('edit_SLMCOD').value,
                 };
 
                 $.ajax({
