@@ -1456,7 +1456,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>ลำดับ</Value>
+                                    <Value>No.</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1498,7 +1498,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>เบอร์สินค้า</Value>
+                                    <Value>Stock Code</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1541,7 +1541,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>ชื่อสินค้า</Value>
+                                    <Value>Product Name</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1584,7 +1584,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>จำนวน</Value>
+                                    <Value>Qty</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1627,7 +1627,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>ราคา</Value>
+                                    <Value>Price</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1667,7 +1667,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>ส่วนลด</Value>
+                                    <Value>Discount</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1707,7 +1707,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>ราคาขาย</Value>
+                                    <Value>Sale Price</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1747,7 +1747,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>ราคารวม</Value>
+                                    <Value>Total Price</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1787,7 +1787,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>ยอดค้างส่ง</Value>
+                                    <Value>Back Order</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1827,7 +1827,7 @@
                               <Paragraph>
                                 <TextRuns>
                                   <TextRun>
-                                    <Value>หมายเหตุ</Value>
+                                    <Value>Note</Value>
                                     <Style>
                                       <FontFamily>Angsana New</FontFamily>
                                       <FontSize>12pt</FontSize>
@@ -1919,7 +1919,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Tru Automotive (M) Sdn. Bhd.   </Value>
+                      <Value>Tru Automotive (M) Sdn.Bh.  </Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1929,7 +1929,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>No 22, Jalan Astaka U8/84, Seksyen U8 Bukit Jelutong Industrial Park Shah Alam Selangor, 40150 MALAYSIA Tel:60378458700 Fax.:+603 7845 8708</Value>
+                      <Value>No, 22, Jalan Astaka U8/84, Seksyen U8, Bukit Jelutong Industrial Park Shah Alam Selangor 40150. Malaysia. Tel.603 7845 8700 Fax.+603 785 8708</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1939,11 +1939,14 @@
                       </Style>
                     </TextRun>
                   </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Velox Automotive Sdn. Bhd. </Value>
+                      <Value>Velox Automotive Sdn. Bhd.</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1953,7 +1956,7 @@
                       </Style>
                     </TextRun>
                     <TextRun>
-                      <Value>12A-2, Jalan Eco Majestic 10/1B, Eco Majestic Semenyih SELANGOR, 43500 MALAYSIA Tel:+603 8724 6865</Value>
+                      <Value>12A-2, Jalan Eco Majestic 10/1B, Eco Majestic Semenyih SELANGOR, 43500 Malaysia. Tel.603 8724 6865</Value>
                       <Style>
                         <FontStyle>Normal</FontStyle>
                         <FontFamily>Angsana New</FontFamily>
@@ -1963,6 +1966,20 @@
                       </Style>
                     </TextRun>
                   </TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
+                </Paragraph>
+                <Paragraph>
+					<TextRuns>
+						<TextRun>
+							<Value />
+							<Style />
+						</TextRun>
+					</TextRuns>
+                  <Style>
+                    <TextAlign>Left</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox38</rd:DefaultName>
@@ -3178,7 +3195,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>จำนวนสินค้า:</Value>
+                      <Value>Qty :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3216,7 +3233,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>		จำนวนเบอร์สินค้า :</Value>
+                      <Value>		Stock Code Qty :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3255,7 +3272,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ส่วนลดเงินสด% :</Value>
+                      <Value>Cash Discount% :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3294,7 +3311,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ภาษี :</Value>
+                      <Value>VAT :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3333,7 +3350,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ยอดรวมทั้งหมด :</Value>
+                      <Value>Grand Total :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3724,7 +3741,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ส่วนลดท้ายบิล :</Value>
+                      <Value>Bill Discount :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -3799,7 +3816,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>จำนวนเงินก่อนภาษี :</Value>
+                      <Value>Net Amount Before VAT :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -4740,7 +4757,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>เครดิตเทอม :</Value>
+                      <Value>Credit Term :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -4854,7 +4871,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ยอดรวม :</Value>
+                      <Value>Subtotal :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -4985,7 +5002,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ค่าแรง :</Value>
+                      <Value>Service Fee :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
@@ -5100,7 +5117,7 @@
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>ค่าจัดส่ง :</Value>
+                      <Value>Shipping Fee :</Value>
                       <Style>
                         <FontSize>9pt</FontSize>
                         <FontWeight>Bold</FontWeight>
