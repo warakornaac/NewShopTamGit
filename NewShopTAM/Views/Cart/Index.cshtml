@@ -921,7 +921,7 @@
 
             function ShoppingCart_list(shipto) {
                 var CUSCOD = cuscod;
-                var Company = $("#company").val();
+                var Company = $("#company").val() || 'ALL';
                 console.log("Company = " + Company);
                 var loading = new Loading({ direction: 'hor', discription: 'Loading...', defaultApply: true });
                 $.ajax({
