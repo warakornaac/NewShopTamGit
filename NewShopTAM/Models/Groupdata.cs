@@ -1457,4 +1457,54 @@ namespace NewShopTAM.Models
 
     }
 
+    public class UsrTbl
+    {
+        [Key]
+        public int No { get; set; }
+
+        [Display(Name = "รหัสพนักงาน")]
+        public string EmpID { get; set; }
+
+        [Display(Name = "บริษัท")]
+        public string company { get; set; }
+
+        [Display(Name = "รหัสผู้ใช้")]
+        public string UsrID { get; set; }
+
+        [Display(Name = "ชื่อย่อ")]
+        public string initials { get; set; }
+
+        [Display(Name = "แผนก")]
+        public string Department { get; set; }
+
+        [Display(Name = "อีเมล")]
+        public string EMail { get; set; }
+
+        [Display(Name = "รหัสเซลล์")]
+        public string SLMCOD { get; set; }
+
+        [Display(Name = "ประเภทผู้ใช้")]
+        public int UsrTyp { get; set; }
+
+        [Display(Name = "รหัสผ่าน")]
+        public string PASSWORD { get; set; }
+
+        [Display(Name = "ชื่อผู้ใช้")]
+        public string UsrName { get; set; }
+
+        [Display(Name = "สร้างโดย")]
+        public string InsertedBy { get; set; }
+
+        [Display(Name = "วันที่สร้าง")]
+        public DateTime? InsertedDate { get; set; }
+
+        [Display(Name = "แก้ไขโดย")]
+        public string UpdatedBy { get; set; }
+
+        [Display(Name = "วันที่แก้ไข")]
+        public DateTime? UpdatedDate { get; set; }
+
+        [Display(Name = "บริษัทขาย")]
+        public string SALES_CO { get; set; }
+    }
 }
