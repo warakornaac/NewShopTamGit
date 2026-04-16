@@ -191,7 +191,7 @@
                                                 <button type="button" id="btncheck" class="btn btn-warning"> Cart Quantity </button>
                                             </span>
                                             <span class="col-sm-4 input-group-addon"><i><i id="Cuitem" style="color:crimson; font-size: large; font: icon;"> 0 </i>Units</i></span>
-                                            <span class="col-sm-4 input-group-addon"><i><i id="Cuqty" style="color: crimson; font-size: large; font: icon;"> 0</i>Size</i></span>
+                                            <span class="col-sm-4 input-group-addon"><i><i id="Cuqty" style="color: crimson; font-size: large; font: icon;"> 0</i>Items</i></span>
                                         </div>
                                     </div>
                                 </form>
@@ -638,6 +638,7 @@
                                 if (Usertype == "1") {
                                     SubmithtmlPage += '<td style="text-align: center;font-size: x-large;"><input id="checkbox' + (i + 1) + '" class="chksop" value="1" type="checkbox" ></td>';
                                 } else {
+                                    SubmithtmlPage += '<td style="display:none;"></td>';
                                 }
                                 if (pro != "") {
                                     if (procodsub != "FLASH") {
