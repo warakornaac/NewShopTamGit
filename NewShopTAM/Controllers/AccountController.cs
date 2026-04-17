@@ -206,7 +206,6 @@ namespace NewShopTAM.Controllers
         }
         [HttpPost]
         [AllowAnonymous]
-
         public ActionResult LogIn(LoginUserViewModel User)
         {
             Session.Clear();
@@ -214,57 +213,45 @@ namespace NewShopTAM.Controllers
             if (Session["UserType"] != null && Session["UserType"].ToString() != "")
             {
                 string userType = Session["UserType"].ToString();
-
-                if (userType == "5")
-                {
-                    return RedirectToAction("Index", "PriceApproval");
-                }
-                else
-                {
-                    return RedirectToAction("dashboard", "SeleScrCustomer");
-                }
+                if (userType == "5") return RedirectToAction("Index", "PriceApproval");
+                else return RedirectToAction("dashboard", "SeleScrCustomer");
             }
+
             string Userlog = string.Empty;
             string Usertype = string.Empty;
             string dateexpire = string.Empty;
             string UsrClmStaff = string.Empty;
-            //string appEnv = string.Empty;
             int intdateexpire = 0;
-            int expireDayInt = 0;
-            //variable 
+
             string getUserType = "";
             string getDepartment = "";
             string getCuscode = "";
             string getUsrClmStaff = "";
             string getGenstatus = "";
             string getByTable = "";
-            //appEnv = ConfigurationManager.AppSettings["Environment"];
-            //this.Session["appEnv"] = appEnv;
+
             var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
             SqlConnection Connection = new SqlConnection(connectionString);
-            // GenericIdentity identity = null;
             Connection.Open();
+
             try
             {
                 this.Session["DisplayName"] = string.Empty;
-                this.Session["UserType"] = null;
                 this.Session["UserID"] = User.Usre;
                 this.Session["UserPassword"] = User.Password;
                 this.Session["UsrGrpspecial"] = 0;
                 this.Session["DatetoExpire"] = "..";
                 this.Session["UsrClmStaff"] = "0";
-                this.Session["LoginSystem"] = "";
                 this.Session["LoginSystem"] = ConfigurationManager.AppSettings["SystemCode"];
 
-                //string UserType = string.Empty;
                 string sessionId = Request["http_cookie"];
-                string secCodeArr = string.Empty;
 
+                // 1. เรียก Stored Procedure เช็ค Login
                 var command = new SqlCommand("P_Check_Login_User", Connection);
                 command.CommandType = CommandType.StoredProcedure;
                 command.Parameters.AddWithValue("@inUsername", User.Usre);
                 command.Parameters.AddWithValue("@inPassword", User.Password);
-                // Output parameters
+
                 command.Parameters.Add(new SqlParameter("@getUserType", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
                 command.Parameters.Add(new SqlParameter("@getDepartment", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
                 command.Parameters.Add(new SqlParameter("@getCuscode", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
@@ -272,8 +259,6 @@ namespace NewShopTAM.Controllers
                 command.Parameters.Add(new SqlParameter("@OutGenstatus", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
                 command.Parameters.Add(new SqlParameter("@getByTable", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
 
-                // Execute the stored procedure
-                //connection.Open();
                 command.ExecuteNonQuery();
 
                 getUserType = command.Parameters["@getUserType"].Value?.ToString();
@@ -282,101 +267,107 @@ namespace NewShopTAM.Controllers
                 getUsrClmStaff = command.Parameters["@getUsrClmStaff"].Value?.ToString();
                 getGenstatus = command.Parameters["@OutGenstatus"].Value?.ToString();
                 getByTable = command.Parameters["@getByTable"].Value?.ToString();
-                //Set data v_Check_User_All to attribute
+
+                // Set Session พื้นฐานจาก SP
                 this.Session["UserType"] = getUserType;
                 this.Session["Department"] = getDepartment;
                 this.Session["CUSCOD"] = getCuscode;
                 this.Session["UsrClmStaff"] = getUsrClmStaff;
-                sessionId = sessionId.Substring(sessionId.Length - 24);
-                this.Session["ID"] = sessionId;
+
+                if (!string.IsNullOrEmpty(sessionId) && sessionId.Length >= 24)
+                {
+                    sessionId = sessionId.Substring(sessionId.Length - 24);
+                    this.Session["ID"] = sessionId;
+                }
+
+                // 2. ดึง Department จาก v_ADUser มาทับ (ถ้ามี) ** แก้ไขจุดที่เคย Error **
+                if (!string.IsNullOrEmpty(User.Usre))
+                {
+                    // ใช้ LogInName ตามที่ปรากฏในโค้ดของคุณ และตรวจสอบว่าใน View ชื่อคอลัมน์นี้จริงๆ
+                    using (SqlCommand cmdAD = new SqlCommand("SELECT TOP 1 Department FROM v_ADUser WHERE LogInName = @uid", Connection))
+                    {
+                        cmdAD.Parameters.AddWithValue("@uid", User.Usre);
+                        object adDept = cmdAD.ExecuteScalar();
+                        if (adDept != null && adDept != DBNull.Value)
+                        {
+                            this.Session["Department"] = adDept.ToString();
+                        }
+                    }
+                }
 
                 FormsAuthentication.SetAuthCookie(User.Usre, false);
-                //ถ้าไม่ป็นลูกค้า หรือ User พิเศษไหม เป็นคนที่มีใน AD
+
                 if (getUserType != "" && getGenstatus == "Y")
                 {
-                    //User อยู่ใน UsrTbl Sale, Product, SalesCo, Mis *Check AD*
                     if (getByTable == "UsrTbl")
                     {
-                        //ADSRV01
+                        // เช็ค AD
                         DirectoryEntry entry = new DirectoryEntry("LDAP://ADSRV2016-01/dc=Automotive,dc=com", User.Usre, User.Password);
                         DirectorySearcher search = new DirectorySearcher(entry);
                         search.Filter = "(SAMAccountName=" + User.Usre + ")";
                         search.PropertiesToLoad.AddRange(new string[] { "cn", "pwdLastSet" });
                         SearchResult result = search.FindOne();
-                        if (result != null && result.Properties.Contains("pwdLastSet"))
+
+                        if (result != null)
                         {
-                            long fileTime = (long)result.Properties["pwdLastSet"][0];
-                            DateTime pwdLastSetDate = DateTime.FromFileTimeUtc(fileTime);
-                            Console.WriteLine("Password last set on: " + pwdLastSetDate);
-                            // 90 วัน
-                            int maxPwdAgeDays = 90;
-                            // วันที่รหัสผ่านจะหมดอายุ
-                            DateTime expireDate = pwdLastSetDate.AddDays(maxPwdAgeDays);
-                            // จำนวนวันที่เหลือ
-                            double expireDay = (expireDate - DateTime.UtcNow).TotalDays;
-                            intdateexpire = Convert.ToInt32(expireDay);
+                            if (result.Properties.Contains("pwdLastSet"))
+                            {
+                                long fileTime = (long)result.Properties["pwdLastSet"][0];
+                                DateTime pwdLastSetDate = DateTime.FromFileTimeUtc(fileTime);
+                                int maxPwdAgeDays = 90;
+                                DateTime expireDate = pwdLastSetDate.AddDays(maxPwdAgeDays);
+                                double expireDay = (expireDate - DateTime.UtcNow).TotalDays;
+                                intdateexpire = Convert.ToInt32(expireDay);
+                                this.Session["expdatecal"] = intdateexpire;
+
+                                if (intdateexpire <= 15) this.Session["DatetoExpire"] = "Passwords expire '" + intdateexpire + "' days";
+                                else if (intdateexpire <= 0) this.Session["DatetoExpire"] = "The user's password must be changed password Changed password on Citrix";
+                                else this.Session["DatetoExpire"] = "..";
+                            }
+                            this.Session["UsrGrpspecial"] = 0;
                         }
-                        if (null == result) //ไม่พบข้อมูลบน AD
+                        else
                         {
                             if (!IsValid(User.Usre, User.Password))
                             {
                                 TempData["ErrorMessage"] = "Login details are wrong.";
-                            }
-                        }
-                        else  //พบข้อมูลบน AD
-                        {
-                            this.Session["UsrGrpspecial"] = 0;
-                            this.Session["expdatecal"] = intdateexpire;
-                            if (intdateexpire <= 15)
-                            {
-                                this.Session["DatetoExpire"] = "Passwords expire '" + intdateexpire + "' days";
-                            }
-                            else if (intdateexpire == 0)
-                            {
-                                this.Session["DatetoExpire"] = "The user's password must be changed password  Changed password on Citrix";
-                            }
-                            else
-                            {
-                                this.Session["DatetoExpire"] = "..";
+                                return View("Login", User);
                             }
                         }
 
+                        // เก็บ Log
                         var infoUser = GetUserInfo();
-                        command = new SqlCommand("P_LoginMobile_log", Connection);
-                        command.CommandType = CommandType.StoredProcedure;
-                        command.Parameters.AddWithValue("@UsrID", User.Usre);
-                        command.Parameters.AddWithValue("@UsrType", getUserType);
-                        command.Parameters.AddWithValue("@OS", infoUser.OS);
-                        command.Parameters.AddWithValue("@Browser", infoUser.Browser);
-                        command.Parameters.AddWithValue("@IpAddress", infoUser.Ip_Addresss);
-                        command.Parameters.AddWithValue("@Latitude", User.Latitude);
-                        command.Parameters.AddWithValue("@Longitude", User.Longitude);
-                        command.ExecuteNonQuery();
-                        command.Dispose();
+                        using (SqlCommand cmdLog = new SqlCommand("P_LoginMobile_log", Connection))
+                        {
+                            cmdLog.CommandType = CommandType.StoredProcedure;
+                            cmdLog.Parameters.AddWithValue("@UsrID", User.Usre);
+                            cmdLog.Parameters.AddWithValue("@UsrType", getUserType);
+                            cmdLog.Parameters.AddWithValue("@OS", infoUser.OS);
+                            cmdLog.Parameters.AddWithValue("@Browser", infoUser.Browser);
+                            cmdLog.Parameters.AddWithValue("@IpAddress", infoUser.Ip_Addresss);
+                            cmdLog.Parameters.AddWithValue("@Latitude", User.Latitude ?? (object)DBNull.Value);
+                            cmdLog.Parameters.AddWithValue("@Longitude", User.Longitude ?? (object)DBNull.Value);
+                            cmdLog.ExecuteNonQuery();
+                        }
+
+                        if (getUserType == "5") return RedirectToAction("Index", "PriceApproval");
+                        else return RedirectToAction("dashboard", "SeleScrCustomer");
+                    }
+                    else // กรณีเป็นตารางอื่น (Customer)
+                    {
                         if (getUserType == "5")
                         {
                             return RedirectToAction("Index", "PriceApproval");
                         }
                         else
                         {
-                            return RedirectToAction("dashboard", "SeleScrCustomer");
-                        }
-                    }
-                    else //User อยู่ใน 2 Table UsrTbl_Customer, UsrTbl_History ไม่ต้อง *Check AD* เข้าได้เลย
-                    {
-                        if (getUserType == "5") //Product
-                        {
-                            return RedirectToAction("Index", "PriceApproval");
-                        }
-                        else //Customer
-                        {
-                            command = new SqlCommand("P_logSingin", Connection);
-                            command.CommandType = CommandType.StoredProcedure;
-                            command.Parameters.AddWithValue("@UsrID", User.Usre);
-                            command.Parameters.AddWithValue("@SessionId", sessionId);
-                            command.ExecuteReader();
-                            command.Dispose();
-
+                            using (SqlCommand cmdSignin = new SqlCommand("P_logSingin", Connection))
+                            {
+                                cmdSignin.CommandType = CommandType.StoredProcedure;
+                                cmdSignin.Parameters.AddWithValue("@UsrID", User.Usre);
+                                cmdSignin.Parameters.AddWithValue("@SessionId", sessionId);
+                                cmdSignin.ExecuteNonQuery();
+                            }
                             return RedirectToAction("dashboard", "SeleScrCustomer");
                         }
                     }
@@ -384,30 +375,219 @@ namespace NewShopTAM.Controllers
             }
             catch (SqlException ex)
             {
-                if (ex.Number == -2)
-                {
-                    TempData["ErrorMessage"] = "Connection timed out. Please login try again.";
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = "Database error: " + ex.Message;
-                }
-            }
-            catch (COMException)
-            {
-                TempData["ErrorMessage"] = "Login details are wrong.";
+                TempData["ErrorMessage"] = ex.Number == -2 ? "Connection timed out." : "Database error: " + ex.Message;
             }
             catch (Exception ex)
             {
-                TempData["ErrorMessage"] = "Unexpected error: " + ex.Message;
+                TempData["ErrorMessage"] = "Error: " + ex.Message;
             }
             finally
             {
-
                 Connection.Close();
             }
             return View("Login", User);
         }
+        //public ActionResult LogIn(LoginUserViewModel User)
+        //{
+        //    Session.Clear();
+        //    // ป้องกัน login ซ้ำถ้ายังมี session อยู่
+        //    if (Session["UserType"] != null && Session["UserType"].ToString() != "")
+        //    {
+        //        string userType = Session["UserType"].ToString();
+
+        //        if (userType == "5")
+        //        {
+        //            return RedirectToAction("Index", "PriceApproval");
+        //        }
+        //        else
+        //        {
+        //            return RedirectToAction("dashboard", "SeleScrCustomer");
+        //        }
+        //    }
+        //    string Userlog = string.Empty;
+        //    string Usertype = string.Empty;
+        //    string dateexpire = string.Empty;
+        //    string UsrClmStaff = string.Empty;
+        //    //string appEnv = string.Empty;
+        //    int intdateexpire = 0;
+        //    int expireDayInt = 0;
+        //    //variable 
+        //    string getUserType = "";
+        //    string getDepartment = "";
+        //    string getCuscode = "";
+        //    string getUsrClmStaff = "";
+        //    string getGenstatus = "";
+        //    string getByTable = "";
+        //    //appEnv = ConfigurationManager.AppSettings["Environment"];
+        //    //this.Session["appEnv"] = appEnv;
+        //    var connectionString = ConfigurationManager.ConnectionStrings["MobileOrder_ConnectionString"].ConnectionString;
+        //    SqlConnection Connection = new SqlConnection(connectionString);
+        //    // GenericIdentity identity = null;
+        //    Connection.Open();
+        //    try
+        //    {
+        //        this.Session["DisplayName"] = string.Empty;
+        //        this.Session["UserType"] = null;
+        //        this.Session["UserID"] = User.Usre;
+        //        this.Session["UserPassword"] = User.Password;
+        //        this.Session["UsrGrpspecial"] = 0;
+        //        this.Session["DatetoExpire"] = "..";
+        //        this.Session["UsrClmStaff"] = "0";
+        //        this.Session["LoginSystem"] = "";
+        //        this.Session["LoginSystem"] = ConfigurationManager.AppSettings["SystemCode"];
+
+        //        //string UserType = string.Empty;
+        //        string sessionId = Request["http_cookie"];
+        //        string secCodeArr = string.Empty;
+
+        //        var command = new SqlCommand("P_Check_Login_User", Connection);
+        //        command.CommandType = CommandType.StoredProcedure;
+        //        command.Parameters.AddWithValue("@inUsername", User.Usre);
+        //        command.Parameters.AddWithValue("@inPassword", User.Password);
+        //        // Output parameters
+        //        command.Parameters.Add(new SqlParameter("@getUserType", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
+        //        command.Parameters.Add(new SqlParameter("@getDepartment", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
+        //        command.Parameters.Add(new SqlParameter("@getCuscode", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
+        //        command.Parameters.Add(new SqlParameter("@getUsrClmStaff", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
+        //        command.Parameters.Add(new SqlParameter("@OutGenstatus", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
+        //        command.Parameters.Add(new SqlParameter("@getByTable", SqlDbType.NVarChar, 100) { Direction = ParameterDirection.Output });
+
+        //        // Execute the stored procedure
+        //        //connection.Open();
+        //        command.ExecuteNonQuery();
+
+        //        getUserType = command.Parameters["@getUserType"].Value?.ToString();
+        //        getDepartment = command.Parameters["@getDepartment"].Value?.ToString();
+        //        getCuscode = command.Parameters["@getCuscode"].Value?.ToString();
+        //        getUsrClmStaff = command.Parameters["@getUsrClmStaff"].Value?.ToString();
+        //        getGenstatus = command.Parameters["@OutGenstatus"].Value?.ToString();
+        //        getByTable = command.Parameters["@getByTable"].Value?.ToString();
+        //        //Set data v_Check_User_All to attribute
+        //        this.Session["UserType"] = getUserType;
+        //        this.Session["Department"] = getDepartment;
+        //        this.Session["CUSCOD"] = getCuscode;
+        //        this.Session["UsrClmStaff"] = getUsrClmStaff;
+        //        sessionId = sessionId.Substring(sessionId.Length - 24);
+        //        this.Session["ID"] = sessionId;
+
+        //        FormsAuthentication.SetAuthCookie(User.Usre, false);
+        //        //ถ้าไม่ป็นลูกค้า หรือ User พิเศษไหม เป็นคนที่มีใน AD
+        //        if (getUserType != "" && getGenstatus == "Y")
+        //        {
+        //            //User อยู่ใน UsrTbl Sale, Product, SalesCo, Mis *Check AD*
+        //            if (getByTable == "UsrTbl")
+        //            {
+        //                //ADSRV01
+        //                DirectoryEntry entry = new DirectoryEntry("LDAP://ADSRV2016-01/dc=Automotive,dc=com", User.Usre, User.Password);
+        //                DirectorySearcher search = new DirectorySearcher(entry);
+        //                search.Filter = "(SAMAccountName=" + User.Usre + ")";
+        //                search.PropertiesToLoad.AddRange(new string[] { "cn", "pwdLastSet" });
+        //                SearchResult result = search.FindOne();
+        //                if (result != null && result.Properties.Contains("pwdLastSet"))
+        //                {
+        //                    long fileTime = (long)result.Properties["pwdLastSet"][0];
+        //                    DateTime pwdLastSetDate = DateTime.FromFileTimeUtc(fileTime);
+        //                    Console.WriteLine("Password last set on: " + pwdLastSetDate);
+        //                    // 90 วัน
+        //                    int maxPwdAgeDays = 90;
+        //                    // วันที่รหัสผ่านจะหมดอายุ
+        //                    DateTime expireDate = pwdLastSetDate.AddDays(maxPwdAgeDays);
+        //                    // จำนวนวันที่เหลือ
+        //                    double expireDay = (expireDate - DateTime.UtcNow).TotalDays;
+        //                    intdateexpire = Convert.ToInt32(expireDay);
+        //                }
+        //                if (null == result) //ไม่พบข้อมูลบน AD
+        //                {
+        //                    if (!IsValid(User.Usre, User.Password))
+        //                    {
+        //                        TempData["ErrorMessage"] = "Login details are wrong.";
+        //                    }
+        //                }
+        //                else  //พบข้อมูลบน AD
+        //                {
+        //                    this.Session["UsrGrpspecial"] = 0;
+        //                    this.Session["expdatecal"] = intdateexpire;
+        //                    if (intdateexpire <= 15)
+        //                    {
+        //                        this.Session["DatetoExpire"] = "Passwords expire '" + intdateexpire + "' days";
+        //                    }
+        //                    else if (intdateexpire == 0)
+        //                    {
+        //                        this.Session["DatetoExpire"] = "The user's password must be changed password  Changed password on Citrix";
+        //                    }
+        //                    else
+        //                    {
+        //                        this.Session["DatetoExpire"] = "..";
+        //                    }
+        //                }
+
+        //                var infoUser = GetUserInfo();
+        //                command = new SqlCommand("P_LoginMobile_log", Connection);
+        //                command.CommandType = CommandType.StoredProcedure;
+        //                command.Parameters.AddWithValue("@UsrID", User.Usre);
+        //                command.Parameters.AddWithValue("@UsrType", getUserType);
+        //                command.Parameters.AddWithValue("@OS", infoUser.OS);
+        //                command.Parameters.AddWithValue("@Browser", infoUser.Browser);
+        //                command.Parameters.AddWithValue("@IpAddress", infoUser.Ip_Addresss);
+        //                command.Parameters.AddWithValue("@Latitude", User.Latitude);
+        //                command.Parameters.AddWithValue("@Longitude", User.Longitude);
+        //                command.ExecuteNonQuery();
+        //                command.Dispose();
+        //                if (getUserType == "5")
+        //                {
+        //                    return RedirectToAction("Index", "PriceApproval");
+        //                }
+        //                else
+        //                {
+        //                    return RedirectToAction("dashboard", "SeleScrCustomer");
+        //                }
+        //            }
+        //            else //User อยู่ใน 2 Table UsrTbl_Customer, UsrTbl_History ไม่ต้อง *Check AD* เข้าได้เลย
+        //            {
+        //                if (getUserType == "5") //Product
+        //                {
+        //                    return RedirectToAction("Index", "PriceApproval");
+        //                }
+        //                else //Customer
+        //                {
+        //                    command = new SqlCommand("P_logSingin", Connection);
+        //                    command.CommandType = CommandType.StoredProcedure;
+        //                    command.Parameters.AddWithValue("@UsrID", User.Usre);
+        //                    command.Parameters.AddWithValue("@SessionId", sessionId);
+        //                    command.ExecuteReader();
+        //                    command.Dispose();
+
+        //                    return RedirectToAction("dashboard", "SeleScrCustomer");
+        //                }
+        //            }
+        //        }
+        //    }
+        //    catch (SqlException ex)
+        //    {
+        //        if (ex.Number == -2)
+        //        {
+        //            TempData["ErrorMessage"] = "Connection timed out. Please login try again.";
+        //        }
+        //        else
+        //        {
+        //            TempData["ErrorMessage"] = "Database error: " + ex.Message;
+        //        }
+        //    }
+        //    catch (COMException)
+        //    {
+        //        TempData["ErrorMessage"] = "Login details are wrong.";
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        TempData["ErrorMessage"] = "Unexpected error: " + ex.Message;
+        //    }
+        //    finally
+        //    {
+
+        //        Connection.Close();
+        //    }
+        //    return View("Login", User);
+        //}
 
         public LoginuserInfo GetUserInfo()
         {
