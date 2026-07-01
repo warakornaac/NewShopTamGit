@@ -15,7 +15,7 @@
     <script src="~/contentfilter/js/jquery-2.1.1.js"></script>
     <script src="~/contentfilter/js/jquery.mixitup.min.js"></script>
     <link href="~/Content/Normalize.css" rel="stylesheet" />
-    <script src="~/fixed-table-master/fixed-table.js"></script>
+    @*<script src="~/fixed-table-master/fixed-table.js"></script>*@
     <link href="~/fixed-table-master/fixed-table.css" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     <script src="~/Loadingmodal/js/modal-loading.js"></script>
@@ -23,19 +23,44 @@
     <link href="~/Loadingmodal/css/modal-loading.css" rel="stylesheet" />
     <!-- Modernizr JS -->
     <style>
-        .fixed-table-container td {
-            background: burlywood;
+        .fixed-table-container {
+            overflow: auto; /* scroll ได้ทั้งแนวตั้งและแนวนอน */
+            max-height: 75vh;
+            position: relative;
         }
 
-        .fixed-table-container th:nth-child(1) {
-            width: 77px;
-            height: 70px;
+        .fixed_headers {
+            width: max-content; /* ให้ตารางกว้างเท่าที่เนื้อหาต้องการจริง ไม่บีบ */
+            min-width: 100%;
+            border-collapse: collapse;
         }
 
-        .fixed-table-container td:nth-child(1) {
-            width: 77px;
-            height: 70px;
-        }
+            .fixed_headers th,
+            .fixed_headers td {
+                white-space: nowrap; /* ไม่ตัดคำ ไม่บีบ ให้ scroll แนวนอนแทน */
+                padding: 6px 8px;
+            }
+
+            .fixed_headers thead th {
+                position: sticky;
+                top: 0;
+                z-index: 5;
+                background: #f2f2f2;
+            }
+            /* Freeze คอลัมน์แรกไว้ทางซ้าย */
+            .fixed_headers th:first-child,
+            .fixed_headers td:first-child {
+                position: sticky;
+                left: 0;
+                z-index: 4; /* อยู่บน td ปกติ */
+                background: #f2f2f2; /* ต้องทึบ กันเนื้อหาคอลัมน์อื่นทะลุตอน scroll แนวนอน */
+            }
+
+            /* มุมซ้ายบน = sticky ทั้ง top และ left พร้อมกัน ต้องอยู่ชั้นบนสุด */
+            .fixed_headers thead th:first-child {
+                z-index: 6;
+                background: #f2f2f2;
+            }
 
         .dropbtn {
             background-color: #4CAF50;
@@ -140,6 +165,7 @@
             border: hidden;
             color: white;
         }
+        
     </style>
 </head>
 <body style="background: linear-gradient(-180deg,#071d6dfa,#9b9fbda3);">
@@ -502,7 +528,7 @@
 
             return val;
         }
-        var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
+        //var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
         function nl2br(el) {
             var html = el.substring(0, 15) + "<br>" + el.substring(15, 30) + "<br>" + el.substring(30, 50);
             return html;
@@ -701,7 +727,7 @@
                             $("#textAlertWarning").text("No product details found for your order. Please contact the salesperson.");
                             $("#myModalWarning").modal();
                         }
-                        var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
+                        //var fixedTable1 = fixTable(document.getElementById('fixed-table-container-1'));
                     }
                 });
             },
